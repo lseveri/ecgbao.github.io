@@ -11,14 +11,12 @@
     
 
     
-    <meta name="description" content="&amp;lt;!DOCTYPE html&amp;gt;
-            var rootTag = document.getElementsByTagName(“html”);var classes = rootTag[0].className;rootTag[0].className = classes.replace(“no-js”,””);if (navigator.appVersion.ind">
+    <meta name="description" content="var rootTag = document.getElementsByTagName(“html”);var classes = rootTag[0].className;rootTag[0].className = classes.replace(“no-js”,””);if (navigator.appVersion.indexOf(“Win”)==-1) { cla">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIStackView 使用指南">
 <meta property="og:url" content="http://yoursite.com/2016/09/14/UIStackView-使用指南/index.html">
 <meta property="og:site_name" content="跳跳魔王的博客">
-<meta property="og:description" content="&amp;lt;!DOCTYPE html&amp;gt;
-            var rootTag = document.getElementsByTagName(“html”);var classes = rootTag[0].className;rootTag[0].className = classes.replace(“no-js”,””);if (navigator.appVersion.ind">
+<meta property="og:description" content="var rootTag = document.getElementsByTagName(“html”);var classes = rootTag[0].className;rootTag[0].className = classes.replace(“no-js”,””);if (navigator.appVersion.indexOf(“Win”)==-1) { cla">
 <meta property="og:image" content="https://www.facebook.com/tr?id=915433011818742&ev=PixelInitialized">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-250x250.jpg">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/01-table-view-is-now-correct_750x1334-281x500.png">
@@ -85,11 +83,10 @@
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/62-anywidth-compact-height_403x108.png">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/63-set-spacing-to-10_260x160.png">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/64-spacing-in-iphone-landscape_1334x750-480x270.png">
-<meta property="og:updated_time" content="2016-09-14T07:30:55.000Z">
+<meta property="og:updated_time" content="2016-09-14T07:32:55.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIStackView 使用指南">
-<meta name="twitter:description" content="&amp;lt;!DOCTYPE html&amp;gt;
-            var rootTag = document.getElementsByTagName(“html”);var classes = rootTag[0].className;rootTag[0].className = classes.replace(“no-js”,””);if (navigator.appVersion.ind">
+<meta name="twitter:description" content="var rootTag = document.getElementsByTagName(“html”);var classes = rootTag[0].className;rootTag[0].className = classes.replace(“no-js”,””);if (navigator.appVersion.indexOf(“Win”)==-1) { cla">
 <meta name="twitter:image" content="https://www.facebook.com/tr?id=915433011818742&ev=PixelInitialized">
 
     
@@ -114,7 +111,7 @@
 				<h1 class="site-name"><a href="/" title="跳跳魔王的博客">跳跳魔王的博客</a></h1>
 				<h2 class="blog-motto">每天进步一点点</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜單">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -130,7 +127,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -153,26 +150,25 @@
 		<a href="/about" title="跳跳魔王" target="_blank" itemprop="author">跳跳魔王</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-14T07:14:17.000Z" itemprop="datePublished"> Published 2016-09-14</time>
+    <time datetime="2016-09-14T07:14:17.000Z" itemprop="datePublished"> 發表於 2016-09-14</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
+			<strong class="toc-title">文章目錄</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Getting started</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Your first stack view</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Converting the sections</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">Rating section</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.2.</span> <span class="toc-text">Unembedding a stack view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.3.</span> <span class="toc-text">Your first vertical stack view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.4.</span> <span class="toc-text">Alignment property</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.5.</span> <span class="toc-text">Convert the “what to see” section</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">Convert the weather section</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.1.</span> <span class="toc-text">Top-level stack view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.2.</span> <span class="toc-text">Repositioning views</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.3.</span> <span class="toc-text">Size class based configuration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">Where to go from here?</span></a></li></ol>
 		
 		</div>
 		
-		<p>&lt;!DOCTYPE html&gt;</p>
-<p><html lang="en-US" class="no-js windows"><br>    <head><br>        <script type="text/javascript" lang="en">var rootTag = document.getElementsByTagName(“html”);var classes = rootTag[0].className;rootTag[0].className = classes.replace(“no-js”,””);if (navigator.appVersion.indexOf(“Win”)==-1) { classes = rootTag[0].className;rootTag[0].className = classes.replace(“windows”,””) } </script><br>        <meta charset="UTF-8"><br>        <meta property="fb:app_id" content="118196468516511"><br>        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><br>        <title>UIStackView Tutorial: Introducing Stack Views</title>                    <meta name="twitter:card" content="photo"><br>                    <meta name="twitter:site" content="@rwenderlich"><br>                    <meta name="twitter:title" content="UIStackView Tutorial: Introducing Stack Views - Ray Wenderlich"><br>                    <meta name="twitter:description" content="Learn how to simplify your iOS layouts in iOS 9 with this UIStackView tutorial."><br>                    <meta name="twitter:url" content="https://www.raywenderlich.com:443/114552/uistackview-tutorial-introducing-stack-views"><br>                    <meta name="twitter:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/card1.png"></head></html></p>
+		<p><html lang="en-US" class="no-js windows"><br>    <head><br>        <script type="text/javascript" lang="en">var rootTag = document.getElementsByTagName(“html”);var classes = rootTag[0].className;rootTag[0].className = classes.replace(“no-js”,””);if (navigator.appVersion.indexOf(“Win”)==-1) { classes = rootTag[0].className;rootTag[0].className = classes.replace(“windows”,””) } </script><br>        <meta charset="UTF-8"><br>        <meta property="fb:app_id" content="118196468516511"><br>        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><br>        <title>UIStackView Tutorial: Introducing Stack Views</title>                    <meta name="twitter:card" content="photo"><br>                    <meta name="twitter:site" content="@rwenderlich"><br>                    <meta name="twitter:title" content="UIStackView Tutorial: Introducing Stack Views - Ray Wenderlich"><br>                    <meta name="twitter:description" content="Learn how to simplify your iOS layouts in iOS 9 with this UIStackView tutorial."><br>                    <meta name="twitter:url" content="https://www.raywenderlich.com:443/114552/uistackview-tutorial-introducing-stack-views"><br>                    <meta name="twitter:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/card1.png"></head></html></p>
 <!-- This site is optimized with the Yoast SEO plugin v3.2.5 - https://yoast.com/wordpress/plugins/seo/ -->
 <p><meta name="description" content="Learn how to simplify your iOS layouts in iOS 9 with this UIStackView tutorial."></p>
 <p><meta name="robots" content="noodp"></p>
 <p><link rel="canonical" href="https://www.raywenderlich.com/114552/uistackview-tutorial-introducing-stack-views"><br><!-- / Yoast SEO plugin. --></p>
-<p>img.wp-smiley,<br>img.emoji {<br>    display: inline !important;<br>    border: none !important;<br>    box-shadow: none !important;<br>    height: 1em !important;<br>    width: 1em !important;<br>    margin: 0 .07em !important;<br>    vertical-align: -0.1em !important;<br>    background: none !important;<br>    padding: 0 !important;<br>}<br></p>
+<p></p>
 <p><link rel="stylesheet" id="wpsqt-main-css" href="https://cdn3.raywenderlich.com/wp-content/plugins/wp-survey-and-quiz-tool/css/main.css?ver=4.5.2" type="text/css" media="all"></p>
 <p><link rel="stylesheet" id="style-main-css" href="https://cdn4.raywenderlich.com/wp-content/themes/raywenderlich/style.min.css?ver=1471520796" type="text/css" media="all"></p>
 <p><link rel="stylesheet" id="contact-form-7-css" href="https://cdn1.raywenderlich.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.4.1" type="text/css" media="all"></p>
@@ -276,17 +272,17 @@ function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','too
 	
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="顯示側邊欄"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
+  <strong class="toc-title">文章目錄</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Getting started</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Your first stack view</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Converting the sections</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">Rating section</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.2.</span> <span class="toc-text">Unembedding a stack view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.3.</span> <span class="toc-text">Your first vertical stack view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.4.</span> <span class="toc-text">Alignment property</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.5.</span> <span class="toc-text">Convert the “what to see” section</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">Convert the weather section</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.1.</span> <span class="toc-text">Top-level stack view</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.2.</span> <span class="toc-text">Repositioning views</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.3.</span> <span class="toc-text">Size class based configuration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">Animation</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">Where to go from here?</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="隱藏側邊欄"></a></div>
 <aside class="clearfix">
 
   
@@ -297,7 +293,7 @@ function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','too
   
 
   <div class="linkslist">
-  <p class="asidetitle">Links</p>
+  <p class="asidetitle">友情鏈接</p>
     <ul>
         
           <li>
@@ -319,11 +315,11 @@ function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','too
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS 訂閱</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">Weibo</p>
+  <p class="asidetitle">新浪微博</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=b3593ceb&dpc=1"></iframe>
 </div>
 
@@ -550,7 +546,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
+	<a title="返回頂部"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
