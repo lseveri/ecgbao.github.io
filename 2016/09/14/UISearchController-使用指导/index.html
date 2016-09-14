@@ -4,19 +4,32 @@
 <head>
   <meta charset="UTF-8">
   
-    <title>跳跳魔王的博客</title>
+    <title>UISearchController 使用指导 | 跳跳魔王的博客</title>
     <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
     
     <meta name="author" content="跳跳魔王">
     
 
     
-    <meta property="og:type" content="website">
-<meta property="og:title" content="跳跳魔王的博客">
-<meta property="og:url" content="http://yoursite.com/index.html">
+    <meta name="description" content="Note: Updated for Xcode 7.3, iOS 9.3, and Swift 2.2 on 04-03-2016Update note: This tutorial was updated to iOS 9 and Swift 2 by Andy Pereira. Original post by Tutorial Team Member Nicolas Martin.If yo">
+<meta property="og:type" content="article">
+<meta property="og:title" content="UISearchController 使用指导">
+<meta property="og:url" content="http://yoursite.com/2016/09/14/UISearchController-使用指导/index.html">
 <meta property="og:site_name" content="跳跳魔王的博客">
+<meta property="og:description" content="Note: Updated for Xcode 7.3, iOS 9.3, and Swift 2.2 on 04-03-2016Update note: This tutorial was updated to iOS 9 and Swift 2 by Andy Pereira. Original post by Tutorial Team Member Nicolas Martin.If yo">
+<meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter-281x500.png">
+<meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Data-281x500.png">
+<meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/darkchocolate.png">
+<meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/ragecomic.png">
+<meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Filter-281x500.png">
+<meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/CandySearch-DetailView-281x500.png">
+<meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Filter-with-Scope-281x500.png">
+<meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2012/07/nosearchfunction.jpg">
+<meta property="og:updated_time" content="2016-09-14T01:19:14.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="跳跳魔王的博客">
+<meta name="twitter:title" content="UISearchController 使用指导">
+<meta name="twitter:description" content="Note: Updated for Xcode 7.3, iOS 9.3, and Swift 2.2 on 04-03-2016Update note: This tutorial was updated to iOS 9 and Swift 2 by Andy Pereira. Original post by Tutorial Team Member Nicolas Martin.If yo">
+<meta name="twitter:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter-281x500.png">
 
     
     <link rel="alternative" href="/atom.xml" title="跳跳魔王的博客" type="application/atom+xml">
@@ -66,12 +79,10 @@
 </div>
     </header>
     <div id="container">
-      <div id="main">
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
   <h1 itemprop="name">
     
       <a href="/2016/09/14/UISearchController-使用指导/" title="UISearchController 使用指导" itemprop="url">UISearchController 使用指导</a>
@@ -85,9 +96,16 @@
     
   </p>
 </header>
-    <div class="article-content">
-        
-        <p><em>Note</em>: Updated for Xcode 7.3, iOS 9.3, and Swift 2.2 on 04-03-2016</p><br><p><em>Update note:</em> This tutorial was updated to iOS 9 and Swift 2 by Andy Pereira. <a href="/?p=16873">Original post</a> by Tutorial Team Member Nicolas Martin.</p><br><p>If your app displays large datasets, scrolling through massive lists becomes slow and frustrating. In that case, it’s vitally important to allow users to search for specific items. Lucky for you, UIKit includes <code>UISearchBar</code> which seamlessly integrates with <code>UITableView</code> and allows for quick, responsive filtering of information.</p><br><p>In this <code>UISearchController</code> tutorial, you’ll build a searchable Candy app which is based on a standard table view. You&#8217;ll add table view search capability, including dynamic filtering, and add an optional scope bar, all while taking advantage of <code>UISearchController</code>, added in iOS 8. In the end, you&#8217;ll know how to make your apps much more user friendly and satisfy your users&#8217; urgent demands.</p><br><p>Ready for some sugar-coated search results? Read on.</p><br><h2>Getting Started</h2><br><p>Download the starter project from the tutorial <a href="http://www.raywenderlich.com/wp-content/uploads/2015/09/CandySearch-Starter.zip" target="_blank" rel="external">here</a> and open the project. The app has already been set up with a navigation controller and styling. Build and run the app; you&#8217;ll see an empty list:</p><br><p><a href="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter.png" target="_blank" rel="external"><img src="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter-281x500.png" alt="UISearchController-Starter" width="281" height="500" class="aligncenter size-large wp-image-113862" srcset="https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter-281x500.png 281w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter-180x320.png 180w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter.png 750w" sizes="(max-width: 281px) 100vw, 281px"></a></p><br><p>Back in Xcode, the file <em>Candy.swift</em> contains a class to store the information about each piece of candy you&#8217;ll be displaying. This class has two properties: the category and name of the candy.</p><br><p>When the user searches for a candy in your app, you’ll be referencing the name property against the user&#8217;s search string. You’ll see how the category string will become important near the end of this tutorial when you implement the Scope Bar.</p><br><h2>Populating the Table View</h2><br><p>Open <em>MasterViewController.swift</em>. The <code>candies</code> property will be where you manage all the different <code>Candy</code> objects for your users to search.  Speaking of which, it&#8217;s time to create some Candy!</p><br><p>In this tutorial, you only need to create a limited number of values to illustrate how the search bar works; in a production app, you might have thousands of these searchable objects. But whether an app has thousands of objects to search or just a few, the methods used will remain the same. Scalability at its finest!</p><br><p>To populate your <code>candies</code> array, add the following code to <code>viewDidLoad()</code>, after the call to <code>super.viewDidLoad()</code>:</p>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Getting Started</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Populating the Table View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Introducing UISearchController</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">UISearchResultsUpdating and Filtering</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">Sending Data to a Detail View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">Creating a Scope Bar to Filter Results</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">Where To Go From Here?</span></a></li></ol>
+		
+		</div>
+		
+		<p><em>Note</em>: Updated for Xcode 7.3, iOS 9.3, and Swift 2.2 on 04-03-2016</p><br><p><em>Update note:</em> This tutorial was updated to iOS 9 and Swift 2 by Andy Pereira. <a href="/?p=16873">Original post</a> by Tutorial Team Member Nicolas Martin.</p><br><p>If your app displays large datasets, scrolling through massive lists becomes slow and frustrating. In that case, it’s vitally important to allow users to search for specific items. Lucky for you, UIKit includes <code>UISearchBar</code> which seamlessly integrates with <code>UITableView</code> and allows for quick, responsive filtering of information.</p><br><p>In this <code>UISearchController</code> tutorial, you’ll build a searchable Candy app which is based on a standard table view. You&#8217;ll add table view search capability, including dynamic filtering, and add an optional scope bar, all while taking advantage of <code>UISearchController</code>, added in iOS 8. In the end, you&#8217;ll know how to make your apps much more user friendly and satisfy your users&#8217; urgent demands.</p><br><p>Ready for some sugar-coated search results? Read on.</p><br><h2>Getting Started</h2><br><p>Download the starter project from the tutorial <a href="http://www.raywenderlich.com/wp-content/uploads/2015/09/CandySearch-Starter.zip" target="_blank" rel="external">here</a> and open the project. The app has already been set up with a navigation controller and styling. Build and run the app; you&#8217;ll see an empty list:</p><br><p><a href="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter.png" target="_blank" rel="external"><img src="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter-281x500.png" alt="UISearchController-Starter" width="281" height="500" class="aligncenter size-large wp-image-113862" srcset="https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter-281x500.png 281w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter-180x320.png 180w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Starter.png 750w" sizes="(max-width: 281px) 100vw, 281px"></a></p><br><p>Back in Xcode, the file <em>Candy.swift</em> contains a class to store the information about each piece of candy you&#8217;ll be displaying. This class has two properties: the category and name of the candy.</p><br><p>When the user searches for a candy in your app, you’ll be referencing the name property against the user&#8217;s search string. You’ll see how the category string will become important near the end of this tutorial when you implement the Scope Bar.</p><br><h2>Populating the Table View</h2><br><p>Open <em>MasterViewController.swift</em>. The <code>candies</code> property will be where you manage all the different <code>Candy</code> objects for your users to search.  Speaking of which, it&#8217;s time to create some Candy!</p><br><p>In this tutorial, you only need to create a limited number of values to illustrate how the search bar works; in a production app, you might have thousands of these searchable objects. But whether an app has thousands of objects to search or just a few, the methods used will remain the same. Scalability at its finest!</p><br><p>To populate your <code>candies</code> array, add the following code to <code>viewDidLoad()</code>, after the call to <code>super.viewDidLoad()</code>:</p>
 
 <div class="wp_codebox"><table><tr id="p1137721"><td class="code" id="p113772code1"><pre class="swift" style="font-family:monospace;">candies <span style="color: #002200;">=</span> <span style="color: #002200;">&#91;</span><br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Chocolate&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Chocolate Bar&quot;</span><span style="color: #002200;">&#41;</span>,<br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Chocolate&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Chocolate Chip&quot;</span><span style="color: #002200;">&#41;</span>,<br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Chocolate&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Dark Chocolate&quot;</span><span style="color: #002200;">&#41;</span>,<br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Hard&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Lollipop&quot;</span><span style="color: #002200;">&#41;</span>,<br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Hard&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Candy Cane&quot;</span><span style="color: #002200;">&#41;</span>,<br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Hard&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Jaw Breaker&quot;</span><span style="color: #002200;">&#41;</span>,<br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Other&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Caramel&quot;</span><span style="color: #002200;">&#41;</span>,<br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Other&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Sour Chew&quot;</span><span style="color: #002200;">&#41;</span>,<br>  Candy<span style="color: #002200;">&#40;</span>category<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Other&quot;</span>, name<span style="color: #002200;">:</span><span style="color: #bf1d1a;">&quot;Gummi Bear&quot;</span><span style="color: #002200;">&#41;</span><br><span style="color: #002200;">&#93;</span></pre></td></tr></table></div>
 
@@ -145,14 +163,9 @@
 
 <p>This will add a scope bar to the search bar, with the titles that match the categories you assigned to your candy objects. You also include a catch-all category called <em>&#8220;All&#8221;</em> that you will use to ignore the candy category in the search altogether.</p><br><p>Now, when you type, the selected scope button will be used in conjunction with the search text.</p><br><p>Build and run your app. Try entering some search text, and changing the scope.</p><br><p><a href="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Filter-with-Scope.png" target="_blank" rel="external"><img src="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Filter-with-Scope-281x500.png" alt="UISearchController-Filter with Scope" width="281" height="500" class="aligncenter size-large wp-image-113863" srcset="https://cdn2.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Filter-with-Scope-281x500.png 281w, https://cdn2.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Filter-with-Scope-180x320.png 180w, https://cdn2.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Filter-with-Scope.png 750w" sizes="(max-width: 281px) 100vw, 281px"></a></p><br><p>Type in &#8220;caramel&#8221; with the scope set to All. It shows up in the list, but when you change the scope to Chocolate, &#8220;caramel&#8221; disappears because it&#8217;s not a chocolate.</p><br><h2>Where To Go From Here?</h2><br><p>Congratulations &#8211; you now have a working app that allows you to search directly from the main table view. Here is a <a href="http://www.raywenderlich.com/wp-content/uploads/2015/09/CandySearch.zip" target="_blank" rel="external">downloadable sample project</a> with all of the code from the above tutorial.</p><br><p>Table views are used in all kinds of apps, and offering a search option is a nice touch for usability. With <code>UISearchBar</code> and the <code>UISearchController</code>, iOS provides much of the functionality out of the box so there&#8217;s no excuse for not using it. The ability to search a large table view is something that today&#8217;s users expect; when they find it isn&#8217;t present, they won’t be happy campers.</p><br><div id="attachment_19061" style="width: 410px" class="wp-caption aligncenter"><img src="http://www.raywenderlich.com/wp-content/uploads/2012/07/nosearchfunction.jpg" alt="Don&#039;t let this happen to your users. Always give them a search option." width="400" height="361" class="size-full wp-image-19061" srcset="https://cdn2.raywenderlich.com/wp-content/uploads/2012/07/nosearchfunction.jpg 400w, https://cdn2.raywenderlich.com/wp-content/uploads/2012/07/nosearchfunction-250x225.jpg 250w, https://cdn2.raywenderlich.com/wp-content/uploads/2012/07/nosearchfunction-354x320.jpg 354w" sizes="(max-width: 400px) 100vw, 400px"><p class="wp-caption-text">Don&#8217;t let this happen to your users. Always give them a search option.</p></div><br><p>I hope to see you adding search capabilities to your table view apps in the future. If you have any questions or comments, please join the forum discussion below.</p>
 
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
+  
+	</div>
+		<footer class="article-footer clearfix">
 <div class="article-catetags">
 
 
@@ -160,92 +173,43 @@
 
 
 
-
-<div class="comments-count">
+	<div class="article-share" id="share">
 	
-</div>
+	  <div data-url="http://yoursite.com/2016/09/14/UISearchController-使用指导/" data-title="UISearchController 使用指导 | 跳跳魔王的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
 
 </footer>
 
-
-    </article>
-
-
-
-
-
-
-   
-    
-    <article class="post-expand post" itemprop="articleBody"> 
-        <header class="article-info clearfix">
-  <h1 itemprop="name">
-    
-      <a href="/2016/09/08/项目结束后的一些思考/" title="项目结束后的一些思考" itemprop="url">项目结束后的一些思考</a>
-  </h1>
-  <p class="article-author">By
-       
-		<a href="/about" title="跳跳魔王" target="_blank" itemprop="author">跳跳魔王</a>
-		
-  <p class="article-time">
-    <time datetime="2016-09-08T08:42:51.000Z" itemprop="datePublished"> 发表于 2016-09-08</time>
-    
-  </p>
-</header>
-    <div class="article-content">
-        
-        <blockquote>
-<p>为什么项目又延期了？ ——–来自市场的愤怒 </p>
-</blockquote>
-<p>为什么项目又延期了呢？</p>
-<div style="text-align:center"><br><img src="http://img306.ph.126.net/Xk7NwVjqPUtaYlY6u2m2GQ==/3852829481215481010.jpg"><br></div>
-
-<p>从项目立项到发布，一般项目的生命周期都是如上图所示，任何一个环节出现问题，都会增加工时的消耗</p>
-<p>开源中国社区 <a href="http://www.oschina.net/question/565065_86309" title="百度" target="_blank" rel="external">软件开发流程</a> 说的很详细了，我只说说自己的一些看法和见解。</p>
-<h1 id="关于知识的储备"><a href="#关于知识的储备" class="headerlink" title="关于知识的储备"></a>关于知识的储备</h1><div><br><p>笔者曾经参与多个iOS项目的开发，大大小小的项目都经历，实话说，极少有项目可以按时交付，即使连最基本的问题清零都做不到，基本都需要加班加点，到最后还是会遗留一些解决不了的问题。<br></p><br><p>新人越多的项目越容易出问题，当新人逐渐变成老司机的时候，无论是代码质量还是项目进度都变的靠谱多了。现代开发虽然引入了很多提高工作效率的工具和方法，但是人的能力还是占主导地位，人的知识储备在此就显得尤为重要了。<br></p><br><p>对新人的培养必须区别于学校，培养其主动学习能力才是进步之石，作为领导或者开发组长，应该根据员工的特点为其引路，创造学习的环境和条件，而不是将任务分配完了就不管了。在我经历的项目中，发现大多数的新人做了很多重复性的工作，在很长的时期里机械的做事，根本没有机会成长，他们现在或者变成老油条或者继续做着简单的工作，在新的毕业生涌入的潮流中，彻底的沉下去了。<br><br></p></div>
-
-<div style="text-align:center"><br><img src="http://photocdn.sohu.com/20150811/mp26839099_1439275236239_1_th.jpeg" width="280" height="300"><br></div>
-
-<h1 id="关于责任心"><a href="#关于责任心" class="headerlink" title="关于责任心"></a>关于责任心</h1><div><br><p>责任心这个东西应该是个后天的东西，因此在新人面试的时候，怎么在短短几十分钟内辨别面试者的责任心，是需要经验和一些运气的。如果等到新人进组和接手开发任务的时候，再去辨别就有点晚了。<br></p><br><p>有责任心的员工自主性相对较强，对自己的工作进度和质量都有着高度的要求，轻易不会表现沮丧和得过且过，接手的功能和任务都会认真对待，即使能力一时不足，也会通过不断的学习和填坑来完成，并不断总结，最终他开发的功能一般都会有个比较好的结果。<br></p><br></div>
-
-<h1 id="关于工作方式"><a href="#关于工作方式" class="headerlink" title="关于工作方式"></a>关于工作方式</h1><div><br><p>成功者都有一套自己的工作方式，普通人也有自己的工作方式，不同之处是高效和低效的区别。软件开发是体力和脑力劳动的结合，其中脑力劳动占据了主导地位，善于用脑的工程师是一般都掌握一套可以提高工作效率的工具和工作方式。<br></p><br><p>我个人认为提高工作效率的方式就是总结归纳改进，但是至于如何总结归纳改进则看情况而定。在我经历过的大大小小数十个项目中，多数的工程师变的平庸了，走向卓越的工程师非常稀少。这些人现在遍布在不同的公司，担任着重要的职务，甚至有些人已经创业成功，晋级到了富人阶层。<br></p><br></div>
-
-<div style="text-align:center"><br><img src="http://img5.imgtn.bdimg.com/it/u=2981119672,2990184737&fm=21&gp=0.jpg" width="400" height="300"><br></div>
-
-<h1 id="关于总结"><a href="#关于总结" class="headerlink" title="关于总结"></a>关于总结</h1><div><br><p>项目总结很重要也很必要，至少我是这么认为的。很多重复发生的错误和事故都是因为没及时总结造成的，这简直是犯罪。作为项目管理者，不能指望所有的工程师都会及时总结经验，汲取教训，更不会主动去帮别人总结。<br><br>人的惰性是天性，勤奋的人都是养成习惯才勤奋的，作为管理者要让工程师养成总结的习惯，而不是让他们自己去发挥主观能动性。参与总结的人越多，工程师越是放松，越能说出真实的想法，并付诸行动。<br><br>我开总结会，一般从三个方面来进行，一是自身的不足和改进，二是项目的不足和改进，三是公司提供的资源是否到位。一般来说，前面两点大部分的工程师都能讲出几条不足和改进意见，唯独第三条不知为什么要考虑这个因素。我的观点是，项目不是独立的，研发和测试只是产品生命周期的一个阶段，公司的很多部门都会对研发工作产生影响，很多工程师看不到这点。学会与各个部门打交道，不止是领导层的工作，也是工程师需要具备的能力。<br></p><br></div>
-
-        
-        
-        <p class="article-more-link">
-          
-       </p>
-    </div>
-    <footer class="article-footer clearfix">
-<div class="article-catetags">
-
-
-</div>
-
-
-
-
-<div class="comments-count">
+   	       
+	</article>
 	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/09/08/项目结束后的一些思考/"  title="项目结束后的一些思考">
+ <strong>下一篇：</strong><br/> 
+ <span>项目结束后的一些思考
+</span>
+</a>
 </div>
 
-</footer>
+</nav>
 
+	
 
-    </article>
-
-
-
-
-
-
-
-</div>
+</div>  
       <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">Getting Started</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">Populating the Table View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">Introducing UISearchController</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">UISearchResultsUpdating and Filtering</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">Sending Data to a Detail View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">Creating a Scope Bar to Filter Results</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">Where To Go From Here?</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
@@ -376,12 +340,89 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
 });
 </script>
 
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
 
 
 
@@ -452,4 +493,4 @@ var _hmt = _hmt || [];
 <!-- Tiny_search End -->
 
   </body>
- </html>
+</html>
