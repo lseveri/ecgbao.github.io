@@ -99,13 +99,6 @@
 </header>
 	<div class="article-content">
 		
-		<div id="toc" class="toc-article">
-			<strong class="toc-title">Contents</strong>
-		
-			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">准备开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">填充 Table View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">UISearchController介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">UISearchResultsUpdating 和 Filtering</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">给详情页传递数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">创建一个 Scope Bar 来过滤结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">从这里去哪里呢?</span></a></li></ol>
-		
-		</div>
-		
 		<div align="center"><img src="http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Square.png" width="250" height="250" class="alignright size-thumbnail wp-image-78152"></div>
 
 <p>如果你的程序要展示大量的数据集, 通过滚动大规模的列表会变的很慢并且令人沮丧。 既然如此，允许用户搜索特定项目就显得非常重要。 幸运的是, UIKit 包含的 <code>UISearchBar</code> 和 <code>UITableView</code>实现了无缝对接来进行快速有效的信息过滤。</p><br><p>这份<code>UISearchController</code> 指导, 你将建立一个基于标准列表的Candy 应用。 你会添加搜索的功能, 包括动态过滤, 可选的scope bar, 所有使用 <code>UISearchController</code>的方式, 都已经添加到iOS 8. 最后, 你会知道如何让你的程序更加友好并且满足用户的紧急需求。</p><br><p>预备好一些糖衣的搜索结果，继续读下去。</p><br><h2>准备开始</h2><br><p>下载演示程序在<a href="http://www.raywenderlich.com/wp-content/uploads/2015/09/CandySearch-Starter.zip" target="_blank" rel="external">这里</a> 然后打开。 程序以导航栏的风格创建，编译项目并运行，你会看到一个空列表:</p>
@@ -218,13 +211,6 @@
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
-
-  <div id="toc" class="toc-aside">
-  <strong class="toc-title">Contents</strong>
- 
- <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">准备开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">填充 Table View</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">UISearchController介绍</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">UISearchResultsUpdating 和 Filtering</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">给详情页传递数据</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">创建一个 Scope Bar 来过滤结果</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">6.</span> <span class="toc-text">从这里去哪里呢?</span></a></li></ol>
- 
-  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -349,8 +335,6 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
-      
-      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
