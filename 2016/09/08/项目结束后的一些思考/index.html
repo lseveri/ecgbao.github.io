@@ -114,6 +114,13 @@
 </header>
 	<div class="article-content">
 		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">Contents</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于知识的储备"><span class="toc-number">1.</span> <span class="toc-text">关于知识的储备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于责任心"><span class="toc-number">2.</span> <span class="toc-text">关于责任心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于工作方式"><span class="toc-number">3.</span> <span class="toc-text">关于工作方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于总结"><span class="toc-number">4.</span> <span class="toc-text">关于总结</span></a></li></ol>
+		
+		</div>
+		
 		<blockquote>
 <p>为什么项目又延期了？ ——–来自市场的愤怒 </p>
 </blockquote>
@@ -173,6 +180,13 @@
 
 </div>  
       <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">Contents</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#关于知识的储备"><span class="toc-number">1.</span> <span class="toc-text">关于知识的储备</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于责任心"><span class="toc-number">2.</span> <span class="toc-text">关于责任心</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于工作方式"><span class="toc-number">3.</span> <span class="toc-text">关于工作方式</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#关于总结"><span class="toc-number">4.</span> <span class="toc-text">关于总结</span></a></li></ol>
+ 
+  </div>
 
 <div id="asidepart">
 <div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
@@ -297,6 +311,8 @@ $(document).ready(function(){
       m.removeClass('moveMain');
       a.css('display', 'block').removeClass('fadeOut');
       o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
         
     }
   });
