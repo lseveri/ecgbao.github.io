@@ -11,13 +11,12 @@
     
 
     
-    <meta name="description" content=".wp-polls .pollbar {    margin: 1px;    font-size: 6px;    line-height: 8px;    height: 8px;    background-image: url(‘https://www.raywenderlich.com/wp-content/plugins/wp-polls/images/default/">
+    <meta name="description" content="You&amp;#8217;ll wonder how you ever survived before Stack Views!我们都遇见过。 有个需要动态增删视图的新需求, 也需要重新定位临近视图。你用什么方法? 你通过在故事板添加outlets来约束实现激活或者去激活这些视图? 或者用第三方库? 或者根据复杂度你会在代码实现。现在介绍 UIStackView,  Stack 视图提供了一种">
 <meta property="og:type" content="article">
 <meta property="og:title" content="UIStackView 使用指南">
 <meta property="og:url" content="http://yoursite.com/2016/09/14/UIStackView-使用指南/index.html">
 <meta property="og:site_name" content="跳跳魔王的博客">
-<meta property="og:description" content=".wp-polls .pollbar {    margin: 1px;    font-size: 6px;    line-height: 8px;    height: 8px;    background-image: url(‘https://www.raywenderlich.com/wp-content/plugins/wp-polls/images/default/">
-<meta property="og:image" content="https://www.facebook.com/tr?id=915433011818742&ev=PixelInitialized">
+<meta property="og:description" content="You&amp;#8217;ll wonder how you ever survived before Stack Views!我们都遇见过。 有个需要动态增删视图的新需求, 也需要重新定位临近视图。你用什么方法? 你通过在故事板添加outlets来约束实现激活或者去激活这些视图? 或者用第三方库? 或者根据复杂度你会在代码实现。现在介绍 UIStackView,  Stack 视图提供了一种">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-250x250.jpg">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/01-table-view-is-now-correct_750x1334-281x500.png">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/02-issues-visible-in-landscape-view_1334x750-480x270.png">
@@ -83,11 +82,11 @@
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/62-anywidth-compact-height_403x108.png">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/63-set-spacing-to-10_260x160.png">
 <meta property="og:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/64-spacing-in-iphone-landscape_1334x750-480x270.png">
-<meta property="og:updated_time" content="2016-09-18T09:04:55.000Z">
+<meta property="og:updated_time" content="2016-09-19T08:35:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="UIStackView 使用指南">
-<meta name="twitter:description" content=".wp-polls .pollbar {    margin: 1px;    font-size: 6px;    line-height: 8px;    height: 8px;    background-image: url(‘https://www.raywenderlich.com/wp-content/plugins/wp-polls/images/default/">
-<meta name="twitter:image" content="https://www.facebook.com/tr?id=915433011818742&ev=PixelInitialized">
+<meta name="twitter:description" content="You&amp;#8217;ll wonder how you ever survived before Stack Views!我们都遇见过。 有个需要动态增删视图的新需求, 也需要重新定位临近视图。你用什么方法? 你通过在故事板添加outlets来约束实现激活或者去激活这些视图? 或者用第三方库? 或者根据复杂度你会在代码实现。现在介绍 UIStackView,  Stack 视图提供了一种">
+<meta name="twitter:image" content="http://www.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-250x250.jpg">
 
     
     <link rel="alternative" href="/atom.xml" title="跳跳魔王的博客" type="application/atom+xml">
@@ -111,7 +110,7 @@
 				<h1 class="site-name"><a href="/" title="跳跳魔王的博客">跳跳魔王的博客</a></h1>
 				<h2 class="blog-motto">每天进步一点点</h2>
 			</div>
-			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="Menu">
 			</a></div>
 			<nav class="animated">
 				<ul>
@@ -127,7 +126,7 @@
  					
 					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
 						<label>Search</label>
-						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="Search" />
 						<input type="hidden" name="q" value="site:yoursite.com">
 					</form>
 					
@@ -150,14 +149,14 @@
 		<a href="/about" title="跳跳魔王" target="_blank" itemprop="author">跳跳魔王</a>
 		
   <p class="article-time">
-    <time datetime="2016-09-14T07:14:17.000Z" itemprop="datePublished"> 发表于 2016-09-14</time>
+    <time datetime="2016-09-14T07:14:17.000Z" itemprop="datePublished"> Published 2016-09-14</time>
     
   </p>
 </header>
 	<div class="article-content">
 		
 		<div id="toc" class="toc-article">
-			<strong class="toc-title">文章目录</strong>
+			<strong class="toc-title">Contents</strong>
 		
 			<ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">你的第一个堆栈视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">转换区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">评级区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.2.</span> <span class="toc-text">取消嵌入到堆栈视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.3.</span> <span class="toc-text">你的第一个垂直堆栈视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.4.</span> <span class="toc-text">对齐属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.5.</span> <span class="toc-text">转换 “what to see” 区域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">转换天气区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.1.</span> <span class="toc-text">顶层堆栈视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.2.</span> <span class="toc-text">重定位视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.3.</span> <span class="toc-text">基于配置的Size class</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">动画</span></a></li></ol>
 		
@@ -166,38 +165,7 @@
 		<p></p>
 <p><link rel="stylesheet" id="wpsqt-main-css" href="https://cdn3.raywenderlich.com/wp-content/plugins/wp-survey-and-quiz-tool/css/main.css?ver=4.5.2" type="text/css" media="all"></p>
 <p><link rel="stylesheet" id="style-main-css" href="https://cdn4.raywenderlich.com/wp-content/themes/raywenderlich/style.min.css?ver=1471520796" type="text/css" media="all"></p>
-<p><link rel="stylesheet" id="contact-form-7-css" href="https://cdn1.raywenderlich.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.4.1" type="text/css" media="all"></p>
-<p><link rel="stylesheet" id="swiftype-css" href="https://cdn4.raywenderlich.com/wp-content/plugins/swiftype-search/assets/autocomplete.css?ver=4.5.2" type="text/css" media="all"></p>
-<p><link rel="stylesheet" id="videojs-plugin-css" href="https://cdn4.raywenderlich.com/wp-content/plugins/videojs-html5-video-player-for-wordpress/plugin-styles.css?ver=4.5.2" type="text/css" media="all"></p>
-<p><link rel="stylesheet" id="videojs-css" href="//vjs.zencdn.net/4.5/video-js.css?ver=4.5.2" type="text/css" media="all"></p>
-<p><link rel="stylesheet" id="wp-polls-css" href="https://www.raywenderlich.com/wp-content/plugins/wp-polls/polls-css.css?ver=2.73" type="text/css" media="all"></p>
-<p><style id="wp-polls-inline-css" type="text/css"><br>.wp-polls .pollbar {<br>    margin: 1px;<br>    font-size: 6px;<br>    line-height: 8px;<br>    height: 8px;<br>    background-image: url(‘<a href="https://www.raywenderlich.com/wp-content/plugins/wp-polls/images/default/pollbg.gif">https://www.raywenderlich.com/wp-content/plugins/wp-polls/images/default/pollbg.gif</a>‘);<br>    border: 1px solid #c8c8c8;<br>}</p>
-<p></style></p>
-<script type="text/javascript" src="https://cdn5.raywenderlich.com/wp-includes/js/jquery/jquery.js?ver=1.12.3"></script>
-<script type="text/javascript" src="https://cdn2.raywenderlich.com/wp-includes/js/jquery/jquery-migrate.min.js?ver=1.4.0"></script>
-<script type="text/javascript" src="https://cdn4.raywenderlich.com/wp-content/plugins/wp-survey-and-quiz-tool/js/site.js?ver=4.5.2"></script>
-<script type="text/javascript">
-/* <![CDATA[ */
-var swiftypeParams = {"engineKey":"omdTFN4ka9Dq1GBywQZq"};
-/* ]]> */
-</script>
-<script type="text/javascript" src="https://cdn2.raywenderlich.com/wp-content/plugins/swiftype-search/assets/install_swiftype.min.js?ver=4.5.2"></script>
-<script type="text/javascript" src="https://cdn3.raywenderlich.com/wp-content/themes/raywenderlich/scripts/global_combined.1.0.13.js?ver=4.5.2"></script>
-<link rel="https://api.w.org/" href="https://www.raywenderlich.com/wp-json/">
-<link rel="EditURI" type="application/rsd+xml" title="RSD" href="https://www.raywenderlich.com/xmlrpc.php?rsd">
-<link rel="wlwmanifest" type="application/wlwmanifest+xml" href="https://cdn5.raywenderlich.com/wp-includes/wlwmanifest.xml"> 
-<meta name="generator" content="WordPress 4.5.2">
-<link rel="shortlink" href="https://www.raywenderlich.com/?p=114552">
-<link rel="alternate" type="application/json+oembed" href="https://www.raywenderlich.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.raywenderlich.com%2F114552%2Fuistackview-tutorial-introducing-stack-views">
-<link rel="alternate" type="text/xml+oembed" href="https://www.raywenderlich.com/wp-json/oembed/1.0/embed?url=https%3A%2F%2Fwww.raywenderlich.com%2F114552%2Fuistackview-tutorial-introducing-stack-views&#038;format=xml">
-<script type="text/javascript"><!--
-function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','toolbar=0,status=0,resizable=1,width=460,height=320');    return false;}
-//-->
-</script>
-
-<p><br>        <link rel="stylesheet" href="https://cdn3.raywenderlich.com/wp-content/themes/raywenderlich/print.css?ver=090320131503" type="text/css" media="print"><br>        <link rel="profile" href="http://gmpg.org/xfn/11"><br>        <link rel="pingback" href="https://www.raywenderlich.com/xmlrpc.php"><br>        <script>var siteUrl = ‘<a href="https://cdn1.raywenderlich.com/wp-content/themes/raywenderlich">https://cdn1.raywenderlich.com/wp-content/themes/raywenderlich</a>‘</script></p>
-<noscript><img height="1" width="1" alt="" style="display:none" src="https://www.facebook.com/tr?id=915433011818742&amp;ev=PixelInitialized"></noscript>
-
+<link rel="stylesheet" id="contact-form-7-css" href="https://cdn1.raywenderlich.com/wp-content/plugins/contact-form-7/includes/css/styles.css?ver=4.4.1" type="text/css" media="all">
 
 <div id="attachment_114189" style="width: 260px" class="wp-caption alignright"><img class="wp-image-114189 size-thumbnail" src="http://www.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-250x250.jpg" width="250" height="250" srcset="https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-250x250.jpg 250w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-320x320.jpg 320w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView.jpg 500w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-32x32.jpg 32w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-64x64.jpg 64w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-96x96.jpg 96w, https://cdn5.raywenderlich.com/wp-content/uploads/2015/09/iOS9_feast_UIStackView-128x128.jpg 128w" sizes="(max-width: 250px) 100vw, 250px"><p class="wp-caption-text">You&#8217;ll wonder how you ever survived before Stack Views!</p></div><br><p>我们都遇见过。 有个需要动态增删视图的新需求, 也需要重新定位临近视图。</p><br><p>你用什么方法? 你通过在故事板添加outlets来约束实现激活或者去激活这些视图? 或者用第三方库? 或者根据复杂度你会在代码实现。</p><br><p>现在介绍 <code>UIStackView</code>,  Stack 视图提供了一种方式去水平或者垂直布局一组视图。 通过配置一些简单的属性例如对齐方式,分布方式,间隔, 你可以在可用空间里定义包含的视图该如何调整布局。</p><br><br><h2>开始</h2><br><p>这篇 UIStackView 指导, 你会工作在一个叫<em>Vacation Spots</em>的程序. 这是个简单的程序，向你展示一系列的地方，让你远离当下一切。</p><br><p>现在先别打包行囊, 因为有一些问题你要用堆栈视图来修复, 肯定比你用 Auto Layout简单的多。</p><br><p>先下载 <a href="http://www.raywenderlich.com/wp-content/uploads/2015/09/VacationSpots_Starter.zip" target="_blank" rel="external">开始工程</a> 在 <em>iPhone 6 Simulator</em>上运行。 你会看你一堆你可以去旅行的地方。</p><br><p><img class="aligncenter size-large wp-image-114555 bordered" src="http://www.raywenderlich.com/wp-content/uploads/2015/09/01-table-view-is-now-correct_750x1334-281x500.png" width="281" height="500" srcset="https://cdn1.raywenderlich.com/wp-content/uploads/2015/09/01-table-view-is-now-correct_750x1334-281x500.png 281w, https://cdn1.raywenderlich.com/wp-content/uploads/2015/09/01-table-view-is-now-correct_750x1334-180x320.png 180w, https://cdn1.raywenderlich.com/wp-content/uploads/2015/09/01-table-view-is-now-correct_750x1334.png 750w" sizes="(max-width: 281px) 100vw, 281px"></p><br><p>点击 <em>London</em> 单元可以查看伦敦的详情。</p><br><p>扫一眼, 这个界面看起来还okay, 但是有一些问题。</p><br><ol start="1"><br><li>看一下位于界面底部的按钮行。 他们之间现在是固定间距的位置, 所以他们没有适配屏幕的宽度。 为了看到问题, <em>Command-left</em> 旋转屏幕看看。</li><br></ol><br><p><img class="aligncenter size-medium wp-image-114556 bordered" src="http://www.raywenderlich.com/wp-content/uploads/2015/09/02-issues-visible-in-landscape-view_1334x750-480x270.png" width="480" height="270" srcset="https://cdn3.raywenderlich.com/wp-content/uploads/2015/09/02-issues-visible-in-landscape-view_1334x750-480x270.png 480w, https://cdn3.raywenderlich.com/wp-content/uploads/2015/09/02-issues-visible-in-landscape-view_1334x750-700x394.png 700w, https://cdn3.raywenderlich.com/wp-content/uploads/2015/09/02-issues-visible-in-landscape-view_1334x750-266x151.png 266w, https://cdn3.raywenderlich.com/wp-content/uploads/2015/09/02-issues-visible-in-landscape-view_1334x750.png 1334w" sizes="(max-width: 480px) 100vw, 480px"></p><br><ol start="2"><br><li>点击靠近 <em>WEATHER</em> 的 <em>Hide</em> 按钮. 它可以隐藏文字, 可是它不能复位位于它下面的区域, 留下了一块空白。</li><br></ol><br><p><img class="aligncenter size-large wp-image-114557 bordered" src="http://www.raywenderlich.com/wp-content/uploads/2015/09/03-hide-weather-issue_750x1334-281x500.png" width="281" height="500" srcset="https://cdn4.raywenderlich.com/wp-content/uploads/2015/09/03-hide-weather-issue_750x1334-281x500.png 281w, https://cdn4.raywenderlich.com/wp-content/uploads/2015/09/03-hide-weather-issue_750x1334-180x320.png 180w, https://cdn4.raywenderlich.com/wp-content/uploads/2015/09/03-hide-weather-issue_750x1334.png 750w" sizes="(max-width: 281px) 100vw, 281px"></p><br><ol start="3"><br><li>区域顺序可以调整。 <em>what to see</em> 区域刚好位于 <em>why visit</em> 下方可能更合逻辑, 而是不是有个 <em>weather</em> 在两者中间。</li><br><li>横屏的时候,底面的按钮组太靠近页面边界了。 减少不同区域的间距可能会比较好 – 仅在横屏模式下。</li><br></ol><br><p>既然有了改进的想法, 是时候研究工程了。</p><br><p>打开 <em>Main.storyboard</em> 看一下 <em>Spot Info View Controller</em> scene。 有一些颜色在你的堆栈视图。</p><br><p><img class="aligncenter size-large wp-image-114558 bordered" src="http://www.raywenderlich.com/wp-content/uploads/2015/09/04-colorful-scene-in-storyboard_504x636-396x500.png" width="396" height="500" srcset="https://cdn1.raywenderlich.com/wp-content/uploads/2015/09/04-colorful-scene-in-storyboard_504x636-396x500.png 396w, https://cdn1.raywenderlich.com/wp-content/uploads/2015/09/04-colorful-scene-in-storyboard_504x636-254x320.png 254w, https://cdn1.raywenderlich.com/wp-content/uploads/2015/09/04-colorful-scene-in-storyboard_504x636.png 504w" sizes="(max-width: 396px) 100vw, 396px"></p><br><p>这些标签和按钮设置了太多的背景色,在运行时将要被清除。 在这个故事板, 他们只是用来视觉展示如何通过改变属性值影响内嵌视图的frame。</p><br><p>你现在不需要做这些, 但是如果你想在运行时看到这些背景色,可以在 <code>SpotInfoViewController</code>里放开<code>viewDidLoad()</code>下面的代码。</p><br><br><div class="wp_codebox"><table><tr id="p1145521"><td class="code" id="p114552code1"><pre class="swift" style="font-family:monospace;"><span style="color: #11740a; font-style: italic;">// Clear background colors from labels and buttons</span><br><span style="color: #a61390;">for</span> view <span style="color: #a61390;">in</span> backgroundColoredViews <span style="color: #002200;">&#123;</span><br>  view.backgroundColor <span style="color: #002200;">=</span> <span style="color: #400080;">UIColor</span>.clearColor<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span><br><span style="color: #002200;">&#125;</span></pre></td></tr></table></div>
 
@@ -275,17 +243,17 @@ function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','too
 	
 
 </div>  
-      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+      <div class="openaside"><a class="navbutton" href="#" title="Show Sidebar"></a></div>
 
   <div id="toc" class="toc-aside">
-  <strong class="toc-title">文章目录</strong>
+  <strong class="toc-title">Contents</strong>
  
  <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">2.</span> <span class="toc-text">你的第一个堆栈视图</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">3.</span> <span class="toc-text">转换区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.1.</span> <span class="toc-text">评级区域</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.2.</span> <span class="toc-text">取消嵌入到堆栈视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.3.</span> <span class="toc-text">你的第一个垂直堆栈视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.4.</span> <span class="toc-text">对齐属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">3.5.</span> <span class="toc-text">转换 “what to see” 区域</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">4.</span> <span class="toc-text">转换天气区域</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.1.</span> <span class="toc-text">顶层堆栈视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.2.</span> <span class="toc-text">重定位视图</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#undefined"><span class="toc-number">4.3.</span> <span class="toc-text">基于配置的Size class</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined"><span class="toc-number">5.</span> <span class="toc-text">动画</span></a></li></ol>
  
   </div>
 
 <div id="asidepart">
-<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<div class="closeaside"><a class="closebutton" href="#" title="Hide Sidebar"></a></div>
 <aside class="clearfix">
 
   
@@ -296,7 +264,7 @@ function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','too
   
 
   <div class="linkslist">
-  <p class="asidetitle">友情链接</p>
+  <p class="asidetitle">Links</p>
     <ul>
         
           <li>
@@ -312,11 +280,11 @@ function powerpress_pinw(pinw_url){window.open(pinw_url, 'PowerPressPlayer','too
 
 
   <div class="rsspart">
-	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+	<a href="/atom.xml" target="_blank" title="rss">RSS</a>
 </div>
 
   <div class="weiboshow">
-  <p class="asidetitle">新浪微博</p>
+  <p class="asidetitle">Weibo</p>
     <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
 </div>
 
@@ -543,7 +511,7 @@ var _hmt = _hmt || [];
 <!-- Totop Begin -->
 
 	<div id="totop">
-	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	<a title="Back to Top"><img src="/img/scrollup.png"/></a>
 	</div>
 	<script src="/js/totop.js"></script>
 
