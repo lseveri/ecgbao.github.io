@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-09-20T08:31:34.000Z</updated>
+  <updated>2016-09-21T01:22:41.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,44 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>XCode 8 新特性</title>
+    <link href="http://yoursite.com/2016/09/21/XCode-8-%E6%96%B0%E7%89%B9%E6%80%A7/"/>
+    <id>http://yoursite.com/2016/09/21/XCode-8-新特性/</id>
+    <published>2016-09-21T00:56:17.000Z</published>
+    <updated>2016-09-21T01:22:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Xcode-8"><a href="#Xcode-8" class="headerlink" title="Xcode 8"></a>Xcode 8</h1><p>Xcode 8 includes everything you need to create amazing apps for iPhone, iPad, Mac, Apple Watch, and Apple TV. This radically faster version of the IDE features new editor extensions that you can use to completely customize your coding experience. New runtime issues alert you to hidden bugs by pointing out memory leaks, and a new Memory Debugger dives deep into your object graph. Swift 3 includes more natural and consistent API naming, which you can experiment with in the new Swift Playgrounds app for iPad.</p>
+<div style="text-align:center"><br><img src="http://a3.qpic.cn/psb?/V13UfvND3TZFZo/RNcaIoqMXSQ7nCoBRioXM8W7CL0bYZ*kQLUL3LHhsw0!/b/dPgAAAAAAAAA&bo=IAPeAQAAAAADB94!&rf=viewer_4" width="500" height="300"><br></div>
+
+
+
+<h1 id="Interface-Builder-—-Accelerated"><a href="#Interface-Builder-—-Accelerated" class="headerlink" title="Interface Builder — Accelerated"></a>Interface Builder — Accelerated</h1><p>The Interface Builder design canvas has been thoroughly reengineered to make your work faster and provide greater control. See a live preview of exactly how your app will appear on any Apple device with full vibrancy. As you quickly switch between different devices to customize your UI for size classes, you will always see the same interface as your customers. Pan and zoom are incredibly fast, and you can even edit your interfaces when fully zoomed out for a bird’s eye view of your storyboard.</p>
+<div style="text-align:center"><br><img src="http://a1.qpic.cn/psb?/V13UfvND3TZFZo/z99xQxqCq4XHoOHAb*asuoJ7SBPNlgG3Vu2CaEkKprs!/b/dK4AAAAAAAAA&bo=IAPSAQAAAAADB9I!&rf=viewer_4" width="500" height="300"><br></div>
+
+<h1 id="Editor-Extensions"><a href="#Editor-Extensions" class="headerlink" title="Editor Extensions"></a>Editor Extensions</h1><p>New Xcode extensions for the source editor let you customize your coding experience. Use extensions to navigate within your editor’s text, and select, modify, and transform your code. Bind your favorite extensions to a keyboard shortcut to make common reformatting tasks a snap. Xcode includes a new template so you can easily create editor extensions and distribute them on the Mac App Store, or sign your extensions with your Developer ID to share them online. And because extensions run in a separate process, Xcode stays safe and stable.</p>
+<div style="text-align:center"><br><img src="http://a4.qpic.cn/psb?/V13UfvND3TZFZo/AB*sU2gRXg7wXjFzf.VS0cpYirSYVpJ1PI7m.18VQZo!/m/dP8AAAAAAAAA&bo=qwChAAAAAAADByg!&rf=photolist" width="150" height="150"><br></div>
+
+<p></p><p>The new Xcode 8 editor also includes great new features built right in:</p><p></p>
+<ol><br><li><code>San Francisco Mono font with new themes</code></li><br><li><code>Auto-generate Quick Help documentation</code></li><br><li><code>Highlight the current line</code> </li><br><li><code>Image and color literals in Swift code</code></li><br><li><code>Code completion for images</code></li><br></ol>
+
+
+<h1 id="Runtime-Issues"><a href="#Runtime-Issues" class="headerlink" title="Runtime Issues"></a>Runtime Issues</h1><p>This new feature reports issues that are identified automatically by Xcode as your app runs, tracking down hard-to-find bugs that may not have been noticed until your app was in the hands of users. The new Thread Sanitizer spots race conditions on data changes and other threading-related bugs. Inspect UI constraint problems using the updated View Debugger with even greater fidelity and visual accuracy, and get alerted to memory leaks that you can track down in the new Memory Debugger.</p>
+<div style="text-align:center"><br><img src="http://a2.qpic.cn/psb?/V13UfvND3TZFZo/cf4dXQphPBVKKEWM7x58NOpuMKHlDJ*WxB2rwMOn*p8!/m/dK0AAAAAAAAA&bo=IAPdAQAAAAADB90!&rf=photolist" width="500" height="300"><br></div>
+
+<h1 id="Signing-Made-Easy-and-Powerful"><a href="#Signing-Made-Easy-and-Powerful" class="headerlink" title="Signing Made Easy and Powerful"></a>Signing Made Easy and Powerful</h1><p>Device setup and code signing are greatly simplified, while providing more control when you need it. The new automatically managed code signing generates all the assets you need to properly sign, provision, and run your apps on a connected Apple device. Simply choose your team and Xcode does the rest. You also have the option of hand-picking your provisioning profiles and setting up the signing process for each build configuration. If you run into any issues, improved error messages and logs are available in the Report Navigator. And if you have multiple Macs, Xcode will automatically generate a unique development certificate for each Mac.</p>
+<p>Developing and running your app on your Apple device is as easy as entering your Apple ID into Xcode preferences. Apple Developer Program membership is not required.</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Xcode-8&quot;&gt;&lt;a href=&quot;#Xcode-8&quot; class=&quot;headerlink&quot; title=&quot;Xcode 8&quot;&gt;&lt;/a&gt;Xcode 8&lt;/h1&gt;&lt;p&gt;Xcode 8 includes everything you need to create ama
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>CALayer开发指南</title>
