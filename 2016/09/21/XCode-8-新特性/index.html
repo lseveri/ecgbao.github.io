@@ -11,20 +11,22 @@
     
 
     
-    <meta name="description" content="Xcode 8Xcode 8 includes everything you need to create amazing apps for iPhone, iPad, Mac, Apple Watch, and Apple TV. This radically faster version of the IDE features new editor extensions that you ca">
+    <meta name="description" content="Xcode 8Xcode 8 包含了创建 iPhone, iPad, Mac, Apple Watch, and Apple TV  应用你所需要的的一切。 这是最快的IDE版本, 新的编辑器扩展特性使你可以完全定制你的编码习惯。 新的运行时问题提醒你内存泄露引起的隐藏bug, 一个新的 Memory Debugger 深入你的对象图形。 Swift 3 包含了更自然一致的 API 命名, 你可以">
 <meta property="og:type" content="article">
 <meta property="og:title" content="XCode 8 新特性">
 <meta property="og:url" content="http://yoursite.com/2016/09/21/XCode-8-新特性/index.html">
 <meta property="og:site_name" content="跳跳魔王的博客">
-<meta property="og:description" content="Xcode 8Xcode 8 includes everything you need to create amazing apps for iPhone, iPad, Mac, Apple Watch, and Apple TV. This radically faster version of the IDE features new editor extensions that you ca">
+<meta property="og:description" content="Xcode 8Xcode 8 包含了创建 iPhone, iPad, Mac, Apple Watch, and Apple TV  应用你所需要的的一切。 这是最快的IDE版本, 新的编辑器扩展特性使你可以完全定制你的编码习惯。 新的运行时问题提醒你内存泄露引起的隐藏bug, 一个新的 Memory Debugger 深入你的对象图形。 Swift 3 包含了更自然一致的 API 命名, 你可以">
 <meta property="og:image" content="http://a3.qpic.cn/psb?/V13UfvND3TZFZo/RNcaIoqMXSQ7nCoBRioXM8W7CL0bYZ*kQLUL3LHhsw0!/b/dPgAAAAAAAAA&bo=IAPeAQAAAAADB94!&rf=viewer_4">
 <meta property="og:image" content="http://a1.qpic.cn/psb?/V13UfvND3TZFZo/z99xQxqCq4XHoOHAb*asuoJ7SBPNlgG3Vu2CaEkKprs!/b/dK4AAAAAAAAA&bo=IAPSAQAAAAADB9I!&rf=viewer_4">
 <meta property="og:image" content="http://a4.qpic.cn/psb?/V13UfvND3TZFZo/AB*sU2gRXg7wXjFzf.VS0cpYirSYVpJ1PI7m.18VQZo!/m/dP8AAAAAAAAA&bo=qwChAAAAAAADByg!&rf=photolist">
 <meta property="og:image" content="http://a2.qpic.cn/psb?/V13UfvND3TZFZo/cf4dXQphPBVKKEWM7x58NOpuMKHlDJ*WxB2rwMOn*p8!/m/dK0AAAAAAAAA&bo=IAPdAQAAAAADB90!&rf=photolist">
-<meta property="og:updated_time" content="2016-09-21T01:22:41.000Z">
+<meta property="og:image" content="http://cc.cocimg.com/api/uploads/20160615/1465977531625569.jpg">
+<meta property="og:image" content="http://cc.cocimg.com/api/uploads/20160615/1465977537567515.jpg">
+<meta property="og:updated_time" content="2016-09-21T02:56:05.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="XCode 8 新特性">
-<meta name="twitter:description" content="Xcode 8Xcode 8 includes everything you need to create amazing apps for iPhone, iPad, Mac, Apple Watch, and Apple TV. This radically faster version of the IDE features new editor extensions that you ca">
+<meta name="twitter:description" content="Xcode 8Xcode 8 包含了创建 iPhone, iPad, Mac, Apple Watch, and Apple TV  应用你所需要的的一切。 这是最快的IDE版本, 新的编辑器扩展特性使你可以完全定制你的编码习惯。 新的运行时问题提醒你内存泄露引起的隐藏bug, 一个新的 Memory Debugger 深入你的对象图形。 Swift 3 包含了更自然一致的 API 命名, 你可以">
 <meta name="twitter:image" content="http://a3.qpic.cn/psb?/V13UfvND3TZFZo/RNcaIoqMXSQ7nCoBRioXM8W7CL0bYZ*kQLUL3LHhsw0!/b/dPgAAAAAAAAA&bo=IAPeAQAAAAADB94!&rf=viewer_4">
 
     
@@ -97,30 +99,35 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Xcode-8"><span class="toc-number">1.</span> <span class="toc-text">Xcode 8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Interface-Builder-—-Accelerated"><span class="toc-number">2.</span> <span class="toc-text">Interface Builder — Accelerated</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Editor-Extensions"><span class="toc-number">3.</span> <span class="toc-text">Editor Extensions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-Issues"><span class="toc-number">4.</span> <span class="toc-text">Runtime Issues</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Signing-Made-Easy-and-Powerful"><span class="toc-number">5.</span> <span class="toc-text">Signing Made Easy and Powerful</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Xcode-8"><span class="toc-number">1.</span> <span class="toc-text">Xcode 8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更快的Interface-Builder"><span class="toc-number">2.</span> <span class="toc-text">更快的Interface Builder</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编辑器扩展"><span class="toc-number">3.</span> <span class="toc-text">编辑器扩展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift-3"><span class="toc-number">4.</span> <span class="toc-text">Swift 3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行时问题"><span class="toc-number">5.</span> <span class="toc-text">运行时问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#容易和强大的签名"><span class="toc-number">6.</span> <span class="toc-text">容易和强大的签名</span></a></li></ol>
 		
 		</div>
 		
-		<h1 id="Xcode-8"><a href="#Xcode-8" class="headerlink" title="Xcode 8"></a>Xcode 8</h1><p>Xcode 8 includes everything you need to create amazing apps for iPhone, iPad, Mac, Apple Watch, and Apple TV. This radically faster version of the IDE features new editor extensions that you can use to completely customize your coding experience. New runtime issues alert you to hidden bugs by pointing out memory leaks, and a new Memory Debugger dives deep into your object graph. Swift 3 includes more natural and consistent API naming, which you can experiment with in the new Swift Playgrounds app for iPad.</p>
+		<h1 id="Xcode-8"><a href="#Xcode-8" class="headerlink" title="Xcode 8"></a>Xcode 8</h1><p>Xcode 8 包含了创建 <em>iPhone, iPad, Mac, Apple Watch, and Apple TV </em> 应用你所需要的的一切。 这是最快的IDE版本, 新的编辑器扩展特性使你可以完全定制你的编码习惯。 新的运行时问题提醒你内存泄露引起的隐藏bug, 一个新的 <em>Memory Debugger</em> 深入你的对象图形。 Swift 3 包含了更自然一致的 API 命名, 你可以在iPad上尝试新的 Playgrounds 应用程序。</p>
 <div style="text-align:center"><br><img src="http://a3.qpic.cn/psb?/V13UfvND3TZFZo/RNcaIoqMXSQ7nCoBRioXM8W7CL0bYZ*kQLUL3LHhsw0!/b/dPgAAAAAAAAA&bo=IAPeAQAAAAADB94!&rf=viewer_4" width="500" height="300"><br></div>
 
 
 
-<h1 id="Interface-Builder-—-Accelerated"><a href="#Interface-Builder-—-Accelerated" class="headerlink" title="Interface Builder — Accelerated"></a>Interface Builder — Accelerated</h1><p>The Interface Builder design canvas has been thoroughly reengineered to make your work faster and provide greater control. See a live preview of exactly how your app will appear on any Apple device with full vibrancy. As you quickly switch between different devices to customize your UI for size classes, you will always see the same interface as your customers. Pan and zoom are incredibly fast, and you can even edit your interfaces when fully zoomed out for a bird’s eye view of your storyboard.</p>
+<h1 id="更快的Interface-Builder"><a href="#更快的Interface-Builder" class="headerlink" title="更快的Interface Builder"></a>更快的Interface Builder</h1><p><em>Interface Builder</em> 重新设计了画布, 让你能更快的工作和有更多的控制权。 任何苹果设备都可以看到实时精确的程序预览。 当你在不同设备间快速切换为<em>size classes</em> 定制UI时, 你会看到相同的界面。 拖动放缩非常快, 甚至当你完全缩小鸟瞰故事板视图时还可以编辑你的界面。</p>
 <div style="text-align:center"><br><img src="http://a1.qpic.cn/psb?/V13UfvND3TZFZo/z99xQxqCq4XHoOHAb*asuoJ7SBPNlgG3Vu2CaEkKprs!/b/dK4AAAAAAAAA&bo=IAPSAQAAAAADB9I!&rf=viewer_4" width="500" height="300"><br></div>
 
-<h1 id="Editor-Extensions"><a href="#Editor-Extensions" class="headerlink" title="Editor Extensions"></a>Editor Extensions</h1><p>New Xcode extensions for the source editor let you customize your coding experience. Use extensions to navigate within your editor’s text, and select, modify, and transform your code. Bind your favorite extensions to a keyboard shortcut to make common reformatting tasks a snap. Xcode includes a new template so you can easily create editor extensions and distribute them on the Mac App Store, or sign your extensions with your Developer ID to share them online. And because extensions run in a separate process, Xcode stays safe and stable.</p>
+<h1 id="编辑器扩展"><a href="#编辑器扩展" class="headerlink" title="编辑器扩展"></a>编辑器扩展</h1><p>新的 Xcode 源编辑器扩展让你可以定制编码习惯。 使用扩展在你的编辑器文字区导航, 选择, 修改, 转换代码。 绑定你最喜欢的扩展到快捷键, 让格式化工作易如反掌。 Xcode 包含了一个新的模板，让你可以轻松创建编辑器扩展并在Mac应用商店发布, 或者用你的开发者账号签名扩展然后在线分享。 因为扩展是独立进程运行的,  所以Xcode 会很安全稳定。</p>
+<p></p><p>新的 Xcode 8 编辑器还包括下面一些特性:</p><p></p>
+<ol><br><li><code>San Francisco Mono 字体的新主题</code></li><br><li><code>自动生成快速帮助文档</code></li><br><li><code>高亮显示当前行</code> </li><br><li><code>Swift 代码里的图片和颜色值</code></li><br><li><code>图片名代码补全</code></li><br></ol>
+
 <div style="text-align:center"><br><img src="http://a4.qpic.cn/psb?/V13UfvND3TZFZo/AB*sU2gRXg7wXjFzf.VS0cpYirSYVpJ1PI7m.18VQZo!/m/dP8AAAAAAAAA&bo=qwChAAAAAAADByg!&rf=photolist" width="150" height="150"><br></div>
 
-<p></p><p>The new Xcode 8 editor also includes great new features built right in:</p><p></p>
-<ol><br><li><code>San Francisco Mono font with new themes</code></li><br><li><code>Auto-generate Quick Help documentation</code></li><br><li><code>Highlight the current line</code> </li><br><li><code>Image and color literals in Swift code</code></li><br><li><code>Code completion for images</code></li><br></ol>
-
-
-<h1 id="Runtime-Issues"><a href="#Runtime-Issues" class="headerlink" title="Runtime Issues"></a>Runtime Issues</h1><p>This new feature reports issues that are identified automatically by Xcode as your app runs, tracking down hard-to-find bugs that may not have been noticed until your app was in the hands of users. The new Thread Sanitizer spots race conditions on data changes and other threading-related bugs. Inspect UI constraint problems using the updated View Debugger with even greater fidelity and visual accuracy, and get alerted to memory leaks that you can track down in the new Memory Debugger.</p>
+<h1 id="Swift-3"><a href="#Swift-3" class="headerlink" title="Swift 3"></a>Swift 3</h1><p>Swift 3 是创新编程语言的首次重大发布， 对 <em>Swift.org</em> 社区开发者完全开放。 这个版本基于一个新的API命名指导文档统一了核心API的命名规则，这让书写  Swift 代码更加自然。 <code>Core Graphics</code> 和 <code>Grand Central Dispatch</code> 这些流行的系统API 更有表现力，与 Swift 更加协调。 你可以在<em>iPad Playgrounds</em> 应用程序里体验 Swift 3 。</p>
+<h1 id="运行时问题"><a href="#运行时问题" class="headerlink" title="运行时问题"></a>运行时问题</h1><p>运行程序时，新特性报告的问题是 Xcode 自动识别的, 捕获那些难以发现的bug，这些bug通常难以发现直到应用到了用户手中。 新的 <em>Thread Sanitizer </em>用于竞态数据变化和其他线程相关的bug。 监测UI约束问题使用最新的 <em>View Debugger</em>，它具有更高的保真度和视觉精度, 在新的 <em>Memory Debugger</em> 跟踪内存泄露.</p>
 <div style="text-align:center"><br><img src="http://a2.qpic.cn/psb?/V13UfvND3TZFZo/cf4dXQphPBVKKEWM7x58NOpuMKHlDJ*WxB2rwMOn*p8!/m/dK0AAAAAAAAA&bo=IAPdAQAAAAADB90!&rf=photolist" width="500" height="300"><br></div>
 
-<h1 id="Signing-Made-Easy-and-Powerful"><a href="#Signing-Made-Easy-and-Powerful" class="headerlink" title="Signing Made Easy and Powerful"></a>Signing Made Easy and Powerful</h1><p>Device setup and code signing are greatly simplified, while providing more control when you need it. The new automatically managed code signing generates all the assets you need to properly sign, provision, and run your apps on a connected Apple device. Simply choose your team and Xcode does the rest. You also have the option of hand-picking your provisioning profiles and setting up the signing process for each build configuration. If you run into any issues, improved error messages and logs are available in the Report Navigator. And if you have multiple Macs, Xcode will automatically generate a unique development certificate for each Mac.</p>
-<p>Developing and running your app on your Apple device is as easy as entering your Apple ID into Xcode preferences. Apple Developer Program membership is not required.</p>
+<h1 id="容易和强大的签名"><a href="#容易和强大的签名" class="headerlink" title="容易和强大的签名"></a>容易和强大的签名</h1><p>设备设置和代码签名极大的简化了, 你需要的时候提供更多的控制。 新的自动管理代码签名会生成你需要正确配置的所有东西。 只需选择你的开发团队，其他 Xcode 帮你做了。 你可以手动配置一切。 如果你遇见问题, 改进的错误信息和日志可以在 <em>Report Navigator</em> 查看。 如果你有多台 Mac 电脑, Xcode 会自动为每台 Mac 生成一个唯一的开发证书。</p>
+<p>在你的苹果设备上开发和运行您的应用程序和进入Xcode的偏好设置输入Apple ID一样容易。苹果开发者账号不是必需的。</p>
+<p>Provisioning Profile 文件选取，已经从Buiid Settings移动到了General中,Buiid Settings中已经标识了 Deprecated。</p>
+<div style="text-align:center"><br><img src="http://cc.cocimg.com/api/uploads/20160615/1465977531625569.jpg" width="400" height="300"><br></div><br><div style="text-align:center"><br><img src="http://cc.cocimg.com/api/uploads/20160615/1465977537567515.jpg" width="600" height="300"><br></div>
+
+<p>使用Xcode 8创建新项目的时候，会让你选择开发者团队为了自动生成对应的证书。</p>
+<p>在新老项目的<em>General</em>中也可以对签名进行设置,勾选自动管理证书(可选的)，Xcode 会自动替你生成调试证书和描述问题，证书与描述文件有效期为6天，避免了大量的垃圾冗余证书占用问题。</p>
   
 	</div>
 		<footer class="article-footer clearfix">
@@ -169,7 +176,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Xcode-8"><span class="toc-number">1.</span> <span class="toc-text">Xcode 8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Interface-Builder-—-Accelerated"><span class="toc-number">2.</span> <span class="toc-text">Interface Builder — Accelerated</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Editor-Extensions"><span class="toc-number">3.</span> <span class="toc-text">Editor Extensions</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Runtime-Issues"><span class="toc-number">4.</span> <span class="toc-text">Runtime Issues</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Signing-Made-Easy-and-Powerful"><span class="toc-number">5.</span> <span class="toc-text">Signing Made Easy and Powerful</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Xcode-8"><span class="toc-number">1.</span> <span class="toc-text">Xcode 8</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#更快的Interface-Builder"><span class="toc-number">2.</span> <span class="toc-text">更快的Interface Builder</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#编辑器扩展"><span class="toc-number">3.</span> <span class="toc-text">编辑器扩展</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Swift-3"><span class="toc-number">4.</span> <span class="toc-text">Swift 3</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#运行时问题"><span class="toc-number">5.</span> <span class="toc-text">运行时问题</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#容易和强大的签名"><span class="toc-number">6.</span> <span class="toc-text">容易和强大的签名</span></a></li></ol>
  
   </div>
 
