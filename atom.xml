@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-11-18T05:07:12.000Z</updated>
+  <updated>2016-11-22T08:27:26.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2016-11-18T05:07:12.000Z</updated>
+    <updated>2016-11-22T08:27:26.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -484,61 +484,184 @@ print(&quot;I hope the weather is nice in \(location).&quot;)
 <h1 id="定义语法"><a href="#定义语法" class="headerlink" title="定义语法"></a>定义语法</h1><p>类和结构体有相同的定义语法。 使用class 关键字引入类,使用struct关键字引入结构体。两者都把全部定义放在一堆大括号内:<br><code><br>class SomeClass {<br>// class definition goes here<br>}<br>struct SomeStructure {<br>// structure definition goes here<br>}</code><br>备注</p>
 <p>一旦你定义了一个新的类或者结构体, 你就有效定义了一个全新的Swift类型。给一个大写驼峰式命名 (比如 SomeClass 和 SomeStructure here) 来匹配标准 Swift 类型大写。(比如 String, Int, 和 Bool). 相反, 属性和方法总是小写驼峰式命名 (比如 frameRate 和 incrementCount)</p>
 <p>这里有一个结构体和一个类定义的例子:<br><code><br>struct Resolution {<br>var width = 0<br>var height = 0<br>}<br>class VideoMode {<br>var resolution = Resolution()<br>var interlaced = false<br>var frameRate = 0.0<br>var name: String?<br>}</code><br>上面的例子定义了一个新的结构体 Resolution, 描述一个基于像素的显示器解决方案。 这个结构体有两个存储属性 width 和 height. 存储属性是常量或者变量,捆绑存储作为类或者结构体的一部分。这两个属性因为初始值为0而被推断为整型。</p>
-<p>上面的例子同时定义了一个新类 VideoMode, 来描述一个指定的视频模式用来视频显示。 这个类有四个变量存储属性。 第一个是 resolution, 用一个新的 Resolution 结构体实例来初始化, 推断为 Resolution 属性类型。 其他三个属性, new VideoMode instances will be initialized with an interlaced setting of false (meaning “noninterlaced video”), a playback frame rate of 0.0, and an optional String value called name. The name property is automatically given a default value of nil, or “no name value”, because it is of an optional type.</p>
-<p>Class and Structure Instances</p>
-<p>The Resolution structure definition and the VideoMode class definition only describe what a Resolution or VideoMode will look like. They themselves do not describe a specific resolution or video mode. To do that, you need to create an instance of the structure or class.</p>
-<p>The syntax for creating instances is very similar for both structures and classes:</p>
-<p>let someResolution = Resolution()<br>let someVideoMode = VideoMode()<br>Structures and classes both use initializer syntax for new instances. The simplest form of initializer syntax uses the type name of the class or structure followed by empty parentheses, such as Resolution() or VideoMode(). This creates a new instance of the class or structure, with any properties initialized to their default values. Class and structure initialization is described in more detail in Initialization.</p>
-<p>Accessing Properties</p>
-<p>You can access the properties of an instance using dot syntax. In dot syntax, you write the property name immediately after the instance name, separated by a period (.), without any spaces:</p>
-<p>print(“The width of someResolution is (someResolution.width)”)<br>// Prints “The width of someResolution is 0”<br>In this example, someResolution.width refers to the width property of someResolution, and returns its default initial value of 0.</p>
-<p>You can drill down into sub-properties, such as the width property in the resolution property of a VideoMode:</p>
-<p>print(“The width of someVideoMode is (someVideoMode.resolution.width)”)<br>// Prints “The width of someVideoMode is 0”<br>You can also use dot syntax to assign a new value to a variable property:</p>
-<p>someVideoMode.resolution.width = 1280<br>print(“The width of someVideoMode is now (someVideoMode.resolution.width)”)<br>// Prints “The width of someVideoMode is now 1280”<br>NOTE</p>
-<p>Unlike Objective-C, Swift enables you to set sub-properties of a structure property directly. In the last example above, the width property of the resolution property of someVideoMode is set directly, without your needing to set the entire resolution property to a new value.</p>
-<p>Memberwise Initializers for Structure Types</p>
-<p>All structures have an automatically-generated memberwise initializer, which you can use to initialize the member properties of new structure instances. Initial values for the properties of the new instance can be passed to the memberwise initializer by name:</p>
-<p>let vga = Resolution(width: 640, height: 480)<br>Unlike structures, class instances do not receive a default memberwise initializer. Initializers are described in more detail in Initialization.</p>
-<p>Structures and Enumerations Are Value Types</p>
-<p>A value type is a type whose value is copied when it is assigned to a variable or constant, or when it is passed to a function.</p>
-<p>You’ve actually been using value types extensively throughout the previous chapters. In fact, all of the basic types in Swift—integers, floating-point numbers, Booleans, strings, arrays and dictionaries—are value types, and are implemented as structures behind the scenes.</p>
-<p>All structures and enumerations are value types in Swift. This means that any structure and enumeration instances you create—and any value types they have as properties—are always copied when they are passed around in your code.</p>
-<p>Consider this example, which uses the Resolution structure from the previous example:</p>
-<p>let hd = Resolution(width: 1920, height: 1080)<br>var cinema = hd<br>This example declares a constant called hd and sets it to a Resolution instance initialized with the width and height of full HD video (1920 pixels wide by 1080 pixels high).</p>
-<p>It then declares a variable called cinema and sets it to the current value of hd. Because Resolution is a structure, a copy of the existing instance is made, and this new copy is assigned to cinema. Even though hd and cinema now have the same width and height, they are two completely different instances behind the scenes.</p>
-<p>Next, the width property of cinema is amended to be the width of the slightly-wider 2K standard used for digital cinema projection (2048 pixels wide and 1080 pixels high):</p>
-<p>cinema.width = 2048<br>Checking the width property of cinema shows that it has indeed changed to be 2048:</p>
-<p>print(“cinema is now (cinema.width) pixels wide”)<br>// Prints “cinema is now 2048 pixels wide”<br>However, the width property of the original hd instance still has the old value of 1920:</p>
-<p>print(“hd is still (hd.width) pixels wide”)<br>// Prints “hd is still 1920 pixels wide”<br>When cinema was given the current value of hd, the values stored in hd were copied into the new cinema instance. The end result is two completely separate instances, which just happened to contain the same numeric values. Because they are separate instances, setting the width of cinema to 2048 doesn’t affect the width stored in hd.</p>
-<p>The same behavior applies to enumerations:</p>
-<p>enum CompassPoint {<br>case north, south, east, west<br>}<br>var currentDirection = CompassPoint.west<br>let rememberedDirection = currentDirection<br>currentDirection = .east<br>if rememberedDirection == .west {<br>print(“The remembered direction is still .west”)<br>}<br>// Prints “The remembered direction is still .west”<br>When rememberedDirection is assigned the value of currentDirection, it is actually set to a copy of that value. Changing the value of currentDirection thereafter does not affect the copy of the original value that was stored in rememberedDirection.</p>
-<p>Classes Are Reference Types</p>
-<p>Unlike value types, reference types are not copied when they are assigned to a variable or constant, or when they are passed to a function. Rather than a copy, a reference to the same existing instance is used instead.</p>
-<p>Here’s an example, using the VideoMode class defined above:</p>
-<p>let tenEighty = VideoMode()<br>tenEighty.resolution = hd<br>tenEighty.interlaced = true<br>tenEighty.name = “1080i”<br>tenEighty.frameRate = 25.0<br>This example declares a new constant called tenEighty and sets it to refer to a new instance of the VideoMode class. The video mode is assigned a copy of the HD resolution of 1920 by 1080 from before. It is set to be interlaced, and is given a name of “1080i”. Finally, it is set to a frame rate of 25.0 frames per second.</p>
-<p>Next, tenEighty is assigned to a new constant, called alsoTenEighty, and the frame rate of alsoTenEighty is modified:</p>
-<p>let alsoTenEighty = tenEighty<br>alsoTenEighty.frameRate = 30.0<br>Because classes are reference types, tenEighty and alsoTenEighty actually both refer to the same VideoMode instance. Effectively, they are just two different names for the same single instance.</p>
-<p>Checking the frameRate property of tenEighty shows that it correctly reports the new frame rate of 30.0 from the underlying VideoMode instance:</p>
-<p>print(“The frameRate property of tenEighty is now (tenEighty.frameRate)”)<br>// Prints “The frameRate property of tenEighty is now 30.0”<br>Note that tenEighty and alsoTenEighty are declared as constants, rather than variables. However, you can still change tenEighty.frameRate and alsoTenEighty.frameRate because the values of the tenEighty and alsoTenEighty constants themselves do not actually change. tenEighty and alsoTenEighty themselves do not “store” the VideoMode instance—instead, they both refer to a VideoMode instance behind the scenes. It is the frameRate property of the underlying VideoMode that is changed, not the values of the constant references to that VideoMode.</p>
-<p>Identity Operators</p>
-<p>Because classes are reference types, it is possible for multiple constants and variables to refer to the same single instance of a class behind the scenes. (The same is not true for structures and enumerations, because they are always copied when they are assigned to a constant or variable, or passed to a function.)</p>
-<p>It can sometimes be useful to find out if two constants or variables refer to exactly the same instance of a class. To enable this, Swift provides two identity operators:</p>
-<p>Identical to (===)<br>Not identical to (!==)<br>Use these operators to check whether two constants or variables refer to the same single instance:</p>
-<p>if tenEighty === alsoTenEighty {<br>print(“tenEighty and alsoTenEighty refer to the same VideoMode instance.”)<br>}<br>// Prints “tenEighty and alsoTenEighty refer to the same VideoMode instance.”<br>Note that “identical to” (represented by three equals signs, or ===) does not mean the same thing as “equal to” (represented by two equals signs, or ==):</p>
-<p>“Identical to” means that two constants or variables of class type refer to exactly the same class instance.<br>“Equal to” means that two instances are considered “equal” or “equivalent” in value, for some appropriate meaning of “equal”, as defined by the type’s designer.<br>When you define your own custom classes and structures, it is your responsibility to decide what qualifies as two instances being “equal”. The process of defining your own implementations of the “equal to” and “not equal to” operators is described in Equivalence Operators.</p>
-<p>Pointers</p>
-<p>If you have experience with C, C++, or Objective-C, you may know that these languages use pointers to refer to addresses in memory. A Swift constant or variable that refers to an instance of some reference type is similar to a pointer in C, but is not a direct pointer to an address in memory, and does not require you to write an asterisk (*) to indicate that you are creating a reference. Instead, these references are defined like any other constant or variable in Swift.</p>
-<p>Choosing Between Classes and Structures</p>
-<p>You can use both classes and structures to define custom data types to use as the building blocks of your program’s code.</p>
-<p>However, structure instances are always passed by value, and class instances are always passed by reference. This means that they are suited to different kinds of tasks. As you consider the data constructs and functionality that you need for a project, decide whether each data construct should be defined as a class or as a structure.</p>
-<p>As a general guideline, consider creating a structure when one or more of these conditions apply:</p>
-<p>The structure’s primary purpose is to encapsulate a few relatively simple data values.<br>It is reasonable to expect that the encapsulated values will be copied rather than referenced when you assign or pass around an instance of that structure.<br>Any properties stored by the structure are themselves value types, which would also be expected to be copied rather than referenced.<br>The structure does not need to inherit properties or behavior from another existing type.<br>Examples of good candidates for structures include:</p>
-<p>The size of a geometric shape, perhaps encapsulating a width property and a height property, both of type Double.<br>A way to refer to ranges within a series, perhaps encapsulating a start property and a length property, both of type Int.<br>A point in a 3D coordinate system, perhaps encapsulating x, y and z properties, each of type Double.<br>In all other cases, define a class, and create instances of that class to be managed and passed by reference. In practice, this means that most custom data constructs should be classes, not structures.</p>
-<p>Assignment and Copy Behavior for Strings, Arrays, and Dictionaries</p>
-<p>In Swift, many basic data types such as String, Array, and Dictionary are implemented as structures. This means that data such as strings, arrays, and dictionaries are copied when they are assigned to a new constant or variable, or when they are passed to a function or method.</p>
-<p>This behavior is different from Foundation: NSString, NSArray, and NSDictionary are implemented as classes, not structures. Strings, arrays, and dictionaries in Foundation are always assigned and passed around as a reference to an existing instance, rather than as a copy.</p>
-<p>NOTE</p>
-<p>The description above refers to the “copying” of strings, arrays, and dictionaries. The behavior you see in your code will always be as if a copy took place. However, Swift only performs an actual copy behind the scenes when it is absolutely necessary to do so. Swift manages all value copying to ensure optimal performance, and you should not avoid assignment to try to preempt this optimization.</p>
+<p>上面的例子同时定义了一个新类 VideoMode, 来描述一个指定的视频模式用来视频显示。 这个类有四个变量存储属性。 第一个是 resolution, 用一个新的 Resolution 结构体实例来初始化, 推断为 Resolution 属性类型。 其他三个属性, 新的 VideoMode 实例将会用一个设置为false的交错设置来初始化 (意思是 “非交错视频”), 一个回放帧率是 0.0, 一个可选字符串 name. name 属性自动得到默认值nil, 或者 “没有名字值”, 因为它是一个可选类型。</p>
+<h1 id="类和结构体实例"><a href="#类和结构体实例" class="headerlink" title="类和结构体实例"></a>类和结构体实例</h1><p>Resolution 结构体定义和 VideoMode 类定义仅仅描述了一个 Resolution 或者 VideoMode 看起来是什么样子。 他们没有描述一个指定的 resolution 或者video mode. 为了实现这个, 你需要创建结构体或者类的实例。</p>
+<p>结构体和类实例的创建语法非常相似:<br><code><br>let someResolution = Resolution()<br>let someVideoMode = VideoMode()</code><br>结构体和类都使用初始化方法创建实例。 最简单的初始化语法就是使用类或者结构的类型名后面跟着一个空的括号, 比如 Resolution() 和 VideoMode(). 这个创建了类或者结构体的实例,给所有属性设置默认值。</p>
+<h1 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h1><p>你可以用点语法访问实例的属性。 在点语法中, 属性名跟着实例名, 用点分开 (.), 没有任何空格:<br><code><br>print(“The width of someResolution is (someResolution.width)”)<br>// 打印 “The width of someResolution is 0”<br></code><br>在这个例子里, someResolution.width 调用 someResolution 的宽度属性, 然后返回它的默认值0.</p>
+<p>你可以获取子属性, 比如 width 属性就是 VideoMode 中的resolution 的属性:<br><code><br>print(“The width of someVideoMode is (someVideoMode.resolution.width)”)<br>// 打印 “The width of someVideoMode is 0”<br></code><br>你还可以用点语法为变量属性指定新值:<br><code><br>someVideoMode.resolution.width = 1280<br>print(“The width of someVideoMode is now (someVideoMode.resolution.width)”)<br>// 打印 “The width of someVideoMode is now 1280”<br></code><br>备注</p>
+<p>跟 Objective-C 不同, Swift 让你可以直接设置结构体属性的子属性。 上面最后一个例子, someVideoMode 属性resolution的子属性width 就是直接设置的, 无需你把整个resolution 属性设置成新值。</p>
+<h1 id="结构体类型成员初始化方法"><a href="#结构体类型成员初始化方法" class="headerlink" title="结构体类型成员初始化方法"></a>结构体类型成员初始化方法</h1><p>所有的结构体都有一个自动产生的成员初始化方法, 你可以用来初始化新的结构体实例的成员属性。 新实例属性的初始值可以根据名字传入成员初始化方法:<br><code><br>let vga = Resolution(width: 640, height: 480)</code><br>跟结构体不同, 类实例不会接受一个默认的成员初始化方法。</p>
+<h1 id="结构体和枚举是值类型"><a href="#结构体和枚举是值类型" class="headerlink" title="结构体和枚举是值类型"></a>结构体和枚举是值类型</h1><p>值类型指的是赋给变量或者常量的时候会进行拷贝的类型, 或者在传给函数使用的时候。</p>
+<p>通过前面的章节,你实际上已经广泛使用了值类型。 事实上, 所有Swift 的基础类型—整型, 浮点数, 布尔类型, 字符串类型, 数组和字典都是值类型, 背后都是用结构体实现。</p>
+<p>Swift 中所有的结构体和枚举都是值类型。意思就是你创建的任何结构体和枚举—任何它们作为属性的值类型—当它们在你的代码中传递时总是拷贝的。</p>
+<p>看一下这个例子, 使用了前一个例子中的 Resolution 结构体:<br><code><br>let hd = Resolution(width: 1920, height: 1080)<br>var cinema = hd</code><br>这个例子定义了一个常量 hd 然后用初始化方法赋值给它。</p>
+<p>然后声明一个变量 cinema 并且把hd 的当前值赋给它。因为 Resolution 是一个结构体, 存在实例的拷贝就创建了。新的拷贝赋值给 cinema. 尽管 hd 和 cinema 现在有了相同的宽和高, 它们背后是完全不同的两个实例。</p>
+<p>下一步, cinema 宽度属性修改为2K标准的宽度,用于数字电影项目(2048 像素宽和 1080 像素高):<br><code><br>cinema.width = 2048<br>检查cinema的宽度属性,显示它的确被修改为 2048:</code></p>
+<p>print(“cinema is now (cinema.width) pixels wide”)<br>// 打印 “cinema is now 2048 pixels wide”</p>
+<p>不过, 原来hd 的宽度属性依然是旧值 1920:</p>
+<p>print(“hd is still (hd.width) pixels wide”)<br>// 打印 “hd is still 1920 pixels wide”<br><br>一旦cinema赋值为hd的值, 存储在hd中的值就会拷贝到新的cinema实例。 最后的结果是两个完全独立的实例, 正好都包含相同的数值。 因为它们是单独的实例, 设置cinema 的宽度为 2048 并不影响 hd 的宽度。</p>
+<p>相同的行为适用于枚举:<br><code><br>enum CompassPoint {<br>case north, south, east, west<br>}<br>var currentDirection = CompassPoint.west<br>let rememberedDirection = currentDirection<br>currentDirection = .east<br>if rememberedDirection == .west {<br>print(“The remembered direction is still .west”)<br>}<br>// 打印 “The remembered direction is still .west”<br></code><br>当 rememberedDirection 被赋值为 currentDirection的值时, 实际上设置的是一个值的拷贝。 改变 currentDirection 的值之后不会影响原先存储在rememberedDirection 中的值。</p>
+<h1 id="类是引用类型"><a href="#类是引用类型" class="headerlink" title="类是引用类型"></a>类是引用类型</h1><p>跟值类型不同, 它们赋值给变量或者常量的时候不会发生拷贝, 传递给函数也一样。 相对一个拷贝, 用的是引用已经存在的实例。</p>
+<p>这里有一个例子, 使用上面定义的 VideoMode 类:<br><code><br>let tenEighty = VideoMode()<br>tenEighty.resolution = hd<br>tenEighty.interlaced = true<br>tenEighty.name = “1080i”<br>tenEighty.frameRate = 25.0<br></code><br>这个例子声明了一个新的变量 tenEighty 并且把一个新的VideoMode 实例赋值给它。视频模式还是用的19020乘以1080 的HD 的拷贝。它设置成交错的,给了一个名字 “1080i”. 最后, 设置了25 帧每秒的帧速。</p>
+<p>下一步, tenEighty 赋值给一个新的常量 alsoTenEighty, 然后改变 alsoTenEighty 帧速:<br><code><br>let alsoTenEighty = tenEighty<br>alsoTenEighty.frameRate = 30.0<br></code><br>因为类是引用类型, tenEighty 和 alsoTenEighty 实际上引用的是相同的 VideoMode 实例。它们不过是同一个实例的两个不同的名字。</p>
+<p>查看tenEighty 的帧速属性, 显示它变成了新的帧速率 30.0:<br><code><br>print(“The frameRate property of tenEighty is now (tenEighty.frameRate)”)<br>// 打印 “The frameRate property of tenEighty is now 30.0”</code><br>注意 tenEighty 和 alsoTenEighty 声明成常量而不是变量。 不过, 你仍然可以改变 tenEighty.frameRate 和 alsoTenEighty.frameRate, 因为 tenEighty 和 alsoTenEighty 常量的值实际没有改变。 tenEighty 和 alsoTenEighty 它们不保存 VideoMode 实例, 背后它们都是引用一个 VideoMode 实例。 是VideoMode 下面的 frameRate 属性被改变了, 不是引用VideoMode 的常量值被改变。</p>
+<h1 id="等号运算符"><a href="#等号运算符" class="headerlink" title="等号运算符"></a>等号运算符</h1><p>因为类是引用类型, 背后可能是多个常量或变量引用同一个类实例。 (结构体和枚举不是这样, 因为它们赋值给常量或者变量,或者传给函数总是拷贝的)</p>
+<p>有时候,找出两个常量或者变量是否引用同一个类实例是很有用的。为了实现这个, Swift 提供了两个等号运算符:<br><code><br>相同 (===)<br>不相同 (!==)</code><br>用这两个运算符去判断两个常量或者变量是否引用同一个实例:<br><code><br>if tenEighty === alsoTenEighty {<br>print(“tenEighty and alsoTenEighty refer to the same VideoMode instance.”)<br>}</code><br>// 打印 “tenEighty and alsoTenEighty refer to the same VideoMode instance.”<br>注意“相同” (用三个等号表示) 跟“等于” (用两个等号表示)还不同:</p>
+<p>“相同” 意思是两个类实例常量或者变量引用相同的类实例。<br>“等于” 意思是两个实例值相等, 一些“等于”的相关意思, 由类型设计者定义。<br>当你自定义类和结构体时, 你有责任决定两个实例“等于”在符合条件。实现“等于” and “不等于” 运算符的过程在等于运算符中描述。</p>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>如果你熟悉 C, C++, 或者 Objective-C, 你可能会知道这些语言使用指针来指向内存地址。 Swift 的常量或者变量,引用一个实例很像C语言的指针, 但是不会直接指向内存地址, 并且不需要你书写 (*)来表明你要创建一个引用。 相反, 这些引用和Swift 中的其他任何常量或者变量的定义很像。</p>
+<h1 id="在类与结构体中选择"><a href="#在类与结构体中选择" class="headerlink" title="在类与结构体中选择"></a>在类与结构体中选择</h1><p>你可以在你的代码块中同时使用类和结构体来定义自定义数据类型。</p>
+<p>不过, 结构体实例总是用值传递, 而类总是使用引用传递。这就意味着它们适用于不同的任务种类。在你需要考虑数据构建和功能时, 觉得是否每一个数据构建应该选用类还是结构体。</p>
+<p>一个通用的指导是, 下面一个或者多个条件符合时考虑使用一个结构体:</p>
+<p>结构体的主要目的是封装一些相关的简单数据值。<br>传递结构体实例是拷贝而非引用。<br>结构体存储的任意属性也是值类型, 这些属性期望是拷贝而非引用使用。<br>结构体不需要继承其他存在类型的属性或者行为。<br>适合结构体的好例子:</p>
+<p>几何形状的大小, 可能要封装一个宽度属性和一个高度属性, 两者都是浮点型。<br>使用一个系列的范围, 可能封装一个起点属性和一个长度属性, 两者都是整型。<br>3D坐标系的点, 可能要封装 x, y 和 z 属性, 每个都是浮点型。<br>其他情况, 定义一个类, 然后创建类的实例用来管理和传递引用。 在实践中, 意思自定义数据构建使用类而不是结构体。</p>
+<h1 id="字符串-数组和字典的赋值和拷贝行为"><a href="#字符串-数组和字典的赋值和拷贝行为" class="headerlink" title="字符串,数组和字典的赋值和拷贝行为"></a>字符串,数组和字典的赋值和拷贝行为</h1><p>在 Swift 中, 一些基本的数据类型像String, Array, 和 Dictionary 都是用结构体实现的。 这就意味着例如字符串,数组和字典在赋值给常量或者变量时,也是被拷贝的, 传递给函数或者方法时也一样。</p>
+<p>这个行为不同于 Foundation: NSString, NSArray, 和 NSDictionary, 它们是用类实现的。字符串,数组和字典在 Foundation 中赋值时用的引用而非拷贝。</p>
+<p>备注</p>
+<p>上面描述的拷贝。 在你的代码里这种行为似乎总是发生。 然而, Swift 只有在真正需要这么做的时候才进行实际的拷贝。 Swift管理所有的值拷贝来确保性能最优, 所以你不应避免赋值来抢占这种优化。</p>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><p>属性关联特定的类,结构体或者枚举的值。 存储属性作为实例的一部分用来存储常量或者变量的值, 而计算属性用来计算一个值。 计算属性由类,结构体和枚举提供。 存储属性仅由类和结构体提供。</p>
+<p>存储和计算属性通常关联特定类型的实例。 不过, 属性也可以管理类型本身。 比如类型属性。</p>
+<p>另外, 你可以定义观察者来监视属性值的改变, 自定义响应的行为。 属性观察者可以添加到你定义的存储属性, 也可以是子类集成父类的属性。</p>
+<h1 id="存储属性"><a href="#存储属性" class="headerlink" title="存储属性"></a>存储属性</h1><p>最简单的形式, 一个存储属性是作为特定类和结构体的常量或者变量。 存储属性既可以是变量也可以是常量。</p>
+<p>你可以提供一个默认值作为存储属性定义的一部分。你也可以在初始化时改变它的初始值。对于常量存储属性也是如此。</p>
+<p>下面的例子定义了一个结构体 FixedLengthRange, 描述了一个整型的范围, 它有一个长度一旦创建就不可修改:<br><code><br>struct FixedLengthRange {<br>var firstValue: Int<br>let length: Int<br>}<br>var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)<br>// the range represents integer values 0, 1, and 2<br>rangeOfThreeItems.firstValue = 6<br>// the range now represents integer values 6, 7, and 8<br></code><br>FixedLengthRange 实例有一个变量存储属性 firstValue 和一个常量存储属性 length. 上面这个例子, length 在新实例创建时初始化而后不可修改, 因为它是一个常量属性。</p>
+<h1 id="常量结构体的存储属性"><a href="#常量结构体的存储属性" class="headerlink" title="常量结构体的存储属性"></a>常量结构体的存储属性</h1><p>如果你创建一个结构体实例并把它赋值给一个常量, 你就不能修改这个实例的属性, 即使它们定义成变量属性:<br><code><br>let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)<br>// this range represents integer values 0, 1, 2, and 3<br>rangeOfFourItems.firstValue = 6<br>// 这里会报错, 即使 firstValue 是变量属性<br></code><br>因为rangeOfFourItems 声明成一个常量, 所以不能修改 firstValue 属性, 即使 firstValue 是一个变量属性。</p>
+<p>这个行为是因为结构体是值类型。 一个值类型的实例被标记为常量, 那么它所有的属性也变成了常量。</p>
+<p>对于类来说不是这样, 类是引用类型。 如果你把类实例赋值给一个常量, 你依然可以修改类的变量属性。</p>
+<h1 id="延迟存储属性"><a href="#延迟存储属性" class="headerlink" title="延迟存储属性"></a>延迟存储属性</h1><p>延迟存储属性的初始值在首次使用时才会计算。标示延迟存储属性通过在声明前书写 lazy 修饰符实现。</p>
+<p>备注</p>
+<p>你应该总是把延迟属性声明成变量, 因为它的初始值可能在实例初始化完成后才获取到。Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.</p>
+<p>延迟属性在初始化值需要依赖外部因素时很有用,它们的值直到实例初始化完成后才知道。 当属性初始值需要复杂和大量计算时，延迟属性需要时再执行加载也非常有用。</p>
+<p>下面的例子使用一个延迟存储属性来避免一个复合类的不必要的初始化。这个例子定义了两个类 DataImporter 和 DataManager, 两个都没有完整显示:<br><code><br>class DataImporter {<br>/<em><br>DataImporter is a class to import data from an external file.<br>The class is assumed to take a non-trivial amount of time to initialize.
+</em>/<br>var fileName = “data.txt”<br>// the DataImporter class would provide data importing functionality here<br>}</code></p>
+<p>class DataManager {<br>lazy var importer = DataImporter()<br>var data = <a href="">String</a><br>// the DataManager class would provide data management functionality here<br>}</p>
+<p>let manager = DataManager()<br>manager.data.append(“Some data”)<br>manager.data.append(“Some more data”)<br>// the DataImporter instance for the importer property has not yet been created<br><br>DataManager 类有一个存储属性 data, 用一个新的,空的字符串数组初始化。 尽管它其余的功能没有显示, DataManager 类的目的是管理和提供对字符串数据数组的访问。</p>
+<p>类的部分功能是可以从文件导入数据。 这个功能由 DataImporter 类提供, 假设初始化时间微不足道。 这是因为当DataImporter实例被初始化时, DataImporter 实例需要读取文件内容到内存。</p>
+<p>DataManager 实例在没有任何文件输入的情况下管理数据也是有可能的, 所以 DataManager 创建时不需要创建一个新的 DataImporter 实例。 相反, 真正需要使用DataImporter的时候再创建更有意义。</p>
+<p>因为它标记了lazy 修饰符, DataImporter 实例只会在 importer 属性首次被访问的时候创建, 比如当它的 fileName 属性需要的时候:<br><code><br>print(manager.importer.fileName)<br>// the DataImporter instance for the importer property has now been created<br>// 打印 “data.txt”<br></code><br>备注</p>
+<p>如果lazy 标示的属性被多线程同时访问并且这个属性还未初始化, 不能保证这个属性只会初始化一次。</p>
+<h1 id="存储属性和实例变量"><a href="#存储属性和实例变量" class="headerlink" title="存储属性和实例变量"></a>存储属性和实例变量</h1><p>如果你熟悉 Objective-C, 你可能了解它提供了两种方式来存储值和引用。 除了属性, 你可以使用实例变量作为属性的后备来存储值。</p>
+<p>Swift 把这些概念结合到单独的属性声明。 一个 Swift 属性没有相应的实例变量, 属性的后备存储不能直接访问。 这个方法避免了在不同上下文访问值的混乱并且把属性的声明简化到单独明确的语句。所有的属性信息—包括它的名字, 类型, 和内存管理特性—作为类型定义的部分定义在单独的位置。</p>
+<h1 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h1><p>除了存储属性, 类, 结构体, 和枚举还可以定义计算属性, 计算属性不存储值。相反, 它们提供了一个 getter 和一个可选的 setter 方法来简介获取或者设定其他属性和值。<br><code><br>struct Point {<br>var x = 0.0, y = 0.0<br>}<br>struct Size {<br>var width = 0.0, height = 0.0<br>}<br>struct Rect {<br>var origin = Point()<br>var size = Size()<br>var center: Point {<br>get {<br>let centerX = origin.x + (size.width / 2)<br>let centerY = origin.y + (size.height / 2)<br>return Point(x: centerX, y: centerY)<br>}<br>set(newCenter) {<br>origin.x = newCenter.x - (size.width / 2)<br>origin.y = newCenter.y - (size.height / 2)<br>}<br>}<br>}<br>var square = Rect(origin: Point(x: 0.0, y: 0.0),<br>size: Size(width: 10.0, height: 10.0))<br>let initialSquareCenter = square.center<br>square.center = Point(x: 15.0, y: 15.0)<br>print(“square.origin is now at ((square.origin.x), (square.origin.y))”)<br>// 打印 “square.origin is now at (10.0, 10.0)”<br></code><br>这个例子定义了三个结构体使用几何形状:</p>
+<p>Point 封装了一个点的x和y坐标。<br>Size 封装了一个宽度和高度。<br>Rect 用一个原点和大小定义了一个矩形。<br>Rect 结构体也提供了一个计算属性 center. 一个Rect 的当前中心位置总是取决于它的原点和大小。所以你不需要显示存储中心的值。 相反, Rect 为计算center自定义了 getter 和 setter 方法。确保你像使用真正的存储属性一样使用矩形的中心。</p>
+<p>前面的例子创建了一个新的 Rect 变量 square. square 原点初始化为 (0, 0), 宽度和高度都是 10. 这个正方形在下面的图表里用蓝色正方形表示。</p>
+<p>square 变量的 center 属性通过点语法访问, 这个导致 getter 方法被调用, 来获取当前属性值。 相比返回存在的值, getter 实际上计算并返回一个新的 Point 来表示正方形的中心。从上面可以看到, getter 正确返回了中心点 (5, 5).</p>
+<p>center 属性然后被设置成新值 (15, 15), 这会把正方形往右上方移动, 如下图中的橙色正方形。 设置 center 属性会调用 setter 方法, 这个会修改原点属性的x和y值, 然后移动正方形到新的位置。</p>
+<p><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/computedProperties_2x.png"><br></div></p>
+<h1 id="Setter-简化声明"><a href="#Setter-简化声明" class="headerlink" title="Setter 简化声明"></a>Setter 简化声明</h1><p>如果一个计算属性的 setter 没有定义设置用的新值名, 默认的名字 newValue 会被使用。这里有一个Rect 结构体的替代版本, 使用了这种简化符号:<br><code><br>struct AlternativeRect {<br>var origin = Point()<br>var size = Size()<br>var center: Point {<br>get {<br>let centerX = origin.x + (size.width / 2)<br>let centerY = origin.y + (size.height / 2)<br>return Point(x: centerX, y: centerY)<br>}<br>set {<br>origin.x = newValue.x - (size.width / 2)<br>origin.y = newValue.y - (size.height / 2)<br>}<br>}<br>}<br></code></p>
+<h1 id="只读计算属性"><a href="#只读计算属性" class="headerlink" title="只读计算属性"></a>只读计算属性</h1><p>只有getter 没有 setter 的计算属性就是人们所说的只读计算属性。一个只读计算属性总是返回一个值, 可以通过点语法访问, 但是不可以设置为其他值。</p>
+<p>备注</p>
+<p>你必须把计算属性包含只读计算属性声明为变量, 因为它们的值是不固定的。let 关键字只有用于常量属性, 表明它们一旦初始化就不能再更改。</p>
+<p>去掉 get 关键字和它的括号,你可以简化一个只读计算属性的声明:<br><code><br>struct Cuboid {<br>var width = 0.0, height = 0.0, depth = 0.0<br>var volume: Double {<br>return width <em> height </em> depth<br>}<br>}<br>let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)<br>print(“the volume of fourByFiveByTwo is (fourByFiveByTwo.volume)”)<br>// 打印 “the volume of fourByFiveByTwo is 40.0”<br></code><br>这个例子定义了一个新的结构体 Cuboid, 表示一个三维长方体, 具有 width, height, 和 depth 属性。 这个结构体同时有一个只读计算属性 volume, 用来计算和返回长方体的体积。 设置体积是没有意义的, 因为特定体积值用哪些长宽高是不清楚的。 尽管如此, 给外部用户提供一个只读计算属性来得到立方体的计算后的体积还是有用的。</p>
+<h1 id="属性观察者"><a href="#属性观察者" class="headerlink" title="属性观察者"></a>属性观察者</h1><p>属性观察者观察并响应一个属性值的变化。 每次属性值设置都会调用属性观察者, 即使新值和属性当前值一样也会调用。</p>
+<p>你可以给任何你定义的存储属性添加观察者, 除了延迟加载的存储属性。 你也可以给一个继承来的属性添加观察者,只需要在子类重写这个属性即可。你不需要给一个非重写的计算属性添加属性观察者, 因为你可以在它们的setter 方法里观察和响应变化。</p>
+<p>你可以选择定义这些属性观察者之一或全部:</p>
+<p>willSet 在值存储前调用。<br>didSet 在新值存储后立即调用。<br>如果你实现一个 willSet 观察者, 它会以常量参数形式传递新属性的值。 你可以简化参数名作为 willSet 的实现部分。 如果你在实现中不写参数名和括号, 参数名默认是 newValue.</p>
+<p>类似的, 如果你实现 didSet 观察者, 它包含旧的属性值作为常量产生传递。 你可以命名这个参数或者使用默认参数名 oldValue. 如果你在它自己的didset 观察者里给这个属性设置值, 你赋给它的新值会替换刚刚设置的值。</p>
+<p>备注</p>
+<p>父类初始化方法调用后, 父类属性的 willSet 和 didSet 观察者在子类初始化属性的时候调用。 在父类初始化调用之前, 当一个类设置它自己的属性时它们不会再被调用。</p>
+<p>这里有一个 willSet 和 didSet 的例子。 下面的例子定义了一个新类 StepCounter, 用来计算一个人走路的总步数。 这个类用在输入数据或者其他记录一个人日常锻炼的计步器。<br><code><br>class StepCounter {<br>var totalSteps: Int = 0 {<br>willSet(newTotalSteps) {<br>print(“About to set totalSteps to (newTotalSteps)”)<br>}<br>didSet {<br>if totalSteps &gt; oldValue  {<br>print(“Added (totalSteps - oldValue) steps”)<br>}<br>}<br>}<br>}<br>let stepCounter = StepCounter()<br>stepCounter.totalSteps = 200<br>// About to set totalSteps to 200<br>// Added 200 steps<br>stepCounter.totalSteps = 360<br>// About to set totalSteps to 360<br>// Added 160 steps<br>stepCounter.totalSteps = 896<br>// About to set totalSteps to 896<br>// Added 536 steps<br></code><br>StepCounter 类声明了一个整型 totalSteps. 这是一个存储属性,带有 willSet 和 didSet 观察者。</p>
+<p>totalSteps 属性设置新值的时候 willSet 和 didSet 观察者会调用。即使这个新值跟当前值一样, 也会调用。</p>
+<p>这个例子 willSet 观察值使用一个自定义的参数 newTotalSteps 来更新值。在这个例子里, 它简单打印将要设置的值。</p>
+<p>didSet 观察者在 totalSteps 值更新后调用。它比较 totalSteps 的新旧值。如果总步数增加了, 打印增加步数的信息。didSet 观察者没有提供一个自定义参数名, 用的是and the default name of oldValue is used instead.</p>
+<p>备注</p>
+<p>你如果传递一个带有观察者的属性给函数作为输入输出参数的话, willSet 和 didSet 观察者总会被调用。这是因为输入输出参数的内存赋值模型: 函数结尾这个值总会写回属性。</p>
+<h1 id="全局变量和局部变量"><a href="#全局变量和局部变量" class="headerlink" title="全局变量和局部变量"></a>全局变量和局部变量</h1><p>上述描述的计算和观察属性的能力也可以用于全局变量和局部变量。全局变量定义在函数,方法,闭包或者类型上下文之外。局部变量则是定义在函数,方法或者闭包上下文内。</p>
+<p>前面章节遇到的全局和局部变量都是存储变量。 存储变量很像存储属性, 提供特定类型值的存储并且允许值的设置和获取。</p>
+<p>不过, 不过你可以在全局获取局部范围,定义计算变量,为存储变量定义观察者。计算变量计算它们的值, 而非存储它, 它们和计算属性写法一样。</p>
+<p>备注</p>
+<p>Global 常量和变量总是延迟计算, 跟延迟的存储属性类似方式。但是和延迟存储属性不同的是, 全局常量和变量不需要标记 lazy 修饰符。</p>
+<p>局部常量和变量不能是延迟计算的。</p>
+<h1 id="类型属性"><a href="#类型属性" class="headerlink" title="类型属性"></a>类型属性</h1><p>Instance 属性属于特定类型的实例。 每次你创建这种类型的实例, 它都有自己一组属性值, 和其他实例区分开来。</p>
+<p>你还可以定义类型自己的属性, 而不是这种类型实例的属性。这里只会有这些属性一个拷贝, 不管你创建多少那种类型的实例。这些属性就是类型属性。</p>
+<p>定义某种类型实例的通用值时类型属性很有用, 比如常量属性所有实例都可以用 (像C里面的静态常量), 或者变量属性用来存储那种类型的通用值 (想C里面的静态变量).</p>
+<p>存储类型属性可以是常量或者变量。计算类型属性总是变量, 和计算实例属性一样。</p>
+<p>备注</p>
+<p>跟存储实例属性不同, 你必须给存储类型属性一个默认值。这是因为类型本身没有初始化方法, 不能在初始化时给存储类型属性指定一个初始值。</p>
+<p>存储类型属性首次访问时是延迟初始化的。它们保证只进行一次初始化, 即使被多线程同时访问, 它们不需要用lazy 修饰符标记。</p>
+<h1 id="类型属性语法"><a href="#类型属性语法" class="headerlink" title="类型属性语法"></a>类型属性语法</h1><p>在 C 和 Objective-C 中, 你定义静态常量和变量作为全局静态变量。 在 Swift 里, 类型属性写作类型定义的一部分, 在类型外部的大括号里, 并且每种类型属性显式局限于它支持的类型。</p>
+<p>用static关键字定义类型属性。 对于类的计算类型属性, 你可以用 class 关键字去允许子类重写父类的实现。下面的例子展示存储和计算类型属性的语法:<br><code><br>struct SomeStructure {<br>static var storedTypeProperty = “Some value.”<br>static var computedTypeProperty: Int {<br>return 1<br>}<br>}<br>enum SomeEnumeration {<br>static var storedTypeProperty = “Some value.”<br>static var computedTypeProperty: Int {<br>return 6<br>}<br>}<br>class SomeClass {<br>static var storedTypeProperty = “Some value.”<br>static var computedTypeProperty: Int {<br>return 27<br>}<br>class var overrideableComputedTypeProperty: Int {<br>return 107<br>}<br>}<br></code><br>备注</p>
+<p>上面的例子是只读类型的计算属性, 不过你要可以定义读写类型的计算属性。</p>
+<h1 id="查询和设置类型属性"><a href="#查询和设置类型属性" class="headerlink" title="查询和设置类型属性"></a>查询和设置类型属性</h1><p>类型查询和设置使用点语法, 跟实例属性很像。不过, 类似属性使用类型查询和设置, 不是使用类型的实例。 例如:<br><code><br>print(SomeStructure.storedTypeProperty)<br>// Prints “Some value.”<br>SomeStructure.storedTypeProperty = “Another value.”<br>print(SomeStructure.storedTypeProperty)<br>// Prints “Another value.”<br>print(SomeEnumeration.computedTypeProperty)<br>// Prints “6”<br>print(SomeClass.computedTypeProperty)<br>// Prints “27”<br></code><br>下面的例子用了两个存储属性作为结构体的一部分, 对多个音轨模拟了一个音频水平计。每个音轨有一个在0和10之间的整数音频水平。</p>
+<p>下面图展示了两个音轨怎样合成一个立体音频水平计。当一个音轨的音频水平是0时, 那个音轨的没有灯会亮。 当这个音频水平是10时, 那个音轨的灯全部点亮。 这个图中, 左边音轨当前水平值是 9, 右边音轨当前水平是 7:</p>
+<p><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/staticPropertiesVUMeter_2x.png"><br></div><br>上面描述的音轨用 AudioChannel 结构体的实例表示:<br><code><br>struct AudioChannel {<br>static let thresholdLevel = 10<br>static var maxInputLevelForAllChannels = 0<br>var currentLevel: Int = 0 {<br>didSet {<br>if currentLevel &gt; AudioChannel.thresholdLevel {<br>// cap the new audio level to the threshold level<br>currentLevel = AudioChannel.thresholdLevel<br>}<br>if currentLevel &gt; AudioChannel.maxInputLevelForAllChannels {<br>// store this as the new overall maximum input level<br>AudioChannel.maxInputLevelForAllChannels = currentLevel<br>}<br>}<br>}<br>}<br></code><br>AudioChannel 结构体定义了两个存储类型属性来支持它的功能。 第一个是 thresholdLevel, 定义了音频水平最大阈值。对于所有AudioChannel 实例这是一个常量值10. 如果音频信号遇到大于10的值, 它封顶就是阈值。</p>
+<p>第二个类型属性是一个变量存储属性 maxInputLevelForAllChannels. 这个保持追踪 AudioChannel 实例接收的最大输入值。 它的初始值是 0.</p>
+<p>AudioChannel 结构体同时定义了一个存储实例属性currentLevel, 用来表示0到10之间的音轨当前音频水平。</p>
+<p>currentLevel 属性有一个didSet 属性观察者来判断 currentLevel 设置时的值。这个观察者执行两个判断:</p>
+<p>如果新值大于阈值, currentLevel 封顶值就是阈值。<br>如果新值(还没有封顶) 大于之前 AudioChannel 实例接收的值, 属性观察者把新的 currentLevel 值存储到 maxInputLevelForAllChannels 类型属性中。<br>备注</p>
+<p>第一个判断, didSet 观察值把 currentLevel 设置成一个不同值。这个不会导致观察者被再次调用。</p>
+<p>你可以用 AudioChannel 结构体创建两个新的音轨 leftChannel 和 rightChannel, 来表示这个音频水平是一个立体声系统:<br><code><br>var leftChannel = AudioChannel()<br>var rightChannel = AudioChannel()<br>If you set the currentLevel of the left channel to 7, you can see that the maxInputLevelForAllChannels type property is updated to equal 7:</code></p>
+<p>leftChannel.currentLevel = 7<br>print(leftChannel.currentLevel)<br>// Prints “7”<br>print(AudioChannel.maxInputLevelForAllChannels)<br>// Prints “7”<br>If you try to set the currentLevel of the right channel to 11, you can see that the right channel’s currentLevel property is capped to the maximum value of 10, and the maxInputLevelForAllChannels type property is updated to equal 10:</p>
+<p>rightChannel.currentLevel = 11<br>print(rightChannel.currentLevel)<br>// Prints “10”<br>print(AudioChannel.maxInputLevelForAllChannels)<br>// Prints “10”<br></p>
+<h1 id="方法"><a href="#方法" class="headerlink" title="方法"></a>方法</h1><p>方法是对应特定类型的函数。类,结构体和枚举都可以定义实例方法, 封装了特定的任务和功能用于给定类型的实例。类, 结构体和枚举也可以定义类型方法, 它们对应类型本身。类型方法很像 Objective-C 中的类方法。</p>
+<p>结构体与枚举可以定义方法,是Swift 与 C 和 Objective-C之间一个巨大的区别。在Objective-C, 只有类可以定义方法。在 Swift, 你可以选择是否定义一个类,结构体或者枚举, 并且可以灵活定义你创建类型下的方法。</p>
+<h1 id="实例方法"><a href="#实例方法" class="headerlink" title="实例方法"></a>实例方法</h1><p>实例方法属于特定类,结构体或者枚举实例的函数。或者提供方式访问和修改实例的属性,或者提供实例目的相关的功能。实例方法和函数语法一样。</p>
+<p>在它所属的类型开闭括号里书写一个实例方法。 一个实例方法可以隐式访问这个类型所有其他的实例方法和属性。一个实例方法只能被它属于的类型调用。 没有实例不能单独调用。</p>
+<p>这里有个例子,定义了一个简单的类 Counter , 来计算一个行为的次数:<br><code><br>class Counter {<br>    var count = 0<br>    func increment() {<br>        count += 1<br>    }<br>    func increment(by amount: Int) {<br>        count += amount<br>    }<br>    func reset() {<br>        count = 0<br>    }<br>}<br></code><br>Counter 类定义了三个实例方法:</p>
+<p>increment() 把计数器加1.<br>increment(by: Int) 把计数器增加指定整数。<br>reset() 重置计数器为0<br>Counter 类同时声明了一个变量属性, count, 来跟踪当前计步器的值。</p>
+<p>调用实例方法跟属性一样使用点语法:<br><code><br>let counter = Counter()<br>// the initial counter value is 0<br>counter.increment()<br>// the counter’s value is now 1<br>counter.increment(by: 5)<br>// the counter’s value is now 6<br>counter.reset()<br>// the counter’s value is now 0<br></code><br>Function 参数可以用一个名字和一个参数标签。</p>
+<h1 id="self-属性"><a href="#self-属性" class="headerlink" title="self 属性"></a>self 属性</h1><p>每个类型的实例都有一个隐式的属性 self, 等于实例自己。 你可以用在实例方法内引用当前实例。</p>
+<p>The increment() method in the example above could have been written like this:<br><code><br>func increment() {<br>    self.count += 1<br>}</code><br>在实践中, 你不需要经常在代码中写self. 如果不显示书写 self, 一旦你在一个方法里使用了已知的属性或者方法名, Swift 就会假设你引用的是当前实例的属性或者方法。这个假设在Counter三个实例方法中count被证明了。</p>
+<p>这个规则的例外情况是, 一个实例方法的参数名和实例的属性名一样。这种情况下, 参数优先, 有必要用更有效的方式调用属性。用self 属性来区分参数名和属性名。</p>
+<p>这里, self 避免一个方法参数叫 x 与一个实例属性叫 x 的混乱:<br><code><br>struct Point {<br>    var x = 0.0, y = 0.0<br>    func isToTheRightOf(x: Double) -&gt; Bool {<br>        return self.x &gt; x<br>    }<br>}<br>let somePoint = Point(x: 4.0, y: 5.0)<br>if somePoint.isToTheRightOf(x: 1.0) {<br>    print(“This point is to the right of the line where x == 1.0”)<br>}<br>// 打印 “This point is to the right of the line where x == 1.0”<br></code><br>不带self 前缀, Swift 会假设两个 x 都是引用方法的参数 x.</p>
+<h1 id="在实例方法中修改值类型"><a href="#在实例方法中修改值类型" class="headerlink" title="在实例方法中修改值类型"></a>在实例方法中修改值类型</h1><p>结构体和枚举是值类型。默认情况下, 值类型的属性不能在实例方法内部修改。</p>
+<p>不过, 如果你需要再特定方法中修改结构体和枚举的属性, 你可以选择这个方法的变异行为。方法就可以在内部变异它的属性, 方法结束后这个种改变会写回先前的结构体。这个方法也可以给隐式的self属性指定一个完全全新的实例, 方法结束后这个新值会替代原先存在的。</p>
+<p>可以在方法的func 关键字前加上 mutating 关键字来实现这个行为:<br><code><br>struct Point {<br>    var x = 0.0, y = 0.0<br>    mutating func moveBy(x deltaX: Double, y deltaY: Double) {<br>        x += deltaX<br>        y += deltaY<br>    }<br>}<br>var somePoint = Point(x: 1.0, y: 1.0)<br>somePoint.moveBy(x: 2.0, y: 3.0)<br>print(“The point is now at ((somePoint.x), (somePoint.y))”)<br>// 打印 “The point is now at (3.0, 4.0)”<br></code><br>Point 结构体定义了一个变异方法 moveBy(x:y:), 使用一个特定数量移动一个点。不是返回一个新的点, 这个方法实际上修改了这个点。mutating 关键字加在定义是为了保证它可以修改自己的属性。</p>
+<p>注意你不能用结构体类型的常量来调用变异方法, 因为它的属性不能改变, 即使它们是变量属性:<br><code><br>let fixedPoint = Point(x: 3.0, y: 3.0)<br>fixedPoint.moveBy(x: 2.0, y: 3.0)<br>// 这会报一个错误<br></code></p>
+<h1 id="在变异方法里赋值给self"><a href="#在变异方法里赋值给self" class="headerlink" title="在变异方法里赋值给self"></a>在变异方法里赋值给self</h1><p>变异方法可以把一个全新的实例赋给隐式 self 属性。上面的 Point 例子可以用下面的写法代替:<br><code><br>struct Point {<br>    var x = 0.0, y = 0.0<br>    mutating func moveBy(x deltaX: Double, y deltaY: Double) {<br>        self = Point(x: x + deltaX, y: y + deltaY)<br>    }<br>}</code><br>这个版本的变异 moveBy(x:y:) 方法创建了一个全新的结构体,它的x和y的值被设置为目标位置。调用这个版本的结果和早前版本是完全一样的。</p>
+<p>枚举的变异方法可以把隐式self属性设置为一个不同的case:<br><code><br>enum TriStateSwitch {<br>    case off, low, high<br>    mutating func next() {<br>        switch self {<br>        case .off:<br>            self = .low<br>        case .low:<br>            self = .high<br>        case .high:<br>            self = .off<br>        }<br>    }<br>}<br>var ovenLight = TriStateSwitch.low<br>ovenLight.next()<br>// ovenLight is now equal to .high<br>ovenLight.next()<br>// ovenLight is now equal to .off<br></code><br>这个例子定义了三联开关的枚举。 每次调用 next() 方法这个开关就在三种不同的状态下循环。</p>
+<h1 id="类型方法"><a href="#类型方法" class="headerlink" title="类型方法"></a>类型方法</h1><p>实例方法, 如上所述, 是特定类型实例调用的方法。 你也可以定义类型本身调用的方法。这些方法称为类型方法。在方法的func 关键字前加上static 关键来标示类型方法。类可以用class 关键字来允许子类覆盖父类的方法实现。</p>
+<p>备注</p>
+<p>在 Objective-C 中, 你只能给类定义类型级别的方法。 而在 Swift 里, 你可以给类,结构体和枚举都定义类型级别的方法。每个类型方法仅限于它支持的类型使用。</p>
+<p>类型方法使用点语法调用, 和实例方法一样。 不过, 你使用类型调用方法而不是类型的实例。这里有一个类,展示在一个类如何调用类型方法:<br><code><br>class SomeClass {<br>    class func someTypeMethod() {<br>        // type method implementation goes here<br>    }<br>}<br>SomeClass.someTypeMethod()<br></code><br>在类型方法的函数体中, 隐式self属性调用类型自己而非类型的实例。 这就意味着你可以用self属性来消除类型属性和类型方法参数之间的歧义, 跟处理实例属性和实例方法参数一样。</p>
+<p>更一般的是, 用在类型方法内的任何不合适的方法和属性名将会引用其他类型级别的方法和属性。一个类型方法可以用其他方法名调用另外一个类型方法, 不需要再前面加上类型名。相似的, 结构体和枚举的类型方法可以用类型属性名访问类型属性。</p>
+<p>下面的例子定义了一个结构体 LevelTracker, 用来跟踪玩家通过游戏不同级别或者阶段的过程。它是一个单人游戏, 但是可以在单机上存储多个玩家的信息。</p>
+<p>第一次玩游戏时所有游戏的关都是锁定的 (除了第一关)。 每当玩家完成一关, 这一关在设备上对所有玩家打开。LevelTracker 结构体使用类型属性和方法来跟踪哪些关已经打开了。它同时跟踪单个玩家所在的当前关。<br><code><br>struct LevelTracker {<br>    static var highestUnlockedLevel = 1<br>    var currentLevel = 1</code></p>
+<pre><code>static func unlock(_ level: Int) {
+    if level &gt; highestUnlockedLevel { highestUnlockedLevel = level }
+}
+
+static func isUnlocked(_ level: Int) -&gt; Bool {
+    return level &lt;= highestUnlockedLevel
+}
+
+@discardableResult
+mutating func advance(to level: Int) -&gt; Bool {
+    if LevelTracker.isUnlocked(level) {
+        currentLevel = level
+        return true
+    } else {
+        return false
+    }
+}
+</code></pre><p>}<br>LevelTracker 结构体保持记录任何玩家已经打开的最高关。这个值存储在类型属性 highestUnlockedLevel.</p>
+<p>LevelTracker 同时定义了两个类型方法来使用highestUnlockedLevel 属性。第一个类型方法是 unlock(<em>:), 一旦新的关通过了就更新 highestUnlockedLevel 的值。第二个是便利类型方法 isUnlocked(</em>:), 如果特定关已经通过就返回真。 (注意,这两个方法访问 highestUnlockedLevel 类型属性需要写成 LevelTracker.highestUnlockedLevel.)</p>
+<p>除了它的类型属性和方法, LevelTracker 还跟踪了个体玩家通过这个游戏的过程。它用一个实例属性 currentLevel 来跟中玩家当前正在玩的关。</p>
+<p>为了帮助管理 currentLevel 属性, LevelTracker 定义了一个实例方法 advance(to:). 在更新currentLevel的值之前, 这个方法会判断请求的关是否打开。advance(to:) 方法返回布尔值是否可以设置currentLevel. 因为调用 advance(to:) 方法去忽略这个返回值是不需要一个错误, 这个函数被标记为 @discardableResult 属性。</p>
+<p>LevelTracker 结构体和 Player 类一起使用, 下面展示跟踪和更新个体玩家的过程:<br><code><br>class Player {<br>    var tracker = LevelTracker()<br>    let playerName: String<br>    func complete(level: Int) {<br>        LevelTracker.unlock(level + 1)<br>        tracker.advance(to: level + 1)<br>    }<br>    init(name: String) {<br>        playerName = name<br>    }<br>}</code><br>Player 创建了新的LevelTracker 实例来跟踪玩家的过程。它同时提供了一个方法 complete(level:), 一旦玩家通过一关就会调用。这个方法为所有玩家打开下一关并且更新玩家的过程,把他们带到下一关。(advance(to:) 的布尔返回值被忽略了, 因为通过调用 LevelTracker.unlock(_:) 已经知道这个关被打开了)</p>
+<p>你可以为一个新的玩家创建一个Player 类的实例, 并且看看玩家通过第一关会发生什么:<br><code><br>var player = Player(name: “Argyrios”)<br>player.complete(level: 1)<br>print(“highest unlocked level is now (LevelTracker.highestUnlockedLevel)”)<br>// 打印 “highest unlocked level is now 2”<br>如果你创建第二个玩家, 如果尝试移动他到没有任何玩家打开的关, 那么尝试设置玩家的当前关就会失败:</code></p>
+<p>player = Player(name: “Beto”)<br>if player.tracker.advance(to: 6) {<br>    print(“player is now on level 6”)<br>} else {<br>    print(“level 6 has not yet been unlocked”)<br>}<br>// 打印 “level 6 has not yet been unlocked”<br></p>
+<h1 id="下标"><a href="#下标" class="headerlink" title="下标"></a>下标</h1><p>类,结构体和枚举都快要定义下标, 它是用来访问集合元素的速写方式。你无需单独的设置和获方法,使用下标索引就可以设置和获取元素值。例如, 你访问数组实例的元素用 someArray[index] ,访问字典实例元素用 someDictionary[key].</p>
+<p>你可以为单个类型定义多个下标, 选择适当的下标重载使用取决于你传给下标的索引值的类型。一维下标没有限制, 你可以用多个输入参数定义下标来满足自定义类型的需要。</p>
+<h1 id="下标语法"><a href="#下标语法" class="headerlink" title="下标语法"></a>下标语法</h1><p>在一个方括号里写一个或多个值,下标就可以查询一个类型的实例。这个语法跟实例方法和计算属性的语法很像。使用 subscript 关键字定义下标, 同时指定一个或多个输入参数和一个返回值, 跟实例方法一样。和实例方法不同的是, 下标可以读写或者只读。和计算属性方式一样,这个用 setter 和 getter 实现:<br><code><br>subscript(index: Int) -&gt; Int {<br>get {<br>// return an appropriate subscript value here<br>}<br>set(newValue) {<br>// perform a suitable setting action here<br>}<br>}<br></code><br>newValue 类型和返回值类型一样。 和计算属性一样, 你可以不指定setter 的参数名。默认的参数名 newValue 会提供。</p>
+<p>和只读计算属性一样, 只读下标可以去掉get 关键字:<br><code><br>subscript(index: Int) -&gt; Int {<br>// return an appropriate subscript value here<br>}</code><br>这里有个只读下标实现的例子, 它定义了一个结构体 TimesTable 来表示整数n倍数表:<br><code><br>struct TimesTable {<br>let multiplier: Int<br>subscript(index: Int) -&gt; Int {<br>return multiplier * index<br>}<br>}<br>let threeTimesTable = TimesTable(multiplier: 3)<br>print(“six times three is (threeTimesTable[6])”)<br>// 打印 “six times three is 18”<br></code><br>这个例子里, 一个新的 TimesTable 实例被创建来表示整数的3倍数表。数字3传入结构体的初始化方法来作为乘法的参数。</p>
+<p>你可以用下标获取 threeTimesTable 实例, 通过调用 threeTimesTable[6]. 这请求三倍数表中的第六个实体, 返回18, 或者3乘以 6.</p>
+<p>备注</p>
+<p>n倍数表基于固定的数学规则。把 threeTimesTable[someIndex] 设置为一个新值是不合适的。所以 TimesTable 的下标定义为只读的。</p>
+<h1 id="使用下标"><a href="#使用下标" class="headerlink" title="使用下标"></a>使用下标</h1><p>下标的确切意思取决于它使用的上下文。下标是访问集合元素的速写方式。你可以自由的用最合适的方式为特定的类或者结构体实现下标。</p>
+<p>例如, Swift的字典类型实现一个下标去存取存储在字典实例中的值。你可以在下标括号里使用字典的键来设置值, 也可以给下标设置值:<br><code><br>var numberOfLegs = [“spider”: 8, “ant”: 6, “cat”: 4]<br>numberOfLegs[“bird”] = 2<br></code><br>上面的例子定义了一个变量 numberOfLegs , 然后用一个包含三个键值对的字典字面量来初始化它。numberOfLegs 字典类型被推断为 [String: Int]. 字典创建后, 这个例子使用下标赋值,向字典添加一个键值对 “bird” 和 2 .</p>
+<p>备注</p>
+<p>Swift 的字典类型实现的键值下标接受和返回一个可选类型。 对于上面的 numberOfLegs 字典, 键值下标接受和返回一个 Int? 类型值, 或者 “可选 int”. 字典类型使用了一个可选的下标类型来模拟这个事实,不是每一个键都有对应的值, 同时提供了一个方法去删除值,只需要给这个键赋一个nil即可。</p>
+<h1 id="下标选项"><a href="#下标选项" class="headerlink" title="下标选项"></a>下标选项</h1><p>下面可以接受任意数量的输入参数, 并且这些输入参数可以是任意类型。 下标也可以返回任意类型。 下标可以使用可变参数, 但是它们不能使用输入输出参数也不能给参数提供默认值。</p>
+<p>一个类或者结构体A class or structure can provide as many subscript implementations as it needs, and the appropriate subscript to be used will be inferred based on the types of the value or values that are contained within the subscript brackets at the point that the subscript is used. This definition of multiple subscripts is known as subscript overloading.</p>
+<p>While it is most common for a subscript to take a single parameter, you can also define a subscript with multiple parameters if it is appropriate for your type. The following example defines a Matrix structure, which represents a two-dimensional matrix of Double values. The Matrix structure’s subscript takes two integer parameters:</p>
+<p>struct Matrix {<br>let rows: Int, columns: Int<br>var grid: [Double]<br>init(rows: Int, columns: Int) {<br>self.rows = rows<br>self.columns = columns<br>grid = Array(repeating: 0.0, count: rows <em> columns)<br>}<br>func indexIsValid(row: Int, column: Int) -&gt; Bool {<br>return row &gt;= 0 &amp;&amp; row &lt; rows &amp;&amp; column &gt;= 0 &amp;&amp; column &lt; columns<br>}<br>subscript(row: Int, column: Int) -&gt; Double {<br>get {<br>assert(indexIsValid(row: row, column: column), “Index out of range”)<br>return grid[(row </em> columns) + column]<br>}<br>set {<br>assert(indexIsValid(row: row, column: column), “Index out of range”)<br>grid[(row <em> columns) + column] = newValue<br>}<br>}<br>}<br>Matrix provides an initializer that takes two parameters called rows and columns, and creates an array that is large enough to store rows </em> columns values of type Double. Each position in the matrix is given an initial value of 0.0. To achieve this, the array’s size, and an initial cell value of 0.0, are passed to an array initializer that creates and initializes a new array of the correct size. This initializer is described in more detail in Creating an Array with a Default Value.</p>
+<p>You can construct a new Matrix instance by passing an appropriate row and column count to its initializer:</p>
+<p>var matrix = Matrix(rows: 2, columns: 2)<br>The preceding example creates a new Matrix instance with two rows and two columns. The grid array for this Matrix instance is effectively a flattened version of the matrix, as read from top left to bottom right:</p>
+<p><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/subscriptMatrix01_2x.png"><br></div><br>Values in the matrix can be set by passing row and column values into the subscript, separated by a comma:</p>
+<p>matrix[0, 1] = 1.5<br>matrix[1, 0] = 3.2<br>These two statements call the subscript’s setter to set a value of 1.5 in the top right position of the matrix (where row is 0 and column is 1), and 3.2 in the bottom left position (where row is 1 and column is 0):</p>
+<p><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/subscriptMatrix02_2x.png"><br></div><br>The Matrix subscript’s getter and setter both contain an assertion to check that the subscript’s row and column values are valid. To assist with these assertions, Matrix includes a convenience method called indexIsValid(row:column:), which checks whether the requested row and column are inside the bounds of the matrix:</p>
+<p>func indexIsValidForRow(row: Int, column: Int) -&gt; Bool {<br>    return row &gt;= 0 &amp;&amp; row &lt; rows &amp;&amp; column &gt;= 0 &amp;&amp; column &lt; columns<br>}<br>An assertion is triggered if you try to access a subscript that is outside of the matrix bounds:</p>
+<p>let someValue = matrix[2, 2]<br>// this triggers an assert, because [2, 2] is outside of the matrix bounds</p>
 </element>]]></content>
     
     <summary type="html">
