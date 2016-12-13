@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-07T08:51:34.000Z</updated>
+  <updated>2016-12-13T07:35:29.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2016-12-07T08:51:34.000Z</updated>
+    <updated>2016-12-13T07:35:29.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -487,33 +487,30 @@ init(name: String, text: String? = nil) {
 deinit {
     print(&quot;\(name) is being deinitialized&quot;)
 }
-</code></pre><p>}<br><code><br>HTMLElement 类定义了一个name属性, 用来表示元素名, 比如头部元素 “h1” , 段落原色”p”, 或者换行符”br”。HTMLElement 同时定义了一个可选text属性, 可以设置成字符串来表示渲染的文本。</code></p>
+</code></pre><p>}<br><br>HTMLElement 类定义了一个name属性, 用来表示元素名, 比如头部元素 “h1” , 段落原色”p”, 或者换行符”br”。HTMLElement 同时定义了一个可选text属性, 可以设置成字符串来表示渲染的文本。</p>
 <p>除了这两个简单的属性, HTMLElement 类定义了一个lazy属性asHTML. 这个属性引用了一个闭包来把name和text合并成一个HTML片段。asHTML 属性类型是 () -&gt; String, 或者 “没有参数的函数,返回一个字符串”。</p>
 <p>默认情况, asHTML 属性被指定了一个闭包,这个闭包返回字符串来表示一个 HTML 标签。如果文本存在,这个标签就包含可选文本值,否则不包含文本内容。对于一个段落元素, 闭包会返回 “</p><p>some text</p>“ 或者 “<p>“, 取决于text 属性是否等于 “some text” 或者 nil.</p>
 <p>asHTML 属性命名和使用稍微有点像实例方法。不过, 因为 asHTML 是一个闭包而不是实例方法, 你可以用自定义闭包来替换它的默认值, 如果你想为一个特殊HTML元素改变HTML渲染的话。</p>
-<p>例如, asHTML 属性可以设置成一个闭包, 如果text属性为nil就默认设置成一些文本, 以防返回一个空的HTML标签:<br><code><br>let heading = HTMLElement(name: “h1”)<br>let defaultText = “some default text”<br>heading.asHTML = {<br>    return “&lt;(heading.name)&gt;(heading.text ?? defaultText)&lt;/(heading.name)&gt;”<br>}<br>print(heading.asHTML())<br>// 打印 “<h1>some default text</h1>“<br><code><br>备注</code></code></p>
+<p>例如, asHTML 属性可以设置成一个闭包, 如果text属性为nil就默认设置成一些文本, 以防返回一个空的HTML标签:<br><code><br>let heading = HTMLElement(name: “h1”)<br>let defaultText = “some default text”<br>heading.asHTML = {<br>    return “&lt;(heading.name)&gt;(heading.text ?? defaultText)&lt;/(heading.name)&gt;”<br>}<br>print(heading.asHTML())<br>// 打印 “<h1>some default text</h1>“<br></code><br>备注</p>
 <p>asHTML 属性声明成lazy属性, 因为它只有在元素需要作为字符串值进行渲染的时候才需要。asHTML 是一个lazy属性意味着你可以在默认闭包里调用self, 因为初始化完成同时self存在后,lazy属性才能访问。</p>
 <p>HTMLElement 类只提供了一个构造器,它有一个name参数和一个text参数。这个类同时定义了一个析构器, 它打印一条信息来表示HTMLElement 实例被销毁了。</p>
-<p>这里是如何使用 HTMLElement 类来创建和打印一个新的实例:<br><code><br>var paragraph: HTMLElement? = HTMLElement(name: “p”, text: “hello, world”)<br>print(paragraph!.asHTML())<br>// 打印 “<p>hello, world</p>“<br><code><br>注意</code></code></p>
+<p>这里是如何使用 HTMLElement 类来创建和打印一个新的实例:<br><code><br>var paragraph: HTMLElement? = HTMLElement(name: “p”, text: “hello, world”)<br>print(paragraph!.asHTML())<br>// 打印 “<p>hello, world</p>“<br></code><br>注意</p>
 <p>paragraph 变量定义成一个可选的 HTMLElement 类型, 所以它可以设置成nil。下面展示一个强引用循环的存在。</p>
 <p>不幸的是, HTMLElement 类, 在 HTMLElement 实例和用作asHTML 值的闭包之间产生了一个强引用循环。看起来是这个样子:</p>
 <p><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle01_2x.png"><br></div><br>实例的asHTML 属性强引用它的闭包。然而, 因为这个闭包在它的包体里调用了self(self.name 和 self.text), 闭包捕获了self, 这以为着它又强引用回HTMLElement 实例。两者之间就产生了一个强引用循环。</p>
 <p>备注</p>
 <p>尽管这个闭包多次调用self, 它只会捕获一个对 HTMLElement 实例的强引用。</p>
-<p>如果你把paragraph 变量设置成nil来打破这个强引用, HTMLElement 实例和它的闭包都不会销毁, 就是因为这个强引用循环:<br><code><br>paragraph = nil<br><code><br>注意 HTMLElement 析构器的信息没有打印, 这就说明 HTMLElement 实例没有销毁。</code></code></p>
+<p>如果你把paragraph 变量设置成nil来打破这个强引用, HTMLElement 实例和它的闭包都不会销毁, 就是因为这个强引用循环:<br><code><br>paragraph = nil<br></code><br>注意 HTMLElement 析构器的信息没有打印, 这就说明 HTMLElement 实例没有销毁。</p>
 <h1 id="解决闭包强引用循环"><a href="#解决闭包强引用循环" class="headerlink" title="解决闭包强引用循环"></a>解决闭包强引用循环</h1><p>通过在闭包里定义一个捕获列表,你可以解决闭包和类实例之间的强引用循环的问题。捕获列表定义了在包体里捕获一个或者多个引用类型时的使用规则。就像两个类实例间的强引用, 你声明每个捕获的引用为弱引用或者无主引用而不是强引用。弱引用和无主引用的选择取决于你代码不同部分的联系。</p>
 <p>备注</p>
 <p>当你在闭包中调用self 的成员时, Swift 要求你写成 self.someProperty 或者 self.someMethod() (而不是只有someProperty 或者 someMethod())。这个帮你记住, 闭包偶尔会捕获self.</p>
-<h1 id="定义捕获列表"><a href="#定义捕获列表" class="headerlink" title="定义捕获列表"></a>定义捕获列表</h1><p>Each item in a capture list is a pairing of the weak or unowned keyword with a reference to a class instance (such as self) or a variable initialized with some value (such as delegate = self.delegate!). These pairings are written within a pair of square braces, separated by commas.</p>
-<p>Place the capture list before a closure’s parameter list and return type if they are provided:</p>
-<p>lazy var someClosure: (Int, String) -&gt; String = {<br>    [unowned self, weak delegate = self.delegate!] (index: Int, stringToProcess: String) -&gt; String in<br>    // closure body goes here<br>}<br>If a closure does not specify a parameter list or return type because they can be inferred from context, place the capture list at the very start of the closure, followed by the in keyword:</p>
-<p>lazy var someClosure: () -&gt; String = {<br>    [unowned self, weak delegate = self.delegate!] in<br>    // closure body goes here<br>}<br>Weak and Unowned References</p>
-<p>Define a capture in a closure as an unowned reference when the closure and the instance it captures will always refer to each other, and will always be deallocated at the same time.</p>
-<p>Conversely, define a capture as a weak reference when the captured reference may become nil at some point in the future. Weak references are always of an optional type, and automatically become nil when the instance they reference is deallocated. This enables you to check for their existence within the closure’s body.</p>
-<p>NOTE</p>
-<p>If the captured reference will never become nil, it should always be captured as an unowned reference, rather than a weak reference.</p>
-<p>An unowned reference is the appropriate capture method to use to resolve the strong reference cycle in the HTMLElement example from earlier. Here’s how you write the HTMLElement class to avoid the cycle:</p>
-<p>class HTMLElement {</p>
+<h1 id="定义捕获列表"><a href="#定义捕获列表" class="headerlink" title="定义捕获列表"></a>定义捕获列表</h1><p>捕获列表中的每一项都是一对 weak 或者 unowned 关键字,带有对一个类实例或者变量的引用或者使用一些值初始化的变量。这些写在一堆方括号内,用逗号分开。</p>
+<p>把捕获列表放在闭包参数列表前,如果它们提供则返回类型:<br><code><br>lazy var someClosure: (Int, String) -&gt; String = {<br>    [unowned self, weak delegate = self.delegate!] (index: Int, stringToProcess: String) -&gt; String in<br>    // closure body goes here<br>}<br></code><br>如果一个闭包没有指定参数列表或者返回类型, 就把捕获列表放在闭包最开始,后面跟着in关键字:<br><code><br>lazy var someClosure: () -&gt; String = {<br>    [unowned self, weak delegate = self.delegate!] in<br>    // closure body goes here<br>}<br></code></p>
+<h1 id="弱引用和无主引用"><a href="#弱引用和无主引用" class="headerlink" title="弱引用和无主引用"></a>弱引用和无主引用</h1><p>当闭包和它捕获的实例将要互相引用, 并且会同时销毁时,定义成捕获无主引用。</p>
+<p>相反, 当捕获的实例在某个时间会变成nil时,定义成捕获弱引用。弱引用总是一个可选类型, 当引用的实例销毁后自动变成nil. 这个确保你可以在包体内判断它们是否存在。</p>
+<p>备注</p>
+<p>如果捕获的引用永不会变成nil, 它应该总是捕获为一个无主引用, 而不是一个弱引用。</p>
+<p>无主引用比较适合解决上面 HTMLElement 例子里的强引用循环的问题。这里是如何写 HTMLElement 类来避免这种循环:<br><code><br>class HTMLElement {</code></p>
 <pre><code>let name: String
 let text: String?
 
@@ -534,11 +531,233 @@ init(name: String, text: String? = nil) {
 deinit {
     print(&quot;\(name) is being deinitialized&quot;)
 }
-</code></pre><p>}<br>This implementation of HTMLElement is identical to the previous implementation, apart from the addition of a capture list within the asHTML closure. In this case, the capture list is [unowned self], which means “capture self as an unowned reference rather than a strong reference”.</p>
-<p>You can create and print an HTMLElement instance as before:</p>
-<p>var paragraph: HTMLElement? = HTMLElement(name: “p”, text: “hello, world”)<br>print(paragraph!.asHTML())<br>// Prints “</p><p>hello, world</p>“<br>Here’s how the references look with the capture list in place:<p></p>
-<p><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle02_2x.png"><br></div><br>This time, the capture of self by the closure is an unowned reference, and does not keep a strong hold on the HTMLElement instance it has captured. If you set the strong reference from the paragraph variable to nil, the HTMLElement instance is deallocated, as can be seen from the printing of its deinitializer message in the example below:</p>
-<p>paragraph = nil<br>// Prints “p is being deinitialized”<br>For more information about capture lists, see Capture Lists.</p>
+</code></pre><p>}<br><br>这个版本的实现和前面版本的实现是一样的, 除了asHTML闭包里的捕获列表。在这种情况下, 捕获列表是 [unowned self], 意思是 “捕获self作为无主引用而不是强引用”。</p>
+<p>你可以跟以前一样创建和打印一个 HTMLElement 实例:<br><code><br>var paragraph: HTMLElement? = HTMLElement(name: “p”, text: “hello, world”)<br>print(paragraph!.asHTML())<br>// 打印 “<p>hello, world</p>“<br></code><br>这里是使用捕获列表后引用的样子:</p>
+<p><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/closureReferenceCycle02_2x.png"><br></div><br>这次, 闭包捕获的self是一个无主引用, 不会强引用 HTMLElement 实例。如果你把 paragraph 变量的引用设置为nil,  HTMLElement 实例就会被销毁, 可以看到析构器打印的信息在下面:<br><code><br>paragraph = nil<br>// 打印 “p is being deinitialized”<br></code><br>更多捕获列表信息, 参见捕获列表。</p>
+<h1 id="可选链"><a href="#可选链" class="headerlink" title="可选链"></a>可选链</h1><p>可选链是一个过程,用来查询和调用属性, 方法和下标用一个可选项。如果可选项包含一个值, 属性, 方法或者下标调用成功; 如果可选项为nil, 属性, 方法或者下标调用返回nil. 多次调用可以写在一起, 如果任何链中任何联系为nil,整个链就会失败。</p>
+<p>备注</p>
+<p>Swift 中的可选链和Objective-C中的消息传递nil很像, 但是它对任何类型都一样, 可以判断失败或者成功。</p>
+<h1 id="作为强制拆包替代方案的可选链"><a href="#作为强制拆包替代方案的可选链" class="headerlink" title="作为强制拆包替代方案的可选链"></a>作为强制拆包替代方案的可选链</h1><p>在可选值后面加上问号就可以指定可选链, 如果可选值不为nil,你可以调用一个属性,函数或者下标。这个跟在可选值后放置感叹号来强制拆包很相似。区别是,当可选项为nil时,可选链接就会失败。如果可选项为nil,强制拆包会触发运行时错误。</p>
+<p>为了反映可选链接可以被nil值调用的事实, 一个可选链接调用的结果总是一个可选值, 即使你查询的属性,方法或者下标返回一个非可选的值。你使用返回值来判断可选链接调用是否成功, 或者判断是否因为有nil存在导致了失败。</p>
+<p>特别指出, 可选连接调用的结果和预期返回值的类型是一样的, 但是包在一个可选项中。如果通过可选链接访问, 正常要返回Int的属性会返回Int?</p>
+<p>下面的代码片段展示了可选链接和强制拆包的区别, 确保你可以用来判断成功与否。</p>
+<p>首先, 定义两个类Person 和 Residence:<br><code><br>class Person {<br>    var residence: Residence?<br>}</code></p>
+<p>class Residence {<br>    var numberOfRooms = 1<br>}<br><br>Residence 实例只有一个整型属性 numberOfRooms, 默认值是 1. Person 实例有一个可选Residence?类型属性 residence.</p>
+<p>如果你创建一个新的 Person 实例, 它的residence 属性默认初始化为nil,因为它是可选的。下面的代码里, john 有一个值为nil的属性residence:<br><code><br>let john = Person()<br></code><br>如果你想访问person属性 residence的属性 numberOfRooms, 可以在residence 后面放置一个感叹号来强制拆包它的值, 由于还没有值可以拆包,所以你会触发一个运行时错误:<br><code><br>let roomCount = john.residence!.numberOfRooms<br>// 触发运行时错误<br></code><br>当john.residence有一个非nil值时,上面的代码会成功,然后会把合适的房间数量设置给 roomCount. 不过, 当residence 为nil时,这个代码总会触发运行时错误。</p>
+<p>可选链接提供了一个替代方式来访问 numberOfRooms 的值。通过在感叹号的位置使用问号来使用可选链接:<br><code><br>if let roomCount = john.residence?.numberOfRooms {<br>    print(“John’s residence has (roomCount) room(s).”)<br>} else {<br>    print(“Unable to retrieve the number of rooms.”)<br>}<br>// 打印 “Unable to retrieve the number of rooms.”<br></code><br>这会告诉 Swift 去链接可选的residence 属性,如果它存在就返回 numberOfRooms 的值。</p>
+<p>由于尝试访问 numberOfRooms 有可能失败, 可选链接尝试放回一个 Int? 类型值, 或者“可选整型”。当 residence 为nil, 这个可选整型将会是nil, 这样就不能访问 numberOfRooms. 可选整型通过可选绑定来访问,然后去拆包这个整数同时把非空值赋值给roomCount 变量。</p>
+<p>注意,尽管numberOfRooms 是一个非空的整型,这个也是真的。通过可选链接查询的事实意味着调用numberOfRooms 总是返回 Int? 而不是 Int.</p>
+<p>你可以把一个 Residence 实例赋值给john.residence, 这样它就不会是一个空值了:<br><code><br>john.residence = Residence()<br></code><br>john.residence 现在有了一个实际的 Residence 实例, 而不是nil. 如果你用之前一样的可选链接访问 numberOfRooms, 它将放回 Int? , 包含一个默认值为1的 numberOfRooms:<br><code><br>if let roomCount = john.residence?.numberOfRooms {<br>    print(“John’s residence has (roomCount) room(s).”)<br>} else {<br>    print(“Unable to retrieve the number of rooms.”)<br>}<br>// 打印 “John’s residence has 1 room(s).”<br></code></p>
+<h1 id="为可选链接定义模型类"><a href="#为可选链接定义模型类" class="headerlink" title="为可选链接定义模型类"></a>为可选链接定义模型类</h1><p>你可以用可选链接调用多个层次的属性,方法或者下标。这使得你可以在复合相关类型内,向下获取子属性。然后判断是否可以在这些子属性上访问属性,方法或者下标。</p>
+<p>下面的代码片段定义了四个模型类,用于下面的例子。包括多层次可选链接的例子。这些类在 the Person 和 Residence 模型上展开, 加入了两个类 Room 和 Address, 带有对应的属性,方法和下标。</p>
+<p>Person 类定义和以前一样:<br><code><br>class Person {<br>    var residence: Residence?<br>}<br></code><br>Residence 类比以前复杂。这次, Residence 类定义了一个变量属性rooms, 用一个空数组[Room]初始化:<br><code><br>class Residence {<br>    var rooms = <a href="">Room</a><br>    var numberOfRooms: Int {<br>        return rooms.count<br>    }<br>    subscript(i: Int) -&gt; Room {<br>        get {<br>            return rooms[i]<br>        }<br>        set {<br>            rooms[i] = newValue<br>        }<br>    }<br>    func printNumberOfRooms() {<br>        print(“The number of rooms is (numberOfRooms)”)<br>    }<br>    var address: Address?<br>}<br></code><br>因为这个版本的 Residence 存储了一组 Room 实例, 它的numberOfRooms 属性实现成一个计算属性, 而不是一个存储属性。numberOfRooms 属性简单返回了rooms 数组的个数。</p>
+<p>作为访问romms 数组的简写, 这个版本的 Residence 提供了一个读写下标,来访问rooms数组指定索引下的房间。</p>
+<p>这个版本的 Residence 同时提供了一个方法printNumberOfRooms, 它只是简单打印住宅中的房间数。</p>
+<p>最后, Residence 定义了一个可选属性 address, 类型是 Address?. Address 类下面定义。</p>
+<p>用于rooms数组的Room类是带有一个属性name的简单类, 还有一个构造器,用来设置这个房间的名字:<br><code><br>class Room {<br>    let name: String<br>    init(name: String) { self.name = name }<br>}<br></code><br>模型里最后一个类是 Address. 这个类有三个类型为String?的可选属性。前面两个属性, buildingName 和 buildingNumber, 是两种方案来识别某个建筑的地址部分。第三个属性 street, 用来命名地址里的街道:<br><code><br>class Address {<br>    var buildingName: String?<br>    var buildingNumber: String?<br>    var street: String?<br>    func buildingIdentifier() -&gt; String? {<br>        if buildingNumber != nil &amp;&amp; street != nil {<br>            return “(buildingNumber) (street)”<br>        } else if buildingName != nil {<br>            return buildingName<br>        } else {<br>            return nil<br>        }<br>    }<br>}<br></code><br>Address 类同时提供了一个方法 buildingIdentifier(), 它有一个String?类型的返回值。这个方法判断地址的属性,如果有值就返回 buildingName, 如果buildingNumber 和 street 都有值,就返回两者的连接, 否则返回nil.</p>
+<h1 id="通过可选链接访问属性"><a href="#通过可选链接访问属性" class="headerlink" title="通过可选链接访问属性"></a>通过可选链接访问属性</h1><p>可选链接中描述它可以作为强制拆包的替代方案, 你可以在一个可选值上使用可选链接来访问一个属性, 然后判断属性访问是否成功。</p>
+<p>使用上面定义的类创建一个新的 Person 实例, 然后像以前一样访问它的属性numberOfRooms:<br><code><br>let john = Person()<br>if let roomCount = john.residence?.numberOfRooms {<br>    print(“John’s residence has (roomCount) room(s).”)<br>} else {<br>    print(“Unable to retrieve the number of rooms.”)<br>}<br>// 打印 “Unable to retrieve the number of rooms.”<br></code><br>因为 john.residence 为nil, 可选链接像以前一样会调用失败。</p>
+<p>你也可以通过可选链接给属性设置一个值:<br><code><br>let someAddress = Address()<br>someAddress.buildingNumber = “29”<br>someAddress.street = “Acacia Road”<br>john.residence?.address = someAddress<br></code><br>在这个例子里, 尝试设置john.residence的属性 address 将会失败, 因为 john.residence 现在是nil.</p>
+<p>赋值是可选链接的一部分, 意味者=运算符的右侧代码不会执行。在上一个例子, 容易看到 someAddress 不会执行, 因为访问一个常量不会有任何边界影响。下面的代码做了同样的赋值, 不过它使用一个函数去创建地址。在返回值前函数会打印 “Function was called”, 这个会让你看到=运算符右侧代码是否执行了。<br><code><br>func createAddress() -&gt; Address {<br>    print(“Function was called.”)</code></p>
+<pre><code>let someAddress = Address()
+someAddress.buildingNumber = &quot;29&quot;
+someAddress.street = &quot;Acacia Road&quot;
+
+return someAddress
+</code></pre><p>}<br>john.residence?.address = createAddress()<br><br>你可以看到createAddress() 函数不会执行, 因为什么也没有打印。</p>
+<h1 id="通过可选链接调用方法"><a href="#通过可选链接调用方法" class="headerlink" title="通过可选链接调用方法"></a>通过可选链接调用方法</h1><p>你可以在一个可选值上通过可选链接调用一个方法, 然后判断调用是否成功。即使这个方法没有定义返回值,你也可以这么做。</p>
+<p>Residence 类的 printNumberOfRooms() 方法打印numberOfRooms的当前值。这里是方法的样子:<br><code><br>func printNumberOfRooms() {<br>    print(“The number of rooms is (numberOfRooms)”)<br>}<br></code><br>这个方法没有指定返回值。不过, 没有返回值的方法和函数有一个隐式的返回值Void. 这就说它们返回了(), 或者说一个空元组。</p>
+<p>如果你使用可选链接,在一个可选值上调用这个方法。这个方法的返回类型会是 Void?, 而不是Void, 因为通过可选链接调用总是返回一个可选值。这让你可以使用if语句来判断能否调用printNumberOfRooms() 方法, 尽管这个方法本身没有定义返回值。把printNumberOfRooms 返回值和 nil 比较来查看方法调用是否成功:<br><code><br>if john.residence?.printNumberOfRooms() != nil {<br>    print(“It was possible to print the number of rooms.”)<br>} else {<br>    print(“It was not possible to print the number of rooms.”)<br>}<br>// 打印 “It was not possible to print the number of rooms.”<br></code><br>如果你尝试通过可选链接设置属性也是一样。上面的例子尝试为 john.residence 设置地址值, 尽管residence 属性是nil. 通过可选链接设置属性值都会返回一个Void?, 让你可以跟nil比较,来判断设置属性是否成功:<br><code><br>if (john.residence?.address = someAddress) != nil {<br>    print(“It was possible to set the address.”)<br>} else {<br>    print(“It was not possible to set the address.”)<br>}<br>// 打印 “It was not possible to set the address.”<br></code></p>
+<h1 id="通过可选链接访问下标"><a href="#通过可选链接访问下标" class="headerlink" title="通过可选链接访问下标"></a>通过可选链接访问下标</h1><p>你可以在可选值上使用可选链接来获取或者设置一个下标值, 然后判断下标调用是否成功。</p>
+<p>备注</p>
+<p>当你通过可选链接访问可选值的下标时, 你要把问号放置在下标括号的前面而不是后面。这个问号总是直接跟在可选表达式的后面。</p>
+<p>下面的例子尝试获取john.residence的房子数组中第一个房子的名字,使用的是定义在Residence类里的下标。因为 john.residence 现在是 nil, 下标调用会失败:<br><code><br>if let firstRoomName = john.residence?[0].name {<br>    print(“The first room name is (firstRoomName).”)<br>} else {<br>    print(“Unable to retrieve the first room name.”)<br>}<br>// 打印 “Unable to retrieve the first room name.”<br></code><br>下标调用中的可选链接问号直接放在john.residence后面, 在下标括号前面, 因为 john.residence 是可选值。</p>
+<p>相似的, 你可以使用可选链接,通过下标来设置新值:<br><code><br>john.residence?[0] = Room(name: “Bathroom”)<br></code><br>这个下标设置的尝试也会失败, 因为residence 当前值为nil.</p>
+<p>如果你创建一个实际的 Residence 实例并把它赋值给 john.residence, 同时带有一个或者多个 Room 实例存于rooms 数组, 你可以通过可选链接,使用 Residence 下标访问rooms数组中的实际项:<br><code><br>let johnsHouse = Residence()<br>johnsHouse.rooms.append(Room(name: “Living Room”))<br>johnsHouse.rooms.append(Room(name: “Kitchen”))<br>john.residence = johnsHouse</code></p>
+<p>if let firstRoomName = john.residence?[0].name {<br>    print(“The first room name is (firstRoomName).”)<br>} else {<br>    print(“Unable to retrieve the first room name.”)<br>}<br>// 打印 “The first room name is Living Room.”<br></p>
+<h1 id="访问可选类型下标"><a href="#访问可选类型下标" class="headerlink" title="访问可选类型下标"></a>访问可选类型下标</h1><p>如果一个下标返回一个可选类型值—比如Swift 字典类型的key下标—在下标方括号后面加上问号来链接它的可选返回值:<br><code><br>var testScores = [“Dave”: [86, 82, 84], “Bev”: [79, 94, 81]]<br>testScores[“Dave”]?[0] = 91<br>testScores[“Bev”]?[0] += 1<br>testScores[“Brian”]?[0] = 72<br>// the “Dave” array is now [91, 82, 84] and the “Bev” array is now [80, 94, 81]<br></code><br>上面的例子定义了一个字典 testScores, 它包含了两个键值对,把一个字符串键映射到一个整数数组。这个例子用可选链接把Dave数组的第一项设置成 91; 把Bev数组的第一项值增加1; 并且尝试为键为Brian的数组设置第一项的值。前两个调用成功, 因为testScores 字典包含 “Dave” 和 “Bev”. 第三个调用会失败, 因为 testScores 字典并不包含 “Brian” 键。</p>
+<h1 id="多层链接"><a href="#多层链接" class="headerlink" title="多层链接"></a>多层链接</h1><p>你可以使用多层链接来访问模型的属性,方法和下标。不过, 多层链接不会给返回值添加更多可选性。</p>
+<p>换句话说:</p>
+<p>如果你获取的类型不是可选的, 由于可选链接,它会变成可选类型。<br>如果你获取的类型已经是可选的了, 它不会因为可选链接而变的更可选。<br>因此:</p>
+<p>如果你通过可选链接去获取一个Int值, 会返回一个Int?, 不管使用了多少层的链接。<br>类似的, 如果你使用可选链接去获取一个 Int?值, 会返回一个Int?, 不管使用了多少层的连接。<br>下面的例子尝试访问john的属性residence 的属性address 的属性street. 这里用了两层可选链接, 来链接 residence 和 address 属性, 它们都是可选类型:<br><code><br>if let johnsStreet = john.residence?.address?.street {<br>    print(“John’s street name is (johnsStreet).”)<br>} else {<br>    print(“Unable to retrieve the address.”)<br>}<br>// 打印 “Unable to retrieve the address.”<br></code><br>john.residence 的值现在有一个有效的 Residence 实例。不过, john.residence.address 的值现在是 nil. 所以,  john.residence?.address?.street 调用失败。</p>
+<p>注意在上面的例子里, 你尝试获取street属性的值。这个属性的类型是 String?. 因此 john.residence?.address?.street 也是 String? 类型, 尽管使用了两层可选链接。</p>
+<p>如果你为john.residence?.address?设置一个实际的地址, 并且为address的属性street设置一个实际值, 你就可以使用多层链接访问street属性的值了:<br><code><br>let johnsAddress = Address()<br>johnsAddress.buildingName = “The Larches”<br>johnsAddress.street = “Laurel Street”<br>john.residence?.address = johnsAddress</code></p>
+<p>if let johnsStreet = john.residence?.address?.street {<br>    print(“John’s street name is (johnsStreet).”)<br>} else {<br>    print(“Unable to retrieve the address.”)<br>}<br>// 打印 “John’s street name is Laurel Street.”<br><br>在这个例子里, 尝试设置john.residence的address属性会成功, 因为john.residence现在包含了一个有效的 Residence 实例。</p>
+<h1 id="使用可选返回值链接方法"><a href="#使用可选返回值链接方法" class="headerlink" title="使用可选返回值链接方法"></a>使用可选返回值链接方法</h1><p>前面的例子展示如何通过可选链接获取一个可选类型的属性值。你也可以使用可选链接,调用返回值是可选类型的方法, 如果需要可以链接方法的返回值。</p>
+<p>下面的例子使用可选链接调用 Address 类的 buildingIdentifier() 方法。这个方法返回值类型是 String?. 就像上面描述的, 可选链接最后的返回类型也是 String?:<br><code><br>if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {<br>    print(“John’s building identifier is (buildingIdentifier).”)<br>}<br>// 打印 “John’s building identifier is The Larches.”<br></code><br>如果你想执行更深的操作链接方法的返回值, 就在方法括号的后面放上可选链接的问号:<br><code><br>if let beginsWithThe =<br>    john.residence?.address?.buildingIdentifier()?.hasPrefix(“The”) {<br>    if beginsWithThe {<br>        print(“John’s building identifier begins with \”The\”.”)<br>    } else {<br>        print(“John’s building identifier does not begin with \”The\”.”)<br>    }<br>}<br>// 打印 “John’s building identifier begins with “The”.”<br></code><br>备注</p>
+<p>在上面的例子里, 你在括号后面放上了可选链接问号, 因为你链接的可选值是 buildingIdentifier() 方法的返回值, 并不是buildingIdentifier() 方法本身。</p>
+<h1 id="错误处理-1"><a href="#错误处理-1" class="headerlink" title="错误处理"></a>错误处理</h1><p>错误处理是在你的程序中响应错误条件并恢复的过程。Swift 为在运行时抛出,捕获,传递和恢复错误提供了一级支持。</p>
+<p>有些操作不能保证总能顺利执行或者产生有用的输出。可选用来代表缺值, 但是当一个操作失败了, 知道失败怎么产生的通常很有用, 所以你的代码可以相应作出响应。</p>
+<p>例如, 考虑从磁盘读取和处理数据的任务。这个任务有很多方式失败, 包括指定位置文件不存在, 文件没有读的权限, 或者文件不能以兼容的格式进行编码。这些不同场景的区分允许程序去解决一些错误,和用户沟通它不能解决的任何错误。</p>
+<h1 id="表示和抛出错误"><a href="#表示和抛出错误" class="headerlink" title="表示和抛出错误"></a>表示和抛出错误</h1><p>在 Swift里, 错误用符合错误协议的类型值表示。这个空协议表明一个类型可以用来错误处理。</p>
+<p>Swift 枚举类型特别适合用来模拟一组相关的错误条件, 带有对应的值来传达错误的额外信息。例如, 这里有一组,在一个游戏中操作自动售货机的错误条件:<br><code><br>enum VendingMachineError: Error {<br>    case invalidSelection<br>    case insufficientFunds(coinsNeeded: Int)<br>    case outOfStock<br>}<br></code><br>抛出一个错误,让你表明异常发生了,正常执行语句不能继续了。例如, 下面的代码抛出一个错误,表明自动售货机需要五个以上的硬币:<br><code><br>throw VendingMachineError.insufficientFunds(coinsNeeded: 5)<br></code></p>
+<h1 id="处理错误"><a href="#处理错误" class="headerlink" title="处理错误"></a>处理错误</h1><p>当一个错误抛出来后, 一些包围的代码要负责处理这个错误—比如, 通过修正这个问题, 尝试替代方法或者通知用户执行失败。</p>
+<p>Swift 里有四种方法来处理错误。你可以把错误从函数传递到调用函数的代码里;使用一个 do-catch 语句来处理错误,;把错误当做一个可选值来处理;或者断言这个错误不会发生。</p>
+<p>当一个函数抛出一个错误时, 它改变了你的程序流, 所以快速判断抛出错误代码的位置很重要。为了在你的代码里判断这些位置,在调用会抛出错误的函数,方法或者构造器的代码前写上try 关键字—或者它的变体 try? 或者 try!. </p>
+<p>备注</p>
+<p>Swift 的错误处理像其他语言的异常处理, 也是使用try, catch 和throw 关键字。给很多语言不同的是—包括 Objective-C— Swift 的错误处理不涉及解除调用堆栈, 这个过程花费太多的计算。像这样, 抛出异常语句的性能可以媲美这些返回语句。</p>
+<h1 id="用抛出函数传递错误"><a href="#用抛出函数传递错误" class="headerlink" title="用抛出函数传递错误"></a>用抛出函数传递错误</h1><p>为了表示一个函数,方法或者构造器可以抛出错误, 在函数定义里,把throws 关键字写在函数括号的后面。用throws 标记的函数就是一个抛出函数。如果函数指定了一个返回值, 把 throws 关键字写在返回箭头之前 (-&gt;).<br><code><br>func canThrowErrors() throws -&gt; String</code></p>
+<p>func cannotThrowErrors() -&gt; String<br><br>一个抛出函数把错误传递到它被调用的地方。</p>
+<p>备注</p>
+<p>只有抛出函数可以传递错误。非抛出函数内部的错误只能在函数内部处理。</p>
+<p>在下面的代码里, VendingMachine 类有一个方法 vend(itemNamed:),如果请求项目不合理,它会抛出一个对应的VendingMachineError, 超出存货, 或者有一笔消费超过了当前的存量:<br><code><br>struct Item {<br>    var price: Int<br>    var count: Int<br>}</code></p>
+<p>class VendingMachine {<br>    var inventory = [<br>        “Candy Bar”: Item(price: 12, count: 7),<br>        “Chips”: Item(price: 10, count: 4),<br>        “Pretzels”: Item(price: 7, count: 11)<br>    ]<br>    var coinsDeposited = 0</p>
+<pre><code>func vend(itemNamed name: String) throws {
+    guard let item = inventory[name] else {
+        throw VendingMachineError.invalidSelection
+    }
+
+    guard item.count &gt; 0 else {
+        throw VendingMachineError.outOfStock
+    }
+
+    guard item.price &lt;= coinsDeposited else {
+        throw VendingMachineError.insufficientFunds(coinsNeeded: item.price - coinsDeposited)
+    }
+
+    coinsDeposited -= item.price
+
+    var newItem = item
+    newItem.count -= 1
+    inventory[name] = newItem
+
+    print(&quot;Dispensing \(name)&quot;)
+}
+</code></pre><p>}<br><br>vend(itemNamed:) 方法使用 guard 语句,如果任何购买小吃的要求不能满足,就尽早退出和抛出错误。因为一个throw 语句会立即转移程序控制, 只有所有的要求都满足才会出售货品。</p>
+<p>因为 vend(itemNamed:) 方法会传递所有抛出的错误, 任何调用这个方法的代码要么处理这个错误—用 do-catch 语句, try?, 或者 try!—要么继续传递这些错误。例如, 这个例子里的buyFavoriteSnack(person:vendingMachine:) 方法也是一个抛出函数, vend(itemNamed:) 方法抛出的错误会传递到 buyFavoriteSnack(person:vendingMachine:) 函数被调用的地方。<br><code><br>let favoriteSnacks = [<br>    “Alice”: “Chips”,<br>    “Bob”: “Licorice”,<br>    “Eve”: “Pretzels”,<br>]<br>func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {<br>    let snackName = favoriteSnacks[person] ?? “Candy Bar”<br>    try vendingMachine.vend(itemNamed: snackName)<br>}<br></code><br>在这个例子里,buyFavoriteSnack(person: vendingMachine:) 函数查询给定客户最喜欢的小吃,然后调用vend(itemNamed:)方法来购买。由于 vend(itemNamed:) 方法可以抛出错误, 所以在它前面加上try关键字来调用。</p>
+<p>抛出构造器和抛出函数一样可以传递错误。例如, 下面PurchasedSnack 结构体的构造器调用了一个抛出函数作为构造过程的一部分, 通过传递错误给调用者,它处理任何它遇见的错误。<br><code><br>struct PurchasedSnack {<br>    let name: String<br>    init(name: String, vendingMachine: VendingMachine) throws {<br>        try vendingMachine.vend(itemNamed: name)<br>        self.name = name<br>    }<br>}<br></code></p>
+<h1 id="使用-Do-Catch-处理错误"><a href="#使用-Do-Catch-处理错误" class="headerlink" title="使用 Do-Catch 处理错误"></a>使用 Do-Catch 处理错误</h1><p>你可以用一个 do-catch 语句来处理错误。如果一个错误被do字句的代码抛出来, 它匹配 catch 字句来决定哪一个来处理这个错误。</p>
+<p>这里是 do-catch 语句的一般样式:<br><code><br>do {<br>    try expression<br>    statements<br>} catch pattern 1 {<br>    statements<br>} catch pattern 2 where condition {<br>    statements<br>}<br></code><br>在catch后面写上模式来表明这个字句可以处理什么错误。如果一个 catch 字句没有一个模式, 字句就会匹配所有的错误并且把错误绑定到一个本地的常量 error. 更多模式匹配,参见模式。</p>
+<p>catch 字句并不需要处理所有do字句抛出来的错误。如果没有 catch 字句处理这个错误, 这个错误就会传递到周围代码。不过, 这个错误必须被周围代码处理—或者被一个封闭的 do-catch 字句或者在一个抛出函数内部处理。例如, 下面的代码处理了VendingMachineError 列举的所有三种情况, 但是所有其他的错我必须被周围代码处理:<br><code><br>var vendingMachine = VendingMachine()<br>vendingMachine.coinsDeposited = 8<br>do {<br>    try buyFavoriteSnack(person: “Alice”, vendingMachine: vendingMachine)<br>} catch VendingMachineError.invalidSelection {<br>    print(“Invalid Selection.”)<br>} catch VendingMachineError.outOfStock {<br>    print(“Out of Stock.”)<br>} catch VendingMachineError.insufficientFunds(let coinsNeeded) {<br>    print(“Insufficient funds. Please insert an additional (coinsNeeded) coins.”)<br>}<br>// 打印 “Insufficient funds. Please insert an additional 2 coins.”<br></code><br>在上面的例子里, buyFavoriteSnack(person:vendingMachine:) 在一个try表达式里调用, 因为它可以抛出一个错误。如果一个错误抛出了, 语句执行立即转到 catch 字句, 它觉得是否允许传递继续。如果没有错误抛出来, do 语句剩下的语句会继续执行。</p>
+<h1 id="转换错误成可选值"><a href="#转换错误成可选值" class="headerlink" title="转换错误成可选值"></a>转换错误成可选值</h1><p>通过转换错误成一个可选值,你可以使用 try? 来处理错误。当执行try?表达式时,如果一个错误抛出来了,表达式的值就会变成nil. 例如, 下面的例子里x和y有着相同的值和行为:<br><code><br>func someThrowingFunction() throws -&gt; Int {<br>    // …<br>}</code></p>
+<p>let x = try? someThrowingFunction()</p>
+<p>let y: Int?<br>do {<br>    y = try someThrowingFunction()<br>} catch {<br>    y = nil<br>}<br><br>如果 someThrowingFunction() 抛出一个错误, x和y的值就是nil. 否则, x和y值就是函数的返回值。注意,无论函数返回什么类型,x和y都是可选的。这里函数返回的是一个整数, 所以x和y是可选的整数。</p>
+<p>当你想处理所有相同方式的错误时,使用 try? 让你可以写出更加精确的错误处理代码。例如, 下面的代码使用了一些简单的方法来获取数据, 如果所有的方法都失败了则返回nil.<br><code><br>func fetchData() -&gt; Data? {<br>    if let data = try? fetchDataFromDisk() { return data }<br>    if let data = try? fetchDataFromServer() { return data }<br>    return nil<br>}<br></code></p>
+<h1 id="禁用错误传递"><a href="#禁用错误传递" class="headerlink" title="禁用错误传递"></a>禁用错误传递</h1><p>有时,你不希望一个抛出函数或者方法在运行时抛出一个错误。这种情况下, 可以在表达式前面写上 try!来禁用错误传递并且把调用包裹在运行的断言中,这错误就不会抛出。如果一个错误时间上出现了, 你会得到一个运行时错误。</p>
+<p>例如, 下面的代码使用了 loadImage(atPath:) 函数, 它从一个给定的路径导入图片资源,如果图片不能导入则抛出一个错误。在这种情况下, 因为图片是靠程序输送, 运行时不会有错误抛出, 所以它适合禁用错误传递。<br><code><br>let photo = try! loadImage(atPath: “./Resources/John Appleseed.jpg”)<br></code></p>
+<h1 id="指定清理行为"><a href="#指定清理行为" class="headerlink" title="指定清理行为"></a>指定清理行为</h1><p>在代码执行离开当前代码块之前,你可以用一个defer语句来执行一组语句。这个语句让你可以做一些必须的清理工作,这个工作执行时无视怎样离开当前代码块—不管它是因为错误发生还是因为return或者break语句。例如, 你可以使用一个defer语句,来确保文件描述符被关闭,手动分配的内存被释放。</p>
+<p>一个defer语句一直到当前代码块退出才会执行。这个语句由defer关键字和执行语句组成。推迟语句不会包含任何把控制转移的语句。 比如 break 或者 return 语句, 也不会抛出错误。推迟行为以它们被指定的相反顺序执行—也就说, defer语句第一行代码会在第二行代码后执行,以此类推。<br><code><br>func processFile(filename: String) throws {<br>    if exists(filename) {<br>        let file = open(filename)<br>        defer {<br>            close(file)<br>        }<br>        while let line = try file.readline() {<br>            // Work with the file.<br>        }<br>        // close(file) is called here, at the end of the scope.<br>    }<br>}<br></code><br>上面的例子使用了一个 defer 语句来确保 open(<em>:) 函数会调用 close(</em>:).</p>
+<p>备注</p>
+<p>即使没有涉及错误处理代码,你也可以使用一个defer语句。</p>
+<h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><p>类型转换是是判断实例类型的一种方法, 或者在它的继承层次里,把来自某些地方的实例作为不同的超类或者子类。</p>
+<p>Swift中的类型转换使用is和as操作符。这两个操作符提供了简单有效的方式来判断一个值的类型或者把一个值转换成不同的类型。</p>
+<p>你可以通过类型转换来判断一个类型是否遵守某个协议, hecking for Protocol Conformance 有描述。</p>
+<h1 id="为类型转换定义类层次"><a href="#为类型转换定义类层次" class="headerlink" title="为类型转换定义类层次"></a>为类型转换定义类层次</h1><p>你可以在类和子类层次使用类型转换,来判断特定类实例的类型,同时可以在相同的层次里把实例转换成另外一个类类型。下面三个代码片段定义了一类层次,还有一个包含这些类实例的数组, 在类型转换的例子中使用。</p>
+<p>第一个代码片段定义了了一个新的基类 MediaItem. 这个类为任何出现在数字媒体库中的项目提供基本的功能。特别的是, 它声明了一个字符串类型的 name属性, 还有个一个 init 构造器。 (它假定所有媒体项,包括电影和歌曲,都有名字)<br><code><br>class MediaItem {<br>    var name: String<br>    init(name: String) {<br>        self.name = name<br>    }<br>}<br></code><br>下面的代码片段定义了两个 MediaItem的子类。第一个子类, Movie, 封装了一部电影的额外信息。它添加了一个 director 属性和一个对应的构造器。第二个子类, Song, 添加了一个add属性和一个构造器:<br><code><br>class Movie: MediaItem {<br>    var director: String<br>    init(name: String, director: String) {<br>        self.director = director<br>        super.init(name: name)<br>    }<br>}</code></p>
+<p>class Song: MediaItem {<br>    var artist: String<br>    init(name: String, artist: String) {<br>        self.artist = artist<br>        super.init(name: name)<br>    }<br>}<br><br>最后的代码片段创建了一个常量数组 library, 它包括了两个 Movie 实例和三个 Song 实例。library 数组的类型通过用字面量内容初始化可以推断出来。 Swift 类型检查者可以推断出 Movie 和 Song 有一个共同的基类 MediaItem, 所以它推断library 数组是 [MediaItem] 类型:<br><code><br>let library = [<br>    Movie(name: “Casablanca”, director: “Michael Curtiz”),<br>    Song(name: “Blue Suede Shoes”, artist: “Elvis Presley”),<br>    Movie(name: “Citizen Kane”, director: “Orson Welles”),<br>    Song(name: “The One And Only”, artist: “Chesney Hawkes”),<br>    Song(name: “Never Gonna Give You Up”, artist: “Rick Astley”)<br>]<br>// the type of “library” is inferred to be [MediaItem]<br></code><br>实际上存储在 library 数组里的依然是 Movie 和 Song 实例。不过, 如果遍历这个数组的内容, 你获得的类型是 MediaItem, 而不是 Movie 或者 Song. 为了使用它们本来的类型, 你需要检测它们的类型, 或者向下转换它们的类型。0</p>
+<h1 id="判断类型"><a href="#判断类型" class="headerlink" title="判断类型"></a>判断类型</h1><p>使用类型判断操作符 (is) 来判断一个实例是否是每个子类类型。如果实例是那个子类类型,类型判断操作符就返回真,否则就返回假。</p>
+<p>下面的例子定义了两个变量, movieCount 和 songCount, 用来计算存储在library数组中的 Movie 和 Song 实例的数量:<br><code><br>var movieCount = 0<br>var songCount = 0</code></p>
+<p>for item in library {<br>    if item is Movie {<br>        movieCount += 1<br>    } else if item is Song {<br>        songCount += 1<br>    }<br>}</p>
+<p>print(“Media library contains (movieCount) movies and (songCount) songs”)<br>// 打印 “Media library contains 2 movies and 3 songs”<br><br>上面的例子遍历library数组所有的项。每次传递, for-in 循环把item常量设置成数组里的下一个 MediaItem.</p>
+<p>如果当前MediaItem 是一个Movie 实例, 就返回真。否则就返回假。类似的, MediaItem是 Song 就判断它是不是一个 Song 实例。for-in 循环结束后, movieCount 和 songCount 包含了对应实例的数量。</p>
+<h1 id="向下转换"><a href="#向下转换" class="headerlink" title="向下转换"></a>向下转换</h1><p>实际上,特定类类型的常量或者变量调用是子类的实例。你可以使用类型转换操作符(as? 或者 as!)向下转换成子类类型。</p>
+<p>由于向下转换会失败, 所以类型转换操作符有两种形式。条件形式, as?, 返回你想转换类型的可选值。强制形式, as!, 尝试向下转换并强制拆包结果。</p>
+<p>当你不能确定向下转换能否成功时,使用条件形式的类型转换操作符 (as?). 这个操作符总是返回一个可选值, 如果向下转换不可能就会返回nil. 这个确保你可以判断转换的成功。</p>
+<p>当你确定向下转换可以成功时,使用强制形式的类型转换操作符 (as!). 如果你转换到一个错误的类类型,这个形式的操作符会引发一个运行时的错误。</p>
+<p>下面的例子遍历了library数组里的的每一个 MediaItem , 然后为每一项打印一条对应的描述信息。为了实现这个, 它需要每一项作为真实的 Movie 或者 Song来访问, 不仅仅是作为 MediaItem. 为了能可以访问 director 或者 artist 属性,然后用在描述里,这样做是必须的。</p>
+<p>在这个例子里, 数组里的每一项有可能是 Movie, 或者 Song. 你不会提前知道每一项实际使用哪个类, 所以这里很适合使用条件形式的操作符 (as?) 来在循环中判断向下转换成功与否:<br><code><br>for item in library {<br>    if let movie = item as? Movie {<br>        print(“Movie: (movie.name), dir. (movie.director)”)<br>    } else if let song = item as? Song {<br>        print(“Song: (song.name), by (song.artist)”)<br>    }<br>}</code></p>
+<p>// Movie: Casablanca, dir. Michael Curtiz<br>// Song: Blue Suede Shoes, by Elvis Presley<br>// Movie: Citizen Kane, dir. Orson Welles<br>// Song: The One And Only, by Chesney Hawkes<br>// Song: Never Gonna Give You Up, by Rick Astley<br><br>这个例子开始先尝试将当前项向下转换到类型 Movie. 因为当前项是 MediaItem 实例, 它有可能是一个 Movie; 它也有可能是一个 Song, 或者仅仅是一个基本的 MediaItem. 因为不确定性, as? 形式的类型转换符会返回一个可选值,在尝试向下转换成一个子类型时。item as? Movie 返回结果是 Movie? 类型, 或者 “可选的 Movie”.</p>
+<p>如果对数组中的Song实例向下转换到 Movie 就会失败。为了处理这个情况, 例子里使用可选绑定来判断可选的l Movie 是否包含了一个值 (就是说, 判断向下转换是否成功) 可选绑定写作 “if let movie = item as? Movie”, 它可以这样读:</p>
+<p>“尝试作为一个Movie来访问。 如果成功了, 把可选返回值设置给一个临时常量 movie.”</p>
+<p>如果向下转换成功了, movie的属性用来为Movie实例打印一条描述信息, 包括导演名。相似的原则用于判断 Song 实例, 在找到Song实例的时候就打印对应的描述信息(包括艺术家名字)。</p>
+<p>备注</p>
+<p>转换不会修改实例的值。潜在的实例依然相同; 它会简单处理和访问作为转换的类型。</p>
+<h1 id="Any-和-AnyObject的类型转换"><a href="#Any-和-AnyObject的类型转换" class="headerlink" title="Any 和 AnyObject的类型转换"></a>Any 和 AnyObject的类型转换</h1><p>Swift 提供两个特别类型来使用未指定的类型:</p>
+<p>Any 可以表示任意类型的实例, 包括函数类型。<br>AnyObject可以表示任意类类型的实例。<br>当你需要它们提供的行为和能力的时候, 可以使用Any 和 AnyObject. 更好的建议是,在你的代码中指定你希望的类型。</p>
+<p>这里有一个例子使用Any来处理不同类型的混合, 包括函数类型和非类的类型。这个例子创建了一个数组 things, 它可以存储Any类型的值:<br><code><br>var things = <a href="">Any</a></code></p>
+<p>things.append(0)<br>things.append(0.0)<br>things.append(42)<br>things.append(3.14159)<br>things.append(“hello”)<br>things.append((3.0, 5.0))<br>things.append(Movie(name: “Ghostbusters”, director: “Ivan Reitman”))<br>things.append({ (name: String) -&gt; String in “Hello, (name)” })<br><code><br>things 数组包含了两个整型值, 两个浮点值, 一个字符串值, 一个元组类型 (Double, Double), 电影 “Ghostbusters”, 和一组表达式,这个表达式有一个字符串参数和一个字符串返回值。</code></p>
+<p>为了找出一个常量或者变量的特定类型, Any 和 AnyObject 类型, 你可以在一个switch语句分支里使用is或者as. 下面的例子遍历了things数组里的每一项,然后使用一个switch语句来查询它们的类型。一些分支绑定了指定类型常量的匹配值来确保它的值被打印出来:<br><code><br>for thing in things {<br>    switch thing {<br>    case 0 as Int:<br>        print(“zero as an Int”)<br>    case 0 as Double:<br>        print(“zero as a Double”)<br>    case let someInt as Int:<br>        print(“an integer value of (someInt)”)<br>    case let someDouble as Double where someDouble &gt; 0:<br>        print(“a positive double value of (someDouble)”)<br>    case is Double:<br>        print(“some other double value that I don’t want to print”)<br>    case let someString as String:<br>        print(“a string value of \”(someString)\””)<br>    case let (x, y) as (Double, Double):<br>        print(“an (x, y) point at (x), (y)”)<br>    case let movie as Movie:<br>        print(“a movie called (movie.name), dir. (movie.director)”)<br>    case let stringConverter as (String) -&gt; String:<br>        print(stringConverter(“Michael”))<br>    default:<br>        print(“something else”)<br>    }<br>}</code></p>
+<p>// zero as an Int<br>// zero as a Double<br>// an integer value of 42<br>// a positive double value of 3.14159<br>// a string value of “hello”<br>// an (x, y) point at 3.0, 5.0<br>// a movie called Ghostbusters, dir. Ivan Reitman<br>// Hello, Michael<br><br>NOTE</p>
+<p>Any 类型表示任意类型值, 包括可选类型。如果某个地方需要一个Any类型值,你而你使用了可选值, Swift 会给你一个警告。如果你真的需要使用一个可选值作为 Any 值, 你可以使用 as 操作符显式转换 optional 为 Any, 就像下面展示的这样。<br><code><br>let optionalNumber: Int? = 3<br>things.append(optionalNumber)        // Warning<br>things.append(optionalNumber as Any) // No warning<br></code></p>
+<h1 id="嵌套类型"><a href="#嵌套类型" class="headerlink" title="嵌套类型"></a>嵌套类型</h1><p>枚举通常用来支持一个特定类或者结构体的功能。类似的, 有时候在一个复杂类型的内部定义工具类或者结构体来使用是很方便的。为了完成这个, Swift 确保你可以定义嵌套类型, 即在支持类型定义中内嵌支持的枚举,类和结构体。</p>
+<p>为了在其他类型中内嵌一个类型, 在它支持类型的外部大括号内写定义。类型可以按照需要内嵌多层。</p>
+<h1 id="内嵌类型的行为"><a href="#内嵌类型的行为" class="headerlink" title="内嵌类型的行为"></a>内嵌类型的行为</h1><p>下面的例子定义了一个结构体 BlackjackCard, 它模拟了在Blackjack 游戏中玩牌。BlackJack 结构体包含了两个内嵌的枚举类型 Suit 和 Rank.</p>
+<p>在 Blackjack里, Ace 牌面值或者是一或者是十一。这个特性用一个结构体 Values来表示, 它嵌套在 Rank 枚举里:<br><code><br>struct BlackjackCard {</code></p>
+<pre><code>// nested Suit enumeration
+enum Suit: Character {
+    case spades = &quot;♠&quot;, hearts = &quot;♡&quot;, diamonds = &quot;♢&quot;, clubs = &quot;♣&quot;
+}
+
+// nested Rank enumeration
+enum Rank: Int {
+    case two = 2, three, four, five, six, seven, eight, nine, ten
+    case jack, queen, king, ace
+    struct Values {
+        let first: Int, second: Int?
+    }
+    var values: Values {
+        switch self {
+        case .ace:
+            return Values(first: 1, second: 11)
+        case .jack, .queen, .king:
+            return Values(first: 10, second: nil)
+        default:
+            return Values(first: self.rawValue, second: nil)
+        }
+    }
+}
+
+// BlackjackCard properties and methods
+let rank: Rank, suit: Suit
+var description: String {
+    var output = &quot;suit is \(suit.rawValue),&quot;
+    output += &quot; value is \(rank.values.first)&quot;
+    if let second = rank.values.second {
+        output += &quot; or \(second)&quot;
+    }
+    return output
+}
+</code></pre><p>}<br><br>Suit 枚举描述了玩牌的四种花色, 带有raw 字符值来表示它们的符号。</p>
+<p>Rank 枚举描述了13种玩牌排名, 带有一个raw 整型值来表示它们的牌面值 (这个raw整型值没有用于Jack, Queen, King, 和 Ace)</p>
+<p>正如上面提到的,Rank 枚举定义了更深的嵌套结构体 Values. 这个结构体封装了大多数牌都有一个值的事实, 不过 Ace 牌有两个值。 Values 结构体定义了两个属性来表示这个:</p>
+<p>第一个, 类型是 Int<br>第二个, 类型是 Int?, 或者“可选 Int”<br>Rank 同时定义了一个计算属性values, 它会返回 Values 结构体的实例。这个计算属性考察牌的排名并且基于排名用对应的值来初始化新的 Values 实例。它为jack, queen, king, 和 ace使用特别的值。对于数子牌, 它使用 raw 整型值。</p>
+<p>BlackjackCard 结构体自己有两个属性—rank 和 suit. 它也定义了一个计算属性description, 它使用rank 和 suit中的值建立牌名字和数值的描述。description 属性使用可选绑定来判断是否有第二个值需要展示, 如果是, 把第二个值插入描述信息。</p>
+<p>由于 BlackjackCard 是一个没有自定义构造器的结构体, 它有一个隐式的成员构造器。你可以用这个构造器来构造一个新的常量theAceOfSpades:<br><code><br>let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)<br>print(“theAceOfSpades: (theAceOfSpades.description)”)<br>// 打印 “theAceOfSpades: suit is ♠, value is 1 or 11”<br></code><br>尽管 Rank 和 Suit 嵌套在 BlackjackCard里面, 它们的类型可以通过上下文推断出来, 所以这个实例的初始化可以根据分支名调用枚举分支 (.ace 和 .spades) . 上面的例子里, description 属性正确报出黑桃 Ace 牌面值是1或者11.</p>
+<h1 id="调用嵌套类型"><a href="#调用嵌套类型" class="headerlink" title="调用嵌套类型"></a>调用嵌套类型</h1><p>在定义上下文之外调用嵌套类型, 要在它的名字前加上它内嵌的类型名:<br><code><br>let heartsSymbol = BlackjackCard.Suit.hearts.rawValue<br>// heartsSymbol is “♡”<br></code></p>
+<h1 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h1><p>扩展可以给存在的类,结构体,枚举或者协议类型添加新功能。包括给你无法访问的源代码扩展类型的能力 (也就是逆向建模)。 扩展类似于Objective-C 的分类。 (跟 Objective-C 分类的是, Swift 扩展没有名字)</p>
+<h1 id="Swift-扩展可以"><a href="#Swift-扩展可以" class="headerlink" title="Swift 扩展可以:"></a>Swift 扩展可以:</h1><p>添加计算实例属性和计算类型属性<br>定义实例方法和类型方法<br>提供新的构造器<br>定义下标<br>定义和使用新的嵌套类型<br>让已存在的类型符合一个协议<br>在 Swift里, 你甚至可以扩展一个协议来提供需要的实现或者或者添加额外的功能符合使用的类型。</p>
+<p>备注</p>
+<p>扩展可以给一个类型添加新功能, 但是它们不能覆盖已经存在的功能。</p>
+<h1 id="扩展语法"><a href="#扩展语法" class="headerlink" title="扩展语法"></a>扩展语法</h1><p>使用 extension 关键字来声明扩展:<br><code><br>extension SomeType {<br>    // new functionality to add to SomeType goes here<br>}<br></code><br>扩展可以让已存在的类型符合一个或者多个协议。 在这种情况下, 协议名跟类和结构体的名字写法一样:<br><code><br>extension SomeType: SomeProtocol, AnotherProtocol {<br>    // implementation of protocol requirements goes here<br>}<br></code></p>
+<p>备注</p>
+<p>如果定义一个扩展来给已存在的类型添加新功能, 这个新功能给所有这种类型的实例使用, 即使它们在扩展定义前已经创建。</p>
+<h1 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h1><p>扩展可以给已存在类型添加计算实例属性和计算类型属性。下面的例子给Swift的内建浮点类型添加了五个计算实例属性, 提供了基本支持来使用距离单位:<br><code><br>extension Double {<br>    var km: Double { return self * 1_000.0 }<br>    var m: Double { return self }<br>    var cm: Double { return self / 100.0 }<br>    var mm: Double { return self / 1_000.0 }<br>    var ft: Double { return self / 3.28084 }<br>}<br>let oneInch = 25.4.mm<br>print(“One inch is (oneInch) meters”)<br>// 打印 “One inch is 0.0254 meters”<br>let threeFeet = 3.ft<br>print(“Three feet is (threeFeet) meters”)<br>// 打印 “Three feet is 0.914399970739201 meters”<br></code><br>这些计算属性表示,一个浮点值应该被当做一个特定的长度单位。尽管它们实现成计算属性, 这些属性的名字可以用点语法添加到浮点值的后面, 使用这些字面量来执行距离的转换。</p>
+<p>在这个例子里, 浮点值 1.0 被认为表示1米。就是为什么m计算属性返回self—1.m 表达式被认为是计算1.0的浮点值。</p>
+<p>其他单位转换使用米测量。一千米相当于 1,000 米, so the km computed property multiplies the value by 1_000.00 to convert into a number expressed in meters. Similarly, there are 3.28084 feet in a meter, and so the ft computed property divides the underlying Double value by 3.28084, to convert it from feet to meters.</p>
+<p>These properties are read-only computed properties, and so they are expressed without the get keyword, for brevity. Their return value is of type Double, and can be used within mathematical calculations wherever a Double is accepted:</p>
+<p>let aMarathon = 42.km + 195.m<br>print(“A marathon is (aMarathon) meters long”)<br>// Prints “A marathon is 42195.0 meters long”<br>NOTE</p>
+<p>Extensions can add new computed properties, but they cannot add stored properties, or add property observers to existing properties.</p>
+<p>Initializers</p>
+<p>Extensions can add new initializers to existing types. This enables you to extend other types to accept your own custom types as initializer parameters, or to provide additional initialization options that were not included as part of the type’s original implementation.</p>
+<p>Extensions can add new convenience initializers to a class, but they cannot add new designated initializers or deinitializers to a class. Designated initializers and deinitializers must always be provided by the original class implementation.</p>
+<p>NOTE</p>
+<p>If you use an extension to add an initializer to a value type that provides default values for all of its stored properties and does not define any custom initializers, you can call the default initializer and memberwise initializer for that value type from within your extension’s initializer.</p>
+<p>This would not be the case if you had written the initializer as part of the value type’s original implementation, as described in Initializer Delegation for Value Types.</p>
+<p>The example below defines a custom Rect structure to represent a geometric rectangle. The example also defines two supporting structures called Size and Point, both of which provide default values of 0.0 for all of their properties:</p>
+<p>struct Size {<br>    var width = 0.0, height = 0.0<br>}<br>struct Point {<br>    var x = 0.0, y = 0.0<br>}<br>struct Rect {<br>    var origin = Point()<br>    var size = Size()<br>}<br>Because the Rect structure provides default values for all of its properties, it receives a default initializer and a memberwise initializer automatically, as described in Default Initializers. These initializers can be used to create new Rect instances:</p>
+<p>let defaultRect = Rect()<br>let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0),<br>                          size: Size(width: 5.0, height: 5.0))<br>You can extend the Rect structure to provide an additional initializer that takes a specific center point and size:</p>
+<p>extension Rect {<br>    init(center: Point, size: Size) {<br>        let originX = center.x - (size.width / 2)<br>        let originY = center.y - (size.height / 2)<br>        self.init(origin: Point(x: originX, y: originY), size: size)<br>    }<br>}<br>This new initializer starts by calculating an appropriate origin point based on the provided center point and size value. The initializer then calls the structure’s automatic memberwise initializer init(origin:size:), which stores the new origin and size values in the appropriate properties:</p>
+<p>let centerRect = Rect(center: Point(x: 4.0, y: 4.0),<br>                      size: Size(width: 3.0, height: 3.0))<br>// centerRect’s origin is (2.5, 2.5) and its size is (3.0, 3.0)<br>NOTE</p>
+<p>If you provide a new initializer with an extension, you are still responsible for making sure that each instance is fully initialized once the initializer completes.</p>
+<p>Methods</p>
+<p>Extensions can add new instance methods and type methods to existing types. The following example adds a new instance method called repetitions to the Int type:</p>
+<p>extension Int {<br>    func repetitions(task: () -&gt; Void) {<br>        for _ in 0..<self {="" task()="" }="" the="" repetitions(task:)="" method="" takes="" a="" single="" argument="" of="" type="" ()="" -=""> Void, which indicates a function that has no parameters and does not return a value.</self></p>
+<p>After defining this extension, you can call the repetitions(task:) method on any integer to perform a task that many number of times:</p>
+<p>3.repetitions {<br>    print(“Hello!”)<br>}<br>// Hello!<br>// Hello!<br>// Hello!<br>Mutating Instance Methods</p>
+<p>Instance methods added with an extension can also modify (or mutate) the instance itself. Structure and enumeration methods that modify self or its properties must mark the instance method as mutating, just like mutating methods from an original implementation.</p>
+<p>The example below adds a new mutating method called square to Swift’s Int type, which squares the original value:</p>
+<p>extension Int {<br>    mutating func square() {<br>        self = self * self<br>    }<br>}<br>var someInt = 3<br>someInt.square()<br>// someInt is now 9<br>Subscripts</p>
+<p>Extensions can add new subscripts to an existing type. This example adds an integer subscript to Swift’s built-in Int type. This subscript [n] returns the decimal digit n places in from the right of the number:</p>
+<p>123456789[0] returns 9<br>123456789[1] returns 8<br>…and so on:</p>
+<p>extension Int {<br>    subscript(digitIndex: Int) -&gt; Int {<br>        var decimalBase = 1<br>        for _ in 0..&lt;digitIndex {<br>            decimalBase *= 10<br>        }<br>        return (self / decimalBase) % 10<br>    }<br>}<br>746381295[0]<br>// returns 5<br>746381295[1]<br>// returns 9<br>746381295[2]<br>// returns 2<br>746381295[8]<br>// returns 7<br>If the Int value does not have enough digits for the requested index, the subscript implementation returns 0, as if the number had been padded with zeros to the left:</p>
+<p>746381295[9]<br>// returns 0, as if you had requested:<br>0746381295[9]<br>Nested Types</p>
+<p>Extensions can add new nested types to existing classes, structures, and enumerations:</p>
+<p>extension Int {<br>    enum Kind {<br>        case negative, zero, positive<br>    }<br>    var kind: Kind {<br>        switch self {<br>        case 0:<br>            return .zero<br>        case let x where x &gt; 0:<br>            return .positive<br>        default:<br>            return .negative<br>        }<br>    }<br>}<br>This example adds a new nested enumeration to Int. This enumeration, called Kind, expresses the kind of number that a particular integer represents. Specifically, it expresses whether the number is negative, zero, or positive.</p>
+<p>This example also adds a new computed instance property to Int, called kind, which returns the appropriate Kind enumeration case for that integer.</p>
+<p>The nested enumeration can now be used with any Int value:</p>
+<p>func printIntegerKinds(<em> numbers: [Int]) {<br>    for number in numbers {<br>        switch number.kind {<br>        case .negative:<br>            print(“- “, terminator: “”)<br>        case .zero:<br>            print(“0 “, terminator: “”)<br>        case .positive:<br>            print(“+ “, terminator: “”)<br>        }<br>    }<br>    print(“”)<br>}<br>printIntegerKinds([3, 19, -27, 0, -6, 0, 7])<br>// Prints “+ + - 0 - 0 + “<br>This function, printIntegerKinds(</em>:), takes an input array of Int values and iterates over those values in turn. For each integer in the array, the function considers the kind computed property for that integer, and prints an appropriate description.</p>
+<p>NOTE</p>
+<p>number.kind is already known to be of type Int.Kind. Because of this, all of the Int.Kind case values can be written in shorthand form inside the switch statement, such as .negative rather than Int.Kind.negative.</p>
 </element>]]></content>
     
     <summary type="html">
