@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-16T07:06:35.000Z</updated>
+  <updated>2016-12-16T07:47:53.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,23 +20,23 @@
     <link href="http://yoursite.com/2016/12/16/TestFlight-iOS-Beta%E6%B5%8B%E8%AF%95/"/>
     <id>http://yoursite.com/2016/12/16/TestFlight-iOS-Beta测试/</id>
     <published>2016-12-16T04:48:45.000Z</published>
-    <updated>2016-12-16T07:06:35.000Z</updated>
+    <updated>2016-12-16T07:47:53.000Z</updated>
     
-    <content type="html"><![CDATA[<p>TestFlight Beta 测试是苹果公司的产品,旨在更容易邀请用户,在你发布产品到App Store前,能够参与测试你的 iOS, watchOS 和 tvOS 应用。<br>这个教程不需要你去编码 — 跟着下面的步骤做,你就可以学会使用 TestFlight</p>
+    <content type="html"><![CDATA[<p>TestFlight Beta 测试是苹果公司的产品,旨在更容易邀请用户,在你发布产品到App Store前,参与测试你的 iOS, watchOS 和 tvOS 应用。<br>这个教程不需要你去编码 — 跟着下面的步骤做,你就可以学会使用 TestFlight</p>
 <h1 id="提交版本到-iTunes-Connect"><a href="#提交版本到-iTunes-Connect" class="headerlink" title="提交版本到 iTunes Connect"></a>提交版本到 iTunes Connect</h1><p>在 Xcode中打开你的工程, 确保你有一个正确的 Bundle Identifier, 你的 Team ID 也设置了, 你也选择了自动 Distribution Certificate Code Signing Identity:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/1-Code-Signing.png" width="612"><br></div><br>从顶部工具栏选择 Product\Archive:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2015/04/2-Product-Archive1.png" width="193" height="120"><br></div><br>一旦 Xcode 完成归档, 点击 Upload to App Store… 按钮:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/3-Archive1.png" width="650" height="153"><br></div><br>现在你需要选择你的开发团队:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/4-Choose-Team1.png" width="579"><br></div><br>最后点击 Upload:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/5-Upload1.png" width="578"><br></div><br>等几分钟。 如果网速慢,就喝口咖啡或者随便吃点什么。</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/6-Upload2.png" width="579"><br></div><br>一旦完成了, 你会受到下面的成功信息:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/6-Upload2.png" width="579"><br></div><br>一旦完成了, 你会收到下面的成功信息:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/Success.png" width="577"><br></div><br>这些是XCode要做的全部工作。iTunes Connect 上现在有了你的可用版本, 下面是设置TestFlight 的剩下的工作。</p>
 <h1 id="为Beta测试应用创建和开启用户"><a href="#为Beta测试应用创建和开启用户" class="headerlink" title="为Beta测试应用创建和开启用户"></a>为Beta测试应用创建和开启用户</h1><p>你的版本准备测试了, 不过谁来测试它呢?<br>Apple 为Test Flight定义了两类测试:<br>内部测试: 这是一个 iTunes Connect 用户,他是一个管理,技术,App 管理,开发或者市场,有权限访问你的应用。通常是团队成员或者应用的客户。你可以添加25个内部测试。</p>
 <p></p><p><br><em>备注:</em> 苹果正在舍弃技术角色转而选择App 管理的角色。这期间两个角色都是有效的。如果你已经有了带有技术角色的用户,你应该把他们迁移到 App 管理角色。新用户直接用 App 管理来创建即可。<br></p><br>外部测试: 这是外部想要测试你的应用的任何人。 一个外部测试是无法访问你的 iTunes Connect 账户的。只能下载和安装应用。你可以添加2000个外部测试。<br>在外部测试你的应用之前, 你需要提交应用给Apple审核, 跟正常版本提交一样。这个审核比正常提交审核要快 (也不能完全指望), 通过审核后,你就可以让外部来测试你的应用了。而对于内部测试来说, 相反, 无需审核即可测试。<br>你可以学习更多的外部测试, 但是现在, 让我们关注内部测试先。<br>为了添加一个内部测试, 先来到 Users and Roles 部分,它在 iTunes Connect里面:<p></p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/10-Users-and-Roles.png" width="603"><br></div><br>在 Users and Roles 页面, 点击e + 按钮来添加一个新的用户:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/11-Users-650x95.png" width="650" height="95"><br></div><br>填好用户信息然后点击 Next:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/15-Roles.png" width="650" height="270"><br></div><br>新用户需要用唯一的邮箱地址。<br>现在给用户分配角色。通常情况下, 你应该选择 App Manager. 你可以查看更多每个角色的权限。</p>
-<p></p><p><em>Note:</em> 不同角色的权限是不同的! 下面的表格可能会帮助你。</p><p></p>
+<p></p><p><em>备注:</em> 不同角色的权限是不同的! 下面的表格可能会帮助你。</p><p></p>
 <p><div style="text-align:center"><br><img src="http://a3.qpic.cn/psb?/V13UfvND3TZFZo/b4KMEn6L7*Ssezi3CPC0Rq373U3gvUbCnmtLoGi1yaY!/b/dNoAAAAAAAAA&bo=3QKSAAAAAAADB28!&rf=viewer_4" width="600" height="150"><br></div><br>完成点击 Next:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/16-Roles2.png" width="650" height="466"><br></div><br>选择新测试需要接收的通知类型, 然后点击Save:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/17-Notifications.png" width="700"><br></div><br>你的用户现在创建好了, 不过在账号出现在iTunes Connect前,用户需要去邮箱验证他的地址。<br>创建内部beta测试只是整个过程的一部分。剩下的步骤就是来邀请这些用户测试你最后发布的版本。<br>是时候开启应用测试了 — 不过测试用户还有一些事情要准备。</p>
@@ -60,7 +60,7 @@
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/19-Settings1.png" width="245"><br></div><br>用你刚刚验证过的账号登录。如果你登录了其他账号,先退出:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/20-Log-In.png" width="245"><br></div></p>
 <h1 id="TestFlight-应用"><a href="#TestFlight-应用" class="headerlink" title="TestFlight 应用"></a>TestFlight 应用</h1><p>去 App Store, 搜索 TestFlight:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/21-Search.png" width="245" height="500"><br></div><br>下载按照并启动。</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/21-Search.png" width="245" height="500"><br></div><br>下载安装并启动。</p>
 <p></p><p><br><em>备注:</em> 如果要求你登录, 使用相同的凭证,就是你刚刚验证账户的那些。<br></p><br>当新版本上传到iTunes Connect, 内控测试会自动收到一封邮件。外部测试会收到类似的邮件,不过要等到版本通过审核, 而且需要 Admin 或者 App Manager 在 iTunes Connect推送给外部测试:<p></p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/24-Invite-Email.png" width="245" height="500"><br></div><br>打开测试设备的邮件, 然后点击 Start Testing. 这个会启动TestFlight 然后显示要测试的应用。测试必须点击 Start Testing ; 否则应用不能下载。点击 Accept, 然后安装, 然后等待应用下载:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/25-Accept.png" width="245" height="500"><br></div><br>应用下载安装后会出现在主界面上!<br>这是作为测试最艰难的部分了。从现在开始, 只要这个应用的新版本可用, 你都会看到来自 TestFlight的通知。你要做的就是更新你的应用到最新的版本。</p>
@@ -68,7 +68,8 @@
     
     <summary type="html">
     
-      &lt;p&gt;TestFlight Beta 测试是苹果公司的产品,旨在更容易邀请用户,在你发布产品到App Store前,能够参与测试你的 iOS, watchOS 和 tvOS 应用。&lt;br&gt;这个教程不需要你去编码 — 跟着下面的步骤做,你就可以学会使用 TestFlight&lt;/p&gt;
+      &lt;p&gt;TestFlight Beta 测试是苹果公司的产品,旨在更容易邀请用户,在你发布产品到App Store前,参与测试你的 iOS, watchOS 和 tvOS 应用。&lt;br&gt;这个教程不需要你去编码 — 跟着下面的步骤做,你就可以学会使用 TestFlight&lt;/p&gt;
+&lt;
     
     </summary>
     
