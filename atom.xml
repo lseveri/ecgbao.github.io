@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2016-12-16T05:44:47.000Z</updated>
+  <updated>2016-12-16T07:06:35.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,81 +20,55 @@
     <link href="http://yoursite.com/2016/12/16/TestFlight-iOS-Beta%E6%B5%8B%E8%AF%95/"/>
     <id>http://yoursite.com/2016/12/16/TestFlight-iOS-Beta测试/</id>
     <published>2016-12-16T04:48:45.000Z</published>
-    <updated>2016-12-16T05:44:47.000Z</updated>
+    <updated>2016-12-16T07:06:35.000Z</updated>
     
-    <content type="html"><![CDATA[<p>TestFlight Beta Testing is an Apple product that makes it easy to invite users to test your iOS, watchOS and tvOS apps before you release them into the App Store. This TestFlight tutorial will walk you through integrating TestFlight into your own apps.<br>This is one of those rare tutorials where you don’t have to code — just follow through the steps in this tutorial and you’ll be up and running with TestFlight in no time! :]</p>
-<h1 id="Submitting-your-Build-to-iTunes-Connect"><a href="#Submitting-your-Build-to-iTunes-Connect" class="headerlink" title="Submitting your Build to iTunes Connect"></a>Submitting your Build to iTunes Connect</h1><p>Open up your project in Xcode, make sure you have a correct Bundle Identifier, that your Team ID is set, and that you’ve chosen the automatic Distribution Certificate Code Signing Identity:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/1-Code-Signing.png" width="612"><br></div><br>Choose Product\Archive from the top toolbar:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2015/04/2-Product-Archive1.png" width="193" height="120"><br></div><br>Once Xcode finishes archiving your project, click the shiny blue Upload to App Store… button:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/3-Archive1.png" width="650" height="153"><br></div><br>Now you need to choose your development team:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/4-Choose-Team1.png" width="579"><br></div><br>Finally, click Upload:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/5-Upload1.png" width="578"><br></div><br>Wait for a few minutes as your build uploads. Grab a coffee, perhaps, or if you have a slow internet connection, go grab a bite. Or two. Or three. :]</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/6-Upload2.png" width="579"><br></div><br>Once you’re done, you should receive a success message like the following:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/Success.png" width="577"><br></div><br>That’s all the work required for Xcode. Your beta build is now available on iTunes Connect, and that’s where you’ll be doing the rest of the work to set up TestFlight.</p>
-<h1 id="Create-and-Enable-Testers-to-Beta-Test-Apps"><a href="#Create-and-Enable-Testers-to-Beta-Test-Apps" class="headerlink" title="Create and Enable Testers to Beta Test Apps"></a>Create and Enable Testers to Beta Test Apps</h1><p>Your build is ready for testing, but who’s going to test it?<br>Apple defines two types of testers for Test Flight:<br>Internal Tester: This is an iTunes Connect user that has an Admin, Technical, App Manager, Developer, or Marketer role with access to your app. This is usually a team member or a client you’re developing an app for. You can add up to 25 internal testers.<br><em>Note:</em> Apple are in the process of deprecating the Technical role in favour of the App Manager role. At the time of writing both roles are available. If you have existing users with the Technical role you should start migrating them over to the App Manager role. New users should be created with the App Manager role.<br>External Tester: This is any user outside of your team that wants to test your app. An external tester has no access to your iTunes Connect account in any way, and can only download and install the app. You can add up to 2000 external testers.<br>Before your external developers can test your app, you have to submit your app to be reviewed by Apple, just as you would with a normal App Store submission. These reviews tend to go faster than normal app reviews (although don’t count on it), and once it’s approved you can let external developers test your app. Internal testers, on the other hand, are instantaneously able to test new builds.<br>You’ll learn more about external testers later, but for now, let’s focus on internal testers.<br>To add an internal tester, head to the Users and Roles section in iTunes Connect:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/10-Users-and-Roles.png" width="603"><br></div><br>On the Users and Roles screen, click the + button to add a new user:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/11-Users-650x95.png" width="650" height="95"><br></div><br>Fill in your new user info and click Next:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/15-Roles.png" width="650" height="270"><br></div><br>You’ll need to use a unique email address for your new user. If you don’t have a second email account, you can usually append +whateveryouwant to the first part of your email address, and the email will still get delivered to you. For example tom+mytestaccount@razeware.com.<br>Now you need to assign roles for the user. In most cases, you’ll want to choose App Manager. You can read more about the privileges for each role and choose the appropriate one for your user.</p>
-<p><div class="note"><em>Note:</em> The number of different roles and permissions can be a bit daunting! When it comes to Test Flight, use this handy table to help you.</div></p><p></p>
-<p><style type="text/css"></p>
-<p>#roles-table  {border-collapse:collapse;border-spacing:0;}</p>
-<p>#roles-table td{padding:10px 5px;border-width:0px;text-align:center;}</p>
-<p>#roles-table th{font-weight:bold;padding:10px 5px;border-width:0px;}</p>
-<p>#roles-table tr:nth-of-type(even) {background-color:#edf0d5;}</p>
-<p>#roles-table tr:nth-of-type(odd) {background-color:#dde3af;}<br></style></p>
-<p><table id="roles-table"></table></p>
-<p><tr></tr></p>
-<p><th></th></p>
-<p><th>Admin</th></p>
-<p><th>App Manager</th></p>
-<p><th>Developer</th></p>
-<p><th>Marketer</th></p>
-<p><th>Sales</th><br></p>
-<p><tr></tr></p>
-<p><th>Can be an Internal Tester</th></p>
-<p><td>&#10003;</td></p>
-<p><td>&#10003;</td></p>
-<p><td>&#10003;</td></p>
-<p><td>&#10003;</td></p>
-<p><td>&#x2717;</td><br></p>
-<p><th>Can Upload a Build</th></p>
-<p><td>&#10003;</td></p>
-<p><td>&#10003;</td></p>
-<p><td>&#10003;</td></p>
-<p><td>&#x2717;</td></p>
-<p><td>&#x2717;</td><br></p>
-<p><th>Can Submit a Build for External Testing</th></p>
-<p><td>&#10003;</td></p>
-<p><td>&#10003;</td></p>
-<p><td>&#x2717;</td></p>
-<p><td>&#x2717;</td></p>
-<p><td>&#x2717;</td><br><br><br><br><br>Once that’s done, click Next:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/16-Roles2.png" width="650" height="466"><br></div><br>Choose the type of notifications you want your new testers to receive, then click Save:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/17-Notifications.png" width="700"><br></div><br>Your user is now created, but as the message indicates, that user first needs to verify his or her email address before the account will show in iTunes Connect.<br>Creating a new internal beta tester is only the first part of the process. The remaining step is to invite this particular tester to test your latest build.<br>It’s time to enable your app for testing — so the tester actually has something to test! :]</p>
-<h1 id="Starting-Beta-Testing"><a href="#Starting-Beta-Testing" class="headerlink" title="Starting Beta Testing"></a>Starting Beta Testing</h1><p>To start beta testing of your app, go to the My Apps section on the iTunes Connect home page and click on your app:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/20-My-Apps.png" width="603"><br></div><br>Select the Activity tab and you’ll find your latest build. Make sure it is no longer marked as processing. If it is, go make another cup of coffee and come back later. :]</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/Activity.png" width="603"><br></div><br>Next, click on the TestFlight tab, then Internal Testing in the left hand menu. Click Select Version to Test and choose the version you just uploaded. Finally, click Start Testing and, in the confirmation pop-up, Start Testing again.</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/StartTesting.png" width="603"><br></div><br>All selected testers will now receive an email that lets them download and install this build from the TestFlight app. There are detailed instructions on how to do that in the last section of this tutorial.<br>That takes care of internal testers, but what about external testers?<br>That’s just as easy! First, go to the Test Information tab and fill in your Feedback Email, Marketing URL and Privacy Policy URL. You can choose to add a License Agreement at this stage as well if you wish, but it is not necessary.</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/30-TestInformation.png" width="700" height="327"><br></div><br>Next, go to the External Testing tab, click the + button and select Add New Testers:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/32-External1.png" width="700"><br></div><br>Add the email addresses of any external users you want to add. Once you’re finished, click Add to add these testers to your account. All external testers will count toward your 2000 external tester limit:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/33-External2.png" width="603"><br></div><br>Click Save.<br>You now need to select a build (again) for your external testers, and put that build through the Beta App Review.<br><em>Note:</em> Why do you need to select the build again? Well you may want your internal and external testers to be testing different builds. For example, your external testers may be testing your next release candidate, but your internal testers are testing your master build. By making you select a build for internal and external testers separately iTunes Connect allows this kind of separation.<br>Click Add Build To Test, select your build, and then click Next.</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/34-BetaTest1.png" width="603"><br></div><br>Fill in all the fields. Remember – the more information you give Apple the easier it is for them to review your app! Finally, hit Submit.</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/35-BetaTest2.png" width="603"><br></div><br>Your app will be added to the review queue! :]<br><em>Note:</em> In my own experience, your first beta app review can take up to 48 hours to be approved. Subsequent beta app reviews are usually much faster.</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/31-AppInReview.png" width="603"><br></div><br>Once the app has passed Beta App Review you will receive an email with confirmation that your app can now be used by external testers.<br><em>Note:</em> A build is only valid for 60 days. If you want your testers to use the app beyond that, you’ll have to upload a new build before the expiration date.<br>Head back to the External Testing section for your app in iTunes Connect, select the build and hit Save. A dialog will pop up confirming that you are about to notify people. Click Start Testing.</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/Screen-Shot-2016-05-30-at-11.58.51.png" width="603"><br></div><br>Your external testers will then receive an invitation email similar to the one received by your internal testers as described above.<br><em>Note:</em> What happens if invites go missing? Currently there is no easy way to re-send invite emails if they go missing. For internal testers the easiest approach is probably to upload a new build (as it doesn’t have to go through Beta App Review). For external testers you can either remove the user and then re-add the user as a tester, or remove your app from external testing and then quickly re-add it. This second approach will re-send an email invite to all your external testers so be careful! :]<br>That shows the developer’s perspective of app testing, but what does it look like from the tester’s perspective?</p>
-<h1 id="Testing-an-App"><a href="#Testing-an-App" class="headerlink" title="Testing an App"></a>Testing an App</h1><p>As an internal tester, you need to link your Apple ID to iTunes Connect (external testers can skip to the TestFlight App section below). By now, you should have received an email from iTunes Connect that looks like this:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/21-Email.png" width="700"><br></div><br>Click on activate your account and follow the supplied steps. Once your account is ready for testing, get your iOS device and go to the Settings app. Scroll down to iTunes &amp; App Store:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/19-Settings1.png" width="245"><br></div><br>Log in with the account you just verified a minute ago. If you’re already logged in with another account, log out first:</p>
+    <content type="html"><![CDATA[<p>TestFlight Beta 测试是苹果公司的产品,旨在更容易邀请用户,在你发布产品到App Store前,能够参与测试你的 iOS, watchOS 和 tvOS 应用。<br>这个教程不需要你去编码 — 跟着下面的步骤做,你就可以学会使用 TestFlight</p>
+<h1 id="提交版本到-iTunes-Connect"><a href="#提交版本到-iTunes-Connect" class="headerlink" title="提交版本到 iTunes Connect"></a>提交版本到 iTunes Connect</h1><p>在 Xcode中打开你的工程, 确保你有一个正确的 Bundle Identifier, 你的 Team ID 也设置了, 你也选择了自动 Distribution Certificate Code Signing Identity:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/1-Code-Signing.png" width="612"><br></div><br>从顶部工具栏选择 Product\Archive:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2015/04/2-Product-Archive1.png" width="193" height="120"><br></div><br>一旦 Xcode 完成归档, 点击 Upload to App Store… 按钮:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/3-Archive1.png" width="650" height="153"><br></div><br>现在你需要选择你的开发团队:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/4-Choose-Team1.png" width="579"><br></div><br>最后点击 Upload:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/5-Upload1.png" width="578"><br></div><br>等几分钟。 如果网速慢,就喝口咖啡或者随便吃点什么。</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/6-Upload2.png" width="579"><br></div><br>一旦完成了, 你会受到下面的成功信息:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/Success.png" width="577"><br></div><br>这些是XCode要做的全部工作。iTunes Connect 上现在有了你的可用版本, 下面是设置TestFlight 的剩下的工作。</p>
+<h1 id="为Beta测试应用创建和开启用户"><a href="#为Beta测试应用创建和开启用户" class="headerlink" title="为Beta测试应用创建和开启用户"></a>为Beta测试应用创建和开启用户</h1><p>你的版本准备测试了, 不过谁来测试它呢?<br>Apple 为Test Flight定义了两类测试:<br>内部测试: 这是一个 iTunes Connect 用户,他是一个管理,技术,App 管理,开发或者市场,有权限访问你的应用。通常是团队成员或者应用的客户。你可以添加25个内部测试。</p>
+<p></p><p><br><em>备注:</em> 苹果正在舍弃技术角色转而选择App 管理的角色。这期间两个角色都是有效的。如果你已经有了带有技术角色的用户,你应该把他们迁移到 App 管理角色。新用户直接用 App 管理来创建即可。<br></p><br>外部测试: 这是外部想要测试你的应用的任何人。 一个外部测试是无法访问你的 iTunes Connect 账户的。只能下载和安装应用。你可以添加2000个外部测试。<br>在外部测试你的应用之前, 你需要提交应用给Apple审核, 跟正常版本提交一样。这个审核比正常提交审核要快 (也不能完全指望), 通过审核后,你就可以让外部来测试你的应用了。而对于内部测试来说, 相反, 无需审核即可测试。<br>你可以学习更多的外部测试, 但是现在, 让我们关注内部测试先。<br>为了添加一个内部测试, 先来到 Users and Roles 部分,它在 iTunes Connect里面:<p></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/10-Users-and-Roles.png" width="603"><br></div><br>在 Users and Roles 页面, 点击e + 按钮来添加一个新的用户:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/11-Users-650x95.png" width="650" height="95"><br></div><br>填好用户信息然后点击 Next:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/15-Roles.png" width="650" height="270"><br></div><br>新用户需要用唯一的邮箱地址。<br>现在给用户分配角色。通常情况下, 你应该选择 App Manager. 你可以查看更多每个角色的权限。</p>
+<p></p><p><em>Note:</em> 不同角色的权限是不同的! 下面的表格可能会帮助你。</p><p></p>
+<p><div style="text-align:center"><br><img src="http://a3.qpic.cn/psb?/V13UfvND3TZFZo/b4KMEn6L7*Ssezi3CPC0Rq373U3gvUbCnmtLoGi1yaY!/b/dNoAAAAAAAAA&bo=3QKSAAAAAAADB28!&rf=viewer_4" width="600" height="150"><br></div><br>完成点击 Next:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/06/16-Roles2.png" width="650" height="466"><br></div><br>选择新测试需要接收的通知类型, 然后点击Save:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/17-Notifications.png" width="700"><br></div><br>你的用户现在创建好了, 不过在账号出现在iTunes Connect前,用户需要去邮箱验证他的地址。<br>创建内部beta测试只是整个过程的一部分。剩下的步骤就是来邀请这些用户测试你最后发布的版本。<br>是时候开启应用测试了 — 不过测试用户还有一些事情要准备。</p>
+<h1 id="开始Beta测试"><a href="#开始Beta测试" class="headerlink" title="开始Beta测试"></a>开始Beta测试</h1><p>为了开始测试Beta版本, 去iTunes Connect主页选择并点击 My Apps:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/20-My-Apps.png" width="603"><br></div><br>选择 Activity 标签,而后你会找到你最后构建的版本。确保它不是正在处理。如果是这样, 就去喝杯咖啡再回来。</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/Activity.png" width="603"><br></div><br>下一步, 点击TestFlight 标签, 然后选择左边菜单里的内部测试。点击 Select Version to Test 然后选择你刚刚上传的版本。 最后, 点击 Start Testing 然后再弹出的提示框再次点击 Start Testing.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/StartTesting.png" width="603"><br></div><br>所有选择的测试都会收到一封邮件, 让他们从TestFlight 客户端上下载安装这个版本。这个教程的后面会详细介绍如何做。<br>这些都是针对内部测试做的, 那外部测试怎么弄?<br>很简单! 首先, 来到 Test Information 标签,然后填写你的邮箱, Marketing URL 和 Privacy Policy URL. 如果你愿意你还可以在最后添加一个 License Agreement, 不过这不是必须的。</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/30-TestInformation.png" width="700" height="327"><br></div><br>下一步, 来到 External Testing, 点击 + 按钮然后选择 Add New Testers:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/32-External1.png" width="700"><br></div><br>给你想添加的用户添加邮箱地址。完成后, 点击 Add 把他们添加到你的账户。 所有外部测试不能超过2000人:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/33-External2.png" width="603"><br></div><br>点击 Save.<br>现在你需要为外部测试选择一个版本, 并且让它通过 Beta App Review.</p>
+<p></p><p><br><em>备注:</em> 为什么需要再选择一次版本? 你可能想让你的内部测试和外部测试,测试不同的版本。例如, 你的外部测试可能要测试你的候选版本, 而你的内部测试要测试你的主分支版本。<br></p><br>点击 Add Build To Test, 选择版本然后点击 Next.<p></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/34-BetaTest1.png" width="603"><br></div><br>填写所有的地方。记住 – 信息提供越多,审核越容易! 最后, 猛击 Submit.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/35-BetaTest2.png" width="603"><br></div><br>你的应用将会被加入审核列表。</p>
+<p></p><p><br><em>备注:</em> 根据我的经验, 你的第一个beta版本可能要花费48 小时。后续版本就快多了。<br></p><p></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/31-AppInReview.png" width="603"><br></div><br>一旦应用通过审核,你会收到一封邮件,确认说你的应用可以给外部测试了。</p>
+<p></p><p><br><em>备注:</em> 一个版本有效期是 60 天。如果测试想预期后继续使用, 你要在过期前再提交一个新版本。<br></p><br>回到 External Testing, 选择 build and hit 保存. 会弹出一个对话框,来确认你将要通知人来测试你的应用。点击 Start Testing.<p></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/Screen-Shot-2016-05-30-at-11.58.51.png" width="603"><br></div><br>你的外部测试会收到一封邀请邮件,跟上面提到的内部测试类似。</p>
+<p></p><p><br><em>备注:</em> 如果没有收到邀请怎么办? 现在的情况是,重发邀请并不容易（译注：我怎么看到可以？）。对于内部测试最容易的方式是上传一个新版本(因为不需要审核)。对于外部测试来说,或者你把他删了再加, 或者从外部测试移除你的应用然后再快递的添加它。 第二个方法会重新给外部测试发邀请邮件,慎用。<br></p><br>这个是从开发的角度看应用测试, 那么从测试角度看会怎样?<p></p>
+<h1 id="测试应用"><a href="#测试应用" class="headerlink" title="测试应用"></a>测试应用</h1><p>作为一个内部测试, 你需要把你的 Apple ID 连接到iTunes Connect (外部测试可以跳过这个)。现在, 你应该收到了这样的邮件:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/21-Email.png" width="700"><br></div><br>点击 activate your account 然后按照步骤做。一旦你的账号准备测试了, 拿着你的iOS 设备然后进入设置。滑到 iTunes &amp; App Store:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/19-Settings1.png" width="245"><br></div><br>用你刚刚验证过的账号登录。如果你登录了其他账号,先退出:</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/20-Log-In.png" width="245"><br></div></p>
-<h1 id="TestFlight-App"><a href="#TestFlight-App" class="headerlink" title="TestFlight App"></a>TestFlight App</h1><p>Go to the App Store, and search for the TestFlight app:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/21-Search.png" width="245" height="500"><br></div><br>Download the TestFlight app and launch it.<br><em>Note:</em> If you’re required to log in, simply use the same credentials you used to verify your account.<br>Internal testers will automatically receive an email when new versions of the app are uploaded to iTunes Connect. External testers will receive a similar email after the app has been through Beta App Review and the build has been pushed out to external testers by an Admin or App Manager in iTunes Connect:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/24-Invite-Email.png" width="245" height="500"><br></div><br>Open this email on your testing device, then tap Start Testing. This will launch TestFlight and show you the app you need to test. A tester must tap Start Testing on the device they’ll be testing on; otherwise the app won’t be available for download by the tester. Tap Accept, then Install, and wait for the app to download:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/25-Accept.png" width="245" height="500"><br></div><br>The app will be downloaded and appear on your home screen!<br>That was the hardest part of being a tester. From now on, whenever a new version of this app is available, you’ll see a notification from TestFlight. All you need to do is update your app and run the latest version.</p>
+<h1 id="TestFlight-应用"><a href="#TestFlight-应用" class="headerlink" title="TestFlight 应用"></a>TestFlight 应用</h1><p>去 App Store, 搜索 TestFlight:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/21-Search.png" width="245" height="500"><br></div><br>下载按照并启动。</p>
+<p></p><p><br><em>备注:</em> 如果要求你登录, 使用相同的凭证,就是你刚刚验证账户的那些。<br></p><br>当新版本上传到iTunes Connect, 内控测试会自动收到一封邮件。外部测试会收到类似的邮件,不过要等到版本通过审核, 而且需要 Admin 或者 App Manager 在 iTunes Connect推送给外部测试:<p></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/24-Invite-Email.png" width="245" height="500"><br></div><br>打开测试设备的邮件, 然后点击 Start Testing. 这个会启动TestFlight 然后显示要测试的应用。测试必须点击 Start Testing ; 否则应用不能下载。点击 Accept, 然后安装, 然后等待应用下载:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/05/25-Accept.png" width="245" height="500"><br></div><br>应用下载安装后会出现在主界面上!<br>这是作为测试最艰难的部分了。从现在开始, 只要这个应用的新版本可用, 你都会看到来自 TestFlight的通知。你要做的就是更新你的应用到最新的版本。</p>
 ]]></content>
     
     <summary type="html">
     
-      &lt;p&gt;TestFlight Beta Testing is an Apple product that makes it easy to invite users to test your iOS, watchOS and tvOS apps before you release
+      &lt;p&gt;TestFlight Beta 测试是苹果公司的产品,旨在更容易邀请用户,在你发布产品到App Store前,能够参与测试你的 iOS, watchOS 和 tvOS 应用。&lt;br&gt;这个教程不需要你去编码 — 跟着下面的步骤做,你就可以学会使用 TestFlight&lt;/p&gt;
     
     </summary>
     
