@@ -1,0 +1,518 @@
+
+ <!DOCTYPE HTML>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  
+    <title>苹果Background Modes | 跳跳魔王的博客</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+    
+    <meta name="author" content="跳跳魔王">
+    
+
+    
+    <meta name="description" content="Developers and users alike are often confused as to what the iOS multitasking system allows. Apple has restrictions in place for the use of background operations in an effort to improve user experienc">
+<meta property="og:type" content="article">
+<meta property="og:title" content="苹果Background Modes">
+<meta property="og:url" content="http://yoursite.com/2016/12/22/苹果Background-Modes/index.html">
+<meta property="og:site_name" content="跳跳魔王的博客">
+<meta property="og:description" content="Developers and users alike are often confused as to what the iOS multitasking system allows. Apple has restrictions in place for the use of background operations in an effort to improve user experienc">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BackgroundModes-feature.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/EnableBackgroundCapability.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-SetDevTeam.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-StarterProjectTabs.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-AudioScreen.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableAudioInBG.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableLocationInBG.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-AddLocationPrivacyMessage.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-AllowLocationAccess.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-LocationUpdatesOnMap.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-DebugLocationSimulation.png">
+<meta property="og:image" content="http://cdn3.raywenderlich.com/wp-content/uploads/2013/04/Whatever_cheers.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-RunningWhatever.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-FetchNotUpdated.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableBackgroundFetch.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-SimulateBGFetch.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ContinueDebugger.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ManageSchemes.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-DuplicateScheme.png">
+<meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ConfigureNewScheme.png">
+<meta property="og:updated_time" content="2016-12-22T09:00:56.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="苹果Background Modes">
+<meta name="twitter:description" content="Developers and users alike are often confused as to what the iOS multitasking system allows. Apple has restrictions in place for the use of background operations in an effort to improve user experienc">
+<meta name="twitter:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BackgroundModes-feature.png">
+
+    
+    <link rel="alternative" href="/atom.xml" title="跳跳魔王的博客" type="application/atom+xml">
+    
+    
+    <link rel="icon" href="/img/favicon.ico">
+    
+    
+    <link rel="apple-touch-icon" href="/img/jacman.jpg">
+    <link rel="apple-touch-icon-precomposed" href="/img/jacman.jpg">
+    
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+
+  <body>
+    <header>
+      
+<div>
+		
+			<div id="textlogo">
+				<h1 class="site-name"><a href="/" title="跳跳魔王的博客">跳跳魔王的博客</a></h1>
+				<h2 class="blog-motto">每天进步一点点</h2>
+			</div>
+			<div class="navbar"><a class="navbutton navmobile" href="#" title="菜单">
+			</a></div>
+			<nav class="animated">
+				<ul>
+					<ul>
+					 
+						<li><a href="/">主页</a></li>
+					
+						<li><a href="/archives">归档</a></li>
+					
+						<li><a href="/about">关于</a></li>
+					
+					<li>
+ 					
+					<form class="search" action="//google.com/search" method="get" accept-charset="utf-8">
+						<label>Search</label>
+						<input type="search" id="search" name="q" autocomplete="off" maxlength="20" placeholder="搜索" />
+						<input type="hidden" name="q" value="site:yoursite.com">
+					</form>
+					
+					</li>
+				</ul>
+			</nav>			
+</div>
+    </header>
+    <div id="container">
+      <div id="main" class="post" itemscope itemprop="blogPost">
+  
+	<article itemprop="articleBody"> 
+		<header class="article-info clearfix">
+  <h1 itemprop="name">
+    
+      <a href="/2016/12/22/苹果Background-Modes/" title="苹果Background Modes" itemprop="url">苹果Background Modes</a>
+  </h1>
+  <p class="article-author">By
+       
+		<a href="/about" title="跳跳魔王" target="_blank" itemprop="author">跳跳魔王</a>
+		
+  <p class="article-time">
+    <time datetime="2016-12-22T08:12:31.000Z" itemprop="datePublished"> 发表于 2016-12-22</time>
+    
+  </p>
+</header>
+	<div class="article-content">
+		
+		<div id="toc" class="toc-article">
+			<strong class="toc-title">文章目录</strong>
+		
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li></ol>
+		
+		</div>
+		
+		<p>Developers and users alike are often confused as to what the iOS multitasking system allows. Apple has restrictions in place for the use of background operations in an effort to improve user experience and extend battery life. Your app is only allowed to keep running in the background in very specific cases. For example, these include playing audio, getting location updates, or fetching the latest content from a server.<br>If your task does not fall into these categories backgrounding may not be for you. You may even find yourself with an App Store rejection if you try to cheat the system by using background modes outside the realm of their purposes, so consider yourself warned! :]</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BackgroundModes-feature.png" height="250"><br></div></p>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>Before digging into the project, here’s a quick overview of the basic background modes available in iOS. In Xcode 8, you can see the list by pulling up the Capabilities tab of your app target. It looks like this:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/EnableBackgroundCapability.png" width="480" height="262"><br></div><br>To get to the background modes capability list you (1) select the project from the Project Navigator, (2) select the app target, (3) select the Capabilities tab, and (4) turn the Background Modes switch on.<br>In this background modes tutorial you will investigate four ways of doing background processing.</p>
+<ul><br><li><em>Play audio</em>: the app can continue playing and/or recording audio in the background.</li><br><li><em>Receive location updates</em>: the app can continue to get callbacks as the device’s location changes.</li><br><li><em>Perform finite-length tasks</em>: the generic &#8220;whatever&#8221; case, where the app can run arbitrary code for a limited amount of time.</li><br><li><em>Background Fetch</em>: Get updates to the latest content scheduled by iOS.</li><br></ul>
+
+<p>If you are only interested in one or several of these modes, feel free to skip around!<br>To get started download the starter project. You’ll find the user interface and some of the logic that is not directly applicable to the topic has been provided for you.<br>Before you can run the project you must set your development team, as shown here:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-SetDevTeam.png" width="650" height="349"><br></div><br>Run the sample project to get a feel for it. There are 4 tabs; one to cover each mode:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-StarterProjectTabs.png" width="372" height="110"><br></div><br><em>Update note:</em> For the full effect, you should follow along on a real device. In my experience, if you forget a configuration setting, the app might appear to run fine in the background on the Simulator. However, when you switch to a real device, it doesn’t work at all.<br>Playing Audio<br>First up, background audio.<br>There are several ways to play audio on iOS and most of them require implementing callbacks to provide more audio data to play.<br>If you want to play audio from streaming data, you can start a network connection, and the connection callbacks provide continuous audio data.<br>When you activate the audio background mode, iOS will continue these callbacks even if your app is not the current active app. That’s right – the audio background mode is virtually automatic. You just have to activate it and provide the infrastructure to handle it appropriately.<br>In this section you’ll review the audio player in the app, verify that background mode is not working, enable the audio background capability, and demonstrate to yourself that it’s working.<br>Open AudioViewController.swift and take a look around.<br>The app makes use of an AVQueuePlayer to queue up songs and play them one after the other. The view controller is observing the player’s currentItem value to provide updates.<br>The starter project includes audio files from incompetech.com, a favorite royalty-free music website. With credit given, you can use the music for free. So, here you go: all songs are by Kevin MacLeod at incompetech.com. Thanks, Kevin!<br>When the app is in the active state, the music title label is shown and when in the app is in the background it will print the title to the console. The label text could still update while in the background, but the point here is just to demonstrate that your app continues to receive this callback when your app is in the background.<br><em>Update note:</em> Check out the Execution States for Apps to learn more about the active state and others.<br>Build and run, and you should see this:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-AudioScreen.png" width="273" height="500"><br></div><br>Now hit Play and the music will start. Nice!<br>Test if backgrounding works. While running on an actual device hit the home button and the music will stop. Why? Well, there’s still a very crucial piece missing!<br>For most background modes (the “Whatever” mode is the exception) you need to enable the capability to indicate that the app wants to run code while in the background.<br>Back in Xcode, do the following:</p>
+<p><ol></ol></p>
+<p><li>Click the project in the <em>Project Navigator</em>;</li></p>
+<p><li>Click <em>TheBackgrounder</em> target;</li></p>
+<p><li>Click on the <em>Capabilities</em> tab;</li></p>
+<p><li>Scroll down to <em>Background Modes</em> and turn the switch on;</li></p>
+<p><li>Check <em>Audio, AirPlay and Picture in Picture</em>.</li><br></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableAudioInBG.png" width="650" height="354"><br></div><br>Build and run again. Start the music and hit the home button, and this time you should still hear the music, even though the app is in the background.<br>You should also see the time updates in your Console output in Xcode, proof that your code is still working even though the app is in the background.<br>Wow, if you already have an audio player in place, playing audio in the background is easy! Well, that’s one mode down, if you’re following through the entire background modes tutorial – three to go!<br>Receiving Location Updates<br>When in location background mode, your app will still receive location delegate messages with the updated location of the user, even when the app is in the background. You can control the accuracy of these location updates and even change that accuracy while backgrounded.<br>The second tab is for location updates, so open LocationViewController.swift and take a look around. Similarly to the background audio example, the location background mode is very easy to get up and running with if you already have location features working!<br>In this controller you will find that CLLocationManager runs the show. To receive location information you create and configure a CLLocationManager instance. In this case the app monitors location when an on screen UISwitch is activated. As location updates are received the app draws pins on a map. When the app is in the background, you should see the log of location updates in your console output in Xcode.<br>An important line to note is the call to requestAlwaysAuthorization() on the CLLocationManager instance. This is a requirement since iOS 8, and brings up a dialog asking for permission to receive locations in the background.<br>Now that you’re familiar with Background Modes, you don’t need to make the same mistake as before! Check the box for Location updates to let iOS know that your app wants to continue receiving location updates while in the background.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableLocationInBG.png" width="650" height="354"><br></div><br>In addition to checking this box, iOS 8 and above requires that you set a key in your Info.plist explaining to the user why background updates are needed. If you do not include this, location requests will silently fail.</p>
+<p><ul></ul></p>
+<p><li>Select the project in Xcode.</li></p>
+<p><li>Select the <em>Info</em> tab for <em>TheBackgrounder</em> target.</li></p>
+<p><li>Select an existing row.</li></p>
+<p><li>Click on the + button to add a new key.</li></p>
+<p><li>Add the key named <em>Privacy &#8211; Location Always Usage Description</em>.</li></p>
+<p><li>Write a convincing description of why you need to receive location updates in the background.</li><br></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-AddLocationPrivacyMessage.png" width="650" height="354"><br></div><br>Now build and run! Switch to the second tab and flip the switch to ON.<br>When you do this the first time, you will see the message that you put into your location privacy reason. Tap Allow and go for a walk outside or around your building (try not to get too distracted catching Pokemons). You should start seeing location updates, even on the Simulator.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-AllowLocationAccess.png" width="281" height="500"><br></div><br>After a while, you should see something like this:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-LocationUpdatesOnMap.png" width="272" height="500"><br></div><br>If you background the app, you should see the app updating the location in your console log. Open the app again and you’ll see that the map has all the pins for the locations that were updated while the app was in the background.<br>If you’re using the Simulator, you can use it to simulate movement, too! Check out the Debug \ Location menu:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-DebugLocationSimulation.png" width="492" height="366"><br></div><br>Try setting the location to Freeway Drive and then hit the home button. You should see the console logs printing out your progress as you simulate that drive down a California highway:</p>
+<p><div class="wp_codebox"><table><tr id="p1431281"><td class="code" id="p143128code1"><pre class="console" style="font-family:monospace;">App is backgrounded. New location is %@ &lt;+37.33500926,-122.03272188&gt; +/- 5.00m (speed 7.74 mps / course 246.09) @ 9/5/16, 10:20:07 PM Mountain Standard Time<br>App is backgrounded. New location is %@ &lt;+37.33500926,-122.03272188&gt; +/- 5.00m (speed 7.74 mps / course 246.09) @ 9/5/16, 10:20:07 PM Mountain Standard Time<br>App is backgrounded. New location is %@ &lt;+37.33500926,-122.03272188&gt; +/- 5.00m (speed 7.74 mps / course 246.09) @ 9/5/16, 10:20:07 PM Mountain Standard Time</pre></td></tr></table></div><br>Easy peasy, right?! On to the third tab and the third background mode!<br>Performing Finite-Length Tasks… or, Whatever<br>The next background mode is officially called Executing a Finite-Length Task in the Background. What a mouthful. Whatever is a bit catchier!<br>Technically, this is not a background mode at all, as you don’t have to declare that your app uses this mode in Capabilities. Instead, it’s an API that lets you run arbitrary code for a finite amount of time when your app is in the background. Well… whatever!<br>In the past, this mode was often used to complete an upload or download and a generous (but not guaranteed) 10 minutes was provided to accomplish these tasks. But what if the connection was slow and the process still didn’t finish? It would leave your app in an odd state and you would have to add lots of error handling code to make things work sanely. Because of this, Apple introduced NSURLSession.<br>Although not a topic of this background modes tutorial, NSURLSession is robust in the face of backgrounding and even device reboots and accomplishes this in a power efficient way. If you are dealing with large downloads, check out our NSURLSession tutorial.<br>A still very valid use case of the Whatever background mode is to complete some long running task, such as rendering and writing a video to the camera roll.</p>
+<p><div style="text-align:center"><br><img src="http://cdn3.raywenderlich.com/wp-content/uploads/2013/04/Whatever_cheers.png" width="480" height="177"><br></div><br>But this is just one example. As the code you can run is arbitrary, you can use this API to do pretty much anything: perform lengthy calculations (as in this background modes tutorial), apply filters to images, render a complicated 3D mesh… whatever! Your imagination is the limit, as long as you keep in mind that you only get some time, not unlimited time.<br>How much time you get after your app gets backgrounded is determined by iOS. There are no guarantees on the time you’re granted, but you can always check backgroundTimeRemaining on UIApplication. This will tell you how much time you have left.<br>The general, observation-based consensus is that you get three minutes. Again, there are no guarantees and the API documentation doesn’t even give a ballpark number – so don’t rely on this number. You might get 5 minutes or 5 seconds, so your app needs to be prepared for… whatever!<br>Here’s a common task that every CS student should be familiar with: calculating numbers in the Fibonacci Sequence. The twist here is that you’ll calculate these numbers in the background!<br>Open WhateverViewController.swift and take a look at what’s there already. As it stands, this view will calculate Fibonacci numbers in sequence and display the result. If you were to suspend the app on an actual device, the calculations would stop and pickup where they were once the app was active again. Your task is to create a background task so that the calculation can keep running until iOS says, ‘No more!’.<br>You first need to add the following property to WhateverViewController.</p>
+<p><div class="wp_codebox"><table><tr id="p1431282"><td class="code" id="p143128code2"><pre class="swift" style="font-family:monospace;"><span style="color: #a61390;">var</span> backgroundTask<span style="color: #002200;">:</span> UIBackgroundTaskIdentifier <span style="color: #002200;">=</span> UIBackgroundTaskInvalid</pre></td></tr></table></div><br>This property is used to identify the task request to run in the background.<br>Next add the following methods to WhateverViewController.</p>
+<p><div class="wp_codebox"><table><tr id="p1431283"><td class="code" id="p143128code3"><pre class="swift" style="font-family:monospace;"><span style="color: #a61390;">func</span> registerBackgroundTask<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span><br>  backgroundTask <span style="color: #002200;">=</span> <span style="color: #400080;">UIApplication</span>.shared.beginBackgroundTask <span style="color: #002200;">&#123;</span> <span style="color: #002200;">&#91;</span>weak <span style="color: #a61390;">self</span><span style="color: #002200;">&#93;</span> <span style="color: #a61390;">in</span><br>    <span style="color: #a61390;">self</span>?.endBackgroundTask<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span><br>  <span style="color: #002200;">&#125;</span><br>  <span style="color: #a61390;">assert</span><span style="color: #002200;">&#40;</span>backgroundTask <span style="color: #002200;">!=</span> UIBackgroundTaskInvalid<span style="color: #002200;">&#41;</span><br><span style="color: #002200;">&#125;</span><br>&nbsp;<br><span style="color: #a61390;">func</span> endBackgroundTask<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span><br>  <span style="color: #a61390;">print</span><span style="color: #002200;">&#40;</span><span style="color: #bf1d1a;">&quot;Background task ended.&quot;</span><span style="color: #002200;">&#41;</span><br>  <span style="color: #400080;">UIApplication</span>.shared.endBackgroundTask<span style="color: #002200;">&#40;</span>backgroundTask<span style="color: #002200;">&#41;</span><br>  backgroundTask <span style="color: #002200;">=</span> UIBackgroundTaskInvalid<br><span style="color: #002200;">&#125;</span></pre></td></tr></table></div><br>registerBackgroundTask() tells iOS that you need more time to complete whatever it is you’re doing in case the app is backgrounded. After this call, if your app is backgrounded it will still get CPU time until you call endBackgroundTask().<br>Well, almost. If you don’t call endBackgroundTask() after a period of time in the background, iOS will call the closure defined when you called beginBackgroundTask(expirationHandler:) to give you a chance to stop executing code. So it’s a very good idea to then call endBackgroundTask() to tell the OS that you’re done. If you don’t do this and continue to execute code after this block is called, your app will be terminated!<br>Now for the important part, you need to update didTapPlayPause(_:) to register the background task and end it. There are two comments in this method where you will add some code.<br>Call registerBackgroundTask() below the “register background task” comment.</p>
+<p><div class="wp_codebox"><table><tr id="p1431284"><td class="code" id="p143128code4"><pre class="swift" style="font-family:monospace;"><span style="color: #11740a; font-style: italic;">// register background task</span><br>registerBackgroundTask<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span></pre></td></tr></table></div><br>registerBackgroundTask() is now called when calculations begin so you can continue calculating numbers in the background.<br>Now add the following block below the “end background task” comment.</p>
+<p><div class="wp_codebox"><table><tr id="p1431285"><td class="code" id="p143128code5"><pre class="swift" style="font-family:monospace;"><span style="color: #11740a; font-style: italic;">// end background task</span><br><span style="color: #a61390;">if</span> backgroundTask <span style="color: #002200;">!=</span> UIBackgroundTaskInvalid <span style="color: #002200;">&#123;</span><br>  endBackgroundTask<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span><br><span style="color: #002200;">&#125;</span></pre></td></tr></table></div><br>Now when calculations are stopped by the user endBackgroundTask() is called to indicate to iOS that you don’t need any extra CPU time.<br>It is important that you call endBackgroundTask() for every time you call beginBackgroundTask(expirationHandler:). If you call beginBackgroundTaskWithExpirationHandler(_:) twice and only call endBackgroundTask() for one of the tasks, you’re still going to get CPU time until you call endBackgroundTask() a second time with the value of the second background task. This is also why you needed backgroundTask.<br>Now update the calculateNextNumber() method to behave differently based on the application’s state.<br>Replace the final line, resultsLabel.text = resultsMessage, in the method with the following:</p>
+<p><div class="wp_codebox"><table><tr id="p1431286"><td class="code" id="p143128code6"><pre class="swift" style="font-family:monospace;"><span style="color: #a61390;">switch</span> <span style="color: #400080;">UIApplication</span>.shared.applicationState <span style="color: #002200;">&#123;</span><br><span style="color: #a61390;">case</span> .active<span style="color: #002200;">:</span><br>  resultsLabel.text <span style="color: #002200;">=</span> resultsMessage<br><span style="color: #a61390;">case</span> .background<span style="color: #002200;">:</span><br>  <span style="color: #a61390;">print</span><span style="color: #002200;">&#40;</span><span style="color: #bf1d1a;">&quot;App is backgrounded. Next number = <span style="color: #2400d9;">(</span>resultsMessage)&quot;</span><span style="color: #002200;">&#41;</span><br>  <span style="color: #a61390;">print</span><span style="color: #002200;">&#40;</span><span style="color: #bf1d1a;">&quot;Background time remaining = <span style="color: #2400d9;">(</span>UIApplication.shared.backgroundTimeRemaining) seconds&quot;</span><span style="color: #002200;">&#41;</span><br><span style="color: #a61390;">case</span> .inactive<span style="color: #002200;">:</span><br>  break<br><span style="color: #002200;">&#125;</span></pre></td></tr></table></div><br>The label will only be updated when the application is active. When the application is backgrounded a message will be printed to the console instead, stating what the new result is and how much background time is remaining.<br>Build and run, then switch to the third tab.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-RunningWhatever.png" width="281" height="500"><br></div><br>Tap Play and you should see the app calculating the values. Now hit the home button and watch the output in Xcode’s console. You should see the app still updating the numbers while the time remaining goes down.<br>In most cases, this time will start with 180 (180 seconds = 3 minutes) and go down to 5 seconds. If you wait for the time to expire when you reach 5 seconds (could be another value depending on your specific conditions), the expiration block will be invoked and your app should stop outputting anything. Then if you go back to the app, the timer should start firing again and the whole madness will continue.<br>There’s only one bug in this code. Suppose you background the app and wait until the allotted time expires. In this case, your app will call the expiration handler and invoke endBackgroundTask(), thus ending the need for background time.<br>If you then return to the app, the timer will continue to fire. But if you leave the app again, you’ll get no background time at all. Why? Because nowhere between the expiration and returning to the background did the app call beginBackgroundTaskWithExpirationHandler(_:).<br>How can you solve this? There are a number of ways to go about it and one of them is to use a state change notification.<br>You can see all the details on how to respond to state change in Apple’s documentation for App States for Apps.<br>Time to fix the bug. First, add a new method named reinstateBackgroundTask().</p>
+<p><div class="wp_codebox"><table><tr id="p1431287"><td class="code" id="p143128code7"><pre class="swift" style="font-family:monospace;"><span style="color: #a61390;">func</span> reinstateBackgroundTask<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span><br>  <span style="color: #a61390;">if</span> updateTimer <span style="color: #002200;">!=</span> <span style="color: #a61390;">nil</span> <span style="color: #002200;">&amp;&amp;</span> <span style="color: #002200;">&#40;</span>backgroundTask <span style="color: #002200;">==</span> UIBackgroundTaskInvalid<span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span><br>    registerBackgroundTask<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span><br>  <span style="color: #002200;">&#125;</span><br><span style="color: #002200;">&#125;</span></pre></td></tr></table></div><br>You only need to reinstate if there is a timer running and the background task is invalid. Breaking your code into smaller utility functions that do one thing is paying off. In this case you simply need to call registerBackgroundTask().<br>Now override viewDidLoad() and subscribe to UIApplicationDidBecomeActiveNotification by adding the following:</p>
+<p><div class="wp_codebox"><table><tr id="p1431288"><td class="code" id="p143128code8"><pre class="swift" style="font-family:monospace;"><span style="color: #a61390;">override</span> <span style="color: #a61390;">func</span> viewDidLoad<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span><br>  <span style="color: #a61390;">super</span>.viewDidLoad<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span><br>  NotificationCenter.<span style="color: #a61390;">default</span>.addObserver<span style="color: #002200;">&#40;</span><span style="color: #a61390;">self</span>, selector<span style="color: #002200;">:</span> <span style="color: #6e371a;">#selector(reinstateBackgroundTask), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)</span><br><span style="color: #002200;">&#125;</span></pre></td></tr></table></div><br>This designates your new method reinstateBackgroundTask() to be called whenever the application becomes active.<br>Whenever you subscribe to a notification you should also think about where to unsubscribe. Use deinit to do this. Add the following:</p>
+<p><div class="wp_codebox"><table><tr id="p1431289"><td class="code" id="p143128code9"><pre class="swift" style="font-family:monospace;"><span style="color: #a61390;">deinit</span> <span style="color: #002200;">&#123;</span><br>  NotificationCenter.<span style="color: #a61390;">default</span>.removeObserver<span style="color: #002200;">&#40;</span><span style="color: #a61390;">self</span><span style="color: #002200;">&#41;</span><br><span style="color: #002200;">&#125;</span></pre></td></tr></table></div><br>And there you have it, you can now do whatever you want, at least for as long as iOS says that it is okay.<br>On to the final topic for this background modes tutorial: Background Fetching.<br>Background Fetch<br>Background fetch is a mode introduced in iOS 7 that lets your app appear always up-to-date with the latest information while minimizing the impact on battery. Suppose, for example, you were implementing a news feed in your app. Prior to background fetch, you might do this by getting new data in viewWillAppear(_:).<br>The problem with this solution is that your user is looking at the old data for at least several seconds until the new data comes in. Wouldn’t it be better if right when they opened your app the new data was magically there? This is what background fetch gives you.<br>When enabled, the system uses usage patterns to determine when to best fire off a background fetch. For example, if your user opens the app at 9 AM each morning, it is likely that a background fetch will be scheduled sometime before that time. The system decides the best time to issue a background fetch and for this reason you should not use it to do critical updates.<br>In order to implement background fetch there are three things you must do:</p>
+<p><ul></ul></p>
+<p><li>Check the box <em>Background fetch</em> in the <em>Background Modes</em> of your app’s <em>Capabilities</em>.</li></p>
+<p><li>Use <code>setMinimumBackgroundFetchInterval(_:)</code> to set a time interval appropriate for your app.</li></p>
+<p><li>Implement <code>application(<em>:performFetchWithCompletionHandler:)</em></code> in your app delegate to handle the background fetch.</li><br><br>As the name implies, background fetch normally involves fetching information from an external source like a network service. For the purposes of this background modes tutorial, you won’t use the network but just fetch the current time. This simplification will let you understand everything required to perform a background fetch and test it without worrying about an external service.<br>In contrast to finite-length tasks, you only have seconds to operate when doing a background fetch – the consensus figure is a maximum of 30 seconds, but shorter is better. If you need to download large resources as part of the fetch, this is where you need to use NSURLSession‘s background transfer service.<br>Time to get started. First, open FetchViewController.swift and take a look at what this does, there’s not much to it.<br>The fetch(:) method is a simplified replacement of what you might actually do to fetch some data from an external source (such as a JSON or XML RESTful service). Since it might take several seconds to fetch and parse the data, you pass a completion handler that gets called when the process is done. You will see why this is important a little later.<br>updateUI() formats the time and shows it. The guard statement around updateLabel is to ensure that the view has actually been loaded. time is an optional type so if it is not set, it shows the message “Not updated yet”.<br>When the view is first loaded (in viewDidLoad()) you don’t fetch, but go straight to updateUI() which means the message “Not yet updated” will appear first. Finally, when the Update button is tapped it performs a fetch and as a completion updates the UI.<br>The view controller is working. There’s nothing you need to do to it.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-FetchNotUpdated.png" width="281" height="500"><br></div><br>However, background fetching is not enabled.<br>The first step to enabling background fetching is to check Background fetch in the Capabilities tab of your app. By now this should be old hat. Go ahead and do this.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableBackgroundFetch.png" width="650" height="363"><br></div><br>Next, open AppDelegate.swift add the following to application(_:didFinishLaunchingWithOptions:):</p>
+<p><div class="wp_codebox"><table><tr id="p14312810"><td class="code" id="p143128code10"><pre class="swift" style="font-family:monospace;"><span style="color: #400080;">UIApplication</span>.shared.setMinimumBackgroundFetchInterval<span style="color: #002200;">&#40;</span>UIApplicationBackgroundFetchIntervalMinimum<span style="color: #002200;">&#41;</span></pre></td></tr></table></div><br>This requests background fetches by setting the minimum background fetch interval. The default interval is UIApplicationBackgroundFetchIntervalNever, which you might want to switch back to, if, for example, your user logs out and no longer needs updates. You can also set a specific interval in seconds. The system will wait at least that many seconds before issuing a background fetch.<br>Be careful not to set the value too small because it may chew through battery unnecessarily as well as hammer your server. In the end the exact timing of the fetch is up to the system but will wait at least this interval before performing it. Generally, UIApplicationBackgroundFetchIntervalMinimum is a good default value to use.<br>Finally, to enable background fetch you must implement application(_:performFetchWithCompletionHandler:). Add that now to AppDelegate:</p>
+<p><div class="wp_codebox"><table><tr id="p14312811"><td class="code" id="p143128code11"><pre class="swift" style="font-family:monospace;"><span style="color: #11740a; font-style: italic;">// Support for background fetch</span><br><span style="color: #a61390;">func</span> application<span style="color: #002200;">&#40;</span><em> application<span style="color: #002200;">:</span> <span style="color: #400080;">UIApplication</span>, performFetchWithCompletionHandler completionHandler<span style="color: #002200;">:</span> @escaping <span style="color: #002200;">&#40;</span>UIBackgroundFetchResult<span style="color: #002200;">&#41;</span> <span style="color: #002200;">-</span>&gt; <span style="color: #a61390;">Void</span><span style="color: #002200;">&#41;</span> <span style="color: #002200;">&#123;</span><br>  <span style="color: #a61390;">if</span> <span style="color: #a61390;">let</span> tabBarController <span style="color: #002200;">=</span> window?.rootViewController <span style="color: #a61390;">as?</span> <span style="color: #400080;">UITabBarController</span>,<br>         <span style="color: #a61390;">let</span> viewControllers <span style="color: #002200;">=</span> tabBarController.viewControllers<br>  <span style="color: #002200;">&#123;</span><br>    <span style="color: #a61390;">for</span> viewController <span style="color: #a61390;">in</span> viewControllers <span style="color: #002200;">&#123;</span><br>      <span style="color: #a61390;">if</span> <span style="color: #a61390;">let</span> fetchViewController <span style="color: #002200;">=</span> viewController <span style="color: #a61390;">as?</span> FetchViewController <span style="color: #002200;">&#123;</span><br>        fetchViewController.fetch <span style="color: #002200;">&#123;</span><br>          fetchViewController.updateUI<span style="color: #002200;">&#40;</span><span style="color: #002200;">&#41;</span><br>          completionHandler<span style="color: #002200;">&#40;</span>.newData<span style="color: #002200;">&#41;</span><br>        <span style="color: #002200;">&#125;</span><br>      <span style="color: #002200;">&#125;</span><br>    <span style="color: #002200;">&#125;</span><br>  <span style="color: #002200;">&#125;</span><br><span style="color: #002200;">&#125;</span></em></pre></td></tr></table></div><br>First you need to get the FetchViewContoller. Next, optionally cast since the rootViewController is not necessarily a UITabBarController in every app, although it is in this app so it will never fail.<br>Next, you loop though all of the view controllers in the tab bar controller and find the one that successfully casts to FetchViewController. In this app you know it is the last view controller so you could hard-code it, but looping makes it a little more robust in case you decide to add or remove a tab later.<br>Finally you call fetch(:). When it completes, you update the UI and then call the completionHandler that was passed in as a parameter of the function. It is important that you call this completion handler at the end of the operation. You specify what happened during the fetch as the first parameter. Possible values are .newData, .noData, or .failed.<br>For simplicity, the tutorial always specifies .newData since getting the time will never fail and is always different than the last call. iOS can then use this value to better time the background fetches. The system knows at this point to take a snapshot of the app so it can present it in the card view of the app switcher. And that is all there is to it.<br><em>Update note:</em> Rather than passing the completion closure along, it can be tempting to save it away in a property variable and call that when your fetch completes. Don’t do this. If you get multiple calls to application(_:performFetchWithCompletionHandler:), the previous handler will get overwritten and never called. It is better to pass the handler through and call it as it will make this kind of programming error impossible.<br>Testing Background Fetch<br>One way to test background fetch is to sit around and wait for the system to decide to do it. That would require a lot of sitting. Fortunately, Xcode gives a way to simulate a background fetch. There are two scenarios that you need to test. One is when your app is in the background, and the other when your app is coming back from being suspended. The first way is the easiest and is just a menu selection.</p>
+<p><ul></ul></p>
+<p><li>Start the app on an actual device (not a simulator);</li></p>
+<p><li>Go to the Fetch tab</li></p>
+<p><li>Notice the message is &#8220;Not yet updated&#8221;</li></p>
+<p><li>From the <em>Debug</em> menu in Xcode, select <em>Simulate Background Fetch</em>;<br></li></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-SimulateBGFetch.png" width="336" height="500"><br></div><br>The app will be sent to the background and Xcode’s debugger will trap. Instruct the debugger to continue</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ContinueDebugger.png" width="650" height="331"><br></div><br>Reopen the app<br>Notice that the time is updated!.<br>The other way you should test background fetch is to do it as a resume from suspension. There is a launch option that lets you launch your app directly into suspension. Since you might want to test this semi-often it is best to make a new Scheme with that option always set. Xcode makes this easy.<br>First select the Manage Schemes option.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ManageSchemes.png" width="401" height="168"><br></div><br>Next, select the only scheme in the list, and then click on the gear icon and select Duplicate.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-DuplicateScheme.png" width="650" height="360"><br></div><br>Lastly, rename your scheme to something reasonable, like, “Background Fetch” and check the checkbox to Launch due to a background fetch event.</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ConfigureNewScheme.png" width="650" height="384"><br></div><br>Run your app with this scheme. You will notice that the app never actually opens but is launched into a suspended state. Now manually launch it and go to the Fetch tab. You should see that there is an updated time when you launched the app instead of “Not yet updated”.<br>Using background fetch effectively lets your users to seamlessly get the latest content.</p>
+  
+	</div>
+		<footer class="article-footer clearfix">
+<div class="article-catetags">
+
+
+</div>
+
+
+
+	<div class="article-share" id="share">
+	
+	  <div data-url="http://yoursite.com/2016/12/22/苹果Background-Modes/" data-title="苹果Background Modes | 跳跳魔王的博客" data-tsina="null" class="share clearfix">
+	  </div>
+	
+	</div>
+
+
+</footer>
+
+   	       
+	</article>
+	
+<nav class="article-nav clearfix">
+ 
+
+<div class="next">
+<a href="/2016/12/16/TestFlight-iOS-Beta测试/"  title="TestFlight:iOS Beta测试">
+ <strong>下一篇：</strong><br/> 
+ <span>TestFlight:iOS Beta测试
+</span>
+</a>
+</div>
+
+</nav>
+
+	
+<section id="comments" class="comment">
+	<div class="ds-thread" data-thread-key="2016/12/22/苹果Background-Modes/" data-title="苹果Background Modes" data-url="http://yoursite.com/2016/12/22/苹果Background-Modes/"></div>
+</section>
+
+
+</div>  
+      <div class="openaside"><a class="navbutton" href="#" title="显示侧边栏"></a></div>
+
+  <div id="toc" class="toc-aside">
+  <strong class="toc-title">文章目录</strong>
+ 
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li></ol>
+ 
+  </div>
+
+<div id="asidepart">
+<div class="closeaside"><a class="closebutton" href="#" title="隐藏侧边栏"></a></div>
+<aside class="clearfix">
+
+  
+
+
+  
+
+  
+
+  <div class="linkslist">
+  <p class="asidetitle">友情链接</p>
+    <ul>
+        
+          <li>
+            
+            	<a href="http://www.mhealth365.cn/" target="_blank" title="一款温暖的心电监测设备">熙健-掌上心电</a>
+            
+          </li>
+        
+    </ul>
+</div>
+
+  
+
+
+  <div class="rsspart">
+	<a href="/atom.xml" target="_blank" title="rss">RSS 订阅</a>
+</div>
+
+  <div class="weiboshow">
+  <p class="asidetitle">新浪微博</p>
+    <iframe width="100%" height="119" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=119&fansRow=2&ptype=1&speed=0&skin=9&isTitle=1&noborder=1&isWeibo=0&isFans=0&uid=null&verifier=&dpc=1"></iframe>
+</div>
+
+
+</aside>
+</div>
+    </div>
+    <footer><div id="footer" >
+	
+	<div class="line">
+		<span></span>
+		<div class="author"></div>
+	</div>
+	
+	
+	<section class="info">
+		<p> I&#39;m an iOS engineer <br/>
+			Hala Madrid</p>
+	</section>
+	 
+	<div class="social-font" class="clearfix">
+		
+		<a href="http://weibo.com/2779746325" target="_blank" class="icon-weibo" title="微博"></a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	</div>
+			
+		
+
+		<p class="copyright">
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		
+		<a href="/about" target="_blank" title="跳跳魔王">跳跳魔王</a>
+		
+		
+		</p>
+</div>
+</footer>
+    <script src="/js/jquery-2.0.3.min.js"></script>
+<script src="/js/jquery.imagesloaded.min.js"></script>
+<script src="/js/gallery.js"></script>
+<script src="/js/jquery.qrcode-0.12.0.min.js"></script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.navbar').click(function(){
+    $('header nav').toggleClass('shownav');
+  });
+  var myWidth = 0;
+  function getSize(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+  };
+  var m = $('#main'),
+      a = $('#asidepart'),
+      c = $('.closeaside'),
+      o = $('.openaside');
+  c.click(function(){
+    a.addClass('fadeOut').css('display', 'none');
+    o.css('display', 'block').addClass('fadeIn');
+    m.addClass('moveMain');
+  });
+  o.click(function(){
+    o.css('display', 'none').removeClass('beforeFadeIn');
+    a.css('display', 'block').removeClass('fadeOut').addClass('fadeIn');      
+    m.removeClass('moveMain');
+  });
+  $(window).scroll(function(){
+    o.css("top",Math.max(80,260-$(this).scrollTop()));
+  });
+  
+  $(window).resize(function(){
+    getSize(); 
+    if (myWidth >= 1024) {
+      $('header nav').removeClass('shownav');
+    }else{
+      m.removeClass('moveMain');
+      a.css('display', 'block').removeClass('fadeOut');
+      o.css('display', 'none');
+      
+      $('#toc.toc-aside').css('display', 'none');
+        
+    }
+  });
+});
+</script>
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var ai = $('.article-content>iframe'),
+      ae = $('.article-content>embed'),
+      t  = $('#toc'),
+      ta = $('#toc.toc-aside'),
+      o  = $('.openaside'),
+      c  = $('.closeaside');
+  if(ai.length>0){
+    ai.wrap('<div class="video-container" />');
+  };
+  if(ae.length>0){
+   ae.wrap('<div class="video-container" />');
+  };
+  c.click(function(){
+    ta.css('display', 'block').addClass('fadeIn');
+  });
+  o.click(function(){
+    ta.css('display', 'none');
+  });
+  $(window).scroll(function(){
+    ta.css("top",Math.max(140,320-$(this).scrollTop()));
+  });
+});
+</script>
+
+
+<script type="text/javascript">
+$(document).ready(function(){ 
+  var $this = $('.share'),
+      url = $this.attr('data-url'),
+      encodedUrl = encodeURIComponent(url),
+      title = $this.attr('data-title'),
+      tsina = $this.attr('data-tsina'),
+      description = $this.attr('description');
+  var html = [
+  '<div class="hoverqrcode clearfix"></div>',
+  '<a class="overlay" id="qrcode"></a>',
+  '<a href="https://www.facebook.com/sharer.php?u=' + encodedUrl + '" class="article-share-facebook" target="_blank" title="Facebook"></a>',
+  '<a href="https://twitter.com/intent/tweet?url=' + encodedUrl + '" class="article-share-twitter" target="_blank" title="Twitter"></a>',
+  '<a href="#qrcode" class="article-share-qrcode" title="微信"></a>',
+  '<a href="http://widget.renren.com/dialog/share?resourceUrl=' + encodedUrl + '&srcUrl=' + encodedUrl + '&title=' + title +'" class="article-share-renren" target="_blank" title="人人"></a>',
+  '<a href="http://service.weibo.com/share/share.php?title='+title+'&url='+encodedUrl +'&ralateUid='+ tsina +'&searchPic=true&style=number' +'" class="article-share-weibo" target="_blank" title="微博"></a>',
+  '<span title="Share to"></span>'
+  ].join('');
+  $this.append(html);
+
+  $('.hoverqrcode').hide();
+
+  var myWidth = 0;
+  function updatehoverqrcode(){
+    if( typeof( window.innerWidth ) == 'number' ) {
+      myWidth = window.innerWidth;
+    } else if( document.documentElement && document.documentElement.clientWidth) {
+      myWidth = document.documentElement.clientWidth;
+    };
+    var qrsize = myWidth > 1024 ? 200:100;
+    var options = {render: 'image', size: qrsize, fill: '#2ca6cb', text: url, radius: 0.5, quiet: 1};
+    var p = $('.article-share-qrcode').position();
+    $('.hoverqrcode').empty().css('width', qrsize).css('height', qrsize)
+                          .css('left', p.left-qrsize/2+20).css('top', p.top-qrsize-10)
+                          .qrcode(options);
+  };
+  $(window).resize(function(){
+    $('.hoverqrcode').hide();
+  });
+  $('.article-share-qrcode').click(function(){
+    updatehoverqrcode();
+    $('.hoverqrcode').toggle();
+  });
+  $('.article-share-qrcode').hover(function(){}, function(){
+      $('.hoverqrcode').hide();
+  });
+});   
+</script>
+
+
+
+<script type="text/javascript">
+  var duoshuoQuery = {short_name:"ecgbao"};
+  (function() {
+    var ds = document.createElement('script');
+    ds.type = 'text/javascript';ds.async = true;
+    ds.src = '//static.duoshuo.com/embed.js';
+    ds.charset = 'UTF-8';
+    (document.getElementsByTagName('head')[0] 
+    || document.getElementsByTagName('body')[0]).appendChild(ds);
+  })();
+</script> 
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+<script type="text/javascript">
+$(document).ready(function(){ 
+  $('.article-content').each(function(i){
+    $(this).find('img').each(function(){
+      if ($(this).parent().hasClass('fancybox')) return;
+      var alt = this.alt;
+      if (alt) $(this).after('<span class="caption">' + alt + '</span>');
+      $(this).wrap('<a href="' + this.src + '" title="' + alt + '" class="fancybox"></a>');
+    });
+    $(this).find('.fancybox').each(function(){
+      $(this).attr('rel', 'article' + i);
+    });
+  });
+  if($.fancybox){
+    $('.fancybox').fancybox();
+  }
+}); 
+</script>
+
+
+
+<!-- Analytics Begin -->
+
+
+
+<script>
+var _hmt = _hmt || [];
+(function() {
+  var hm = document.createElement("script");
+  hm.src = "//hm.baidu.com/hm.js?e6d1f421bbc9962127a50488f9ed37d1";
+  var s = document.getElementsByTagName("script")[0]; 
+  s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+
+
+<!-- Analytics End -->
+
+<!-- Totop Begin -->
+
+	<div id="totop">
+	<a title="返回顶部"><img src="/img/scrollup.png"/></a>
+	</div>
+	<script src="/js/totop.js"></script>
+
+<!-- Totop End -->
+
+<!-- MathJax Begin -->
+<!-- mathjax config similar to math.stackexchange -->
+
+
+<!-- MathJax End -->
+
+<!-- Tiny_search Begin -->
+
+<!-- Tiny_search End -->
+
+  </body>
+</html>
