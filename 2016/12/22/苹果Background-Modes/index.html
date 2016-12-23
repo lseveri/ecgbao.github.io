@@ -11,12 +11,16 @@
     
 
     
-    <meta name="description" content="Developers and users alike are often confused as to what the iOS multitasking system allows. Apple has restrictions in place for the use of background operations in an effort to improve user experienc">
+    <meta name="description" content="开发人员和用户经常很困惑,iOS的多任务系统到底允许做什么事。苹果限制后台操作的使用位置,为了提升用户体验和延长电池的使用。你的应用只允许在某些场景下运行在后台。例如, 播放音频, 获取位置更新, 或者从服务器获取最新的内容。如果你的工作不是属于上述分类。超出范围使用后台模式,应用审核时会被苹果拒绝。
+
+开始进入工程前, 这里有个在iOS中可用的后台模式的预览。 在 Xcode 8里, 你可以在应">
 <meta property="og:type" content="article">
 <meta property="og:title" content="苹果Background Modes">
 <meta property="og:url" content="http://yoursite.com/2016/12/22/苹果Background-Modes/index.html">
 <meta property="og:site_name" content="跳跳魔王的博客">
-<meta property="og:description" content="Developers and users alike are often confused as to what the iOS multitasking system allows. Apple has restrictions in place for the use of background operations in an effort to improve user experienc">
+<meta property="og:description" content="开发人员和用户经常很困惑,iOS的多任务系统到底允许做什么事。苹果限制后台操作的使用位置,为了提升用户体验和延长电池的使用。你的应用只允许在某些场景下运行在后台。例如, 播放音频, 获取位置更新, 或者从服务器获取最新的内容。如果你的工作不是属于上述分类。超出范围使用后台模式,应用审核时会被苹果拒绝。
+
+开始进入工程前, 这里有个在iOS中可用的后台模式的预览。 在 Xcode 8里, 你可以在应">
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BackgroundModes-feature.png">
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/EnableBackgroundCapability.png">
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-SetDevTeam.png">
@@ -37,10 +41,12 @@
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ManageSchemes.png">
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-DuplicateScheme.png">
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ConfigureNewScheme.png">
-<meta property="og:updated_time" content="2016-12-22T09:00:56.000Z">
+<meta property="og:updated_time" content="2016-12-23T02:10:48.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="苹果Background Modes">
-<meta name="twitter:description" content="Developers and users alike are often confused as to what the iOS multitasking system allows. Apple has restrictions in place for the use of background operations in an effort to improve user experienc">
+<meta name="twitter:description" content="开发人员和用户经常很困惑,iOS的多任务系统到底允许做什么事。苹果限制后台操作的使用位置,为了提升用户体验和延长电池的使用。你的应用只允许在某些场景下运行在后台。例如, 播放音频, 获取位置更新, 或者从服务器获取最新的内容。如果你的工作不是属于上述分类。超出范围使用后台模式,应用审核时会被苹果拒绝。
+
+开始进入工程前, 这里有个在iOS中可用的后台模式的预览。 在 Xcode 8里, 你可以在应">
 <meta name="twitter:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BackgroundModes-feature.png">
 
     
@@ -113,27 +119,29 @@
 		<div id="toc" class="toc-article">
 			<strong class="toc-title">文章目录</strong>
 		
-			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li></ol>
+			<ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#播放音频"><span class="toc-number">2.</span> <span class="toc-text">播放音频</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取位置更新"><span class="toc-number">3.</span> <span class="toc-text">获取位置更新</span></a></li></ol>
 		
 		</div>
 		
-		<p>Developers and users alike are often confused as to what the iOS multitasking system allows. Apple has restrictions in place for the use of background operations in an effort to improve user experience and extend battery life. Your app is only allowed to keep running in the background in very specific cases. For example, these include playing audio, getting location updates, or fetching the latest content from a server.<br>If your task does not fall into these categories backgrounding may not be for you. You may even find yourself with an App Store rejection if you try to cheat the system by using background modes outside the realm of their purposes, so consider yourself warned! :]</p>
+		<p>开发人员和用户经常很困惑,iOS的多任务系统到底允许做什么事。苹果限制后台操作的使用位置,为了提升用户体验和延长电池的使用。你的应用只允许在某些场景下运行在后台。例如, 播放音频, 获取位置更新, 或者从服务器获取最新的内容。<br>如果你的工作不是属于上述分类。超出范围使用后台模式,应用审核时会被苹果拒绝。</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BackgroundModes-feature.png" height="250"><br></div></p>
-<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>Before digging into the project, here’s a quick overview of the basic background modes available in iOS. In Xcode 8, you can see the list by pulling up the Capabilities tab of your app target. It looks like this:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/EnableBackgroundCapability.png" width="480" height="262"><br></div><br>To get to the background modes capability list you (1) select the project from the Project Navigator, (2) select the app target, (3) select the Capabilities tab, and (4) turn the Background Modes switch on.<br>In this background modes tutorial you will investigate four ways of doing background processing.</p>
-<ul><br><li><em>Play audio</em>: the app can continue playing and/or recording audio in the background.</li><br><li><em>Receive location updates</em>: the app can continue to get callbacks as the device’s location changes.</li><br><li><em>Perform finite-length tasks</em>: the generic &#8220;whatever&#8221; case, where the app can run arbitrary code for a limited amount of time.</li><br><li><em>Background Fetch</em>: Get updates to the latest content scheduled by iOS.</li><br></ul>
+<h1 id="开始"><a href="#开始" class="headerlink" title="开始"></a>开始</h1><p>进入工程前, 这里有个在iOS中可用的后台模式的预览。 在 Xcode 8里, 你可以在应用目标的 Capabilities 标签下看到这个列表。它看起来是这样的:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/EnableBackgroundCapability.png" width="480" height="262"><br></div><br>要获取后台模式能力列表,你 (1) 从 Project Navigator 选择工程, (2) 选择应用 target, (3) 选择 Capabilities 标签, 然后 (4) 打开 Background Modes 开关。<br>在这个教程里,你会研究四种后台处理方式。</p>
+<ul><br><li><em>播放音频</em>: 应用可以在后台继续播放或者录制音频。</li><br><li><em>获取位置更新</em>: 设备位置变化时,应用可以继续获取反馈。</li><br><li><em>执行有限时长的任务</em>: 应用运行代码一段时间。</li><br><li><em>后台获取</em>: 获取iOS预定的最新内容。</li><br></ul>
 
-<p>If you are only interested in one or several of these modes, feel free to skip around!<br>To get started download the starter project. You’ll find the user interface and some of the logic that is not directly applicable to the topic has been provided for you.<br>Before you can run the project you must set your development team, as shown here:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-SetDevTeam.png" width="650" height="349"><br></div><br>Run the sample project to get a feel for it. There are 4 tabs; one to cover each mode:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-StarterProjectTabs.png" width="372" height="110"><br></div><br><em>Update note:</em> For the full effect, you should follow along on a real device. In my experience, if you forget a configuration setting, the app might appear to run fine in the background on the Simulator. However, when you switch to a real device, it doesn’t work at all.<br>Playing Audio<br>First up, background audio.<br>There are several ways to play audio on iOS and most of them require implementing callbacks to provide more audio data to play.<br>If you want to play audio from streaming data, you can start a network connection, and the connection callbacks provide continuous audio data.<br>When you activate the audio background mode, iOS will continue these callbacks even if your app is not the current active app. That’s right – the audio background mode is virtually automatic. You just have to activate it and provide the infrastructure to handle it appropriately.<br>In this section you’ll review the audio player in the app, verify that background mode is not working, enable the audio background capability, and demonstrate to yourself that it’s working.<br>Open AudioViewController.swift and take a look around.<br>The app makes use of an AVQueuePlayer to queue up songs and play them one after the other. The view controller is observing the player’s currentItem value to provide updates.<br>The starter project includes audio files from incompetech.com, a favorite royalty-free music website. With credit given, you can use the music for free. So, here you go: all songs are by Kevin MacLeod at incompetech.com. Thanks, Kevin!<br>When the app is in the active state, the music title label is shown and when in the app is in the background it will print the title to the console. The label text could still update while in the background, but the point here is just to demonstrate that your app continues to receive this callback when your app is in the background.<br><em>Update note:</em> Check out the Execution States for Apps to learn more about the active state and others.<br>Build and run, and you should see this:</p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-AudioScreen.png" width="273" height="500"><br></div><br>Now hit Play and the music will start. Nice!<br>Test if backgrounding works. While running on an actual device hit the home button and the music will stop. Why? Well, there’s still a very crucial piece missing!<br>For most background modes (the “Whatever” mode is the exception) you need to enable the capability to indicate that the app wants to run code while in the background.<br>Back in Xcode, do the following:</p>
+<p>下载工程开始。开始运行工程前,设置一下开发团队, 如下所示:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-SetDevTeam.png" width="650" height="349"><br></div><br>运行实例程序感受一下。这里有4个标签; 分别对应一种模式:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-StarterProjectTabs.png" width="372" height="110"><br></div><br><em>备注:</em> 为了效果完整, 你应该使用真实的设备。以我的经验, 如果忘记配置, 应用可能在模拟器后台运行良好。不过, 当你换到真实设备时, 它完全不工作。</p>
+<h1 id="播放音频"><a href="#播放音频" class="headerlink" title="播放音频"></a>播放音频</h1><p>首先, 后台音频。<br>在iOS上有几种播放音频的方法, 大多数方法要求回调来提供更多的播放数据。<br>如果你想用流数据播放音频, 你可以启动网络连接, 连接回调会提供连续的音频数据。<br>当你激活音频后台模式后, 即使应用不是当前激活的应用,iOS 也会继续这些回调。事实上,音频后面模式是自动的。你只需要激活它然后提供合适的处理。<br>在这个部分,你会审查应用里的音频播放器, 验证后台模式不起作用, 打开音频后台模式能力, 然后显示它起作用了。<br>打开 AudioViewController.swift 看看。<br>这个应用使用 AVQueuePlayer 来排队歌曲然后依次播放它们。视图控制器通过观察播放器的 currentItem 值来提供更新。<br>启动器工程包含了来自 incompetech.com 的音频文件, 一个最受欢迎的免版税的音乐网站。<br>当应用处于激活状态时, 音乐标题会显示,如果在后台,控制台会打印这个标题。在后台的时候,标题依然会更新。但是这里只是展示,当你的应用在后台时,它依然可以收到回调。<br>编译运行,你会看到这个:</p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-AudioScreen.png" width="273" height="500"><br></div><br>现在点击播放,音乐就开始了。好棒!<br>测试一下后台。当在真实设备运行的时候,点击home键,音乐就会停止。为什么? 好吧, 这里还缺少关键部分!<br>返回 Xcode, 按照下面这样做:</p>
 <p><ol></ol></p>
-<p><li>Click the project in the <em>Project Navigator</em>;</li></p>
-<p><li>Click <em>TheBackgrounder</em> target;</li></p>
-<p><li>Click on the <em>Capabilities</em> tab;</li></p>
-<p><li>Scroll down to <em>Background Modes</em> and turn the switch on;</li></p>
-<p><li>Check <em>Audio, AirPlay and Picture in Picture</em>.</li><br></p>
-<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableAudioInBG.png" width="650" height="354"><br></div><br>Build and run again. Start the music and hit the home button, and this time you should still hear the music, even though the app is in the background.<br>You should also see the time updates in your Console output in Xcode, proof that your code is still working even though the app is in the background.<br>Wow, if you already have an audio player in place, playing audio in the background is easy! Well, that’s one mode down, if you’re following through the entire background modes tutorial – three to go!<br>Receiving Location Updates<br>When in location background mode, your app will still receive location delegate messages with the updated location of the user, even when the app is in the background. You can control the accuracy of these location updates and even change that accuracy while backgrounded.<br>The second tab is for location updates, so open LocationViewController.swift and take a look around. Similarly to the background audio example, the location background mode is very easy to get up and running with if you already have location features working!<br>In this controller you will find that CLLocationManager runs the show. To receive location information you create and configure a CLLocationManager instance. In this case the app monitors location when an on screen UISwitch is activated. As location updates are received the app draws pins on a map. When the app is in the background, you should see the log of location updates in your console output in Xcode.<br>An important line to note is the call to requestAlwaysAuthorization() on the CLLocationManager instance. This is a requirement since iOS 8, and brings up a dialog asking for permission to receive locations in the background.<br>Now that you’re familiar with Background Modes, you don’t need to make the same mistake as before! Check the box for Location updates to let iOS know that your app wants to continue receiving location updates while in the background.</p>
+<p><li>在 <em>Project Navigator</em>下点击工程;</li></p>
+<p><li>点击 <em>TheBackgrounder</em> 目标;</li></p>
+<p><li>点击 <em>Capabilities</em> 标签;</li></p>
+<p><li>到 <em>Background Modes</em> 打开开关;</li></p>
+<p><li>选择 <em>Audio, AirPlay and Picture in Picture</em>.</li><br></p>
+<p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableAudioInBG.png" width="650" height="354"><br></div><br>再次编译运行。播放音乐并按home键, 这时,即使应用在后台,你也可能听见音乐了。<br>你也可以在Xcode控制台看见时间在更新, 证明代码在后台也是工作的。<br>喔, 如果你已经有了一个音频播放器, 后台播放就很容易了!</p>
+<h1 id="获取位置更新"><a href="#获取位置更新" class="headerlink" title="获取位置更新"></a>获取位置更新</h1><p>在位置后台模式, 应用依然可以接收到用户位置更新的代理信息。even when the app is in the background. You can control the accuracy of these location updates and even change that accuracy while backgrounded.<br>The second tab is for location updates, so open LocationViewController.swift and take a look around. Similarly to the background audio example, the location background mode is very easy to get up and running with if you already have location features working!<br>In this controller you will find that CLLocationManager runs the show. To receive location information you create and configure a CLLocationManager instance. In this case the app monitors location when an on screen UISwitch is activated. As location updates are received the app draws pins on a map. When the app is in the background, you should see the log of location updates in your console output in Xcode.<br>An important line to note is the call to requestAlwaysAuthorization() on the CLLocationManager instance. This is a requirement since iOS 8, and brings up a dialog asking for permission to receive locations in the background.<br>Now that you’re familiar with Background Modes, you don’t need to make the same mistake as before! Check the box for Location updates to let iOS know that your app wants to continue receiving location updates while in the background.</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableLocationInBG.png" width="650" height="354"><br></div><br>In addition to checking this box, iOS 8 and above requires that you set a key in your Info.plist explaining to the user why background updates are needed. If you do not include this, location requests will silently fail.</p>
 <p><ul></ul></p>
 <p><li>Select the project in Xcode.</li></p>
@@ -223,7 +231,7 @@
   <div id="toc" class="toc-aside">
   <strong class="toc-title">文章目录</strong>
  
- <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li></ol>
+ <ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#开始"><span class="toc-number">1.</span> <span class="toc-text">开始</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#播放音频"><span class="toc-number">2.</span> <span class="toc-text">播放音频</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#获取位置更新"><span class="toc-number">3.</span> <span class="toc-text">获取位置更新</span></a></li></ol>
  
   </div>
 
