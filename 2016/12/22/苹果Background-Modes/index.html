@@ -41,7 +41,7 @@
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ManageSchemes.png">
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-DuplicateScheme.png">
 <meta property="og:image" content="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-ConfigureNewScheme.png">
-<meta property="og:updated_time" content="2016-12-23T02:10:48.000Z">
+<meta property="og:updated_time" content="2016-12-26T07:48:06.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="苹果Background Modes">
 <meta name="twitter:description" content="开发人员和用户经常很困惑,iOS的多任务系统到底允许做什么事。苹果限制后台操作的使用位置,为了提升用户体验和延长电池的使用。你的应用只允许在某些场景下运行在后台。例如, 播放音频, 获取位置更新, 或者从服务器获取最新的内容。如果你的工作不是属于上述分类。超出范围使用后台模式,应用审核时会被苹果拒绝。
@@ -141,7 +141,7 @@
 <p><li>到 <em>Background Modes</em> 打开开关;</li></p>
 <p><li>选择 <em>Audio, AirPlay and Picture in Picture</em>.</li><br></p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableAudioInBG.png" width="650" height="354"><br></div><br>再次编译运行。播放音乐并按home键, 这时,即使应用在后台,你也可能听见音乐了。<br>你也可以在Xcode控制台看见时间在更新, 证明代码在后台也是工作的。<br>喔, 如果你已经有了一个音频播放器, 后台播放就很容易了!</p>
-<h1 id="获取位置更新"><a href="#获取位置更新" class="headerlink" title="获取位置更新"></a>获取位置更新</h1><p>在位置后台模式, 应用依然可以接收到用户位置更新的代理信息。even when the app is in the background. You can control the accuracy of these location updates and even change that accuracy while backgrounded.<br>The second tab is for location updates, so open LocationViewController.swift and take a look around. Similarly to the background audio example, the location background mode is very easy to get up and running with if you already have location features working!<br>In this controller you will find that CLLocationManager runs the show. To receive location information you create and configure a CLLocationManager instance. In this case the app monitors location when an on screen UISwitch is activated. As location updates are received the app draws pins on a map. When the app is in the background, you should see the log of location updates in your console output in Xcode.<br>An important line to note is the call to requestAlwaysAuthorization() on the CLLocationManager instance. This is a requirement since iOS 8, and brings up a dialog asking for permission to receive locations in the background.<br>Now that you’re familiar with Background Modes, you don’t need to make the same mistake as before! Check the box for Location updates to let iOS know that your app wants to continue receiving location updates while in the background.</p>
+<h1 id="获取位置更新"><a href="#获取位置更新" class="headerlink" title="获取位置更新"></a>获取位置更新</h1><p>在位置后台模式, 应用依然可以接收到用户位置更新的代理信息。在后台时,你可以控制位置更新的精度,甚至可以修改它。<br>第二个标签是位置更新, 所以打开 LocationViewController.swift 看一下。 和后台音频例子很像, 如果你的应用有了位置功能, 位置后台模式很容易建立和运行!<br>在这个控制器里,你可以找到 CLLocationManager. 它用来接收你创建的位置信息,并且配置 CLLocationManager 实例。In this case the app monitors location when an on screen UISwitch is activated. As location updates are received the app draws pins on a map. When the app is in the background, you should see the log of location updates in your console output in Xcode.<br>An important line to note is the call to requestAlwaysAuthorization() on the CLLocationManager instance. This is a requirement since iOS 8, and brings up a dialog asking for permission to receive locations in the background.<br>Now that you’re familiar with Background Modes, you don’t need to make the same mistake as before! Check the box for Location updates to let iOS know that your app wants to continue receiving location updates while in the background.</p>
 <p><div style="text-align:center"><br><img src="https://koenig-media.raywenderlich.com/uploads/2016/09/BM-EnableLocationInBG.png" width="650" height="354"><br></div><br>In addition to checking this box, iOS 8 and above requires that you set a key in your Info.plist explaining to the user why background updates are needed. If you do not include this, location requests will silently fail.</p>
 <p><ul></ul></p>
 <p><li>Select the project in Xcode.</li></p>
@@ -306,7 +306,7 @@
 		
 
 		<p class="copyright">
-		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2016 
+		Powered by <a href="http://hexo.io" target="_blank" title="hexo">hexo</a> and Theme by <a href="https://github.com/wuchong/jacman" target="_blank" title="Jacman">Jacman</a> © 2017 
 		
 		<a href="/about" target="_blank" title="跳跳魔王">跳跳魔王</a>
 		
