@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-13T07:02:00.000Z</updated>
+  <updated>2017-01-13T07:11:25.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,17 +20,30 @@
     <link href="http://yoursite.com/2017/01/13/Using-Swift-with-Cocoa-and-Objective-C-Swift-3-0-1/"/>
     <id>http://yoursite.com/2017/01/13/Using-Swift-with-Cocoa-and-Objective-C-Swift-3-0-1/</id>
     <published>2017-01-13T05:29:42.000Z</published>
-    <updated>2017-01-13T07:02:00.000Z</updated>
+    <updated>2017-01-13T07:11:25.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本构建"><a href="#基本构建" class="headerlink" title="基本构建"></a>基本构建</h1><p>Swift 被设计成可以与 Cocoa 和 Objective-C无缝兼容。你可以在 Swift 中使用 Objective-C APIs, 也可以在 Objective-C 中使用Swift APIs. 这让 Swift 可以方便容易的移植到你的开发流程里。</p>
 <p>这个教程覆盖了 Swift 和 Objective-C 兼容性的三个主要方面, 你在开发Coca 应用时可以使用:</p>
-<ul class="list-bullet"><br>  <li class="item"><p class="para"><br>  <strong>互操作性</strong> 让 Swift 和 Objective-C 的代码互动, 允许你在 Objective-C 中使用 Swift 的类。在写 Swift 代码时可以采用熟悉的 Cocoa 类, 模式, 和实践。<br></p><br></li><li class="item"><p class="para"><br>  <strong>混合匹配</strong> 允许你创建包括 Swift 和 Objective-C 文件的混合语言的应用。<br></p><br></li><li class="item"><p class="para"><br>  <strong>移植</strong> 从 Objective-C 代码到 Swift 很容易, 用最新的 Swift 特性替换你的 Objective-C 应用的部分代码成为可能。<br></p><br></li><br></ul>
+<ul><br><li><em>互操作性</em>: 让 Swift 和 Objective-C 的代码互动, 允许你在 Objective-C 中使用 Swift 的类。在写 Swift 代码时可以采用熟悉的 Cocoa 类, 模式, 和实践。</li><br><li><em>混合匹配</em>: 允许你创建包括 Swift 和 Objective-C 文件的混合语言的应用。</li><br><li><em>移植</em>: 从 Objective-C 代码到 Swift 很容易, 用最新的 Swift 特性替换你的 Objective-C 应用的部分代码成为可能。</li><br></ul>
 
 <p>在你开始学习这些新特性之前, 你需要了解怎么建立一个 Swift 环境, 这个环境里你可以访问 Cocoa 系统框架。</p>
 <h1 id="建立你的-Swift-环境"><a href="#建立你的-Swift-环境" class="headerlink" title="建立你的 Swift 环境"></a>建立你的 Swift 环境</h1><p>开始尝试用 Swift 开发 Cocoa 应用, 从Xcode提供的模板创建一个新的 Swift.</p>
-<p class="para"><br>  <strong>在Xcode中创建一个 Swift 工程</strong><br></p><ol class="list-number"><br>  <li class="item"><p class="para"><br>  选择 File &gt; New &gt; Project &gt; (iOS, watchOS, tvOS, <em>或者</em> macOS) &gt; Application &gt; <em>你选择模板</em>.<br></p><br></li><li class="item"><p class="para"><br>  点击 Language 弹出菜单选择 Swift.<br></p><br></li><br></ol><br> <img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/Art/newproject_2x.png" alt="" width="680" height="485"><br><br>一个 Swift 工程的结构和 Objective-C 工程的结构基本一样, 一个重要的区别是: Swift 没有头文件。在实现和接口之间, 没有显式的描述—所有关于类,函数,或者常量的信息都在一个单独的 .swift 文件里。<br><br>这里, 你现在可以开始在应用代理中写 Swift 代码,或者通过File &gt; New &gt; File &gt; (iOS, watchOS, tvOS, or macOS) &gt; Source &gt; Swift 创建新的 Swift 源文件。<br><br># 要求<br>使用 Swift 3.0 创建应用要求 Xcode 8.0 或以上, 下面是基本SDK要求:<br><br>  <table class="graybox" border="0" cellspacing="0" cellpadding="5"><br>    <caption class="tablecaption"></caption><br>    <thead><br>        <tr><br>            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para"><br>  Platform<br></p></th><br>            <th scope="col" class="TableHeading_TableRow_TableCell"><p class="para"><br>  Base SDK Requirement<br></p></th><br>        </tr><br>    </thead><br>    <tbody><br>        <tr><br>            <td scope="row"><p class="para"><br>  macOS<br></p></td><br>            <td><p class="para"><br>  10.12<br></p></td><br>        </tr><br>        <tr><br>            <td scope="row"><p class="para"><br>  iOS<br></p></td><br>            <td><p class="para"><br>  10.0<br></p></td><br>        </tr><br>        <tr><br>            <td scope="row"><p class="para"><br>  watchOS<br></p></td><br>            <td><p class="para"><br>  3.0<br></p></td><br>        </tr><br>        <tr><br>            <td scope="row"><p class="para"><br>  tvOS<br></p></td><br>            <td><p class="para"><br>  10.0<br></p></td><br>        </tr><br>    </tbody><br>  </table><br><br>Swift 编译器和 Xcode 要求部署目标最低是 iOS 7 或者 macOS 10.9. 设置更早的部署目标会导致构建失败。<br><p class="aside-title">备注<br>    </p><br>        <p class="para">命令行的可执行文件要在它们  <code class="code-voice">@rpath</code>下找到Swift库。 如果你打算用命令行输出一个 Swift 可执行文件, 你也要输送 Swift 动态库。来自Xcode 的 Swift 可执行文件有运行静态连接。<br>        </p><br># 了解 Swift 导入过程<br>建立好 Xcode 工程后, 你可以导入任意 Cocoa 或者 Cocoa Touch 的框架,然后在 Swift 中使用 Objective-C.<br><br>任何 Objective-C 框架或者 C 库支持的模块都可以导入 Swift. 这包括所有的 Objective-C 系统框架—例如 Foundation, UIKit, 和 SpriteKit—同样,一般 C 库也是支持的。例如, 为了使用 Foundation APIs, 在文件最上面添加下面的导入语句:<br> <div><br>      <code> import Foundation </code><br>  </div><br><br>有了这个导入语句, 现在 Swift 文件可以访问所有的 Foundation 类,协议,方法,属性和常量。<br><br>导入过程很直接。 Objective-C 框架在头文件提供 APIs. 在 Swift 里, 这些头文件被编译成 Objective-C 模块, 它们被导入 Swift 作为 Swift APIs. 这个导入过程决定了 Objective-C 中声明的函数,类,方法和类型在 Swift中以什么样的代码显示。对于函数和方法来说, 这个过程影响它们的参数类型和返回值。对于类型来说, 导入过程有下面的影响:<br><ul class="list-bullet"><br>  <li class="item"><p class="para"><br>  重映射某种 Objective-C 类型到 Swift 中的同等类型, 例如 <code class="code-voice">id</code> to <code class="code-voice">Any</code><br></p><br></li><li class="item"><p class="para"><br>  重映射某种 Objective-C 内置类型到 Swift 中的替代类型, 例如 <code class="code-voice">NSString</code> to <code class="code-voice">String</code><br></p><br></li><li class="item"><p class="para"><br>  重映射某种 Objective-C 概念去匹配 Swift 中的概念, 例如指针变成可选项<br>  </p><br></li><br></ul><br><br><aside class="aside"><br>    <p class="aside-title">备注<br>    </p><br>        <p class="para">你不能向 Swift 直接导入 C++ 代码。替代方式是, 创建一个 Objective-C 活 C 包装器。<br>        </p>
-
-<p>  </p></aside><br>向Objective-C 中导入 Swift 和 向 Swift 中导入 Objective-C 很像。 Swift 提供它的 APIs—例如从一个框架—作为 Swift 模块。与这些 Swift 模块产生 Objective-C 头文件。这些头文件提供可以映射回Objective-C的 APIs. 有些 Swift APIs 不能映射回 Objective-C ,它们语言特性不适合 Objective-C.<p></p>
+<p></p><p class="para"><br>  <strong>在Xcode中创建一个 Swift 工程</strong><br></p><p></p>
+<p><li>选择 File &gt; New &gt; Project &gt; (iOS, watchOS, tvOS, <em>或者</em> macOS) &gt; Application &gt; <em>你选择模板</em>。</li></p>
+<p><li>点击 Language 弹出菜单选择 Swift.</li><br><br> <img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/BuildingCocoaApps/Art/newproject_2x.png" alt="" width="680" height="485"></p>
+<p>一个 Swift 工程的结构和 Objective-C 工程的结构基本一样, 一个重要的区别是: Swift 没有头文件。在实现和接口之间, 没有显式的描述—所有关于类,函数,或者常量的信息都在一个单独的 .swift 文件里。</p>
+<p>这里, 你现在可以开始在应用代理中写 Swift 代码,或者通过File &gt; New &gt; File &gt; (iOS, watchOS, tvOS, or macOS) &gt; Source &gt; Swift 创建新的 Swift 源文件。</p>
+<h1 id="要求"><a href="#要求" class="headerlink" title="要求"></a>要求</h1><p>使用 Swift 3.0 创建应用要求 Xcode 8.0 或以上, 下面是基本SDK要求:<br><img src="http://a1.qpic.cn/psb?/V13UfvND3TZFZo/9jHnlruMgcZ3mMDBe1nUle9hmi4KluzHwU2gd8AKnLM!/b/dN4AAAAAAAAA&bo=qwKeAAAAAAADBxU!&rf=viewer_4" alt="" width="600" height="150"></p>
+<p>Swift 编译器和 Xcode 要求部署目标最低是 iOS 7 或者 macOS 10.9. 设置更早的部署目标会导致构建失败。</p>
+<p></p><p class="aside-title">备注<br>    </p><br>        <p class="para">命令行的可执行文件要在它们  <code class="code-voice">@rpath</code>下找到Swift库。 如果你打算用命令行输出一个 Swift 可执行文件, 你也要输送 Swift 动态库。来自Xcode 的 Swift 可执行文件有运行静态连接。<br>        </p><p></p>
+<h1 id="了解-Swift-导入过程"><a href="#了解-Swift-导入过程" class="headerlink" title="了解 Swift 导入过程"></a>了解 Swift 导入过程</h1><p>建立好 Xcode 工程后, 你可以导入任意 Cocoa 或者 Cocoa Touch 的框架,然后在 Swift 中使用 Objective-C.</p>
+<p>任何 Objective-C 框架或者 C 库支持的模块都可以导入 Swift. 这包括所有的 Objective-C 系统框架—例如 Foundation, UIKit, 和 SpriteKit—同样,一般 C 库也是支持的。例如, 为了使用 Foundation APIs, 在文件最上面添加下面的导入语句:<br> <div><br>      <code> import Foundation </code><br>  </div></p>
+<p>有了这个导入语句, 现在 Swift 文件可以访问所有的 Foundation 类,协议,方法,属性和常量。</p>
+<p>导入过程很直接。 Objective-C 框架在头文件提供 APIs. 在 Swift 里, 这些头文件被编译成 Objective-C 模块, 它们被导入 Swift 作为 Swift APIs. 这个导入过程决定了 Objective-C 中声明的函数,类,方法和类型在 Swift中以什么样的代码显示。对于函数和方法来说, 这个过程影响它们的参数类型和返回值。对于类型来说, 导入过程有下面的影响:</p>
+<p><li>重映射某种 Objective-C 类型到 Swift 中的同等类型, 例如 <code class="code-voice">id</code> to <code class="code-voice">Any</code></li></p>
+<p><li>重映射某种 Objective-C 内置类型到 Swift 中的替代类型, 例如 <code class="code-voice">NSString</code> to <code class="code-voice">String</code></li></p>
+<p><li>重映射某种 Objective-C 概念去匹配 Swift 中的概念, 例如指针变成可选项。</li><br></p>
+<p><aside class="aside"><br>    <p class="aside-title">备注<br>    </p><br>        <p class="para">你不能向 Swift 直接导入 C++ 代码。替代方式是, 创建一个 Objective-C 活 C 包装器。<br>        </p><br>  </aside><br>向Objective-C 中导入 Swift 和 向 Swift 中导入 Objective-C 很像。 Swift 提供它的 APIs—例如从一个框架—作为 Swift 模块。与这些 Swift 模块产生 Objective-C 头文件。这些头文件提供可以映射回Objective-C的 APIs. 有些 Swift APIs 不能映射回 Objective-C ,它们语言特性不适合 Objective-C.</p>
 ]]></content>
     
     <summary type="html">
