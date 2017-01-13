@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-13T07:11:25.000Z</updated>
+  <updated>2017-01-13T08:46:02.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,7 +20,7 @@
     <link href="http://yoursite.com/2017/01/13/Using-Swift-with-Cocoa-and-Objective-C-Swift-3-0-1/"/>
     <id>http://yoursite.com/2017/01/13/Using-Swift-with-Cocoa-and-Objective-C-Swift-3-0-1/</id>
     <published>2017-01-13T05:29:42.000Z</published>
-    <updated>2017-01-13T07:11:25.000Z</updated>
+    <updated>2017-01-13T08:46:02.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本构建"><a href="#基本构建" class="headerlink" title="基本构建"></a>基本构建</h1><p>Swift 被设计成可以与 Cocoa 和 Objective-C无缝兼容。你可以在 Swift 中使用 Objective-C APIs, 也可以在 Objective-C 中使用Swift APIs. 这让 Swift 可以方便容易的移植到你的开发流程里。</p>
 <p>这个教程覆盖了 Swift 和 Objective-C 兼容性的三个主要方面, 你在开发Coca 应用时可以使用:</p>
@@ -37,14 +37,38 @@
 <p>Swift 编译器和 Xcode 要求部署目标最低是 iOS 7 或者 macOS 10.9. 设置更早的部署目标会导致构建失败。</p>
 <p></p><p class="aside-title">备注<br>    </p><br>        <p class="para">命令行的可执行文件要在它们  <code class="code-voice">@rpath</code>下找到Swift库。 如果你打算用命令行输出一个 Swift 可执行文件, 你也要输送 Swift 动态库。来自Xcode 的 Swift 可执行文件有运行静态连接。<br>        </p><p></p>
 <h1 id="了解-Swift-导入过程"><a href="#了解-Swift-导入过程" class="headerlink" title="了解 Swift 导入过程"></a>了解 Swift 导入过程</h1><p>建立好 Xcode 工程后, 你可以导入任意 Cocoa 或者 Cocoa Touch 的框架,然后在 Swift 中使用 Objective-C.</p>
-<p>任何 Objective-C 框架或者 C 库支持的模块都可以导入 Swift. 这包括所有的 Objective-C 系统框架—例如 Foundation, UIKit, 和 SpriteKit—同样,一般 C 库也是支持的。例如, 为了使用 Foundation APIs, 在文件最上面添加下面的导入语句:<br> <div><br>      <code> import Foundation </code><br>  </div></p>
+<p>任何 Objective-C 框架或者 C 库支持的模块都可以导入 Swift. 这包括所有的 Objective-C 系统框架—例如 Foundation, UIKit, 和 SpriteKit—同样,一般 C 库也是支持的。例如, 为了使用 Foundation APIs, 在文件最上面添加下面的导入语句:<br> <pre><code><br>      <code> import Foundation </code><br> </code></pre></p>
 <p>有了这个导入语句, 现在 Swift 文件可以访问所有的 Foundation 类,协议,方法,属性和常量。</p>
 <p>导入过程很直接。 Objective-C 框架在头文件提供 APIs. 在 Swift 里, 这些头文件被编译成 Objective-C 模块, 它们被导入 Swift 作为 Swift APIs. 这个导入过程决定了 Objective-C 中声明的函数,类,方法和类型在 Swift中以什么样的代码显示。对于函数和方法来说, 这个过程影响它们的参数类型和返回值。对于类型来说, 导入过程有下面的影响:</p>
 <p><li>重映射某种 Objective-C 类型到 Swift 中的同等类型, 例如 <code class="code-voice">id</code> to <code class="code-voice">Any</code></li></p>
 <p><li>重映射某种 Objective-C 内置类型到 Swift 中的替代类型, 例如 <code class="code-voice">NSString</code> to <code class="code-voice">String</code></li></p>
 <p><li>重映射某种 Objective-C 概念去匹配 Swift 中的概念, 例如指针变成可选项。</li><br></p>
 <p><aside class="aside"><br>    <p class="aside-title">备注<br>    </p><br>        <p class="para">你不能向 Swift 直接导入 C++ 代码。替代方式是, 创建一个 Objective-C 活 C 包装器。<br>        </p><br>  </aside><br>向Objective-C 中导入 Swift 和 向 Swift 中导入 Objective-C 很像。 Swift 提供它的 APIs—例如从一个框架—作为 Swift 模块。与这些 Swift 模块产生 Objective-C 头文件。这些头文件提供可以映射回Objective-C的 APIs. 有些 Swift APIs 不能映射回 Objective-C ,它们语言特性不适合 Objective-C.</p>
-]]></content>
+<h1 id="跟-Objective-C-APIs-交互"><a href="#跟-Objective-C-APIs-交互" class="headerlink" title="跟 Objective-C APIs 交互"></a>跟 Objective-C APIs 交互</h1><p>Interoperability is the ability to interface between Swift and Objective-C in either direction, letting you access and use pieces of code written in one language in a file of the other language. As you begin to integrate Swift into your app development workflow, it’s a good idea to understand how you can leverage interoperability to redefine, improve, and enhance the way you write Cocoa apps.</p>
+<p>One important aspect of interoperability is that it lets you work with Objective-C APIs when writing Swift code. After you import an Objective-C framework, you can instantiate classes from it and interact with them using native Swift syntax.</p>
+<h1 id="Initialization"><a href="#Initialization" class="headerlink" title="Initialization"></a>Initialization</h1><p>To instantiate an Objective-C class in Swift, you call one of its initializers using Swift initializer syntax.</p>
+<p>Objective-C initializers begin with init, or initWith: if the initializer takes one or more arguments. When an Objective-C initializer is imported by Swift, the init prefix becomes an init keyword to indicate that the method is a Swift initializer. If the initializer takes an argument, the With is removed and the rest of the selector is divided up into named parameters accordingly.</p>
+<p>Consider the following Objective-C initializer declarations:</p>
+<p><pre><code></code></pre></p>
+<ul>
+<li>(instancetype)init;</li>
+<li>(instancetype)initWithFrame:(CGRect)frame<pre><code>style:(UITableViewStyle)style;
+</code></pre><br>Here are the equivalent Swift initializer declarations:<br><pre><code><br>init() { /<em> … </em>/ }<br>init(frame: CGRect, style: UITableViewStyle) { /<em> … </em>/ }<br></code></pre><br>The differences between Objective-C and Swift syntax are all the more apparent when instantiating objects.</li>
+</ul>
+<p>In Objective-C, you do this:</p>
+<p><pre><code><br>UITableView *myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];<br></code></pre><br>In Swift, you do this:</p>
+<p><pre><code><br>let myTableView: UITableView = UITableView(frame: CGRectZero, style: .Grouped)<br></code></pre><br>Notice that you don’t need to call alloc; Swift handles this for you. Notice also that “init” doesn’t appear anywhere when calling the Swift-style initializer.</p>
+<p>You can provide an explicit type when assigning to a constant or variable, or you can omit the type and have Swift infer the type automatically from the initializer.</p>
+<p><pre><code><br>let myTextField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 40.0))<br></code></pre><br>These UITableView and UITextField objects are the same objects that you’d instantiate in Objective-C. You can use them in the same way you would in Objective-C, accessing any properties and calling any methods defined on their respective types.</p>
+<h1 id="Class-Factory-Methods-and-Convenience-Initializers"><a href="#Class-Factory-Methods-and-Convenience-Initializers" class="headerlink" title="Class Factory Methods and Convenience Initializers"></a>Class Factory Methods and Convenience Initializers</h1><p>For consistency and simplicity, Objective-C class factory methods are imported as convenience initializers in Swift. This allows them to be used with the same syntax as initializers.</p>
+<p>For example, whereas in Objective-C you would call this factory method like this:</p>
+<p><pre><code><br>UIColor *color = [UIColor colorWithRed:0.5 green:0.0 blue:0.5 alpha:1.0];<br></code></pre><br>In Swift, you call it like this:</p>
+<p><pre><code><br>let color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)<br></code></pre></p>
+<h1 id="Failable-Initialization"><a href="#Failable-Initialization" class="headerlink" title="Failable Initialization"></a>Failable Initialization</h1><p>In Objective-C, initializers directly return the object they initialize. To inform the caller when initialization has failed, an Objective-C initializer can return nil. In Swift, this pattern is built into a language feature called failable initialization.</p>
+<p>Many Objective-C initializers in system frameworks have been audited to indicate whether initialization can fail. You can indicate whether initializers in your own Objective-C classes can fail using nullability annotations, as described in Nullability and Optionals. Objective-C initializers that indicate whether they’re failable are imported as either init(…)—if initialization cannot fail—or init?(…)—if initialization can fail. Otherwise, Objective-C initializers are imported as init!(…).</p>
+<p>For example, the UIImage(contentsOfFile:) initializer can fail to initialize a UIImage object if an image file doesn’t exist at the provided path. You can use optional binding to unwrap the result of a failable initializer if initialization is successful.</p>
+<p><pre><code><br>if let image = UIImage(contentsOfFile: “MyImage.png”) {<br>    // loaded the image successfully<br>} else {<br>    // could not load the image<br>}<br></code></pre></p>
+<h1 id="Accessing-Properties"><a href="#Accessing-Properties" class="headerlink" title="Accessing Properties"></a>Accessing Properties</h1>]]></content>
     
     <summary type="html">
     
