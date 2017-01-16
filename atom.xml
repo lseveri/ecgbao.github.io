@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-13T08:51:35.000Z</updated>
+  <updated>2017-01-16T06:14:04.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -20,11 +20,11 @@
     <link href="http://yoursite.com/2017/01/13/Using-Swift-with-Cocoa-and-Objective-C-Swift-3-0-1/"/>
     <id>http://yoursite.com/2017/01/13/Using-Swift-with-Cocoa-and-Objective-C-Swift-3-0-1/</id>
     <published>2017-01-13T05:29:42.000Z</published>
-    <updated>2017-01-13T08:51:35.000Z</updated>
+    <updated>2017-01-16T06:14:04.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本构建"><a href="#基本构建" class="headerlink" title="基本构建"></a>基本构建</h1><p>Swift 被设计成可以与 Cocoa 和 Objective-C无缝兼容。你可以在 Swift 中使用 Objective-C APIs, 也可以在 Objective-C 中使用Swift APIs. 这让 Swift 可以方便容易的移植到你的开发流程里。</p>
 <p>这个教程覆盖了 Swift 和 Objective-C 兼容性的三个主要方面, 你在开发Coca 应用时可以使用:</p>
-<ul><br><li><em>互操作性</em>: 让 Swift 和 Objective-C 的代码互动, 允许你在 Objective-C 中使用 Swift 的类。在写 Swift 代码时可以采用熟悉的 Cocoa 类, 模式, 和实践。</li><br><li><em>混合匹配</em>: 允许你创建包括 Swift 和 Objective-C 文件的混合语言的应用。</li><br><li><em>移植</em>: 从 Objective-C 代码到 Swift 很容易, 用最新的 Swift 特性替换你的 Objective-C 应用的部分代码成为可能。</li><br></ul>
+<ul><br><li><em>互用性</em>: 让 Swift 和 Objective-C 的代码互动, 允许你在 Objective-C 中使用 Swift 的类。在写 Swift 代码时可以采用熟悉的 Cocoa 类, 模式, 和实践。</li><br><li><em>混合匹配</em>: 允许你创建包括 Swift 和 Objective-C 文件的混合语言的应用。</li><br><li><em>移植</em>: 从 Objective-C 代码到 Swift 很容易, 用最新的 Swift 特性替换你的 Objective-C 应用的部分代码成为可能。</li><br></ul>
 
 <p>在你开始学习这些新特性之前, 你需要了解怎么建立一个 Swift 环境, 这个环境里你可以访问 Cocoa 系统框架。</p>
 <h1 id="建立你的-Swift-环境"><a href="#建立你的-Swift-环境" class="headerlink" title="建立你的 Swift 环境"></a>建立你的 Swift 环境</h1><p>开始尝试用 Swift 开发 Cocoa 应用, 从Xcode提供的模板创建一个新的 Swift.</p>
@@ -43,32 +43,277 @@
 <p><li>重映射某种 Objective-C 类型到 Swift 中的同等类型, 例如 <code class="code-voice">id</code> to <code class="code-voice">Any</code></li></p>
 <p><li>重映射某种 Objective-C 内置类型到 Swift 中的替代类型, 例如 <code class="code-voice">NSString</code> to <code class="code-voice">String</code></li></p>
 <p><li>重映射某种 Objective-C 概念去匹配 Swift 中的概念, 例如指针变成可选项。</li><br></p>
-<p><aside class="aside"><br>    <p class="aside-title">备注<br>    </p><br>        <p class="para">你不能向 Swift 直接导入 C++ 代码。替代方式是, 创建一个 Objective-C 活 C 包装器。<br>        </p><br>  </aside><br>向Objective-C 中导入 Swift 和 向 Swift 中导入 Objective-C 很像。 Swift 提供它的 APIs—例如从一个框架—作为 Swift 模块。与这些 Swift 模块产生 Objective-C 头文件。这些头文件提供可以映射回Objective-C的 APIs. 有些 Swift APIs 不能映射回 Objective-C ,它们语言特性不适合 Objective-C.</p>
-<h1 id="跟-Objective-C-APIs-交互"><a href="#跟-Objective-C-APIs-交互" class="headerlink" title="跟 Objective-C APIs 交互"></a>跟 Objective-C APIs 交互</h1><p>Interoperability is the ability to interface between Swift and Objective-C in either direction, letting you access and use pieces of code written in one language in a file of the other language. As you begin to integrate Swift into your app development workflow, it’s a good idea to understand how you can leverage interoperability to redefine, improve, and enhance the way you write Cocoa apps.</p>
-<p>One important aspect of interoperability is that it lets you work with Objective-C APIs when writing Swift code. After you import an Objective-C framework, you can instantiate classes from it and interact with them using native Swift syntax.</p>
-<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p>To instantiate an Objective-C class in Swift, you call one of its initializers using Swift initializer syntax.</p>
-<p>Objective-C initializers begin with init, or initWith: if the initializer takes one or more arguments. When an Objective-C initializer is imported by Swift, the init prefix becomes an init keyword to indicate that the method is a Swift initializer. If the initializer takes an argument, the With is removed and the rest of the selector is divided up into named parameters accordingly.</p>
-<p>Consider the following Objective-C initializer declarations:</p>
-<p><pre><code></code></pre></p>
+<p><aside class="aside"><br>    <p class="aside-title">备注<br>    </p><br>        <p class="para">你不能向 Swift 直接导入 C++ 代码。替代方式是, 创建一个 Objective-C 或者 C 包装器。<br>        </p><br>  </aside><br>向Objective-C 中导入 Swift 和 向 Swift 中导入 Objective-C 很像。 Swift 提供它的 APIs—例如从一个框架—作为 Swift 模块。与这些 Swift 模块产生 Objective-C 头文件。这些头文件提供可以映射回Objective-C的 APIs. 有些 Swift APIs 不能映射回 Objective-C ,它们语言特性不适合 Objective-C.</p>
+<h1 id="跟-Objective-C-APIs-交互"><a href="#跟-Objective-C-APIs-交互" class="headerlink" title="跟 Objective-C APIs 交互"></a>跟 Objective-C APIs 交互</h1><p>互用性是指在 Swift 和 Objective-C 两个方向的能力, 让你在一种语言里访问和使用另外一种语言。当你把 Swift 迁移到你的开发流程时, 要先理解怎么利用互用性来重定义,改进写 Cocoa 应用的方法。</p>
+<p>互用性一个重要部分是, 让你在写 Swift 代码时可以使用 Objective-C APIs. 在导入一个 Objective-C 框架后, 你可以用它来实例化类,然后用原生 Swift 语法与之交互。</p>
+<h1 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h1><p>为了在Swift中实例化一个 Objective-C 类, 你可以调用一个 Swift 语法的构造器。</p>
+<p>Objective-C 构造器以 init, 或者 initWith 开始: 如果构造器有一个或者更多的参数。当一个 Objective-C 构造器被 Swift 导入时, init 前缀变成一个 init 关键字,来表明这个方法是一个 Swift 构造器。如果这个构造器有一个参数, With 会被删除, 剩余部分会相应划分成命名参数。 </p>
+<p>看一下下面的 Objective-C 构造器声明:</p>
+<pre><code>
+- (instancetype)init;
+- (instancetype)initWithFrame:(CGRect)frame
+                        style:(UITableViewStyle)style;
+</code></pre>
+下面是等价的 Swift 构造器声明:
+<pre><code>
+init() { /* ... */ }
+init(frame: CGRect, style: UITableViewStyle) { /* ... */ }
+</code></pre>
+Objective-C 和 Swift 语法的不同之处是所有实例化对象更明显。
+
+在 Objective-C 中, 你会这么做:
+<pre><code>
+UITableView *myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];
+</code></pre>
+在 Swift, 你可以这么做:
+<pre><code>
+let myTableView: UITableView = UITableView(frame: CGRectZero, style: .Grouped)
+</code></pre>
+你无需调用 alloc; Swift 替你处理了。同时可以看到, “init” 也没有出现。
+
+在赋值给一个常量或者变量的时候,你可以指定一个显式的类型, 或者你可以忽略这个类型, 让 Swift 自己从构造器推断。
+<pre><code>
+let myTextField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 40.0))
+</code></pre>
+这些 UITableView 和 UITextField 你在 Objective-C 构造的对象, 在这里都是一样的。你可以像在 Objective-C 中一样使用它们, 访问各自类型中定义的属性和方法。
+
+# 类工厂方法和便利构造器
+考虑到一致性和简单性, Objective-C 类工厂方法在 Swift 中会作为便利构造器使用。这让它们可以像构造器一样使用。
+
+例如, 你在 Objective-C 中这样调用工厂方法:
+<pre><code>
+UIColor *color = [UIColor colorWithRed:0.5 green:0.0 blue:0.5 alpha:1.0];
+</code></pre>
+而在 Swift 中, 可以这样调用:
+<pre><code>
+let color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)
+</code></pre>
+# 可失败的构造
+在 Objective-C 中, 构造器直接返回它们构造的对象。为了告诉调用者构造失败, Objective-C 构造器会返回 nil. 在 Swift 中, 这个模式被构建成一个语言特性,叫可失败的构造。
+
+许多系统框架的 Objective-C 构造器可以表示构造是否失败。你可以用nullability 注释表明这些构造器能否失败, 它们在 Nullability and Optionals 中描述。它们或者被导入成 init(...)—构造不会失败—或者 init?(...)—构造可以失败。因此, Objective-C 构造器被导入成 init!(...).
+
+例如, 如果所提供的路径不存在一张图片的话, the UIImage(contentsOfFile:) 构造器就会失败。如果构造成功, 你可以用可选绑定来拆包一个可失败构造器的结果。
+
+<pre><code>
+if let image = UIImage(contentsOfFile: "MyImage.png") {
+    // loaded the image successfully
+} else {
+    // could not load the image
+}
+</code></pre>
+# 访问属性
+用 @property语法声明的 Objective-C 属性用以下方式导入 Swift:
 <ul>
-<li>(instancetype)init;</li>
-<li>(instancetype)initWithFrame:(CGRect)frame<pre><code>style:(UITableViewStyle)style;
-</code></pre><br>Here are the equivalent Swift initializer declarations:<br><pre><code><br>init() { /<em> … </em>/ }<br>init(frame: CGRect, style: UITableViewStyle) { /<em> … </em>/ }<br></code></pre><br>The differences between Objective-C and Swift syntax are all the more apparent when instantiating objects.</li>
+<li>带有非空属性的属性 (<code>nonnull</code>, <code>nullable</code>, 和 <code>null_resettable</code>) 以可选或者非可选类型导入 Swift, 它们在 Nullability and Optionals 中描述。</li>
+<li>带有 <code>readonly</code> 的属性导入 Swift ,作为计算属性,有一个 getter ({ <code>get</code> }).</li>
+<li>带有 <code>weak</code> 的属性导入 Swift,用 <code>weak</code> 关键字标记 (<code>weak var</code>).</li>
+<li>带有自由属性的属性,而不是 <code>weak</code> (意思是, <code>assign</code>, <code>copy</code>, <code>strong</code>, 或者 <code>unsafe_unretained</code>) 以适当的存储属性导入 Swift.</li>
+<li>带有 <code>class</code> 的属性作为类型属性导入 Swift.</li>
+<li>原子属性 (<code>atomic</code> 和 <code>nonatomic</code>) 没有对应的 Swift 属性声明, 不过在Swift访问这些导入属性时, Objective-C 实现的原子性会保留。</li>
+<li>访问器属性 (<code>getter=</code> 和 <code>setter=</code>) 在 Swift 中忽略。</li>
 </ul>
-<p>In Objective-C, you do this:</p>
-<p><pre><code><br>UITableView *myTableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStyleGrouped];<br></code></pre><br>In Swift, you do this:</p>
-<p><pre><code><br>let myTableView: UITableView = UITableView(frame: CGRectZero, style: .Grouped)<br></code></pre><br>Notice that you don’t need to call alloc; Swift handles this for you. Notice also that “init” doesn’t appear anywhere when calling the Swift-style initializer.</p>
-<p>You can provide an explicit type when assigning to a constant or variable, or you can omit the type and have Swift infer the type automatically from the initializer.</p>
-<p><pre><code><br>let myTextField = UITextField(frame: CGRect(x: 0.0, y: 0.0, width: 200.0, height: 40.0))<br></code></pre><br>These UITableView and UITextField objects are the same objects that you’d instantiate in Objective-C. You can use them in the same way you would in Objective-C, accessing any properties and calling any methods defined on their respective types.</p>
-<h1 id="类工厂方法和便利构造器"><a href="#类工厂方法和便利构造器" class="headerlink" title="类工厂方法和便利构造器"></a>类工厂方法和便利构造器</h1><p>For consistency and simplicity, Objective-C class factory methods are imported as convenience initializers in Swift. This allows them to be used with the same syntax as initializers.</p>
-<p>For example, whereas in Objective-C you would call this factory method like this:</p>
-<p><pre><code><br>UIColor *color = [UIColor colorWithRed:0.5 green:0.0 blue:0.5 alpha:1.0];<br></code></pre><br>In Swift, you call it like this:</p>
-<p><pre><code><br>let color = UIColor(red: 0.5, green: 0.0, blue: 0.5, alpha: 1.0)<br></code></pre></p>
-<h1 id="失败的初始化"><a href="#失败的初始化" class="headerlink" title="失败的初始化"></a>失败的初始化</h1><p>In Objective-C, initializers directly return the object they initialize. To inform the caller when initialization has failed, an Objective-C initializer can return nil. In Swift, this pattern is built into a language feature called failable initialization.</p>
-<p>Many Objective-C initializers in system frameworks have been audited to indicate whether initialization can fail. You can indicate whether initializers in your own Objective-C classes can fail using nullability annotations, as described in Nullability and Optionals. Objective-C initializers that indicate whether they’re failable are imported as either init(…)—if initialization cannot fail—or init?(…)—if initialization can fail. Otherwise, Objective-C initializers are imported as init!(…).</p>
-<p>For example, the UIImage(contentsOfFile:) initializer can fail to initialize a UIImage object if an image file doesn’t exist at the provided path. You can use optional binding to unwrap the result of a failable initializer if initialization is successful.</p>
-<p><pre><code><br>if let image = UIImage(contentsOfFile: “MyImage.png”) {<br>    // loaded the image successfully<br>} else {<br>    // could not load the image<br>}<br></code></pre></p>
-<h1 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h1>]]></content>
+
+在 Swift 中访问 Objective-C 对象属性使用点语法, 使用属性名不带括号。
+
+例如, 你可以用下面的代码设置一个 UITextField  对象的textColor 和 text 属性:
+<pre><code>
+myTextField.textColor = UIColor.darkGray
+myTextField.text = "Hello world"
+</code></pre>
+返回一个值并且不带参数的 Objective-C 方法可以像 Objective-C 属性那样用点语法调用。不过, 它们导入 Swift 会变成实例方法, 因为只有 Objective-C @property 声明的会作为属性导入 Swift. 方法的导入和调用在 Working with Methods（使用方法） 中描述。
+
+# 使用方法
+通过点语法在 Swift 中调用 Objective-C 方法。
+
+当 Objective-C 方法导入 Swift 时, Objective-C 选择器的第一部分成为方法名,并且出现在括号前。第一个参数直接出现在括号内, 没有名字。选择器的剩余部分对应参数名,出现在括号内。所有选择器部分要求在调用位置。
+
+例如, 鉴于在 Objective-C 中你这样做:
+<pre><code>
+[myTableView insertSubview:mySubview atIndex:2];
+</code></pre>
+在 Swift 中, 你可以这样做:
+<pre><code>
+myTableView.insertSubview(mySubview, at: 2)
+</code></pre>
+如果你调用无参数的方法, 你仍然需要带上括号。
+<pre><code>
+myTableView.layoutIfNeeded()
+</code></pre>
+# id 兼容性
+Objective-C 的 id 类型作为 Any 类型导入 Swift。 在编译和运行期, 当一个 Swift 值或者对象作为 id 参数传给Objective-C 时, 编译器会引入一个通用的桥接转换操作。当 id 值作为 Any 类型导入 Swift, 运行期自动处理桥接到类引用或者 Swift 值类型。
+<pre><code>
+var x: Any = "hello" as String
+x as? String   // String with value "hello"
+x as? NSString // NSString with value "hello"
+
+x = "goodbye" as NSString
+x as? String   // String with value "goodbye"
+x as? NSString // NSString with value "goodbye"
+</code></pre>
+
+<h1 id="向下转换-Any"><a href="#向下转换-Any" class="headerlink" title="向下转换 Any"></a>向下转换 Any</h1><p>当使用Any类型的对象时, 这里潜在的类型可以知道或者有理由确定, 通常把这些对象向下转换成更具体的类型。不过, 由于 Any 类型可以引用任意类型, 向下转换不能保证一定成功。</p>
+<p>你可以使用条件类型转换运算符 (as?), 它可以返回一个你想转换类型的的可选值:</p>
+<pre><code>
+let userDefaults = UserDefaults.standard
+let lastRefreshDate = userDefaults.object(forKey: "LastRefreshDate") // lastRefreshDate is of type Any?
+if let date = lastRefreshDate as? Date {
+    print("\(date.timeIntervalSinceReferenceDate)")
+}
+</code></pre>
+如果你确定对象的类型, 你可以用强制转换运算符 (as!).
+<pre><code>
+let myDate = lastRefreshDate as! Date
+let timeInterval = myDate.timeIntervalSinceReferenceDate
+</code></pre>
+不过, 如果强制转换失败了, 会触发一个运行时的错误:
+<pre><code>
+let myDate = lastRefreshDate as! String // Error
+</code></pre>
+
+<h1 id="动态方法查找"><a href="#动态方法查找" class="headerlink" title="动态方法查找"></a>动态方法查找</h1><p>Swift 也有一个 <code>AnyObject</code> 类型, 它代表某种类型的对象,这个对象拥有动态查找任意 <code>@objc</code> 方法的能力。 这样你就可以写出灵活的无类型访问 Objective-C APIs, 这些APIs 返回 id 值。</p>
+<p>例如, 你可以把任意类类型的对象赋值给一个 <code>AnyObject</code> 类型的常量或者变量, 再把一个变量赋值给一个不同类型的变量。你也可以调用任意 Objective-C 方法, 访问一个 <code>AnyObject</code> 值的一个属性,而不用转换成更具体的类类型。</p>
+<pre><code>
+var myObject: AnyObject = UITableViewCell()
+myObject = NSDate()
+let futureDate = myObject.addingTimeInterval(10)
+let timeSinceNow = myObject.timeIntervalSinceNow
+</code></pre>
+
+<h1 id="无法辨识的选择器和可选链"><a href="#无法辨识的选择器和可选链" class="headerlink" title="无法辨识的选择器和可选链"></a>无法辨识的选择器和可选链</h1><p>因为一个 <code>AnyObject</code> 的具体值直到运行时才知晓, 因此可能无意中写出不安全的代码。在 Swift 中,同 Objective-C 一样, 尝试调用一个不存在的方法, 也会触发一个无法辨识的选择器的错误。</p>
+<p>例如, 下面的代码没有编译警告, 但是会触发运行时错误:</p>
+<pre><code>
+myObject.character(at: 5)
+// crash, myObject doesn't respond to that method
+</code></pre>
+Swift 使用可选项来防范这种不安全的行为。当你在 AnyObject 类型值上调用方法的时候, 这个方法的调用行为就像是一个隐式拆包可选项。 你可以使用相同的可选链接语法, 你会在协议中的可选方法里使用, 调用 <code>AnyObject</code> 的方法。
+
+例如, 下面的代码, 第一行和第二行代码不会执行, 因为 <code>count</code> 熟悉和 <code>character(at:)</code> 方法在 <code>NSDate</code> 对象中不存在。<code>myCount</code> 常量可以推断出是一个可选的整型, 并且值为 <code>nil</code>. 你也可以使用 <code>if–let</code> 语句去有条件拆包一个方法的结果, 这个方法对象可能不会响应, 下面三行显示。
+<pre><code>
+// myObject has AnyObject type and NSDate value
+let myCount = myObject.count
+// myCount has Int? type and nil value
+let myChar = myObject.character?(at: 5)
+// myChar has unichar? type and nil value
+if let fifthCharacter = myObject.character?(at: 5) {
+    print("Found \(fifthCharacter) at index 5")
+}
+// 条件分支没有执行
+</code></pre>
+备注
+
+尽管,在调用 <code>AnyObject</code> 类型的方法时, Swift 没有要求强制拆包, 它可以作为一个防范非预期行为的手段。
+# 为空性和可选项
+在 Objective-C 里面, 使用原始指针调用对象有可能是 <code>NULL</code> (在 Objective-C 中是<code>nil</code>). 在 Swift 中, 所有的值—包括结构体和对象引用—都是保证非空的。表达一个值可以缺失的方法是, 把这个值的类型包进一个可选项类型。当你需要表示这个值缺失的时候, 你可以使用<code>nil</code>.
+
+Objective-C 可以用为空性注释来指定一个参数类型, 属性类型, 或者返回值, 是一个 <code>NULL</code> 或者 <code>nil</code> 值。单个类型声明可以使用 <code>_Nullable</code> 和 <code>_Nonnull</code> 注释, 单个属性声明可以用 <code>nullable</code>, <code>nonnull</code> 和 <code>null_resettable</code>, 或者整个区域都可以用 <code>NS_ASSUME_NONNULL_BEGIN</code> 和 <code>NS_ASSUME_NONNULL_END</code> 宏标记为空性。如果一个类型没有提供为空性, Swift 无法区分可选项和非可选项的引用, 然后会以一个隐式拆包可选项来导入。
+
+<ul>
+<li>类型声明成可以为空, 或者用一个 <code>_Nonnull</code> 注释或者在一个授权区域, 作为一个非可选项导入 Swift.</li>
+<li>使用一个 <code>_Nullable</code> 注释声明类型成可以为空, 作为一个可选项导入 Swift.</li>
+<li>没有为空性注释的类型,作为一个隐式拆包可选项导入 Swift.</li>
+</ul>
+
+例如, 下面的 Objective-C 声明:
+<pre><code>
+@property (nullable) id nullableProperty;
+@property (nonnull) id nonNullProperty;
+@property id unannotatedProperty;
+NS_ASSUME_NONNULL_BEGIN
+- (id)returnsNonNullValue;
+- (void)takesNonNullParameter:(id)value;
+NS_ASSUME_NONNULL_END
+- (nullable id)returnsNullableValue;
+- (void)takesNullableParameter:(nullable id)value;
+- (id)returnsUnannotatedValue;
+- (void)takesUnannotatedParameter:(id)value;
+</code></pre>
+
+<p>这里是导入 Swift后的样子:</p>
+<pre><code>
+var nullableProperty: Any?
+var nonNullProperty: Any
+var unannotatedProperty: Any!
+func returnsNonNullValue() -> Any
+func takesNonNullParameter(value: Any)
+func returnsNullableValue() -> Any?
+func takesNullableParameter(value: Any?)
+func returnsUnannotatedValue() -> Any!
+func takesUnannotatedParameter(value: Any!)
+</code></pre>
+大多数的 Objective-C 系统框架, 包括 Foundation, 已经提供了为空性的注释, 允许你以一个惯用和类型安全的方式使用值。
+
+# 非空对象的桥接可选项
+Swift 向非空 Objective-C 对象的桥接可选值, 根据可选项是否包含一个潜在值来决定。如果可选项为 nil, Swift 把这个nil值桥接成NSNull 实例。因此, Swift 用拆包值来桥接可选项。
+
+下面的代码展示了 String? 实例怎么怎么根据它们的值桥接到 Objective-C.
+<pre><code>
+@implementation OptionalBridging
++ (void)logSomeValue:(nonnull id)valueFromSwift {
+    if ([valueFromSwift isKindOfClass: [NSNull class]]) {
+        os_log(OS_LOG_DEFAULT, "Received an NSNull value.");
+    } else {
+        os_log(OS_LOG_DEFAULT, "%s", [valueFromSwift UTF8String]);
+    }
+}
+@end
+</code></pre>
+因为 valueFromSwift 参数类型是 id, 它导入 Swift 会作为 Any类型。不过, 因为在 Any 不常用时, 传入一个可选项。传入 logSomeValue(_:) 类方法的可选项显式转换为 Any 类型, 这个会去掉编译器的警告。
+<pre><code>
+let someValue: String? = "Bridge me, please."
+let nilValue: String? = nil
+OptionalBridging.logSomeValue(someValue as Any)  // Bridge me, please.
+OptionalBridging.logSomeValue(nilValue as Any)   // Received an NSNull value.
+</code></pre>
+# 协议资格的类
+Objective-C 的协议资格的类作为类型值导入 Swift. 例如, 给出下面的 Objective-C 方法,在一个特定类执行一个操作:
+<pre><code>
+- (void)doSomethingForClass:(Class\<nscoding>)codingClass;
+</nscoding></code></pre>
+这里是 Swift 怎么导入它:
+<pre><code>
+func doSomething(for codingClass: NSCoding.Type)
+</code></pre>
+# 轻量级泛型
+Objective-C type declarations using lightweight generic parameterization are imported by Swift with information about the type of their contents preserved. For example, given the following Objective-C property declarations:
+<pre><code>
+@property NSArray<nsdate *=""> *dates;
+@property NSCache<nsobject *,="" id<nsdiscardablecontent="">> *cachedData;
+@property NSDictionary <nsstring *,="" nsarray<nslocale="" *="">> *supportedLocales;
+</nsstring></nsobject></nsdate></code></pre>
+Here’s how Swift imports them:
+<pre><code>
+var dates: [Date]
+var cachedData: NSCache<anyobject, nsdiscardablecontent="">
+var supportedLocales: [String: [Locale]]
+</anyobject,></code></pre>
+A parameterized class written in Objective-C is imported into Swift as a generic class with the same number of type parameters. All Objective-C generic type parameters imported by Swift have a type constraint that requires that type to be a class (T: Any). If the Objective-C generic parameterization specifies a class qualification, the imported Swift class has a constraint that requires that type to be a subclass of the specified class. If the Objective-C generic parameterization specifies a protocol qualification, the imported Swift class has a constraint that requires that type to conform to the specified protocol. For an unspecialized Objective-C type, Swift infers the generic parameterization for the imported class type constraints. For example, given the following Objective-C class and category declarations:
+<pre><code>
+@interface List<t: id<nscopying="">> : NSObject
+- (List\<t> *)listByAppendingItemsInList:(List\<t> *)otherList;
+@end
+
+@interface ListContainer : NSObject
+- (List<nsvalue *=""> *)listOfValues;
+@end
+
+@interface ListContainer (ObjectList)
+- (List *)listOfObjects;
+@end
+Here’s how they’re imported by Swift:
+
+class List\<t: nscopying=""> : NSObject {
+    func listByAppendingItemsInList(otherList: List\<t>) -> List\<t>
+}
+
+class ListContainer : NSObject {
+    func listOfValues() -> List\<nsvalue>
+}
+
+extension ListContainer {
+    func listOfObjects() -> List\<nscopying>
+}
+</nscopying></nsvalue></t></t></t:></nsvalue></t></t></t:></code></pre>]]></content>
     
     <summary type="html">
     
