@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T04:40:10.000Z</updated>
+    <updated>2017-01-23T04:42:49.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -1696,9 +1696,11 @@ while condition {
 }
 </code></pre>
 这个例子是个蛇与梯子的游戏:
+
 <div style="text-align:center">
 <img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/snakesAndLadders_2x.png">
 </div>
+
 游戏规则如下:
 
 棋盘有25个方格, 目标是占据或者超过25。
@@ -1706,18 +1708,20 @@ while condition {
 如果位于梯子底部, 往梯子上方移动。
 如果位于蛇头, 往蛇下方移动。
 游戏棋盘用整形值数组表示。大小基于 finalSquare 常量, 用来初始化数组并且判断取胜的条件。 棋盘用26个0值初始化, 而不是25 (每个索引从0到25)。
+
 <pre><code>
 let finalSquare = 25
 var board = [Int](repeating: 0, count: finalSquare + 1)
 </code></pre>
-一些方格会为蛇和梯子设置更多的指定值。梯子方格是正数,蛇方格是负数。
+
+<p>一些方格会为蛇和梯子设置更多的指定值。梯子方格是正数,蛇方格是负数。</p>
 <pre><code>
 board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02
 board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08
 </code></pre>
-方格 3 包含了梯子的底部,可以爬到方格11。 为了表示这个, board[03] 等于 +08, 这等于整数值8 (3和11的差值) 加号 (+i) 和减号 (-i)相等, 数值低于10的用0填充,这样所以棋盘都被定义了。 
 
-玩家开始方格是 “方格0”, 靠着棋盘的左下角。 第一次摇骰子总是让玩家进入棋盘。
+<p>方格 3 包含了梯子的底部,可以爬到方格11。 为了表示这个, board[03] 等于 +08, 这等于整数值8 (3和11的差值) 加号 (+i) 和减号 (-i)相等, 数值低于10的用0填充,这样所以棋盘都被定义了。 </p>
+<p>玩家开始方格是 “方格0”, 靠着棋盘的左下角。 第一次摇骰子总是让玩家进入棋盘。</p>
 <pre><code>
 var square = 0
 var diceRoll = 0
@@ -1734,27 +1738,17 @@ while square < finalSquare {
 }
 print("Game over!")
 </code></pre>
-上面的例子用了一个很简单方法去摇骰子。 不用随机数, 用一初始值为0的 diceRoll。 每次循环, diceRoll 加一然后判断它是否过大。 当返回值等于7, 骰子值过大然后重置为1。diceRoll 值总是 1, 2, 3, 4, 5, 6, 1, 2 然后不停循环。
 
-摇完筛子, 往前移动 diceRoll 方格。 如果移动超过25, 游戏结束。考虑边界安全，在操作方格的时候。
-
-备注
-
-没有这个判断, board[square] 可能会越界访问棋盘数组的值, 这会触发一个错误。 如果方格等于 26, 代码会判断board[26] 的值, 这会超过数组的大小。
-
-当前while 循环执行然后结束, 然后循环的条件会被判断是否再次执行。如果玩家已经移动或者超过25, 循环的条件变成假然后游戏就结束。
-
-while 循环适合这个例子, 因为开始循环的时候游戏的长度并不清楚。 相反, 一个特定条件满足后循环被执行了。
-
-# Repeat-While
-
-另外一种while循环的变种, 就是 repeat-while 循环, 先执行一次循环, 然后再考虑循环的条件。 然后继续执行直到条件变成假。
-
-备注
-
-Swift 里的 repeat-while 循环类似其他语言里的 do-while 循环。
-
-这里是 repeat-while 循环的基本样式:
+<p>上面的例子用了一个很简单方法去摇骰子。 不用随机数, 用一初始值为0的 diceRoll。 每次循环, diceRoll 加一然后判断它是否过大。 当返回值等于7, 骰子值过大然后重置为1。diceRoll 值总是 1, 2, 3, 4, 5, 6, 1, 2 然后不停循环。</p>
+<p>摇完筛子, 往前移动 diceRoll 方格。 如果移动超过25, 游戏结束。考虑边界安全，在操作方格的时候。</p>
+<p>备注</p>
+<p>没有这个判断, board[square] 可能会越界访问棋盘数组的值, 这会触发一个错误。 如果方格等于 26, 代码会判断board[26] 的值, 这会超过数组的大小。</p>
+<p>当前while 循环执行然后结束, 然后循环的条件会被判断是否再次执行。如果玩家已经移动或者超过25, 循环的条件变成假然后游戏就结束。</p>
+<p>while 循环适合这个例子, 因为开始循环的时候游戏的长度并不清楚。 相反, 一个特定条件满足后循环被执行了。</p>
+<h1 id="Repeat-While"><a href="#Repeat-While" class="headerlink" title="Repeat-While"></a>Repeat-While</h1><p>另外一种while循环的变种, 就是 repeat-while 循环, 先执行一次循环, 然后再考虑循环的条件。 然后继续执行直到条件变成假。</p>
+<p>备注</p>
+<p>Swift 里的 repeat-while 循环类似其他语言里的 do-while 循环。</p>
+<p>这里是 repeat-while 循环的基本样式:</p>
 <pre><code>
 repeat {
     statements
