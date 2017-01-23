@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:17:18.000Z</updated>
+    <updated>2017-01-23T05:21:08.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -4218,7 +4218,147 @@ statements
 <p>阶段 1</p>
 <p>一个指定构造器或者便利构造器在类里调用。<br>给类的实例分配内存。内存尚未初始化。<br>类的指定构造器确保所有存储属性都有一个值。这些存储属性的内存开始初始化。<br>指定构造器放手给超类的构造器,对它的存储属性执行同样的操作。<br>沿着继承链继续往上直到尽头。<br>一旦到了继承链的尽头, 继承链最后的类已经确保所有存储属性都有一个值。实例的内存被认为已经全部初始化, 第一阶段完成。.<br>阶段 2</p>
 <p>从继承链尽头回来, 链中的每个指定构造器都有选择去继续定制实例。构造器现在可以访问 self 和改变属性, 也可以调用函数。<br>最后, 链中的任何便利构造器都有选择去定制实例并且使用 self.<br>这里展示第一阶段如何为一个假设的子类和超类寻找初始化调用的:</p>
-<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/twoPhaseInitialization01_2x.png"><br></div><br>在这个例子中, 初始化开始于调用子类的便利构造器。这个便利构造器尚不能修改任何属性。它委托了本类的一个指定构造器。<br><br>指定构造器确保所有的子类属性都有一个值, 根据安全检查 1. 然后在它的超类调用一个指定构造器继续沿着链初始化。<br><br>超类指定构造器确保超类属性都有一个值。因为没有更深的超类要初始化, 所以也不需要更深的委托。<br><br>只要所有超类的属性都有一个初始值, 它的内存就被认为已经完成初始化, 那么阶段1就完成了。<br><br>这里是阶段2如何寻找相同的初始化调用:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/twoPhaseInitialization02_2x.png"><br></div><br>子类的指定构造器现在有机会更进一步去定制实例 (尽管它不必要这么做)。<br><br>一旦子类指定构造器完成, 超类的指定构造器可以执行额外的定制(尽管它没有必要这么做)。<br><br>最后, 一旦子类的指定构造器完成, 原先调用的便利构造器就可以执行额外的定制。<br><br># 初始化方法的继承和覆盖<br><br>不像 Objective-C 中的子类, Swift 子类默认不继承它的超类的初始化方法。 Swift 的方法防止了一种情况,在这种情况下来自一个超类的初始化方法被一个更专业的子类继承,并且用来这个子类的新实例,但是这个实例并未完全或者正确的初始化。<br><br>备注<br><br>超类的初始化方法在特定情况下被继承, 只有安全而且合适才会这么做。<br><br>如果你想让自定义子类展示和超类一样的一个或者多个初始化方法, 你可以在子类内提供这些初始化方法的自定义实现。<br><br>当你写一个子类初始化方法,这个方法匹配一个超类的指定构造器, 你可以提供这个指定构造器的重写。因此, 你必须在子类初始化方法定义前写上 override 修饰符。 即使你重写一个自动提供的默认初始化方法,也是这样。<br><br>跟一个重写的属性,方法或者下标一样, override 修饰符提醒Swift 去判断超类有这么一个指定构造器可以重写, 并且验证重写初始化方法的参数已经有目的的指定了。<br><br>备注<br><br>当重写超类指定构造器时你应该总是写上 override 修饰符, 即使子类初始化方法的实现是一个便利构造器。<br><br>相反, 如果你写一个子类初始化方法匹配超类的便利构造器, 超类便利构造器不能直接被子类调用。因此, 你的子类不能提供一个超类初始化方法的重写。结果是, 当提供一个超类便利构造器的匹配实现时,你不能写上 override 修饰符。<br><br>下面的例子定义了一个基类 Vehicle. 这个基类声明了一个存储属性 numberOfWheels, 带有一个默认值 0. numberOfWheels 被一个计算属性 description用来创建汽车特征的字符串描述:<br><pre><code><br>class Vehicle {<br>    var numberOfWheels = 0<br>    var description: String {<br>        return “(numberOfWheels) wheel(s)”<br>    }<br>}</code></pre><br>Vehicle 类给它唯一的存储属性提供了一个默认值, 本身没有提供任何自定义的初始化方法。结果是, 它会自动收到一个默认的初始化方法。这个默认的初始化方法总是一个指定构造器, 可以用来创建一个 numberOfWheels 为0的Vehicle 实例:<br><pre><code><br>let vehicle = Vehicle()<br>print(“Vehicle: (vehicle.description)”)<br>// Vehicle: 0 wheel(s)<br></code></pre><br>下面的例子定义了一个 Vehicle 的子类 Bicycle:<br><pre><code><br>class Bicycle: Vehicle {<br>    override init() {<br>        super.init()<br>        numberOfWheels = 2<br>    }<br>}</code></pre><br><br>Bicycle 定义了一个自定义指定构造器init(). 这个构造器匹配来着超类的指定构造器, 所以 Bicycle 版本的这个构造器用override 修饰符标记。<br><br>init() 初始化方法先调用 super.init(), 这是超类的默认初始化方法。这个确保 numberOfWheels 属性在被子类修改前可以被 Vehicle 初始化。调用 super.init() 后, numberOfWheels 原有值会被新值2替代。<br><br>如果你创建一个 Bicycle 实例, 你可以调用它的继承来的计算属性 description 来查看 numberOfWheels 属性是否被更新了:<br><pre><code><br>let bicycle = Bicycle()<br>print(“Bicycle: (bicycle.description)”)<br>// Bicycle: 2 wheel(s)<br></code></pre><br><br>备注<br><br>子类在初始化的时候可以改变继承来的变量属性, 但是无法改变继承来的常量属性。<br><br># 自动初始化方法的继承<br><br>就像上面提到的, 默认情况子类并不继承超类的初始化方法。不过, 不过如果某种条件满足了,超类的初始化方法还是可以被自动继承的。在实践中, 这意味着你通常不需要重写初始化方法, 只要这样做安全,你可以用最小的代价继承超类的初始化方法。<br><br>假设你给子类的任何新属性都设定了默认值, 下面的规则适用:<br><br>规则 1<br>如果你的子类没有定义任何指定构造器, 它会自动继承超类所有的指定构造器。<br><br>规则 2<br>如果你的子类提供了超类所有指定构造器的实现—或者通过像规则1那样的继承, 或者提供自定义实现—然后它会自动继承超类所有的便利构造器。<br><br>即使你的子类添加更深的便利构造器,这个规则都适用。<br><br>备注<br><br>一个子类可以实现一个超类的指定构造器,来作为自己的便利构造器,这个是满足规则2的部分。<br><br># 指定和便利构造器的初始化<br><br>下面的例子展示了指定构造器,便利构造器和自动构造器继承的活动。这个例子定义了三个类 Food, RecipeIngredient 和 ShoppingListItem 的继承关系, 并且展示了它们如何交互。<br><br>这个继承关系中的基类是 Food, 它是封装了一个食品名字的简单类。Food 类引入了一个单独的字符串属性 name 并且提供了两个构造器来创建 Food 实例:<br><pre><code><br>class Food {<br>    var name: String<br>    init(name: String) {<br>        self.name = name<br>    }<br>    convenience init() {<br>        self.init(name: “[Unnamed]”)<br>    }<br>}<br></code></pre><br>下图展示了Food 类的构造链:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample01_2x.png"><br></div><br>类没有默认的成员构造器, 所以 Food 类提供了一个指定构造器,这个构造器有一个参数 name. 这个构造器可以用一个指定名字来创建一个新的 Food 实例:<br><pre><code><br>let namedMeat = Food(name: “Bacon”)<br>// namedMeat’s name is “Bacon”<br></code></pre><br>init(name: String) 构造器是一个指定构造器, 因为它可以保证一个新的Food 实例的所有存储属性完全初始化。Food 类没有超类, 所以 init(name: String) 不需要调用 super.init() 来完成初始化。<br><br>Food 类同时提供了一个便利构造器, init(), 没有任何参数。 通过委托Food 类的init(name: String), init() 为新食物提供了一个默认的占位符名字 [Unnamed]:<br><pre><code><br>let mysteryMeat = Food()<br>// mysteryMeat’s name is “[Unnamed]”<br></code></pre><br>继承关系中的第二个类 RecipeIngredient 是Food 类的子类。RecipeIngredient 类模拟了烹调配方的成分。它引入了一个 Int 属性quantity (除了从Food 继承来的name属性) 然后定义了两个构造器用来创建 RecipeIngredient 实例:<br><pre><code><br>class RecipeIngredient: Food {<br>    var quantity: Int<br>    init(name: String, quantity: Int) {<br>        self.quantity = quantity<br>        super.init(name: name)<br>    }<br>    override convenience init(name: String) {<br>        self.init(name: name, quantity: 1)<br>    }<br>}</code></pre><br>下图展示了 RecipeIngredient 类的构造链:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample02_2x.png"><br></div><br>RecipeIngredient 类只有一个指定构造器, init(name: String, quantity: Int), 它可以填充一个新 RecipeIngredient 实例的所有属性。构造器首先把传入的数量参数赋值给 quantity 属性, 这个是 RecipeIngredient 唯一的新属性。这个操作之后, 构造器向上委托基类的 init(name: String) 构造器。这个过程符合两阶段初始化的安全检查1.<br><br>RecipeIngredient 同时定义了一个便利构造器, init(name: String), 它用名字来创建一个 RecipeIngredient 实例。任何 RecipeIngredient 实例没有显式数量的,这个便利构造器都会假设一个数量值为1. 这个便利构造器方便 RecipeIngredient 实例快速创建, 并且当创建一些单个数量的实例时可以避免代码重复。这个便利构造器简单调用了指定构造器, 传入数量值 1.<br><br>init(name: String) 便利构造器跟指定构造器 init(name: String) 接受一样的参数。因为这个便利构造器重写了超类的指定构造器, 它必须标记 override 修饰符。<br><br>尽管 RecipeIngredient 提供了 init(name: String) 作为便利构造器, RecipeIngredient 也提供了所有超类的指定构造器的实现。因此, RecipeIngredient 也就自动继承了超类的所有便利构造器。<br><br>在这个例子里, RecipeIngredient 的超类是 Food, 它只有一个便利构造器 init(). 这个构造器会被 RecipeIngredient 继承。继承 init() 函数版本和 Food 版本是一样的。除了它是调用e RecipeIngredient 版本的 init(name: String) 而不是 Food 版本之外。<br><br>三个构造器都快要用来创建新的 RecipeIngredient 实例:<br><pre><code><br>let oneMysteryItem = RecipeIngredient()<br>let oneBacon = RecipeIngredient(name: “Bacon”)<br>let sixEggs = RecipeIngredient(name: “Eggs”, quantity: 6)</code></pre><br>继承关系里的最后一个类ShoppingListItem也是 RecipeIngredient 子类。ShoppingListItem 模拟了一个配方成分。<br><br>购物清单中的每一项都以“unpurchased”开始。为了说明这个事实, ShoppingListItem 引入一个布尔属性 purchased, 带有一个默认值 false. ShoppingListItem 同时添加了一个计算属性description, 它提供了ShoppingListItem 实例的文本描述:<br><pre><code><br>class ShoppingListItem: RecipeIngredient {<br>    var purchased = false<br>    var description: String {<br>        var output = “(quantity) x (name)”<br>        output += purchased ? “ ✔” : “ ✘”<br>        return output<br>    }<br>}</code></pre><br><br>备注<br><br>ShoppingListItem 没有提供构造器来为 purchased 设定初始值, 因为购物清单里的项目一开始都是未购买的。<br><br>因为它给所有的属性提供了默认值并且没有提供任何构造函数, ShoppingListItem 自动从超类继承了所有的指定和便利构造器。<br><br>下图展示了三个类所有的构造函数:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample03_2x.png"><br></div>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/twoPhaseInitialization01_2x.png"><br></div>
+
+<p>在这个例子中, 初始化开始于调用子类的便利构造器。这个便利构造器尚不能修改任何属性。它委托了本类的一个指定构造器。</p>
+<p>指定构造器确保所有的子类属性都有一个值, 根据安全检查 1. 然后在它的超类调用一个指定构造器继续沿着链初始化。</p>
+<p>超类指定构造器确保超类属性都有一个值。因为没有更深的超类要初始化, 所以也不需要更深的委托。</p>
+<p>只要所有超类的属性都有一个初始值, 它的内存就被认为已经完成初始化, 那么阶段1就完成了。</p>
+<p>这里是阶段2如何寻找相同的初始化调用:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/twoPhaseInitialization02_2x.png"><br></div>
+
+<p>子类的指定构造器现在有机会更进一步去定制实例 (尽管它不必要这么做)。</p>
+<p>一旦子类指定构造器完成, 超类的指定构造器可以执行额外的定制(尽管它没有必要这么做)。</p>
+<p>最后, 一旦子类的指定构造器完成, 原先调用的便利构造器就可以执行额外的定制。</p>
+<h1 id="初始化方法的继承和重写"><a href="#初始化方法的继承和重写" class="headerlink" title="初始化方法的继承和重写"></a>初始化方法的继承和重写</h1><p>不像 Objective-C 中的子类, Swift 子类默认不继承它的超类的初始化方法。 Swift 的方法防止了一种情况,在这种情况下来自一个超类的初始化方法被一个更专业的子类继承,并且用来这个子类的新实例,但是这个实例并未完全或者正确的初始化。</p>
+<p>备注</p>
+<p>超类的初始化方法在特定情况下被继承, 只有安全而且合适才会这么做。</p>
+<p>如果你想让自定义子类展示和超类一样的一个或者多个初始化方法, 你可以在子类内提供这些初始化方法的自定义实现。</p>
+<p>当你写一个子类初始化方法,这个方法匹配一个超类的指定构造器, 你可以提供这个指定构造器的重写。因此, 你必须在子类初始化方法定义前写上 override 修饰符。 即使你重写一个自动提供的默认初始化方法,也是这样。</p>
+<p>跟一个重写的属性,方法或者下标一样, override 修饰符提醒Swift 去判断超类有这么一个指定构造器可以重写, 并且验证重写初始化方法的参数已经有目的的指定了。</p>
+<p>备注</p>
+<p>当重写超类指定构造器时你应该总是写上 override 修饰符, 即使子类初始化方法的实现是一个便利构造器。</p>
+<p>相反, 如果你写一个子类初始化方法匹配超类的便利构造器, 超类便利构造器不能直接被子类调用。因此, 你的子类不能提供一个超类初始化方法的重写。结果是, 当提供一个超类便利构造器的匹配实现时,你不能写上 override 修饰符。</p>
+<p>下面的例子定义了一个基类 Vehicle. 这个基类声明了一个存储属性 numberOfWheels, 带有一个默认值 0. numberOfWheels 被一个计算属性 description用来创建汽车特征的字符串描述:</p>
+<pre><code>
+class Vehicle {
+    var numberOfWheels = 0
+    var description: String {
+        return "\(numberOfWheels) wheel(s)"
+    }
+}</code></pre>
+
+<p>Vehicle 类给它唯一的存储属性提供了一个默认值, 本身没有提供任何自定义的初始化方法。结果是, 它会自动收到一个默认的初始化方法。这个默认的初始化方法总是一个指定构造器, 可以用来创建一个 numberOfWheels 为0的Vehicle 实例:</p>
+<pre><code>
+let vehicle = Vehicle()
+print("Vehicle: \(vehicle.description)")
+// Vehicle: 0 wheel(s)
+</code></pre>
+下面的例子定义了一个 Vehicle 的子类 Bicycle:
+<pre><code>
+class Bicycle: Vehicle {
+    override init() {
+        super.init()
+        numberOfWheels = 2
+    }
+}</code></pre>
+
+<p>Bicycle 定义了一个自定义指定构造器init(). 这个构造器匹配来着超类的指定构造器, 所以 Bicycle 版本的这个构造器用override 修饰符标记。</p>
+<p>init() 初始化方法先调用 super.init(), 这是超类的默认初始化方法。这个确保 numberOfWheels 属性在被子类修改前可以被 Vehicle 初始化。调用 super.init() 后, numberOfWheels 原有值会被新值2替代。</p>
+<p>如果你创建一个 Bicycle 实例, 你可以调用它的继承来的计算属性 description 来查看 numberOfWheels 属性是否被更新了:</p>
+<pre><code>
+let bicycle = Bicycle()
+print("Bicycle: \(bicycle.description)")
+// Bicycle: 2 wheel(s)
+</code></pre>
+
+<p>备注</p>
+<p>子类在初始化的时候可以改变继承来的变量属性, 但是无法改变继承来的常量属性。</p>
+<h1 id="自动初始化方法的继承"><a href="#自动初始化方法的继承" class="headerlink" title="自动初始化方法的继承"></a>自动初始化方法的继承</h1><p>就像上面提到的, 默认情况子类并不继承超类的初始化方法。不过, 不过如果某种条件满足了,超类的初始化方法还是可以被自动继承的。在实践中, 这意味着你通常不需要重写初始化方法, 只要这样做安全,你可以用最小的代价继承超类的初始化方法。</p>
+<p>假设你给子类的任何新属性都设定了默认值, 下面的规则适用:</p>
+<p>规则 1<br>如果你的子类没有定义任何指定构造器, 它会自动继承超类所有的指定构造器。</p>
+<p>规则 2<br>如果你的子类提供了超类所有指定构造器的实现—或者通过像规则1那样的继承, 或者提供自定义实现—然后它会自动继承超类所有的便利构造器。</p>
+<p>即使你的子类添加更深的便利构造器,这个规则都适用。</p>
+<p>备注</p>
+<p>一个子类可以实现一个超类的指定构造器,来作为自己的便利构造器,这个是满足规则2的部分。</p>
+<h1 id="指定和便利构造器的初始化"><a href="#指定和便利构造器的初始化" class="headerlink" title="指定和便利构造器的初始化"></a>指定和便利构造器的初始化</h1><p>下面的例子展示了指定构造器,便利构造器和自动构造器继承的活动。这个例子定义了三个类 Food, RecipeIngredient 和 ShoppingListItem 的继承关系, 并且展示了它们如何交互。</p>
+<p>这个继承关系中的基类是 Food, 它是封装了一个食品名字的简单类。Food 类引入了一个单独的字符串属性 name 并且提供了两个构造器来创建 Food 实例:</p>
+<pre><code>
+class Food {
+    var name: String
+    init(name: String) {
+        self.name = name
+    }
+    convenience init() {
+        self.init(name: "[Unnamed]")
+    }
+}
+</code></pre>
+下图展示了Food 类的构造链:
+<div style="text-align:center">
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample01_2x.png">
+</div>
+类没有默认的成员构造器, 所以 Food 类提供了一个指定构造器,这个构造器有一个参数 name. 这个构造器可以用一个指定名字来创建一个新的 Food 实例:
+<pre><code>
+let namedMeat = Food(name: "Bacon")
+// namedMeat's name is "Bacon"
+</code></pre>
+init(name: String) 构造器是一个指定构造器, 因为它可以保证一个新的Food 实例的所有存储属性完全初始化。Food 类没有超类, 所以 init(name: String) 不需要调用 super.init() 来完成初始化。
+
+Food 类同时提供了一个便利构造器, init(), 没有任何参数。 通过委托Food 类的init(name: String), init() 为新食物提供了一个默认的占位符名字 [Unnamed]:
+<pre><code>
+let mysteryMeat = Food()
+// mysteryMeat's name is "[Unnamed]"
+</code></pre>
+继承关系中的第二个类 RecipeIngredient 是Food 类的子类。RecipeIngredient 类模拟了烹调配方的成分。它引入了一个 Int 属性quantity (除了从Food 继承来的name属性) 然后定义了两个构造器用来创建 RecipeIngredient 实例:
+<pre><code>
+class RecipeIngredient: Food {
+    var quantity: Int
+    init(name: String, quantity: Int) {
+        self.quantity = quantity
+        super.init(name: name)
+    }
+    override convenience init(name: String) {
+        self.init(name: name, quantity: 1)
+    }
+}</code></pre>
+下图展示了 RecipeIngredient 类的构造链:
+<div style="text-align:center">
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample02_2x.png">
+</div>
+RecipeIngredient 类只有一个指定构造器, init(name: String, quantity: Int), 它可以填充一个新 RecipeIngredient 实例的所有属性。构造器首先把传入的数量参数赋值给 quantity 属性, 这个是 RecipeIngredient 唯一的新属性。这个操作之后, 构造器向上委托基类的 init(name: String) 构造器。这个过程符合两阶段初始化的安全检查1.
+
+RecipeIngredient 同时定义了一个便利构造器, init(name: String), 它用名字来创建一个 RecipeIngredient 实例。任何 RecipeIngredient 实例没有显式数量的,这个便利构造器都会假设一个数量值为1. 这个便利构造器方便 RecipeIngredient 实例快速创建, 并且当创建一些单个数量的实例时可以避免代码重复。这个便利构造器简单调用了指定构造器, 传入数量值 1.
+
+init(name: String) 便利构造器跟指定构造器 init(name: String) 接受一样的参数。因为这个便利构造器重写了超类的指定构造器, 它必须标记 override 修饰符。
+
+尽管 RecipeIngredient 提供了 init(name: String) 作为便利构造器, RecipeIngredient 也提供了所有超类的指定构造器的实现。因此, RecipeIngredient 也就自动继承了超类的所有便利构造器。
+
+在这个例子里, RecipeIngredient 的超类是 Food, 它只有一个便利构造器 init(). 这个构造器会被 RecipeIngredient 继承。继承 init() 函数版本和 Food 版本是一样的。除了它是调用e RecipeIngredient 版本的 init(name: String) 而不是 Food 版本之外。
+
+三个构造器都快要用来创建新的 RecipeIngredient 实例:
+<pre><code>
+let oneMysteryItem = RecipeIngredient()
+let oneBacon = RecipeIngredient(name: "Bacon")
+let sixEggs = RecipeIngredient(name: "Eggs", quantity: 6)</code></pre>
+继承关系里的最后一个类ShoppingListItem也是 RecipeIngredient 子类。ShoppingListItem 模拟了一个配方成分。
+
+购物清单中的每一项都以“unpurchased”开始。为了说明这个事实, ShoppingListItem 引入一个布尔属性 purchased, 带有一个默认值 false. ShoppingListItem 同时添加了一个计算属性description, 它提供了ShoppingListItem 实例的文本描述:
+<pre><code>
+class ShoppingListItem: RecipeIngredient {
+    var purchased = false
+    var description: String {
+        var output = "\(quantity) x \(name)"
+        output += purchased ? " ✔" : " ✘"
+        return output
+    }
+}</code></pre>
+
+<p>备注</p>
+<p>ShoppingListItem 没有提供构造器来为 purchased 设定初始值, 因为购物清单里的项目一开始都是未购买的。</p>
+<p>因为它给所有的属性提供了默认值并且没有提供任何构造函数, ShoppingListItem 自动从超类继承了所有的指定和便利构造器。</p>
+<p>下图展示了三个类所有的构造函数:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/initializersExample03_2x.png"><br></div>
 
 <p>你可以用所有继承来的构造函数创建一个新的 ShoppingListItem 实例:</p>
 <pre><code>
