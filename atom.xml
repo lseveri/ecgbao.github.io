@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:41:33.000Z</updated>
+    <updated>2017-01-23T05:44:29.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -7123,7 +7123,114 @@ public struct TrackedString {
 <h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><p>位运算符可以操作数据结构里的单个数据位。它们通常用于低级别编程, 例如图形编程和设备驱动编写。使用外部资源数据时,位运算符也很有用, 例如编解码数据。</p>
 <p>Swift 支持C中所有的位运算符, 描述如下。</p>
 <h1 id="位-NOT-运算符"><a href="#位-NOT-运算符" class="headerlink" title="位 NOT 运算符"></a>位 NOT 运算符</h1><p>位 NOT 运算符 (~) 把所有位转换成一个数:</p>
-<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseNOT_2x.png"><br></div><br>位 NOT 运算符是一个前缀运算符, 直接出现在操作数的前面, 没有空格:<br><pre><code><br>let initialBits: UInt8 = 0b00001111<br>let invertedBits = ~initialBits  // 等于 11110000<br></code></pre><br>UInt8 整数有8位,可以存储0到255之间的任何值。这个例子用二进制值00001111来初始化一个 UInt8 整数, 它的前四位全是0,后四位全是1. 它等于十进制的 15.<br><br>位 NOT 运算符用来创建一个新常量 invertedBits, 它等于 initialBits, 不过所有位都是反转的。0变成1, 1变成0.  invertedBits 的值是 11110000, 它等于十进制的 240.<br><br># 位 AND 运算符<br><br>位 AND 运算符 (&amp;) 合并两个数的位。它返回一个新的数组,如果两个输入数的位都是1,这个新数的位才是1:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseAND_2x.png"><br></div><br>在上面的例子里, firstSixBits 和 lastSixBits 中间四位都是 1. 位 AND 运算符合并它们变成 00111100, 它等于十进制的 60:<br><pre><code><br>let firstSixBits: UInt8 = 0b11111100<br>let lastSixBits: UInt8  = 0b00111111<br>let middleFourBits = firstSixBits &amp; lastSixBits  // 等于 00111100<br></code></pre><br># 位 OR 运算符<br><br>位 OR 运算符 (|) 比较两个数的位。如果两个数任意一个数位为1,这个运算符返回的数位就是1:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseOR_2x.png"><br></div><br>在上面的例子里, someBits 和 moreBits 不同位设置为 1. 位 OR 运算符合并它们变成 11111110, 它等于一个无符号十进制254:<br><pre><code><br>let someBits: UInt8 = 0b10110010<br>let moreBits: UInt8 = 0b01011110<br>let combinedbits = someBits | moreBits  // 等于 11111110<br></code></pre><br># 位 XOR 运算符<br><br>位 XOR 运算符, 或者 “异或运算符” (^), 比较两个数的位。如果两个数位不同返回1,如果相同则返回0:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseXOR_2x.png"><br></div><br><pre><code><br>let firstBits: UInt8 = 0b00010100<br>let otherBits: UInt8 = 0b00000101<br>let outputBits = firstBits ^ otherBits  // 等于 00010001<br></code></pre><br><br># 左右移位运算符<br><br>左移位运算符 (&lt;&lt;) 和右移位运算符 (&gt;&gt;) 往左或者往右移动数位, 规则如下。<br><br>左移位和右移位实际上是乘以或者除以2. 左移一个整数1位相当于乘以2, 而右移一个整数1位相当于除以2.<br><br># 无符号整数移动<br><br>无符号整数位移表现如下:<br><br>左移或者右移请求数量的位。<br>超出整数存储范围的移位被舍弃。<br>左移或者右移后,缺失的位用0填充。<br>这个方法叫逻辑移位。<br><br>下面这个图展示了 11111111 &lt;&lt; 1 和 11111111 &gt;&gt; 1 的结果。蓝色数字是要移动的, 灰色数字是要舍弃的, 橙色的0是填充的:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftUnsigned_2x.png"><br></div><br>下面是位移动在Swift 代码里的表现:<br><pre><code><br>let shiftBits: UInt8 = 4   // 00000100 in binary<br>shiftBits &lt;&lt; 1             // 00001000<br>shiftBits &lt;&lt; 2             // 00010000<br>shiftBits &lt;&lt; 5             // 10000000<br>shiftBits &lt;&lt; 6             // 00000000<br>shiftBits &gt;&gt; 2             // 00000001<br></code></pre><br>你可以使用位移动在其他数据类型里进行编解码:<br><pre><code><br>let pink: UInt32 = 0xCC6699<br>let redComponent = (pink &amp; 0xFF0000) &gt;&gt; 16    // redComponent 是 0xCC, 或者 204<br>let greenComponent = (pink &amp; 0x00FF00) &gt;&gt; 8   // greenComponent 是 0x66, 或者 102<br>let blueComponent = pink &amp; 0x0000FF           // blueComponent 是 0x99, 或者 153<br></code></pre><br>这个例子使用了一个 UInt32 类型的常量 pink 来保存粉色的CSS颜色值。CSS 颜色值 #CC6699 十六进制形式写作 0xCC6699. 经过位移 AND (&amp;)和右移运算符（&gt;&gt;）操作, 这个颜色会被分解为 red (CC), green (66), 和 blue (99) .<br><br>红色部分通过把数字 0xCC6699 和 0xFF0000进行位AND获取。 0xFF0000 中的0 “掩藏”了 0xCC6699的第二个和第三个字节, 导致 6699 被忽略,只留下 0xCC0000 的结果。<br><br>然后把这个数字向右移动16位 (&gt;&gt; 16). 十六进制数字每对字母使用8位, 所以向右移动16位把 0xCC0000 转化为 0x0000CC. 它等于 0xCC, 它的十进制值是 204.<br><br>类似的, 绿色部分通过把数字 0xCC6699 和 0x00FF00进行位AND获取, 它的输出值是 0x006600. 然后把输出值向右移动8位 0x66, 它的十进制值是 102.<br><br>最后, 蓝色部分通过把数字 0xCC6699 和 0x0000FF进行位AND获取, 它的输出值是 0x000099. 它不需要向右移动, 因为 0x000099 已经等于 0x99, 它的十进制值是 153.<br><br># 有符号整数移动<br><br>有符号整数的移动比无符号的要复杂, 因为有符号整数是用二进制表示的(为了简单,下面的例子用8位有符号整数展示, 不过这个原则适用于任何大小的有符号整数。)<br><br>有符号整数使用第一个数位来表示正负 (标志位)。 0表示正数, 1表示负数。<br><br>剩余位用来存储实际的值。正数的存储和无符号整数的方式是一样的, 从0往上数。这里是4在Int8中的数位的形式:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedFour_2x.png"><br></div><br>标志位是 0 (意思是正数), 7个数值位正好是数字 4, 用二进制符号表示。<br><br>负数存储是不同的。它们存储的值是绝对值减去2的n次方。这里n是数值位的数字。一个8位数有7个数值位, 所以2的7次方, 或者 128.<br><br>这里是-4在Int8中数位的形式 -4:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedMinusFour_2x.png"><br></div><br>这次符号位是 1 (意思是负数), 七位数值位值是 124 (128 - 4):<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedMinusFourValue_2x.png"><br></div><br>负数编码是一个二进制补码表示。这似乎不是负数的常见表示方法, 但是它有几个优点。<br><br>首先, 你可以把-4加-1, 可以进行8位的简单二进制加法 (包括标志位), 完成后舍弃不符合8位的:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedAddition_2x.png"><br></div><br>其次, 二进制补码表示让你可以像正数那样移动负数的数位。向左移动后依然会翻倍, 向右移动后会减半。为了实现这个, 当有符号整数向右移动时,使用额外的规则: 当你向右移动有符号整数时, 和无符号整数规则一样, 但是左边空出来的位要用标志位填充, 而不是0.<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSigned_2x.png"><br></div><br>这个行为保证有符号整数向右移动后,有相同的标志位。 也就是算术移位。<br><br>由于正负数存储的特殊方式, 向右移动它们接近于0. 移动过程中保持标志位不变,意味着负数在接近0过程中依然是负数。<br><br># 溢出运算符<br><br>如果你尝试向一个整数常数或者变量插入无法保存的值, 默认情况下, Swift 会报错而不是允许无效值的创建。当你使用过大或者过小值的时候,这个规则可以提供额外的安全性。<br><br>例如, Int16 整数范围是 -32768 到 32767. 尝试存储超过这个范围的数字会导致错误:<br><pre><code><br>var potentialOverflow = Int16.max<br>// potentialOverflow equals 32767, which is the maximum value an Int16 can hold<br>potentialOverflow += 1<br>// 这个会报错<br></code></pre><br><br>当值变的过大或者过小的时候,提供错误处理,在给边界值条件编码时,会更加灵活。<br><br>不过, 当你特别想要一个溢出条件来截断可用位数的时候, 你可以选择这个行为而不是触发一个错误。Swift 提供了三个算术溢出运算符,来为整数计算选择溢出行为。这些运算符都以(&amp;)开始:<br><br>溢出加 (&amp;+)<br>溢出减 (&amp;-)<br>溢出乘 (&amp;*)<br><br># 值溢出<br><br>负数和整数都可以溢出。<br><br>这里有一个例子,展示当一个无符号整数在正数方向溢出时,会发生什么, 使用的是溢出加运算符 (&amp;+):<br><pre><code><br>var unsignedOverflow = UInt8.max<br>// unsignedOverflow 等于 255, 它是UInt8可以保存的最大值<br>unsignedOverflow = unsignedOverflow &amp;+ 1<br>// unsignedOverflow 现在等于 0<br></code></pre><br><br>变量 unsignedOverflow 使用UInt8 的最大值初始化nt8 (255, 或者 11111111). 然后使用溢出加运算符加1. 这个让它的二进制表示正好超过UInt8可以保存的最大值,这个导致了溢出, 如下表所示。溢出加之后这个值00000000依然在UInt8的界限内。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowAddition_2x.png"><br></div><br>相似的事情会发生在无符号数向负数方向的溢出上。下面是使用了溢出减运算符的例子:<br><pre><code><br>var unsignedOverflow = UInt8.min<br>// unsignedOverflow 等于 0, 是UInt8可以保存的最小值<br>unsignedOverflow = unsignedOverflow &amp;- 1<br>// unsignedOverflow 现在等于 255<br></code></pre><br><br>UInt8可以保存的最小值是0, 或者二进制 00000000. 如果使用溢出减运算符减1, 这个数字会溢出变成 11111111, 或者十进制 255 .<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowUnsignedSubtraction_2x.png"><br></div><br>溢出也会发生在有符号整数。有符号整数的加减法以位形式执行, 标志位也参与加减。<br><pre><code><br>var signedOverflow = Int8.min<br>// signedOverflow 等于 -128, 是Int8可以保存的最小值<br>signedOverflow = signedOverflow &amp;- 1<br>// signedOverflow 现在等于 127<br></code></pre><br><br>Int8保存的最小值是 -128, 或者二进制 10000000. 使用溢出减减1,结果是 01111111, 它会切换标志位然后得正数 127, 它是Int8可以保存的最大正数值。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowSignedSubtraction_2x.png"><br></div>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseNOT_2x.png"><br></div>
+
+<p>位 NOT 运算符是一个前缀运算符, 直接出现在操作数的前面, 没有空格:</p>
+<pre><code>
+let initialBits: UInt8 = 0b00001111
+let invertedBits = ~initialBits  // 等于 11110000
+</code></pre>
+
+<p>UInt8 整数有8位,可以存储0到255之间的任何值。这个例子用二进制值00001111来初始化一个 UInt8 整数, 它的前四位全是0,后四位全是1. 它等于十进制的 15.</p>
+<p>位 NOT 运算符用来创建一个新常量 invertedBits, 它等于 initialBits, 不过所有位都是反转的。0变成1, 1变成0.  invertedBits 的值是 11110000, 它等于十进制的 240.</p>
+<h1 id="位-AND-运算符"><a href="#位-AND-运算符" class="headerlink" title="位 AND 运算符"></a>位 AND 运算符</h1><p>位 AND 运算符 (&amp;) 合并两个数的位。它返回一个新的数组,如果两个输入数的位都是1,这个新数的位才是1:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseAND_2x.png"><br></div>
+
+<p>在上面的例子里, firstSixBits 和 lastSixBits 中间四位都是 1. 位 AND 运算符合并它们变成 00111100, 它等于十进制的 60:</p>
+<pre><code>
+let firstSixBits: UInt8 = 0b11111100
+let lastSixBits: UInt8  = 0b00111111
+let middleFourBits = firstSixBits & lastSixBits  // 等于 00111100
+</code></pre>
+
+<h1 id="位-OR-运算符"><a href="#位-OR-运算符" class="headerlink" title="位 OR 运算符"></a>位 OR 运算符</h1><p>位 OR 运算符 (|) 比较两个数的位。如果两个数任意一个数位为1,这个运算符返回的数位就是1:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseOR_2x.png"><br></div>
+
+<p>在上面的例子里, someBits 和 moreBits 不同位设置为 1. 位 OR 运算符合并它们变成 11111110, 它等于一个无符号十进制254:</p>
+<pre><code>
+let someBits: UInt8 = 0b10110010
+let moreBits: UInt8 = 0b01011110
+let combinedbits = someBits | moreBits  // 等于 11111110
+</code></pre>
+
+<h1 id="位-XOR-运算符"><a href="#位-XOR-运算符" class="headerlink" title="位 XOR 运算符"></a>位 XOR 运算符</h1><p>位 XOR 运算符, 或者 “异或运算符” (^), 比较两个数的位。如果两个数位不同返回1,如果相同则返回0:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseXOR_2x.png"><br></div>
+
+<pre><code>
+let firstBits: UInt8 = 0b00010100
+let otherBits: UInt8 = 0b00000101
+let outputBits = firstBits ^ otherBits  // 等于 00010001
+</code></pre>
+
+<h1 id="左右移位运算符"><a href="#左右移位运算符" class="headerlink" title="左右移位运算符"></a>左右移位运算符</h1><p>左移位运算符 (&lt;&lt;) 和右移位运算符 (&gt;&gt;) 往左或者往右移动数位, 规则如下。</p>
+<p>左移位和右移位实际上是乘以或者除以2. 左移一个整数1位相当于乘以2, 而右移一个整数1位相当于除以2.</p>
+<h1 id="无符号整数移动"><a href="#无符号整数移动" class="headerlink" title="无符号整数移动"></a>无符号整数移动</h1><p>无符号整数位移表现如下:</p>
+<p>左移或者右移请求数量的位。<br>超出整数存储范围的移位被舍弃。<br>左移或者右移后,缺失的位用0填充。<br>这个方法叫逻辑移位。</p>
+<p>下面这个图展示了 11111111 &lt;&lt; 1 和 11111111 &gt;&gt; 1 的结果。蓝色数字是要移动的, 灰色数字是要舍弃的, 橙色的0是填充的:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftUnsigned_2x.png"><br></div><br>下面是位移动在Swift 代码里的表现:<br><pre><code><br>let shiftBits: UInt8 = 4   // 00000100 in binary<br>shiftBits &lt;&lt; 1             // 00001000<br>shiftBits &lt;&lt; 2             // 00010000<br>shiftBits &lt;&lt; 5             // 10000000<br>shiftBits &lt;&lt; 6             // 00000000<br>shiftBits &gt;&gt; 2             // 00000001<br></code></pre><br><br>你可以使用位移动在其他数据类型里进行编解码:<br><pre><code><br>let pink: UInt32 = 0xCC6699<br>let redComponent = (pink &amp; 0xFF0000) &gt;&gt; 16    // redComponent 是 0xCC, 或者 204<br>let greenComponent = (pink &amp; 0x00FF00) &gt;&gt; 8   // greenComponent 是 0x66, 或者 102<br>let blueComponent = pink &amp; 0x0000FF           // blueComponent 是 0x99, 或者 153<br></code></pre><br><br>这个例子使用了一个 UInt32 类型的常量 pink 来保存粉色的CSS颜色值。CSS 颜色值 #CC6699 十六进制形式写作 0xCC6699. 经过位移 AND (&amp;)和右移运算符（&gt;&gt;）操作, 这个颜色会被分解为 red (CC), green (66), 和 blue (99) .<br><br>红色部分通过把数字 0xCC6699 和 0xFF0000进行位AND获取。 0xFF0000 中的0 “掩藏”了 0xCC6699的第二个和第三个字节, 导致 6699 被忽略,只留下 0xCC0000 的结果。<br><br>然后把这个数字向右移动16位 (&gt;&gt; 16). 十六进制数字每对字母使用8位, 所以向右移动16位把 0xCC0000 转化为 0x0000CC. 它等于 0xCC, 它的十进制值是 204.<br><br>类似的, 绿色部分通过把数字 0xCC6699 和 0x00FF00进行位AND获取, 它的输出值是 0x006600. 然后把输出值向右移动8位 0x66, 它的十进制值是 102.<br><br>最后, 蓝色部分通过把数字 0xCC6699 和 0x0000FF进行位AND获取, 它的输出值是 0x000099. 它不需要向右移动, 因为 0x000099 已经等于 0x99, 它的十进制值是 153.<br><br># 有符号整数移动<br><br>有符号整数的移动比无符号的要复杂, 因为有符号整数是用二进制表示的(为了简单,下面的例子用8位有符号整数展示, 不过这个原则适用于任何大小的有符号整数。)<br><br>有符号整数使用第一个数位来表示正负 (标志位)。 0表示正数, 1表示负数。<br><br>剩余位用来存储实际的值。正数的存储和无符号整数的方式是一样的, 从0往上数。这里是4在Int8中的数位的形式:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedFour_2x.png"><br></div>
+
+<p>标志位是 0 (意思是正数), 7个数值位正好是数字 4, 用二进制符号表示。</p>
+<p>负数存储是不同的。它们存储的值是绝对值减去2的n次方。这里n是数值位的数字。一个8位数有7个数值位, 所以2的7次方, 或者 128.</p>
+<p>这里是-4在Int8中数位的形式 -4:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedMinusFour_2x.png"><br></div>
+
+<p>这次符号位是 1 (意思是负数), 七位数值位值是 124 (128 - 4):</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedMinusFourValue_2x.png"><br></div>
+
+<p>负数编码是一个二进制补码表示。这似乎不是负数的常见表示方法, 但是它有几个优点。</p>
+<p>首先, 你可以把-4加-1, 可以进行8位的简单二进制加法 (包括标志位), 完成后舍弃不符合8位的:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedAddition_2x.png"><br></div>
+
+<p>其次, 二进制补码表示让你可以像正数那样移动负数的数位。向左移动后依然会翻倍, 向右移动后会减半。为了实现这个, 当有符号整数向右移动时,使用额外的规则: 当你向右移动有符号整数时, 和无符号整数规则一样, 但是左边空出来的位要用标志位填充, 而不是0.</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSigned_2x.png"><br></div>
+
+<p>这个行为保证有符号整数向右移动后,有相同的标志位。 也就是算术移位。</p>
+<p>由于正负数存储的特殊方式, 向右移动它们接近于0. 移动过程中保持标志位不变,意味着负数在接近0过程中依然是负数。</p>
+<h1 id="溢出运算符"><a href="#溢出运算符" class="headerlink" title="溢出运算符"></a>溢出运算符</h1><p>如果你尝试向一个整数常数或者变量插入无法保存的值, 默认情况下, Swift 会报错而不是允许无效值的创建。当你使用过大或者过小值的时候,这个规则可以提供额外的安全性。</p>
+<p>例如, Int16 整数范围是 -32768 到 32767. 尝试存储超过这个范围的数字会导致错误:</p>
+<pre><code>
+var potentialOverflow = Int16.max
+// potentialOverflow equals 32767, which is the maximum value an Int16 can hold
+potentialOverflow += 1
+// 这个会报错
+</code></pre>
+
+<p>当值变的过大或者过小的时候,提供错误处理,在给边界值条件编码时,会更加灵活。</p>
+<p>不过, 当你特别想要一个溢出条件来截断可用位数的时候, 你可以选择这个行为而不是触发一个错误。Swift 提供了三个算术溢出运算符,来为整数计算选择溢出行为。这些运算符都以(&amp;)开始:</p>
+<p>溢出加 (&amp;+)<br>溢出减 (&amp;-)<br>溢出乘 (&amp;*)</p>
+<h1 id="值溢出"><a href="#值溢出" class="headerlink" title="值溢出"></a>值溢出</h1><p>负数和整数都可以溢出。</p>
+<p>这里有一个例子,展示当一个无符号整数在正数方向溢出时,会发生什么, 使用的是溢出加运算符 (&amp;+):</p>
+<pre><code>
+var unsignedOverflow = UInt8.max
+// unsignedOverflow 等于 255, 它是UInt8可以保存的最大值
+unsignedOverflow = unsignedOverflow &+ 1
+// unsignedOverflow 现在等于 0
+</code></pre>
+
+<p>变量 unsignedOverflow 使用UInt8 的最大值初始化nt8 (255, 或者 11111111). 然后使用溢出加运算符加1. 这个让它的二进制表示正好超过UInt8可以保存的最大值,这个导致了溢出, 如下表所示。溢出加之后这个值00000000依然在UInt8的界限内。</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowAddition_2x.png"><br></div>
+
+<p>相似的事情会发生在无符号数向负数方向的溢出上。下面是使用了溢出减运算符的例子:</p>
+<pre><code>
+var unsignedOverflow = UInt8.min
+// unsignedOverflow 等于 0, 是UInt8可以保存的最小值
+unsignedOverflow = unsignedOverflow &- 1
+// unsignedOverflow 现在等于 255
+</code></pre>
+
+<p>UInt8可以保存的最小值是0, 或者二进制 00000000. 如果使用溢出减运算符减1, 这个数字会溢出变成 11111111, 或者十进制 255 .</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowUnsignedSubtraction_2x.png"><br></div>
+
+<p>溢出也会发生在有符号整数。有符号整数的加减法以位形式执行, 标志位也参与加减。</p>
+<pre><code>
+var signedOverflow = Int8.min
+// signedOverflow 等于 -128, 是Int8可以保存的最小值
+signedOverflow = signedOverflow &- 1
+// signedOverflow 现在等于 127
+</code></pre>
+
+<p>Int8保存的最小值是 -128, 或者二进制 10000000. 使用溢出减减1,结果是 01111111, 它会切换标志位然后得正数 127, 它是Int8可以保存的最大正数值。</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowSignedSubtraction_2x.png"><br></div>
 
 <p>对于有符号和无符号整数来说, 向正数方向溢出会回到最小值, 向负数方向溢出会回到最大值。</p>
 <h1 id="优先级和关联性"><a href="#优先级和关联性" class="headerlink" title="优先级和关联性"></a>优先级和关联性</h1><p>运算符优先级给一些运算符提供更高的优先级; 这些运算符首先起作用。</p>
