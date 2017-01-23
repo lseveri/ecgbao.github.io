@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:23:25.000Z</updated>
+    <updated>2017-01-23T05:27:37.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -4643,13 +4643,10 @@ print(board.squareIsBlackAt(row: 7, column: 7))
 deinit {
     // perform the deinitialization
 }</code></pre>
-析构器会自动调用, 在实例销毁发生前。禁止自己去调用析构器。子类会继承超类的析构器, 超类析构器在子类析构器实现后调用。 即使子类不提供自己的析构器,超类析构器也会调用。
 
-因为实例直到析构器调用才会销毁, 一个析构器可以访问调用实例的所有属性,同时也可以改变基于这些属性的行为 (例如寻找需要关闭的文件名).
-
-# 析构器的活动
-
-这里有一个析构器活动的例子。这个例子定义了两个新类型, Bank 和 Player, Bank 类管理一个虚拟货币, 它的流通货币不会超过 10,000 硬币。游戏里只有能有一个银行, 所以 Bank 用类实现,带有类型属性和方法来存储和管理它的当前状态:
+<p>析构器会自动调用, 在实例销毁发生前。禁止自己去调用析构器。子类会继承超类的析构器, 超类析构器在子类析构器实现后调用。 即使子类不提供自己的析构器,超类析构器也会调用。</p>
+<p>因为实例直到析构器调用才会销毁, 一个析构器可以访问调用实例的所有属性,同时也可以改变基于这些属性的行为 (例如寻找需要关闭的文件名).</p>
+<h1 id="析构器的活动"><a href="#析构器的活动" class="headerlink" title="析构器的活动"></a>析构器的活动</h1><p>这里有一个析构器活动的例子。这个例子定义了两个新类型, Bank 和 Player, Bank 类管理一个虚拟货币, 它的流通货币不会超过 10,000 硬币。游戏里只有能有一个银行, 所以 Bank 用类实现,带有类型属性和方法来存储和管理它的当前状态:</p>
 <pre><code>
 class Bank {
     static var coinsInBank = 10_000
@@ -4788,13 +4785,11 @@ class Apartment {
     deinit { print("Apartment \(unit) is being deinitialized") }
 }
 </code></pre>
-每个 Person 实例有一个字符串类型的name属性和一个可选的 apartment 属性,后者初始化为nil. apartment 属性是可选的, 因为一个人有可能没有公寓。
 
-相似的, 每个 Apartment 实例有一个字符串类型的 unit属性和一个可选的 tenant 属性,后者初始化为nil nil. tenant 属性是可选的,因为一个公寓有可能没有租客。
-
-两个类都定义了析构器, 它们打印类实例被销毁的事实。这个可以帮你查看两个类的实例是否按照预期销毁了。
-
-下面的代码片段定义了两个可选类型的变量 john 和 unit4A, 他们将会被设置为特定的 Apartment 和 Person 实例。这两个变量初始值都是 nil, 因为它们是可选的:
+<p>每个 Person 实例有一个字符串类型的name属性和一个可选的 apartment 属性,后者初始化为nil. apartment 属性是可选的, 因为一个人有可能没有公寓。</p>
+<p>相似的, 每个 Apartment 实例有一个字符串类型的 unit属性和一个可选的 tenant 属性,后者初始化为nil nil. tenant 属性是可选的,因为一个公寓有可能没有租客。</p>
+<p>两个类都定义了析构器, 它们打印类实例被销毁的事实。这个可以帮你查看两个类的实例是否按照预期销毁了。</p>
+<p>下面的代码片段定义了两个可选类型的变量 john 和 unit4A, 他们将会被设置为特定的 Apartment 和 Person 实例。这两个变量初始值都是 nil, 因为它们是可选的:</p>
 <pre><code>
 var john: Person?
 var unit4A: Apartment?
@@ -4802,54 +4797,39 @@ var unit4A: Apartment?
 john = Person(name: "John Appleseed")
 unit4A = Apartment(unit: "4A")
 </code></pre>
-这里展示创建和赋值这两个实例后,强引用的样子。john 变量现在强引用这个新的 Person 实例, unit4A 变量现在强引用这个新的 Apartment 实例:
 
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle01_2x.png">
-</div>
-现在可以联系两个实例到一起,现在人有了公寓,公寓也有了一个租客。注意这里使用了感叹号来拆包和访问 john 和 unit4A 可选变量, 所以这些实例的属性可以被设置:
+<p>这里展示创建和赋值这两个实例后,强引用的样子。john 变量现在强引用这个新的 Person 实例, unit4A 变量现在强引用这个新的 Apartment 实例:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle01_2x.png"><br></div>
+
+<p>现在可以联系两个实例到一起,现在人有了公寓,公寓也有了一个租客。注意这里使用了感叹号来拆包和访问 john 和 unit4A 可选变量, 所以这些实例的属性可以被设置:</p>
 <pre><code>
 john!.apartment = unit4A
 unit4A!.tenant = john
 </code></pre>
-Here’s how the strong references look after you link the two instances together:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle02_2x.png">
-</div>
-不幸运的是, 联系这两个实例,导致在它们之间建立了强引用循环。Person 实例现在有了一个强引用到 Apartment 实例, 然后 Apartment 实例有一个强引用到 Person 实例。因此, 当你打破 john 和 unit4A 变量拥有的强引用, 引用计数也不会降为0, 实例也不会被ARC销毁:
+
+<p>下面是连接两个实例之后的强引用的样子:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle02_2x.png"><br></div>
+
+<p>不幸运的是, 联系这两个实例,导致在它们之间建立了强引用循环。Person 实例现在有了一个强引用到 Apartment 实例, 然后 Apartment 实例有一个强引用到 Person 实例。因此, 当你打破 john 和 unit4A 变量拥有的强引用, 引用计数也不会降为0, 实例也不会被ARC销毁:</p>
 <pre><code>
 john = nil
 unit4A = nil
 </code></pre>
-注意当你设置两个变量为nil时,两个析构器都不会调用。强引用循环阻止了 Person 和 Apartment 实例的销毁。导致你的应用内存泄露。
 
-这里展示设置john 和 unit4A 变量为 nil后强引用的样子:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle03_2x.png">
-</div>
+<p>注意当你设置两个变量为nil时,两个析构器都不会调用。强引用循环阻止了 Person 和 Apartment 实例的销毁。导致你的应用内存泄露。</p>
+<p>这里展示设置john 和 unit4A 变量为 nil后强引用的样子:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle03_2x.png"><br></div>
 
-Person 实例和 Apartment 实例之间的强引用依然没有打破。
-
-# 解决实例间的强引用循环
-
-针对类类型的属性, Swift 提供了两个方法来解决强引用循环问题: weak 引用 和 unowned 引用。
-
-Weak 和 unowned references 可以使一个实例在引用循环中去调用另外一个实例,而不会强引用它。然后实例之间可以互相引用而不会出现强引用循环。
-
-其他实例有更短的生命期的时候使用一个弱引用—就是说, 当其他实例首先被销毁的时候。 上面的 Apartment 例子, 在公寓的生命周期内, 在某个时刻没有租客是正常的。所以在这个情况下,使用弱引用来打破强引用是合适的方式。相反, 如果其他实例有着相同或者更长的生命周期,就使用无主引用。
-
-# 弱引用
-弱引用不会强持有它引用的实例, 并且不会阻止ARC处理引用的实例。这个行为防止出现强引用循环。你可以在属性或者变量声明前加上weak关键字来声明一个弱引用。
-
-因为弱引用不会强持有它引用的实例, 在弱引用仍然引用实例的时候,有可能这个实例将要被销毁了。因此, 在引用实例销毁时, ARC 自动把弱引用设置为nil. 并且, 由于弱引用要在运行时允许它们的值修改为nil, 它们总是声明成可选类型变量, 而不是常量。
-
-你可以判断在弱引用中一个值的存在与否, 就像其他可选值一样, 实例不存后,你不会得到一个无效的实例引用。
-
-备注
-
-ARC 设置一个弱引用为nil时, 属性观察者不会调用。
-
-下面的例子和上面 Person 和 Apartment 例子是一样的, 只有一个重要的不同。这一次, Apartment 类型的 tenant 属性声明为弱引用:
+<p>Person 实例和 Apartment 实例之间的强引用依然没有打破。</p>
+<h1 id="解决实例间的强引用循环"><a href="#解决实例间的强引用循环" class="headerlink" title="解决实例间的强引用循环"></a>解决实例间的强引用循环</h1><p>针对类类型的属性, Swift 提供了两个方法来解决强引用循环问题: weak 引用 和 unowned 引用。</p>
+<p>Weak 和 unowned references 可以使一个实例在引用循环中去调用另外一个实例,而不会强引用它。然后实例之间可以互相引用而不会出现强引用循环。</p>
+<p>其他实例有更短的生命期的时候使用一个弱引用—就是说, 当其他实例首先被销毁的时候。 上面的 Apartment 例子, 在公寓的生命周期内, 在某个时刻没有租客是正常的。所以在这个情况下,使用弱引用来打破强引用是合适的方式。相反, 如果其他实例有着相同或者更长的生命周期,就使用无主引用。</p>
+<h1 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h1><p>弱引用不会强持有它引用的实例, 并且不会阻止ARC处理引用的实例。这个行为防止出现强引用循环。你可以在属性或者变量声明前加上weak关键字来声明一个弱引用。</p>
+<p>因为弱引用不会强持有它引用的实例, 在弱引用仍然引用实例的时候,有可能这个实例将要被销毁了。因此, 在引用实例销毁时, ARC 自动把弱引用设置为nil. 并且, 由于弱引用要在运行时允许它们的值修改为nil, 它们总是声明成可选类型变量, 而不是常量。</p>
+<p>你可以判断在弱引用中一个值的存在与否, 就像其他可选值一样, 实例不存后,你不会得到一个无效的实例引用。</p>
+<p>备注</p>
+<p>ARC 设置一个弱引用为nil时, 属性观察者不会调用。</p>
+<p>下面的例子和上面 Person 和 Apartment 例子是一样的, 只有一个重要的不同。这一次, Apartment 类型的 tenant 属性声明为弱引用:</p>
 <pre><code>
 class Person {
     let name: String
@@ -4865,7 +4845,8 @@ class Apartment {
     deinit { print("Apartment \(unit) is being deinitialized") }
 }
 </code></pre>
-两个变量的强引用它们之间的联系创建如前 (john 和 unit4A):
+
+<p>两个变量的强引用它们之间的联系创建如前 (john 和 unit4A):</p>
 <pre><code>
 var john: Person?
 var unit4A: Apartment?
@@ -4876,52 +4857,39 @@ unit4A = Apartment(unit: "4A")
 john!.apartment = unit4A
 unit4A!.tenant = john
 </code></pre>
-这里展示联系两个实例后,引用的样子:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference01_2x.png">
-</div>
-Person 实例依然强引用 Apartment 实例, 不过 Apartment 实例现在是弱引用 Person 实例了。这就意味着, 当你设置john为nil来打破这个强引用的时候, 就不会再有对 Person 实例的强引用:
+
+<p>这里展示联系两个实例后,引用的样子:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference01_2x.png"><br></div>
+
+<p>Person 实例依然强引用 Apartment 实例, 不过 Apartment 实例现在是弱引用 Person 实例了。这就意味着, 当你设置john为nil来打破这个强引用的时候, 就不会再有对 Person 实例的强引用:</p>
 <pre><code>
 john = nil
 // 打印 "John Appleseed is being deinitialized"
 </code></pre>
-因为没有更多对Person实例的强引用, 它被销毁而且tenant 属性被设置为 nil:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference02_2x.png">
-</div>
-现在只剩下unit4A 变量对 Apartment 实例的强引用。如果你打破这个强引用, 就不会再有对Apartment实例的强引用:
+
+<p>因为没有更多对Person实例的强引用, 它被销毁而且tenant 属性被设置为 nil:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference02_2x.png"><br></div>
+
+<p>现在只剩下unit4A 变量对 Apartment 实例的强引用。如果你打破这个强引用, 就不会再有对Apartment实例的强引用:</p>
 <pre><code>
 unit4A = nil
 // 打印 "Apartment 4A is being deinitialized"
 </code></pre>
-因为没有更多对 Apartment 实例的强引用, 它也被销毁了:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference03_2x.png">
-</div>
 
-备注
+<p>因为没有更多对 Apartment 实例的强引用, 它也被销毁了:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/weakReference03_2x.png"><br></div>
 
-在使用垃圾回收的系统里, 弱指针有时用来实现一个简单的缓存机制,因为没有强引用的对象只有在内存紧张的时候才会触发垃圾回收。不过, 使用 ARC, 只要值的强引用被移除了,它们就会被销毁, 为了这个目的使用弱引用是不合适的。
-
-# 无主引用
-
-很像弱引用, 无主引用不会强持有它引用的实例。跟弱引用不同的是, 当其他实例有相同或者更久的生命周期时才使用无主引用。通过在属性或者变量声明的前面加上unowned 关键字来声明无主引用。
-
-一个无主引用总希望有值。结果是, ARC 永远不会把无主引用的值设为nil, 这意味着无主引用使用非可选类型来定义。
-
-重要
-
-使用无主引用前提是,只在你能确保引用的实例不会被销毁情况下使用。
-
-如果你在实例销毁后尝试调用无主引用的值,你会得到一个运行时错误。
-
-下面的例子定义了两个类, Customer 和 CreditCard, 它模拟了一个银行用户和用户的信用卡。这两个类都存储了对方的实例作为属性。这种关系有产生强引用循环的可能。
-
-Customer 和 CreditCard 之间的关系与上面的Apartment 和 Person之间的关系略有不同。在这个数据模型里, 一个用户可能有或者没有一张信用卡, 但是一张信用卡总有对应的用户。一个 CreditCard 实例永远不会比它调用的用户活的更久。为了表示这个, Customer 类有一个可选的 card 属性, CreditCard 类有一个无主的 (非可选) customer 属性。
-
-此外, 一个新的 CreditCard 实例创建时, 需要传递一个number 值和一个 customer 实例给自定义的 CreditCard 构造器。这个确保了一个 CreditCard 实例总会有一个对应的用户。
-
-因为一张信用卡总会有一个用户, 你定义customer 属性为一个无主引用, 可以避免强引用循环:
+<p>备注</p>
+<p>在使用垃圾回收的系统里, 弱指针有时用来实现一个简单的缓存机制,因为没有强引用的对象只有在内存紧张的时候才会触发垃圾回收。不过, 使用 ARC, 只要值的强引用被移除了,它们就会被销毁, 为了这个目的使用弱引用是不合适的。</p>
+<h1 id="无主引用"><a href="#无主引用" class="headerlink" title="无主引用"></a>无主引用</h1><p>很像弱引用, 无主引用不会强持有它引用的实例。跟弱引用不同的是, 当其他实例有相同或者更久的生命周期时才使用无主引用。通过在属性或者变量声明的前面加上unowned 关键字来声明无主引用。</p>
+<p>一个无主引用总希望有值。结果是, ARC 永远不会把无主引用的值设为nil, 这意味着无主引用使用非可选类型来定义。</p>
+<p>重要</p>
+<p>使用无主引用前提是,只在你能确保引用的实例不会被销毁情况下使用。</p>
+<p>如果你在实例销毁后尝试调用无主引用的值,你会得到一个运行时错误。</p>
+<p>下面的例子定义了两个类, Customer 和 CreditCard, 它模拟了一个银行用户和用户的信用卡。这两个类都存储了对方的实例作为属性。这种关系有产生强引用循环的可能。</p>
+<p>Customer 和 CreditCard 之间的关系与上面的Apartment 和 Person之间的关系略有不同。在这个数据模型里, 一个用户可能有或者没有一张信用卡, 但是一张信用卡总有对应的用户。一个 CreditCard 实例永远不会比它调用的用户活的更久。为了表示这个, Customer 类有一个可选的 card 属性, CreditCard 类有一个无主的 (非可选) customer 属性。</p>
+<p>此外, 一个新的 CreditCard 实例创建时, 需要传递一个number 值和一个 customer 实例给自定义的 CreditCard 构造器。这个确保了一个 CreditCard 实例总会有一个对应的用户。</p>
+<p>因为一张信用卡总会有一个用户, 你定义customer 属性为一个无主引用, 可以避免强引用循环:</p>
 <pre><code>
 class Customer {
     let name: String
@@ -4949,24 +4917,21 @@ class CreditCard {
 <pre><code>
 var john: Customer?
 </code></pre>
-现在你创建了一个 Customer 实例, 然后用它初始化和分配一个新的CreditCard 实例作为用户的card 属性:
+
+<p>现在你创建了一个 Customer 实例, 然后用它初始化和分配一个新的CreditCard 实例作为用户的card 属性:</p>
 <pre><code>
 john = Customer(name: "John Appleseed")
 john!.card = CreditCard(number: 1234_5678_9012_3456, customer: john!)
 </code></pre>
-这里是引用的样子, 现在你把两个实例联系起来了:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/unownedReference01_2x.png">
-</div>
 
-Customer 实例现在强引用 CreditCard 实例, CreditCard 实例则是无主引用 Customer 实例。
+<p>这里是引用的样子, 现在你把两个实例联系起来了:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/unownedReference01_2x.png"><br></div>
 
-由于无主的 customer 引用, 当你打破john 变量持有的强引用, 就不会有其他对 Customer 的强用了:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/unownedReference02_2x.png">
-</div>
+<p>Customer 实例现在强引用 CreditCard 实例, CreditCard 实例则是无主引用 Customer 实例。</p>
+<p>由于无主的 customer 引用, 当你打破john 变量持有的强引用, 就不会有其他对 Customer 的强用了:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/unownedReference02_2x.png"><br></div>
 
-因为没有其他对 Customer 实例的强引用, 它会被销毁，然后, 对CreditCard 实例的强引用也没有了, 所以它也被销毁了:
+<p>因为没有其他对 Customer 实例的强引用, 它会被销毁，然后, 对CreditCard 实例的强引用也没有了, 所以它也被销毁了:</p>
 <pre><code>
 john = nil
 // 打印 "John Appleseed is being deinitialized"
@@ -5096,7 +5061,8 @@ lazy var someClosure: (Int, String) -> String = {
     // closure body goes here
 }
 </code></pre>
-如果一个闭包没有指定参数列表或者返回类型, 就把捕获列表放在闭包最开始,后面跟着in关键字:
+
+<p>如果一个闭包没有指定参数列表或者返回类型, 就把捕获列表放在闭包最开始,后面跟着in关键字:</p>
 <pre><code>
 lazy var someClosure: () -> String = {
     [unowned self, weak delegate = self.delegate!] in
@@ -5171,20 +5137,21 @@ class Residence {
     var numberOfRooms = 1
 }
 </code></pre>
-Residence 实例只有一个整型属性 numberOfRooms, 默认值是 1. Person 实例有一个可选Residence?类型属性 residence.
 
-如果你创建一个新的 Person 实例, 它的residence 属性默认初始化为nil,因为它是可选的。下面的代码里, john 有一个值为nil的属性residence:
+<p>Residence 实例只有一个整型属性 numberOfRooms, 默认值是 1. Person 实例有一个可选Residence?类型属性 residence.</p>
+<p>如果你创建一个新的 Person 实例, 它的residence 属性默认初始化为nil,因为它是可选的。下面的代码里, john 有一个值为nil的属性residence:</p>
 <pre><code>
 let john = Person()
 </code></pre>
-如果你想访问person属性 residence的属性 numberOfRooms, 可以在residence 后面放置一个感叹号来强制拆包它的值, 由于还没有值可以拆包,所以你会触发一个运行时错误:
+
+<p>如果你想访问person属性 residence的属性 numberOfRooms, 可以在residence 后面放置一个感叹号来强制拆包它的值, 由于还没有值可以拆包,所以你会触发一个运行时错误:</p>
 <pre><code>
 let roomCount = john.residence!.numberOfRooms
 // 触发运行时错误
 </code></pre>
-当john.residence有一个非nil值时,上面的代码会成功,然后会把合适的房间数量设置给 roomCount. 不过, 当residence 为nil时,这个代码总会触发运行时错误。
 
-可选链接提供了一个替代方式来访问 numberOfRooms 的值。通过在感叹号的位置使用问号来使用可选链接:
+<p>当john.residence有一个非nil值时,上面的代码会成功,然后会把合适的房间数量设置给 roomCount. 不过, 当residence 为nil时,这个代码总会触发运行时错误。</p>
+<p>可选链接提供了一个替代方式来访问 numberOfRooms 的值。通过在感叹号的位置使用问号来使用可选链接:</p>
 <pre><code>
 if let roomCount = john.residence?.numberOfRooms {
     print("John's residence has \(roomCount) room(s).")
@@ -5193,13 +5160,11 @@ if let roomCount = john.residence?.numberOfRooms {
 }
 // 打印 "Unable to retrieve the number of rooms."
 </code></pre>
-这会告诉 Swift 去链接可选的residence 属性,如果它存在就返回 numberOfRooms 的值。
 
-由于尝试访问 numberOfRooms 有可能失败, 可选链接尝试放回一个 Int? 类型值, 或者“可选整型”。当 residence 为nil, 这个可选整型将会是nil, 这样就不能访问 numberOfRooms. 可选整型通过可选绑定来访问,然后去拆包这个整数同时把非空值赋值给roomCount 变量。
-
-注意,尽管numberOfRooms 是一个非空的整型,这个也是真的。通过可选链接查询的事实意味着调用numberOfRooms 总是返回 Int? 而不是 Int.
-
-你可以把一个 Residence 实例赋值给john.residence, 这样它就不会是一个空值了:
+<p>这会告诉 Swift 去链接可选的residence 属性,如果它存在就返回 numberOfRooms 的值。</p>
+<p>由于尝试访问 numberOfRooms 有可能失败, 可选链接尝试放回一个 Int? 类型值, 或者“可选整型”。当 residence 为nil, 这个可选整型将会是nil, 这样就不能访问 numberOfRooms. 可选整型通过可选绑定来访问,然后去拆包这个整数同时把非空值赋值给roomCount 变量。</p>
+<p>注意,尽管numberOfRooms 是一个非空的整型,这个也是真的。通过可选链接查询的事实意味着调用numberOfRooms 总是返回 Int? 而不是 Int.</p>
+<p>你可以把一个 Residence 实例赋值给john.residence, 这样它就不会是一个空值了:</p>
 <pre><code>
 john.residence = Residence()
 </code></pre>
