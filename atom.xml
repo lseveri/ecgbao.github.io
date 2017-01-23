@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T03:33:26.000Z</updated>
+    <updated>2017-01-23T04:24:52.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -664,44 +664,32 @@ let three = 3
 let minusThree = -three       // minusThree equals -3
 let plusThree = -minusThree   // plusThree equals 3, or "minus minus three"
 </code></pre>
-一元减法运算符 (-) 直接放在操作数前, 没有空格。
 
-# 一元加法运算符
-
-一元加法运算符 (+) 返回操作数值, 没有任何改变:
+<p>一元减法运算符 (-) 直接放在操作数前, 没有空格。</p>
+<h1 id="一元加法运算符"><a href="#一元加法运算符" class="headerlink" title="一元加法运算符"></a>一元加法运算符</h1><p>一元加法运算符 (+) 返回操作数值, 没有任何改变:</p>
 <pre><code>
 let minusSix = -6
 let alsoMinusSix = +minusSix  // alsoMinusSix 等于 -6
 </code></pre>
-尽管一元加法运算符实际上不做任何事, 你可以用它来提供对称的代码，当在代码中使用正负数的时候。
 
-# 复合赋值运算符
-
-和 C 语言相似, Swift 提供复合赋值运算符来合并赋值 (=) 和其他操作数。 一个例子就是加法赋值运算符 (+=):
+<p>尽管一元加法运算符实际上不做任何事, 你可以用它来提供对称的代码，当在代码中使用正负数的时候。</p>
+<h1 id="复合赋值运算符"><a href="#复合赋值运算符" class="headerlink" title="复合赋值运算符"></a>复合赋值运算符</h1><p>和 C 语言相似, Swift 提供复合赋值运算符来合并赋值 (=) 和其他操作数。 一个例子就是加法赋值运算符 (+=):</p>
 <pre><code>
 var a = 1
 a += 2
 // a 现在等于 3
 </code></pre>
-表达式 a += 2 是 a = a + 2 的快捷方式。 实际上, 加法和赋值合并进一个操作符，同时做了两件事。
 
-备注
-
-复合赋值运算符不返回值。 比如, 你不能这样写 let b = a += 2.
-
-# 比较运算符
-
-Swift 支持所有标准C语言比较运算符:
-
-等于 (a == b)
-不等于 (a != b)
-大于 (a > b)
-小于 (a < b)
-大于等于 (a >= b)
-小于等于 (a <= 1="=" 2="" b)="" 备注="" swift="" 同时提供两个相等运算符="" (="==" and="" !="=)," 你可以用来测试两个对象引用是否引用了相同的对象实例。="" 更多信息参考="" classes="" structures.="" 每个比较运算符都返回一个布尔值，来表明语句是否是真的:="" 真，因为1="" 等于="" 真，因为2="" 不等于=""> 1    // 真，因为2 大于 1
-1 < 2    // 真，因为1 小于 2
-1 >= 1   // 真，因为1大于或者等于1
-2 <= 1="" 假，因为2不小于或者等于1="" 比较运算符通常用于条件语句,="" 例如if语句:="" <pre=""><code>
+<p>表达式 a += 2 是 a = a + 2 的快捷方式。 实际上, 加法和赋值合并进一个操作符，同时做了两件事。</p>
+<p>备注</p>
+<p>复合赋值运算符不返回值。 比如, 你不能这样写 let b = a += 2.</p>
+<h1 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h1><p>Swift 支持所有标准C语言比较运算符:</p>
+<p>等于 (a == b)<br>不等于 (a != b)<br>大于 (a &gt; b)<br>小于 (a &lt; b)<br>大于等于 (a &gt;= b)<br>小于等于 (a &lt;= b)</p>
+<p>备注</p>
+<p>Swift 同时提供两个相等运算符 (=== and !==), 你可以用来测试两个对象引用是否引用了相同的对象实例。 更多信息参考 Classes and Structures.</p>
+<p>每个比较运算符都返回一个布尔值，来表明语句是否是真的:</p>
+<p>1 == 1   // 真，因为1 等于 1<br>2 != 1   // 真，因为2 不等于 1<br>2 &gt; 1    // 真，因为2 大于 1<br>1 &lt; 2    // 真，因为1 小于 2<br>1 &gt;= 1   // 真，因为1大于或者等于1<br>2 &lt;= 1   // 假，因为2不小于或者等于1<br>比较运算符通常用于条件语句, 例如if语句:</p>
+<pre><code>
 let name = "world"
 if name == "world" {
     print("hello, world")
@@ -709,7 +697,7 @@ if name == "world" {
     print("I'm sorry \(name), but I don't recognize you")
 }
 // Prints "hello, world", because name is indeed equal to "world".
-</code>
+</code></pre>
 更多if语句, 参考 Control Flow.
 
 你可以比较含有相同数量值的元组, 只要元组里的值可以比较。 例如, Int 和 String 可以比较, 意思就是 (Int, String) 可以比较。 相反, Bool 不能比较, 意思就是包含布尔值的元组不能作比较。
@@ -720,13 +708,10 @@ if name == "world" {
 (3, "apple") < (3, "bird")    // 真，以为3等于3, "apple" 小于 "bird"
 (4, "dog") == (4, "dog")      // 真，因为4等于4, "dog" 等于 "dog"
 </code></pre>
-上面这个例子, 在第一行你可以看见从左到右比较的行为。 因为1小于2, (1, "zebra") 被认为小于 (2, "apple"), 不用管元组里的其他值。 不管 "zebra" 是不是小于 "apple", 因为比较已经取决于元组里的第一个元素了。 不过, 当元组第一个元素相等的时候，比较就像第二行，第三行发生的那样。
 
-# 三元条件运算符
-
-三元条件运算符是含有三部分的特殊运算符, 样式是 问题 ? 答案1 : 答案2。 这是基于问题是真假对表达式之一的判断。 如果问题是真, 求 answer1 的值并返回; 否则, 求 answer2 的值并返回。
-
-三元条件运算符是下面代码的简写:
+<p>上面这个例子, 在第一行你可以看见从左到右比较的行为。 因为1小于2, (1, “zebra”) 被认为小于 (2, “apple”), 不用管元组里的其他值。 不管 “zebra” 是不是小于 “apple”, 因为比较已经取决于元组里的第一个元素了。 不过, 当元组第一个元素相等的时候，比较就像第二行，第三行发生的那样。</p>
+<h1 id="三元条件运算符"><a href="#三元条件运算符" class="headerlink" title="三元条件运算符"></a>三元条件运算符</h1><p>三元条件运算符是含有三部分的特殊运算符, 样式是 问题 ? 答案1 : 答案2。 这是基于问题是真假对表达式之一的判断。 如果问题是真, 求 answer1 的值并返回; 否则, 求 answer2 的值并返回。</p>
+<p>三元条件运算符是下面代码的简写:</p>
 <pre><code>
 if question {
     answer1
@@ -751,24 +736,15 @@ if hasHeader {
 }
 // rowHeight is equal to 90
 </code></pre>
-第一个例子使用三元条件运算符，意味着行高可以在一行代码里正确设置, 这个比第二个例子的代码要简洁。
 
-三元条件运算符提供一个简写，来决定使用两个表达式中的哪一个。 小心使用三元条件运算符。 过度使用，代码就是很难理解。 尽量避免把三元条件运算符的多个实例合并到一个符合语句。
-
-# Nil-联合运算符
-
-nil-联合运算符 (a ?? b) 展开一个可选项 a 如果它包含一个值的话, 或者返回一个默认值 b 如果 a 是 nil。 表达式 a 总是一个可选类型。 表达式 b 必须匹配存储在a里的值类型。
-
-nil-联合运算符是下面代码的简写:
-
-a != nil ? a! : b
-上面的代码使用三元条件运算符,然后强制展开 (a!) 来获取a中的值，如果这个值不空的话, 否则返回 b 。 nil-联合运算符提供了更优雅简洁的方式来压缩这个条件判断和展开。
-
-备注
-
-如果值非空, b的值不会得到。 这就是人们熟知的短路估算。
-
-下面的例子使用 nil-联合运算符在默认颜色名称和可选用户定义的颜色名称之间做选择:
+<p>第一个例子使用三元条件运算符，意味着行高可以在一行代码里正确设置, 这个比第二个例子的代码要简洁。</p>
+<p>三元条件运算符提供一个简写，来决定使用两个表达式中的哪一个。 小心使用三元条件运算符。 过度使用，代码就是很难理解。 尽量避免把三元条件运算符的多个实例合并到一个符合语句。</p>
+<h1 id="Nil-联合运算符"><a href="#Nil-联合运算符" class="headerlink" title="Nil-联合运算符"></a>Nil-联合运算符</h1><p>nil-联合运算符 (a ?? b) 展开一个可选项 a 如果它包含一个值的话, 或者返回一个默认值 b 如果 a 是 nil。 表达式 a 总是一个可选类型。 表达式 b 必须匹配存储在a里的值类型。</p>
+<p>nil-联合运算符是下面代码的简写:</p>
+<p>a != nil ? a! : b<br>上面的代码使用三元条件运算符,然后强制展开 (a!) 来获取a中的值，如果这个值不空的话, 否则返回 b 。 nil-联合运算符提供了更优雅简洁的方式来压缩这个条件判断和展开。</p>
+<p>备注</p>
+<p>如果值非空, b的值不会得到。 这就是人们熟知的短路估算。</p>
+<p>下面的例子使用 nil-联合运算符在默认颜色名称和可选用户定义的颜色名称之间做选择:</p>
 <pre><code>
 let defaultColorName = "red"
 var userDefinedColorName: String?   // 默认是 nil
@@ -798,32 +774,33 @@ for index in 1...5 {
 // 4 times 5 is 20
 // 5 times 5 is 25
 </code></pre>
-更多 for-in 循环, 参考 Control Flow.
 
-# 半开区间运算符
-
-半开区间运算符 (a..<b) 定义了从a到b的范围,="" 但是不包含b，="" 之所以成为半开是因为它包含初值,="" 但是不包含终值。="" 正如闭合区间运算符,="" a的值不能大于b。="" 如果a的值等于b的值,="" 这个范围就会是空的。="" 半开区间在你使用类似数组这种基于零的列表时非常有用,="" 计算列表长度="" (但是不包括)="" 很有帮助:="" <pre=""><code>
+<p>更多 for-in 循环, 参考 Control Flow.</p>
+<h1 id="半开区间运算符"><a href="#半开区间运算符" class="headerlink" title="半开区间运算符"></a>半开区间运算符</h1><p>半开区间运算符 (a..&lt;b) 定义了从a到b的范围, 但是不包含b， 之所以成为半开是因为它包含初值, 但是不包含终值。 正如闭合区间运算符, a的值不能大于b。 如果a的值等于b的值, 这个范围就会是空的。</p>
+<p>半开区间在你使用类似数组这种基于零的列表时非常有用, 计算列表长度 (但是不包括) 很有帮助:</p>
+<pre><code>
 let names = ["Anna", "Alex", "Brian", "Jack"]
 let count = names.count
-for i in 0..<count 1="" 2="" 3="" 4="" {="" print("person="" \(i="" +="" 1)="" is="" called="" \(names[i])")="" }="" person="" anna="" alex="" brian="" jack="" <="" code="">
-数组包含4项, 不过 0..<count 只计算到3="" (数组最后一项的索引),="" 因为是半开区间。="" 更多数组,="" 参见="" arrays.="" #="" 逻辑运算符="" 逻辑运算符改变或者合并布尔值真和假。="" swift="" 支持三种基于c语言的标准逻辑运算符:="" 逻辑非="" (!a)="" 逻辑与="" (a="" &&="" b)="" 逻辑或="" ||="" 逻辑非运算符="" 反转布尔值，这样真就变成假,="" 假变成了真。="" 逻辑非运算符是个前缀运算符,="" 直接写在操作数前面,="" 没有任何空格。="" 可以读作="" “not="" a”,="" 下面的例子可以看到:="" <pre=""><code>
+for i in 0..<count 1="" 2="" 3="" 4="" {="" print("person="" \(i="" +="" 1)="" is="" called="" \(names[i])")="" }="" person="" anna="" alex="" brian="" jack="" <="" code=""></count></code></pre>
+
+<p>数组包含4项, 不过 0..&lt;count 只计算到3 (数组最后一项的索引), 因为是半开区间。 更多数组, 参见 Arrays.</p>
+<h1 id="逻辑运算符"><a href="#逻辑运算符" class="headerlink" title="逻辑运算符"></a>逻辑运算符</h1><p>逻辑运算符改变或者合并布尔值真和假。 Swift 支持三种基于C语言的标准逻辑运算符:</p>
+<p>逻辑非 (!a)<br>逻辑与 (a &amp;&amp; b)<br>逻辑或 (a || b)</p>
+<h1 id="逻辑非运算符"><a href="#逻辑非运算符" class="headerlink" title="逻辑非运算符"></a>逻辑非运算符</h1><p>逻辑非运算符 (!a) 反转布尔值，这样真就变成假, 假变成了真。</p>
+<p>逻辑非运算符是个前缀运算符, 直接写在操作数前面, 没有任何空格。 可以读作 “not a”, 下面的例子可以看到:</p>
+<pre><code>
 let allowedEntry = false
 if !allowedEntry {
     print("ACCESS DENIED")
 }
 // Prints "ACCESS DENIED"
-</code>
-语句 if !allowedEntry 可以读作 “if not allowed entry.” 后面一行仅执行 “not allowed entry” 是 true; 也就是, if allowedEntry 是 false.
+</code></pre>
 
-在这个例子中, 谨慎定义布尔常量和变量名，可以让代码具有可读性和简洁性, 同时避免双重否定或者混乱的逻辑语句。
-
-# 逻辑与运算符
-
-逻辑与运算符 (a && b) 创建逻辑表达式，这个表达式中两个值为真，表达式也要为真。
-
-如果任何一个值为假, 表达式的结果也将是假。 事实上, 如果第一个值为假, 第二个值不会再计算, 因为它不会让所有表达式都等于真。 这就是人们熟知的短路估值。
-
-这个例子有两个布尔值，只有两个值都是真的时候才允许访问:
+<p>语句 if !allowedEntry 可以读作 “if not allowed entry.” 后面一行仅执行 “not allowed entry” 是 true; 也就是, if allowedEntry 是 false.</p>
+<p>在这个例子中, 谨慎定义布尔常量和变量名，可以让代码具有可读性和简洁性, 同时避免双重否定或者混乱的逻辑语句。</p>
+<h1 id="逻辑与运算符"><a href="#逻辑与运算符" class="headerlink" title="逻辑与运算符"></a>逻辑与运算符</h1><p>逻辑与运算符 (a &amp;&amp; b) 创建逻辑表达式，这个表达式中两个值为真，表达式也要为真。</p>
+<p>如果任何一个值为假, 表达式的结果也将是假。 事实上, 如果第一个值为假, 第二个值不会再计算, 因为它不会让所有表达式都等于真。 这就是人们熟知的短路估值。</p>
+<p>这个例子有两个布尔值，只有两个值都是真的时候才允许访问:</p>
 <pre><code>
 let enteredDoorCode = true
 let passedRetinaScan = false
@@ -834,13 +811,10 @@ if enteredDoorCode && passedRetinaScan {
 }
 // Prints "ACCESS DENIED"
 </code></pre>
-# 逻辑或运算符
 
-逻辑或运算符 (a || b) 是两个竖线组成的中间运算符。 用来创建逻辑表达式，这个表达式中只要有一个值为真，表达式的结果就是真。
-
-跟上面逻辑与类似, 逻辑或使用短路估值去计算表达式。 如果逻辑或的左侧是真, 右侧就不再估值, 因为它不会改变整个表达式的结果。
-
-下面的例子, 第一个布尔值 (hasDoorKey) 是假, 但是第二个布尔值 (knowsOverridePassword) 是真。 因为一个值为真, 表达式结果就是真, 所以允许访问:
+<h1 id="逻辑或运算符"><a href="#逻辑或运算符" class="headerlink" title="逻辑或运算符"></a>逻辑或运算符</h1><p>逻辑或运算符 (a || b) 是两个竖线组成的中间运算符。 用来创建逻辑表达式，这个表达式中只要有一个值为真，表达式的结果就是真。</p>
+<p>跟上面逻辑与类似, 逻辑或使用短路估值去计算表达式。 如果逻辑或的左侧是真, 右侧就不再估值, 因为它不会改变整个表达式的结果。</p>
+<p>下面的例子, 第一个布尔值 (hasDoorKey) 是假, 但是第二个布尔值 (knowsOverridePassword) 是真。 因为一个值为真, 表达式结果就是真, 所以允许访问:</p>
 <pre><code>
 let hasDoorKey = false
 let knowsOverridePassword = true
@@ -851,9 +825,8 @@ if hasDoorKey || knowsOverridePassword {
 }
 // Prints "Welcome!"
 </code></pre>
-# 合并逻辑运算符
 
-你可以合并多个逻辑运算符来创建更长的复合表达式:
+<h1 id="合并逻辑运算符"><a href="#合并逻辑运算符" class="headerlink" title="合并逻辑运算符"></a>合并逻辑运算符</h1><p>你可以合并多个逻辑运算符来创建更长的复合表达式:</p>
 <pre><code>
 if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
     print("Welcome!")
@@ -862,14 +835,11 @@ if enteredDoorCode && passedRetinaScan || hasDoorKey || knowsOverridePassword {
 }
 // Prints "Welcome!"
 </code></pre>
-这个例子使用了多个 && 和 || 运算符来创建一个更长的复合表达式。 不过, && 和 || 运算符依然只能操作两个值, 所以，这实际上是三个小表达式链接起来的。 
 
-备注
-
-Swift 逻辑运算符 && 和 || 是左联想的, 意思就是多个逻辑运算符的复合表达式，首先计算最左边的子表达式。
-# 显示括号
-
-虽然不是严格需要，但是包含括号还是有用的, 使得复杂表达式的意图很容易理解。 上述实例, 给第一部分加上括号很有用，会让它的意图很明显:
+<p>这个例子使用了多个 &amp;&amp; 和 || 运算符来创建一个更长的复合表达式。 不过, &amp;&amp; 和 || 运算符依然只能操作两个值, 所以，这实际上是三个小表达式链接起来的。 </p>
+<p>备注</p>
+<p>Swift 逻辑运算符 &amp;&amp; 和 || 是左联想的, 意思就是多个逻辑运算符的复合表达式，首先计算最左边的子表达式。</p>
+<h1 id="显示括号"><a href="#显示括号" class="headerlink" title="显示括号"></a>显示括号</h1><p>虽然不是严格需要，但是包含括号还是有用的, 使得复杂表达式的意图很容易理解。 上述实例, 给第一部分加上括号很有用，会让它的意图很明显:</p>
 <pre><code>
 if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword {
     print("Welcome!")
@@ -878,27 +848,17 @@ if (enteredDoorCode && passedRetinaScan) || hasDoorKey || knowsOverridePassword 
 }
 // Prints "Welcome!"
 </code></pre>
-括号让第一部分作为独立可能的状态，这样在整个逻辑中就很清晰。 符合表达式的输出不变, 但是整体意图很清晰。 比起简洁，可读性是首选的。使用括号会让你的意图清晰明了。
 
-
-# 字符串和字符
-字符串是字符集合, 比如 "hello, world" 或者 "albatross". Swift 字符串用 String 类型表示。 字符串内容有多种访问方法, 包括字符值的集合。
-
-Swift的 String 和 Character 类型提供一个快速的, Unicode 方式来作用于你的文本。 字符串创建和操作的语法是轻量和可读的, 字面语法跟C类似。 字符串连接和使用加号运算符一样简单, 字符的可变性由选择常量还是变量来管理, 就像Swift中其他值。 你还可以使用字符串把常量,变量,字面量,和表达式插入更长的字符串, 在一个众所周知的字符串插值。 这让显示自定义字符串变得容易。
-
-尽快语法简单, Swift的 String 类型是个快速, 现代化的字符串实现。 每个字符串有独立编码的 Unicode 字符组成, 提供用多种Unicode形式访问这些字符的支持。
-
-# 字符串字面量
-
-你可以在代码中为字符串预定义字符值。 字符串字面量是由（""）包围的固定的文字字符序列。
-
-用字符串值作为一个常量或者变量的初始值:
-
+<p>括号让第一部分作为独立可能的状态，这样在整个逻辑中就很清晰。 符合表达式的输出不变, 但是整体意图很清晰。 比起简洁，可读性是首选的。使用括号会让你的意图清晰明了。</p>
+<h1 id="字符串和字符"><a href="#字符串和字符" class="headerlink" title="字符串和字符"></a>字符串和字符</h1><p>字符串是字符集合, 比如 “hello, world” 或者 “albatross”. Swift 字符串用 String 类型表示。 字符串内容有多种访问方法, 包括字符值的集合。</p>
+<p>Swift的 String 和 Character 类型提供一个快速的, Unicode 方式来作用于你的文本。 字符串创建和操作的语法是轻量和可读的, 字面语法跟C类似。 字符串连接和使用加号运算符一样简单, 字符的可变性由选择常量还是变量来管理, 就像Swift中其他值。 你还可以使用字符串把常量,变量,字面量,和表达式插入更长的字符串, 在一个众所周知的字符串插值。 这让显示自定义字符串变得容易。</p>
+<p>尽快语法简单, Swift的 String 类型是个快速, 现代化的字符串实现。 每个字符串有独立编码的 Unicode 字符组成, 提供用多种Unicode形式访问这些字符的支持。</p>
+<h1 id="字符串字面量"><a href="#字符串字面量" class="headerlink" title="字符串字面量"></a>字符串字面量</h1><p>你可以在代码中为字符串预定义字符值。 字符串字面量是由（””）包围的固定的文字字符序列。</p>
+<p>用字符串值作为一个常量或者变量的初始值:</p>
 <pre><code>let someString = "Some string literal value"</code></pre>
-注意 Swift 推断someString 常量是一个 String 类型, 因为它用字符串值初始化。
-# 初始化空字符串
 
-创建空字符串值作为更长字符串的起点, 或者给一个变量赋一个空字符串值, 或者用初始化方法来初始化一个新的字符串实例:
+<p>注意 Swift 推断someString 常量是一个 String 类型, 因为它用字符串值初始化。</p>
+<h1 id="初始化空字符串"><a href="#初始化空字符串" class="headerlink" title="初始化空字符串"></a>初始化空字符串</h1><p>创建空字符串值作为更长字符串的起点, 或者给一个变量赋一个空字符串值, 或者用初始化方法来初始化一个新的字符串实例:</p>
 <pre><code>
 var emptyString = ""               // empty string literal
 var anotherEmptyString = String()  // initializer syntax
@@ -921,17 +881,11 @@ let constantString = "Highlander"
 constantString += " and another Highlander"
 // this reports a compile-time error - a constant string cannot be modified
 </code></pre>
-# 字符串是值类型
 
-Swift 的字符串类型是值类型。 如果你创建了一个新的字符串值, 这个字符串值在传给函数或者方法的时候被复制, 或者当它被赋值给一个常量或者变量的时候。这两种情况, 已存在字符串值的拷贝被创建, 新的拷贝被传递或者赋值, 而不是原来的字符串。 值类型在 Structures and Enumerations Are Value Types 中有描述。
-
-很清楚你拥有精确的字符串值，而不用关心它从哪里来的。你可以确信传给你的字符串不会被改变,除非你自己改变它。
-
-在幕后, Swift 的编译器优化了字符串的使用，这使得实际的拷贝只有真正需要的时候才会占用空间。 这就意味你使用字符串作为值类型总可以获得高性能。
-
-# 使用字符
-
-你可以用for-in 循环语句,通过它的字符属性来迭代访问每一个单独的字符:
+<h1 id="字符串是值类型"><a href="#字符串是值类型" class="headerlink" title="字符串是值类型"></a>字符串是值类型</h1><p>Swift 的字符串类型是值类型。 如果你创建了一个新的字符串值, 这个字符串值在传给函数或者方法的时候被复制, 或者当它被赋值给一个常量或者变量的时候。这两种情况, 已存在字符串值的拷贝被创建, 新的拷贝被传递或者赋值, 而不是原来的字符串。 值类型在 Structures and Enumerations Are Value Types 中有描述。</p>
+<p>很清楚你拥有精确的字符串值，而不用关心它从哪里来的。你可以确信传给你的字符串不会被改变,除非你自己改变它。</p>
+<p>在幕后, Swift 的编译器优化了字符串的使用，这使得实际的拷贝只有真正需要的时候才会占用空间。 这就意味你使用字符串作为值类型总可以获得高性能。</p>
+<h1 id="使用字符"><a href="#使用字符" class="headerlink" title="使用字符"></a>使用字符</h1><p>你可以用for-in 循环语句,通过它的字符属性来迭代访问每一个单独的字符:</p>
 <pre><code>
 for character in "Dog!🐶".characters {
     print(character)
@@ -953,9 +907,8 @@ let catString = String(catCharacters)
 print(catString)
 // Prints "Cat!🐱"
 </code></pre>
-# 连接字符串和字符
 
-字符串值可以通过加号连接成新的字符串:
+<h1 id="连接字符串和字符"><a href="#连接字符串和字符" class="headerlink" title="连接字符串和字符"></a>连接字符串和字符</h1><p>字符串值可以通过加号连接成新的字符串:</p>
 <pre><code>
 let string1 = "hello"
 let string2 = " there"
@@ -973,33 +926,20 @@ let exclamationMark: Character = "!"
 welcome.append(exclamationMark)
 // welcome now equals "hello there!"
 </code></pre>
-# 字符串插入
 
-String 字符串插入是构建新字符串的一种方法，这种方法通过混合常量,变量,字面量,表达式中的字面量来实现。每个你要插入的值都包括在括弧里,前面是一个反斜杠:
+<h1 id="字符串插入"><a href="#字符串插入" class="headerlink" title="字符串插入"></a>字符串插入</h1><p>String 字符串插入是构建新字符串的一种方法，这种方法通过混合常量,变量,字面量,表达式中的字面量来实现。每个你要插入的值都包括在括弧里,前面是一个反斜杠:</p>
 <pre><code>
 let multiplier = 3
 let message = "\(multiplier) times 2.5 is \(Double(multiplier) * 2.5)"
 // message is "3 times 2.5 is 7.5"
 </code></pre>
-上面这个例子,  multiplier 的值以 \(multiplier) 的形式插入到一个字符串。 这个占位符会被 multiplier 的实际值取代，当插值被计算创建新字符串的时候。
 
-multiplier 的值是字符串后面大表达式的一部分。 这个表达式计算 Double(multiplier) * 2.5 的值，然后把结果 (7.5) 插入字符串。 这种情况下, 当它被包括进字符串字面量的时候，表达式就写作 \(Double(multiplier) * 2.5) .
-# Unicode
-
-Unicode 是在不同写作体系中用作编码,表达,处理文字的一种国际标准。 让你可以用一种标准形式表示任何语言的任何字符, 在诸如文本文件或者网页等外部资源,去读写这些字符。 Swift 的字符串和字符是完全 Unicode 编译的。
-
-# Unicode 标量
-
-背后, Swift 的本地字符串类型建立于 Unicode 标量值。对应字符或者修饰符来说, 一个 Unicode 标量是唯一的一个21位数字, 例如 U+0061 是 LATIN SMALL LETTER A ("a"), 或者 U+1F425 是 FRONT-FACING BABY CHICK ("🐥").
-注意并非所有 21-位 Unicode 标量都会被赋值给一些给未来预留的字符标量。 分配给字符的标量通常有一个名字, 比如 LATIN SMALL LETTER A 和 FRONT-FACING BABY CHICK .
-
-# 字符串字面量里的特殊字符
-
-字符串字面量可以包括下面的特殊字符:
-
-转义字符 \0 (空字符), \\ (反斜杠), \t (水平制表符), \n (换行), \r (回车), \" (双引号) and \' (单引号)
-任意一个 Unicode 标量, 写作 \u{n}, n 是 一个 1–8 位十六进制数字，这个数字有个和 有效的Unicode 编码点相等的值。
-下面四个例子显示了特殊字符的编码。wiseWords 常量包括两个转义的双引号字符。 dollarSign, blackHeart, 和sparklingHeart 常量展示了Unicode 标量的格式:
+<p>上面这个例子,  multiplier 的值以 (multiplier) 的形式插入到一个字符串。 这个占位符会被 multiplier 的实际值取代，当插值被计算创建新字符串的时候。</p>
+<p>multiplier 的值是字符串后面大表达式的一部分。 这个表达式计算 Double(multiplier) <em> 2.5 的值，然后把结果 (7.5) 插入字符串。 这种情况下, 当它被包括进字符串字面量的时候，表达式就写作 (Double(multiplier) </em> 2.5) .</p>
+<h1 id="Unicode"><a href="#Unicode" class="headerlink" title="Unicode"></a>Unicode</h1><p>Unicode 是在不同写作体系中用作编码,表达,处理文字的一种国际标准。 让你可以用一种标准形式表示任何语言的任何字符, 在诸如文本文件或者网页等外部资源,去读写这些字符。 Swift 的字符串和字符是完全 Unicode 编译的。</p>
+<h1 id="Unicode-标量"><a href="#Unicode-标量" class="headerlink" title="Unicode 标量"></a>Unicode 标量</h1><p>背后, Swift 的本地字符串类型建立于 Unicode 标量值。对应字符或者修饰符来说, 一个 Unicode 标量是唯一的一个21位数字, 例如 U+0061 是 LATIN SMALL LETTER A (“a”), 或者 U+1F425 是 FRONT-FACING BABY CHICK (“🐥”).<br>注意并非所有 21-位 Unicode 标量都会被赋值给一些给未来预留的字符标量。 分配给字符的标量通常有一个名字, 比如 LATIN SMALL LETTER A 和 FRONT-FACING BABY CHICK .</p>
+<h1 id="字符串字面量里的特殊字符"><a href="#字符串字面量里的特殊字符" class="headerlink" title="字符串字面量里的特殊字符"></a>字符串字面量里的特殊字符</h1><p>字符串字面量可以包括下面的特殊字符:</p>
+<p>转义字符 \0 (空字符), \ (反斜杠), \t (水平制表符), \n (换行), \r (回车), \” (双引号) and \’ (单引号)<br>任意一个 Unicode 标量, 写作 \u{n}, n 是 一个 1–8 位十六进制数字，这个数字有个和 有效的Unicode 编码点相等的值。<br>下面四个例子显示了特殊字符的编码。wiseWords 常量包括两个转义的双引号字符。 dollarSign, blackHeart, 和sparklingHeart 常量展示了Unicode 标量的格式:</p>
 <pre><code>
 let wiseWords = "\"Imagination is more important than knowledge\" - Einstein"
 // "Imagination is more important than knowledge" - Einstein
@@ -1007,13 +947,10 @@ let dollarSign = "\u{24}"        // $,  Unicode scalar U+0024
 let blackHeart = "\u{2665}"      // ♥,  Unicode scalar U+2665
 let sparklingHeart = "\u{1F496}" // 💖, Unicode scalar U+1F496
 </code></pre>
-# 扩展字形集
 
-Swift的每个字符类型的实例带包一个单独的扩展字形集。 一个扩展字形集是一个或者多个 Unicode 标量，这些标量（当合并时）生成一个人可读的字符。
-
-这里有个例子。 字符 é 可以表示成单独的 Unicode 标量 é (LATIN SMALL LETTER E WITH ACUTE, 或者 U+00E9). 不过, 相同的字母也可以表示成标量集的一部分，字母 e (LATIN SMALL LETTER E, or U+0065), 后面跟着 COMBINING ACUTE ACCENT 标量 (U+0301).COMBINING ACUTE ACCENT 标量 应用于之前的标量, 在一个Unicode识别 文本渲染系统渲染的时候，把 e 变成 é.
-
-在这两个例子里, 字符 é 表示为一个单独的Swift 字符值，这个值表示一个扩展字形集。 第一个例子, 集合包含一个单独的标量; 第二个例子, 是两个标量的集合:
+<h1 id="扩展字形集"><a href="#扩展字形集" class="headerlink" title="扩展字形集"></a>扩展字形集</h1><p>Swift的每个字符类型的实例带包一个单独的扩展字形集。 一个扩展字形集是一个或者多个 Unicode 标量，这些标量（当合并时）生成一个人可读的字符。</p>
+<p>这里有个例子。 字符 é 可以表示成单独的 Unicode 标量 é (LATIN SMALL LETTER E WITH ACUTE, 或者 U+00E9). 不过, 相同的字母也可以表示成标量集的一部分，字母 e (LATIN SMALL LETTER E, or U+0065), 后面跟着 COMBINING ACUTE ACCENT 标量 (U+0301).COMBINING ACUTE ACCENT 标量 应用于之前的标量, 在一个Unicode识别 文本渲染系统渲染的时候，把 e 变成 é.</p>
+<p>在这两个例子里, 字符 é 表示为一个单独的Swift 字符值，这个值表示一个扩展字形集。 第一个例子, 集合包含一个单独的标量; 第二个例子, 是两个标量的集合:</p>
 <pre><code>
 let eAcute: Character = "\u{E9}"                         // é
 let combinedEAcute: Character = "\u{65}\u{301}"          // e followed by ́
@@ -1035,9 +972,8 @@ Unicode 局部指示器符号标量可以成对组合来生成一个单独的字
 let regionalIndicatorForUS: Character = "\u{1F1FA}\u{1F1F8}"
 // regionalIndicatorForUS is 🇺🇸
 </code></pre>
-# 计算字符
 
-在字符串中获取字符值的数量, 可以使用字符串字符属性中的计数属性:
+<h1 id="计算字符"><a href="#计算字符" class="headerlink" title="计算字符"></a>计算字符</h1><p>在字符串中获取字符值的数量, 可以使用字符串字符属性中的计数属性:</p>
 <pre><code>
 let unusualMenagerie = "Koala 🐨, Snail 🐌, Penguin 🐧, Dromedary 🐪"
 print("unusualMenagerie has \(unusualMenagerie.characters.count) characters")
@@ -1056,21 +992,13 @@ word += "\u{301}"    // COMBINING ACUTE ACCENT, U+0301
 print("the number of characters in \(word) is \(word.characters.count)")
 // Prints "the number of characters in café is 4"
 </code></pre>
-# 访问和修改字符串
 
-你可以通过方法和属性来访问和修改字符串, 或者用下标语法。
-
-# 字符串索引
-
-每个字符串值都有一个对应的索引类型, String.Index, 代表每个字符在字符串中的位置。
-
-上面提到的,不同字符要求不等数量的内存, 所以为了决定哪个字符在一个特定的位置, 你必须从头到尾枚举每个 Unicode 标量。 因为这个原因, Swift 字符串不能通过整数值来索引。
-
-使用 startIndex 属性访问字符串的首字符位置。 endIndex 属性是字符串中最后一个字符的位置。 因此, endIndex 属性不是一个字符串下标的有效参数。 如果一个字符串是空的, startIndex 和 endIndex 相等。
-
-你可以用 index(before:) 和 index(after:) 字符串方法访问给定索引前后的索引, 你可以使用 index(_:offsetBy:) 方法代替多次调用这些方法。
-
-你可以使用下标语法访问特定索引位置的字符。
+<h1 id="访问和修改字符串"><a href="#访问和修改字符串" class="headerlink" title="访问和修改字符串"></a>访问和修改字符串</h1><p>你可以通过方法和属性来访问和修改字符串, 或者用下标语法。</p>
+<h1 id="字符串索引"><a href="#字符串索引" class="headerlink" title="字符串索引"></a>字符串索引</h1><p>每个字符串值都有一个对应的索引类型, String.Index, 代表每个字符在字符串中的位置。</p>
+<p>上面提到的,不同字符要求不等数量的内存, 所以为了决定哪个字符在一个特定的位置, 你必须从头到尾枚举每个 Unicode 标量。 因为这个原因, Swift 字符串不能通过整数值来索引。</p>
+<p>使用 startIndex 属性访问字符串的首字符位置。 endIndex 属性是字符串中最后一个字符的位置。 因此, endIndex 属性不是一个字符串下标的有效参数。 如果一个字符串是空的, startIndex 和 endIndex 相等。</p>
+<p>你可以用 index(before:) 和 index(after:) 字符串方法访问给定索引前后的索引, 你可以使用 index(_:offsetBy:) 方法代替多次调用这些方法。</p>
+<p>你可以使用下标语法访问特定索引位置的字符。</p>
 <pre><code>
 let greeting = "Guten Tag!"
 greeting[greeting.startIndex]
@@ -1095,9 +1023,8 @@ for index in greeting.characters.indices {
 }
 // Prints "G u t e n   T a g ! "
 </code></pre>
-# 插入和移除
 
-在特定位置向字符串插入一个字符, 使用 insert(_:at:) 方法, 插入其他字符串内容到制定索引使用 insert(contentsOf:at:) 方法。
+<h1 id="插入和移除"><a href="#插入和移除" class="headerlink" title="插入和移除"></a>插入和移除</h1><p>在特定位置向字符串插入一个字符, 使用 insert(_:at:) 方法, 插入其他字符串内容到制定索引使用 insert(contentsOf:at:) 方法。</p>
 <pre><code>
 var welcome = "hello"
 welcome.insert("!", at: welcome.endIndex)
@@ -1112,17 +1039,11 @@ welcome.remove(at: welcome.index(before: welcome.endIndex))
 // welcome 现在等于 "hello there"
 
 let range = welcome.index(welcome.endIndex, offsetBy: -6)..<welcome.endindex welcome.removesubrange(range)="" welcome="" 现在等于="" "hello"="" <="" code=""></welcome.endindex></code></pre>
-备注
 
-你可以使用 insert(_:at:), insert(contentsOf:at:), remove(at:), and removeSubrange(_:) 这些方法,只要符合 RangeReplaceableCollection 协议的任何类型。 这包括 String, 还有集合类型 Array, Dictionary, 和 Set.
-
-# 比较字符串
-
-Swift 提供三种方式来比较文本值: 字符串和字符等式, 前缀等式, 和后缀等式。
-
-# 字符串和字符等式
-
-字符串和字符等式用“equal to” 运算符 (==) 和 “not equal to” 运算符 (!=) 来判断, 在 Comparison Operators 中描述:
+<p>备注</p>
+<p>你可以使用 insert(<em>:at:), insert(contentsOf:at:), remove(at:), and removeSubrange(</em>:) 这些方法,只要符合 RangeReplaceableCollection 协议的任何类型。 这包括 String, 还有集合类型 Array, Dictionary, 和 Set.</p>
+<h1 id="比较字符串"><a href="#比较字符串" class="headerlink" title="比较字符串"></a>比较字符串</h1><p>Swift 提供三种方式来比较文本值: 字符串和字符等式, 前缀等式, 和后缀等式。</p>
+<h1 id="字符串和字符等式"><a href="#字符串和字符等式" class="headerlink" title="字符串和字符等式"></a>字符串和字符等式</h1><p>字符串和字符等式用“equal to” 运算符 (==) 和 “not equal to” 运算符 (!=) 来判断, 在 Comparison Operators 中描述:</p>
 <pre><code>
 let quotation = "We're a lot alike, you and I."
 let sameQuotation = "We're a lot alike, you and I."
@@ -1157,15 +1078,11 @@ if latinCapitalLetterA != cyrillicCapitalLetterA {
 }
 // Prints "These two characters are not equivalent."
 </code></pre>
-备注
 
-字符串和字符比较在Swift中不是地区敏感的。
-
-# 前缀和后缀等式
-
-判断字符串是否有一个特定前缀或者后缀, 调用字符串的 hasPrefix(_:) and hasSuffix(_:) 方法, 两个方法都一个 String 类型，然后返回一个布尔值。 
-
-下面这个例子有一个字符串数组，用来表示场景的位置,它们来自莎士比亚的罗密欧与朱丽叶的前两个表演:
+<p>备注</p>
+<p>字符串和字符比较在Swift中不是地区敏感的。</p>
+<h1 id="前缀和后缀等式"><a href="#前缀和后缀等式" class="headerlink" title="前缀和后缀等式"></a>前缀和后缀等式</h1><p>判断字符串是否有一个特定前缀或者后缀, 调用字符串的 hasPrefix(<em>:) and hasSuffix(</em>:) 方法, 两个方法都一个 String 类型，然后返回一个布尔值。 </p>
+<p>下面这个例子有一个字符串数组，用来表示场景的位置,它们来自莎士比亚的罗密欧与朱丽叶的前两个表演:</p>
 <pre><code>
 let romeoAndJuliet = [
     "Act 1 Scene 1: Verona, A public place",
@@ -1206,89 +1123,14 @@ for scene in romeoAndJuliet {
 print("\(mansionCount) mansion scenes; \(cellCount) cell scenes")
 // Prints "6 mansion scenes; 2 cell scenes"
 </code></pre>
-# Unicode 字符串表示
 
-当一个 Unicode 字符串写入文本文件或者别的存储时,字符串里的 Unicode 标量会以一些Unicode 定义的编码形式进行编码。 每种字符串编码在人们熟知的代码单元块中。 包括 UTF-8 编码 (把字符串编码成一个 8-位的代码单元), UTF-16 编码 (把字符串编码成一个16-位的代码单元), 和 UTF-32 编码 (把字符串编码成 32-位代码单元)
-
-Swift 提供了几种不同的方式去访问字符串的Unicode 形式。你可以用for-in语句遍历字符串, 访问作为Unicode 扩展字形集的单个字符值。这个过程在 Working with Characters 描述。
-
-或者, 或者用以下三种形式来访问字符串的值:
-
-UTF-8 代码单元集合 (用字符串的utf8属性来访问)
-UTF-16 代码单元集合 (用字符串的utf16属性来访问)
-21-位 Unicode 标量值的集合, 等于字符串的 UTF-32 编码方式 (用字符串的 unicodeScalars 属性访问)
-下面的例子展示字符串的不同表现形式,字符串由字符 D, o, g, ‼ (DOUBLE EXCLAMATION MARK, 或者 Unicode scalar U+203C), 和 🐶 字符 (DOG FACE, 或者 Unicode scalar U+1F436)组成:
-
-let dogString = "Dog‼🐶"
-# UTF-8 形式
-
-你可以通过遍历字符串的utf8属性来访问它的 UTF-8 表现形式。 这是属性是 String.UTF8View, 这是无符号的 8-位 (UInt8)值的集合, 每个字节一个:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF8_2x.png">
-</div>
-<pre><code>
-for codeUnit in dogString.utf8 {
-    print("\(codeUnit) ", terminator: "")
-}
-print("")
-// 68 111 103 226 128 188 240 159 144 182
-</code></pre>
-上面这个例子, 前三个十进制 codeUnit 值 (68, 111, 103) 代表字符 D, o, 和 g, 它们的 UTF-8 形式和它们的 ASCII 表现形式一样。 接下来三个十进制 codeUnit 值 (226, 128, 188) 是双感叹号的三个字节的 UTF-8 形式。 最后四个 codeUnit 值 (240, 159, 144, 182) 是个四个字节的 UTF-8 形式，代表小狗的脸字符。
-
-# UTF-16 形式
-
-你可以通过遍历字符串的utf16属性来访问它的 UTF-16 形式。 这个属性是 String.UTF16View, 它是无符号16-位 (UInt16)的值的集合, 每个16-位代码单元一个:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF16_2x.png">
-</div>
-<pre><code>
-for codeUnit in dogString.utf16 {
-    print("\(codeUnit) ", terminator: "")
-}
-print("")
-// Prints "68 111 103 8252 55357 56374 "
-</code></pre>
-同样, 前三个 codeUnit 值 (68, 111, 103) 代表字符 D, o, 和 g, 它们的 UTF-16 代码单元和它们的 UTF-8 形式一样(因为这些 Unicode 标量表示 ASCII 字符).
-
-第四个 codeUnit 值 (8252) 是十六进制 203C的十进制数值, 用 Unicode 标量 U+203C表示双感叹号字符。 在 UTF-16 里表示为一个单独的编码单元。
-
-第五六个 codeUnit 值 (55357 和 56374) 狗脸字符。 这些值是高八位 U+D83D (十进制值是 55357) 和一个第八位 U+DC36 (十进制值 56374)。
-
-# Unicode 标量形式
-
-你可以通过遍历字符串的 unicodeScalars 属性来访问它的Unicode 标量形式。 这个是属性是 UnicodeScalarView,它是类型 UnicodeScalar 值的集合。
-
-每个 UnicodeScalar 有一个值属性，它返回这个标量的 21-位值, 用一个 UInt32 值表示:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UnicodeScalar_2x.png">
-</div>
-<pre><code>
-for scalar in dogString.unicodeScalars {
-    print("\(scalar.value) ", terminator: "")
-}
-print("")
-// Prints "68 111 103 8252 128054 "
-</code></pre>
-前三个 UnicodeScalar 值 (68, 111, 103) 再次代表 D, o, 和 g.
-
-第四个 codeUnit 值 (8252) 是十六进制 203C 的十进制值, 是双感叹的 Unicode 标量 U+203C 。
-
-第五个和最后一个 UnicodeScalar 值, 128054, 是十六进制 1F436的十进制值, 是狗脸字符的的 Unicode 标量 U+1F436。
-
-作为查询它们值属性的替代, 每个 UnicodeScalar 值也可以用来构建新的字符串, 例如用做字符串插值:
-<pre><code>
-for scalar in dogString.unicodeScalars {
-    print("\(scalar) ")
-}
-// D
-// o
-// g
-// ‼
-// 🐶
-</code></pre>
-
-<h1 id="集合类型"><a href="#集合类型" class="headerlink" title="集合类型"></a>集合类型</h1><p>Swift 提供了三个主要的集合类型, 数组, 集合, 和字典, 用来存储值的集合。 数组是有序的。 集合是唯一值的无序集。 字典是健值匹配的无序集合。</p>
-<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png"><br></div><br>数组, 集合, 和字典在 Swift 里总是清楚的知道存储的值的类型和能够存储的健。 这就意味着你不能往集合里插入错误类型的值。也意味着 你知道可以从集合里或者的值的类型。<br><br>备注<br><br>Swift 的数组, 集合, 和字典类型是用泛型集合实现的。更多泛型和集合, 参见 Generics.<br><br># 集合的不稳定性<br><br>如果你创建了一个数组, 一个集合, 或者一个字典, 然后赋给一个变量。创建的这个集合就是可变的。这就意味着你可以改变这个集合，方式是通过添加, 移除, 或者改变集合里的项。如果把它们赋给一个常量, 这个集合就是不可改变的, 它的大小和内容都不能改变。<br><br>备注<br><br>如果集合不需要变化，在所有情况下创建不可变的集合是个好的实践。这样做的好处是让你容易理解自己的代码,同时让编译器可以优化你创建的集合。<br><br># 数组<br><br>数组有序存储同类型的值。 相同的值可以多次出现在数组的不同位置。<br><br>备注<br><br>Swift的数组类型跟 Foundation的 NSArray 类相桥接。<br><br># 数组类型缩写语法<br><br>T数组类型的全写法是 Array<element>, 这里Element是数组运行存储的值类型。 你可以缩写数组类型为[Element]. 尽管这两种形式功能一样, 缩写是优先考虑的而且这个教程后面一直这么写。<br><br># 创建空数组<br><br>你可以用初始化语法创建一个特定类的空数组:<br><pre><code><br>var someInts = <a href="">Int</a><br>print(“someInts is of type [Int] with (someInts.count) items.”)<br>// Prints “someInts is of type [Int] with 0 items.”<br></code></pre><br>注意 someInts 变量的类型经过初始化类型被推断为 [Int]<br><br>或者, 如果上下文已经提供类型信息, 例如一个函数参数或者一个确定类型的变量或者常量, 你可以用空的字面量来创建空数组, 这个数组通常写作 [] (一个空的中括号对):<br><pre><code><br>someInts.append(3)<br>// someInts now contains 1 value of type Int<br>someInts = []<br>// someInts is now an empty array, but is still of type [Int]<br></code></pre><br># 用默认值创建数组<br><br>Swift的数组类型也提供了一初始化器来创建相同默认值固定大小的数组。 给初始化器传一个匹配类型的默认值 (调用 repeating): 然后是在新数组中需要重复的值的个数 (调用 count):<br><pre><code><br>var threeDoubles = Array(repeating: 0.0, count: 3)<br>// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]<br></code></pre><br># 通过合并数组创建数组<br><br>你可以通过合并两个已存在的数组来创建新的数组,这两个数组只要类型匹配就可以通过加法运算符 (+)来合并。 新数组的类型从合并的数组可以推断出来:<br><pre><code><br>var anotherThreeDoubles = Array(repeating: 2.5, count: 3)<br>// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]<br><br>var sixDoubles = threeDoubles + anotherThreeDoubles<br>// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]<br></code></pre><br># 用字面量创建数组<br><br>你也可以用字面量来初始化数组, 这是种快速写一个或者多个数组值的方式。 一个数组字面量写作一列值, 用逗号分开, 一对方括号包括起来:<br><pre><code><br>[value 1, value 2, value 3]<br></code></pre><br>下面的的例子创建了一个购物列表来存储字符串值:<br><pre><code><br>var shoppingList: [String] = [“Eggs”, “Milk”]<br>// shoppingList has been initialized with two initial items<br></code></pre><br>购物列表变量定义为 “字符串值的数组”, 写作 [String]. 因为这个数组已经指定一个字符串类型值, 它就值运行存储字符串值。 这里, 购物列表数组用两个字符串值 (“Eggs” 和 “Milk”)来初始化, 写在数字字面量里。<br><br>备注<br><br>这个数组被声明为一个变量而不是一个常量，是因为在下面的例子将有更多的项目加入这个购物列表。<br><br>这种情况, 数组字面量只包含两个字符串值。 这个匹配购物列表变量的声明类型 (只能包括字符串值的数组), 用数组字面量赋值来初始化购物列表是被允许的一种方式。<br><br>由于 Swift 的类型推断, 如果你用相同类型的字面量来初始化数组,就不需要写出数组的类型。购物列表的初始化可以简写成以下形式:<br><pre><code><br>var shoppingList = [“Eggs”, “Milk”]<br></code></pre><br>因为数组里所有的值都是同样的类型, Swift 能够推断出 [String] 用作购物列表变量是正确的类型。<br><br># 访问和修改数组<br><br>你可以通过数组的方法,属性或者下标语法来访问和修改一个数组。<br><br>为了确定数组的项数, 使用只读属性count:<br><pre><code><br>print(“The shopping list contains (shoppingList.count) items.”)<br>// Prints “The shopping list contains 2 items.”<br></code></pre><br>使用布尔属性 isEmpty 来判断数量属性是否0:<br><pre><code><br>if shoppingList.isEmpty {<br>    print(“The shopping list is empty.”)<br>} else {<br>    print(“The shopping list is not empty.”)<br>}<br>// Prints “The shopping list is not empty.”<br></code></pre><br>通过调用 append(<em>:) 方法你可以在数组最后添加新项:<br><pre><code><br>shoppingList.append(“Flour”)<br>// shoppingList now contains 3 items, and someone is making pancakes<br></code></pre><br>或者, 使用赋值运算 (+=) 添加一个或多个符合的项:<br><pre><code><br>shoppingList += [“Baking Powder”]<br>// shoppingList now contains 4 items<br>shoppingList += [“Chocolate Spread”, “Cheese”, “Butter”]<br>// shoppingList 现在包含 7项<br></code></pre><br>用下标语法从数组中获取一个值, 在数组后的方括号里传入你想得到值的索引:<br></em></element></count></count></code><br>var firstItem = shoppingList[0]<br>// firstItem is equal to “Eggs”<br><br>备注<br><br>数组第一项的索引是0,不是1。 Swift 数组总是基于0开始索引。<br><br>你可以使用下标语法去改变给定索引下的值:<br><pre><code><br>shoppingList[0] = “Six eggs”<br>// 第一项现在是 “Six eggs” 而不是 “Eggs”<br></code></pre><br>你还可以通过下标语法一次改变一个范围的值, 尽管取代值跟被取代的长度不同。 下面的例子用 “Bananas” 和 “Apples” 取代了 “Chocolate Spread”, “Cheese”, 和 “Butter”:<br><pre><code><br>shoppingList[4…6] = [“Bananas”, “Apples”]<br>// shoppingList 现在包含 6项<br></code></pre><br>备注<br><br>你不能用下标语法添加新的项到数组最后。<br><br>在特定位置插入新项, 调用数组插入方法 insert(:at:):<br><pre><code><br>shoppingList.insert(“Maple Syrup”, at: 0)<br>// shoppingList now contains 7 items<br>// “Maple Syrup” is now the first item in the list<br></code></pre><br>调用 insert(<em>:at:) 方法在购物列表头插入一个新的项 “Maple Syrup”, 用索引0标明。<br><br>类似的, 移除一项使用 remove(at:) 方法。 这个方法移除指定索引的项然后返回这个移除项 (尽管你可能无视这个返回值):<br><pre><code><br>let mapleSyrup = shoppingList.remove(at: 0)<br>// 位于索引0的项被移除<br>// 购物列表现在包含6项, 没有 Maple Syrup<br>// mapleSyrup 常量现在等于被移除的 “Maple Syrup” 字符串<br></code></pre><br>备注<br><br>如果越界访问数组的值, 你会触发运行时错误。你可以用它跟数组个数属性对比来判断索引的有效性。除了个数为0的情况 (意味着数组是空的), 最大索引值通常是数组个数 - 1, 因为数组是从0开始计数的。<br><br>一个数据项被移除数组空隙就会闭合,所以索引 0 的值再次等于 “Six eggs”:<br><pre><code><br>firstItem = shoppingList[0]<br>// firstItem 现在等于 “Six eggs”<br></code></pre><br>如果你想移除最后一项, 使用 removeLast() 方法而不是 remove(at:) 方法,这样就避免需要查询数组的个数属性。和 remove(at:) 方法一样, removeLast() 返回移除的项:<br><pre><code><br>let apples = shoppingList.removeLast()<br>// 最后一项被移除<br>// 购物列表现在包含5项, 没有苹果<br>// apples 常量现在等于被移除的 “Apples” 字符串<br></code></pre><br># 遍历数组<br><br>你可以用for-in循环来遍历数组中的所有值集:<br><pre><code><br>for item in shoppingList {<br>    print(item)<br>}<br>// Six eggs<br>// Milk<br>// Flour<br>// Baking Powder<br>// Bananas<br></code></pre><br>如果需要数据项的值和整数索引, 使用 enumerated() 方法来遍历数组。对于数组中的每一项, enumerated() 方法返回一个包含索引和值的元组。 整数以0开始每项递增; 如果你遍历整个数组, 这些整数匹配数据项的索引。你可以分解元组到临时的常量或者变量,来作为迭代的部分:<br><pre><code><br>for (index, value) in shoppingList.enumerated() {<br>    print(“Item (index + 1): (value)”)<br>}<br>// Item 1: Six eggs<br>// Item 2: Milk<br>// Item 3: Flour<br>// Item 4: Baking Powder<br>// Item 5: Bananas<br></code></pre><br><br># 集合<br><br>集合无序存储同样类型的不同值。 如果排序不重要可以选择使用集合代替数组, 或者你需要确保每项只出现一次。<br><br>备注<br><br>Swift 的 Set 类型跟 Foundation 的 NSSet 类桥接。<br><br># 集合类型的哈希值<br><br>集合里一个类型为了存储就必须可哈希—就是说, 这个类型必须提供一个方式去计算自己的哈希值。 一个哈希值是一个整型值, 这对于相等的对象都是一样的, 如果 if a == b, 那么 a.hashValue == b.hashValue.<br><br>所有 Swift 的基本类型默认都是可哈希的 (比如 String, Int, Double, 和 Bool), 可以被用作集合值类型或者字典建类型。 枚举case 值没有相应的值默认也是可哈希的。<br><br>备注<br><br>你可以使用自定义类型作为集合值类型或者字典健类型,通过让它们遵守Swift 标准库中的 Hashable 协议。 符合协议的类型必须提供一个可获取的整形属性 hashValue. 在相同程序中的不同执行,或者在不同程序中, 类型的哈希属性返回的值不要求相同。<br><br>因为 Hashable 协议符合 Equatable, 符合类型必须提等号运算符 (==)的实现。 Equatable 协议要求任何符合==实现的都是一个相等关系。 就是说, ==  的实现必须满足下面的条件, 对于 a, b, 和 c 所有值:<br><br>a == a (自反性)<br><br>a == b 表示 b == a (对称性)<br><br>a == b &amp;&amp; b == c 表示 a == c (传递性)<br><br># 集合类型语法<br><br>集合类型写作 Set<element>, 这里 Element 是集合允许存储的类型。 跟数组不同, 集合没有等价的缩写形式。<br><br># 创建和初始化空集合<br><br>你可以通过使用初始化器语法创建特定类型的空集合:<br><pre><code><br>var letters = Set<character>()<br>print(“letters is of type Set<character> with (letters.count) items.”)<br>// 打印 “letters is of type Set<character> with 0 items.”<br></character></character></character></code></pre><br>备注<br><br>letters 变量的类型推断为 Set<character>, 通过初始化器的类型。<br><br>或者, 如果上下文已经提供了类型信息, 比如一个函数参数或者一个已经指定类型的变量和常量, 你可以用一个空的数组字面量来创建一个空集合:<br><pre><code><br>letters.insert(“a”)<br>// letters 现在包含了一个字符类型的值<br>letters = []<br>// letters 现在是一个空集合, 但是依然是 Set<character> 类型<br></character></code></pre><br># 用数组字面量创建集合<br><br>你可以用数组字面量初始化一个集合, 这是一个速写方式来给一个集合赋值。<br><br>下面的例子创建一个存储字符串值的集合 favoriteGenres:<br><pre><code><br>var favoriteGenres: Set<string> = [“Rock”, “Classical”, “Hip hop”]<br>// favoriteGenres 有了三个初始值<br></string></code></pre><br>favoriteGenres 变量声明成 “字符串值的集合”, 写作 Set<string>. 因为这个集合指定了一个字符串的值类型, 它只允许存储字符串值, favoriteGenres 集合用三个字符串 (“Rock”, “Classical”, 和 “Hip hop”)来初始化, 写在一个数组字面量里。<br><br>备注<br><br>favoriteGenres 集合声明成一个变量而不是一个常量, 这是因为添加和移除的项在下面的示例里。<br><br>集合通过数组字面量不能推断出类型, 所以类型必须显示声明。 不过, 由于Swift的类型推断, 如果数组字面量包含的值类型相同,你就不需要写集合的类型。favoriteGenres 初始化可以简写如下:<br><pre><code><br>var favoriteGenres: Set = [“Rock”, “Classical”, “Hip hop”]<br></code></pre><br>因为数组字面量里的值都是同样类型, Swift 可以推断 Set<string> 用作favoriteGenres 变量是正确的类型。<br><br># 访问和修改集合<br><br>你可以通过集合的方法和属性来访问和修改它。<br><br>为了得到集合的项数, 使用只读的 count 属性:<br><pre><code><br>print(“I have (favoriteGenres.count) favorite music genres.”)<br>// 打印 “I have 3 favorite music genres.”<br></code></pre><br>使用布尔属性 isEmpty 快速判断 count 属性是否等于 0:<br><pre><code><br>if favoriteGenres.isEmpty {<br>    print(“As far as music goes, I’m not picky.”)<br>} else {<br>    print(“I have particular music preferences.”)<br>}<br>// 打印 “I have particular music preferences.”<br></code></pre><br>调用集合的 insert(</string></string></character></element></em>:) 方法插入一个新项:<br><pre><code><br>favoriteGenres.insert(“Jazz”)<br>// favoriteGenres 现在包含 4 项<br></code></pre><br>你可以用集合的 remove(<em>:) 方法从集合里移除项, 如果它是集合一员的话, 然后返回被移除的项, 如果集合不包含这项就返回nil。 或者, 移除所有项可以用 removeAll() 方法。<br><pre><code><br>if let removedGenre = favoriteGenres.remove(“Rock”) {<br>    print(“(removedGenre)? I’m over it.”)<br>} else {<br>    print(“I never much cared for that.”)<br>}<br>// 打印 “Rock? I’m over it.”<br></code></pre><br>检查集合是否包含特定项, 用 contains(</em>:) 方法。<br><pre><code><br>if favoriteGenres.contains(“Funk”) {<br>    print(“I get up on the good foot.”)<br>} else {<br>    print(“It’s too funky in here.”)<br>}<br>// 打印 “It’s too funky in here.”<br></code></pre><br># 遍历集合<br><br>你可以用for-in循环遍历集合的值。<br><pre><code><br>for genre in favoriteGenres {<br>    print(“(genre)”)<br>}<br>// Jazz<br>// Hip hop<br>// Classical<br></code></pre><br><br>Swift 的集合类型是无序的。以特定顺序去遍历集合的值, 使用 sorted() 方法, 这个方法返回一个值数组,按照小于运算符排序。<br><pre><code><br>for genre in favoriteGenres.sorted() {<br>    print(“(genre)”)<br>}<br>// Classical<br>// Hip hop<br>// Jazz<br></code></pre><br># 集合操作<br><br>你可以有效进行基础的集合操作, 比如合并两个集合, 判断两个集合是否有共同值, 或者判读两个集合是否包含所有,几个,或者没有任何相同值。<br><br># 基本集合操作<br><br>下面的图描述了两个集合a 和 b, 共享区域表示集合操作结果。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png"><br></div><br>用 intersection(<em>:) 方法创建交集。<br>用 symmetricDifference(</em>:) 方法创建交集之外的集合。<br>用 union(<em>:) 方法创建并集。<br>用 subtracting(</em>:) 方法创建去掉指定集合的集合。<br><pre><code><br>let oddDigits: Set = [1, 3, 5, 7, 9]<br>let evenDigits: Set = [0, 2, 4, 6, 8]<br>let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]<br><br>oddDigits.union(evenDigits).sorted()<br>// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]<br>oddDigits.intersection(evenDigits).sorted()<br>// []<br>oddDigits.subtracting(singleDigitPrimeNumbers).sorted()<br>// [1, 9]<br>oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()<br>// [1, 2, 9]<br></code></pre><br># 集合成语和等式<br><br>下面的图描述了三个集合 a, b 和 c, 重叠区域表示集合共享的元素。 集合a是集合b的超集, 因为a包含b的所有元素。 相反, 集合b是集合a的子集, 因为b中的元素都包含在集合a中。 集合b与集合c不相交, 因为它们没有共同的元素。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setEulerDiagram_2x.png"><br></div><br>用相等运算符 (==) 判断两个集合是否所有值都相同。<br>用 isSubset(of:) 方法判断一个集合是否是另外一个集合的字集。<br>用 isSuperset(of:) 方法判断一个集合是否是另外一个集合的超集。<br>用 isStrictSubset(of:) 或者 isStrictSuperset(of:) 方法判断一个集合是否是一个子集或者超集, 但是不等于一个指定的集合。用 isDisjoint(with:) 方法判断是否两个集合不相交。<br><pre><code><br>let houseAnimals: Set = [“🐶”, “🐱”]<br>let farmAnimals: Set = [“🐮”, “🐔”, “🐑”, “🐶”, “🐱”]<br>let cityAnimals: Set = [“🐦”, “🐭”]<br><br>houseAnimals.isSubset(of: farmAnimals)<br>// true<br>farmAnimals.isSuperset(of: houseAnimals)<br>// true<br>farmAnimals.isDisjoint(with: cityAnimals)<br>// true<br></code></pre><br># 字典<br><br>字典无序存储匹配的同类型的健值。每个值对应一个唯一的健, 它作为值在字典里的标识符。 跟数组项不同, 字典里的项是无序的。如果基于标识符查找值你可以用字典, 很像真实世界字典的用法。<br><br># 字典类型速记语法<br><br>Swift 字典类型完整写法是 Dictionary<key, value="">, Key 是可以用作字典值的值类型, Value 是字典为健存储的值类型。<br><br>备注<br><br>字典 Key 类型一定要符合 Hashable 协议, 跟集合值类型一样。<br><br>你也可以字典类型的简写形式 [Key: Value]. 尽管两个形式功能一样, 简写形式优先使用并贯穿整个教程。<br><br># 创建一个空字典<br><br>跟数组一样, 你可用用初始化语法创建一个特定类型的字典:<br><pre><code><br>var namesOfIntegers = <a href="">Int: String</a><br>// namesOfIntegers is an empty [Int: String] dictionary<br></code></pre><br>这个例子定义了一个空字典,类型是 [Int: String],用来存储人类可读的整数名字。健是整形, 值是字符串类型。<br><br>如果上下文已经提供了类型信息, 你可以用一个空的字典字面量来创建一个空字典, 写作 [:] (一对中括号中间一个冒号):<br><pre><code><br>namesOfIntegers[16] = “sixteen”<br>// namesOfIntegers 现在包含 1 key-value pair<br>namesOfIntegers = [:]<br>// namesOfIntegers 再次成为空,类型是[Int: String]<br></code></pre><br># 用字面量创建字典<br><br>你还可以用字面量来初始化一个字典, 跟早前数组字面量语法相似。字典字面量是定义一个或者多个键值对集合的速写方法。<br><br>键值对是健和值的组合。 在一个字典字面量里, 健和值在键值对里用冒号分开。 键值对写作一个列表, 用逗号分开, 包含在一对中括号里:<br><pre><code><br>[key 1: value 1, key 2: value 2, key 3: value 3]<br></code></pre><br>下面的例子创建一个字典来存储国际机场名字。在这个字典里, 健是三个字母的国际航空公司编码, 值是机场名:<br><pre><code><br>var airports: [String: String] = [“YYZ”: “Toronto Pearson”, “DUB”: “Dublin”]<br></code></pre><br>airports 字典类型是 [String: String], 意思是 “一个字典健值都是字符串类型”.<br><br>备注<br><br>airports 字典声明成一个变量而非常量, 因为下面的例子需要添加更多机场进去。<br><br>airports 用两个键值对字面量初始化。第一个键值对有一个健 “YYZ” 和一个值 “Toronto Pearson”. 第二个键值对有一个健 “DUB” 和一个值”Dublin”.<br><br>字面量包含两个 String: String 对。 简直类型匹配机场类型的变量声明 (一个字典只有字符串健和字符串值), 所以字面量赋值是允许的,可以用来初始化机场字典。<br><br>跟数组一样, 如果你用相同类型的键值字典初始化，你就不需要写出字典的声明类型。初始化方法可以简写如下:<br><pre><code><br>var airports = [“YYZ”: “Toronto Pearson”, “DUB”: “Dublin”]<br></code></pre><br>因为字面量的所有健类型都是一样的, 同样所有的值也是, Swift 可以推断出来 [String: String] 是正确的类型声明。<br><br># 访问和修改字典<br><br>你可以通过字典的方法和属性来访问和修改它, 或者使用下标语法。<br><br>跟数组一样, 使用count 属性获取字典的项数:<br><pre><code><br>print(“The airports dictionary contains (airports.count) items.”)<br>// 打印 “The airports dictionary contains 2 items.”<br></code></pre><br>用 isEmpty 属性判断count 属性是否等于 0:<br><pre><code><br>if airports.isEmpty {<br>    print(“The airports dictionary is empty.”)<br>} else {<br>    print(“The airports dictionary is not empty.”)<br>}<br>// 打印 “The airports dictionary is not empty.”<br></code></pre><br>你可以用下标语法往字典添加新项。 使用对应的类型的键作为下标索引, 并赋一个对应的新值:<br><pre><code><br>airports[“LHR”] = “London”<br>// airports 现在包含 3 项<br></code></pre><br>你可以用下标语法改变指定键对应的值:<br><pre><code><br>airports[“LHR”] = “London Heathrow”<br>// “LHR” 的值已经变成”London Heathrow”<br></code></pre><br>作为下标的替代方案, 用字典的 updateValue(<em>:forKey:) 方法设置或者更新指定键的值。 跟上面下标实例一样,  updateValue(</em>:forKey:) 方法在键不存在时设置值, 如果键存在则进行更新。和下标不像的是, updateValue(<em>:forKey:) 方法在执行更新后返回老的值。 这个可以让你知道更新是否生效。<br><br>updateValue(</em>:forKey:) 方法返回可选类型的值。对个存储字符串值的字典来说, 比如, 这个方法返回 String?, 或者 “optional String”. 可选值包括未更新前存在的键对应的老值, 如果值不存在则包括nil:<br><pre><code><br>if let oldValue = airports.updateValue(“Dublin Airport”, forKey: “DUB”) {<br>    print(“The old value for DUB was (oldValue).”)<br>}<br>// 打印 “The old value for DUB was Dublin.”<br></code></pre><br>你可以用下标语法获取特定键对应的值。因为有可能去请求不存在值的键, 字典的下标就会返回一个可选值。 如果字典包含请求键对应的值, 下标就返回一个可选值，这个值包含这个键对应的存在的值。否则返回 nil:<br><pre><code><br>if let airportName = airports[“DUB”] {<br>    print(“The name of the airport is (airportName).”)<br>} else {<br>    print(“That airport is not in the airports dictionary.”)<br>}<br>// 打印 “The name of the airport is Dublin Airport.”<br></code></pre><br>你可以通过把键对应的值赋空的方式,用下标语法从字典移除一个键值对:<br><pre><code><br>airports[“APL”] = “Apple International”<br>// “Apple International” is not the real airport for APL, so delete it<br>airports[“APL”] = nil<br>// APL 现在已经从字典移除<br></code></pre><br>或者, 用 removeValue(forKey:) 这个方法来移除。 这个方法移除的键值对如果存在返回被移除的值,否则返回nil:<br><pre><code><br>if let removedValue = airports.removeValue(forKey: “DUB”) {<br>    print(“The removed airport’s name is (removedValue).”)<br>} else {<br>    print(“The airports dictionary does not contain a value for DUB.”)<br>}<br>// Prints “The removed airport’s name is Dublin Airport.”<br></code></pre><br># 遍历字典<br><br>你用for-in 循环来遍历字典。 字典中的每一项都以 (key, value) 元组形式返回, 你可以分解元组到临时的变量或者常量:<br><pre><code><br>for (airportCode, airportName) in airports {<br>    print(“(airportCode): (airportName)”)<br>}<br>// YYZ: Toronto Pearson<br>// LHR: London Heathrow<br></code></pre><br><br>你可以通过访问字典的键值属性来获取键值的集合:<br><pre><code><br>for airportCode in airports.keys {<br>    print(“Airport code: (airportCode)”)<br>}<br>// Airport code: YYZ<br>// Airport code: LHR<br>for airportName in airports.values {<br>    print(“Airport name: (airportName)”)<br>}<br>// Airport name: Toronto Pearson<br>// Airport name: London Heathrow<br></code></pre><br>如果你想使用字典的键值的数组实例, 用键值来初始化一个新的数组:<br><pre><code><br>let airportCodes = <a href="airports.keys">String</a><br>// airportCodes is [“YYZ”, “LHR”]<br><br>let airportNames = <a href="airports.values">String</a><br>// airportNames 是 [“Toronto Pearson”, “London Heathrow”]<br></code></pre><br>Swift的字典类型无序的。 为了用特定顺序去遍历字典的键值, 用这个 sorted() 方法。<br><br># 控制流<br>Swift 提供了一系列控制流语句。 包括 while 循环来执行多次任务; if, guard, 金额 switch 语句来再不同条件这些不同代码; 还有 break 和 continue 来转移控制流。<br><br>Swift 同时提供了 for-in 循环使得遍历数组, 字典, 范围, 字符串, 和其他序列变得容易。<br><br>Swift的 switch 语句比多数类C语言相同语句更加高效有力。 因为Swift 的 switch 语句的分支不会落到下一分支, 这就避免了C常见的错误。 分支可以匹配不同的模式, 包括区间匹配, 元组, 转换成指定类型。 switch 分支匹配的值可以绑定到临时的变量或者常量。每个分支可以用where 族来表达符合匹配条件。<br><br># For-In 循环<br><br>你使用 for-in 循环来遍历序列, 比如数值范围, 数组中的项, 字符串中的字符。<br><br>下面的例子是五倍乘法表的前几个条目:<br><pre><code><br>for index in 1…5 {<br>    print(“(index) times 5 is (index <em> 5)”)<br>}<br>// 1 times 5 is 5<br>// 2 times 5 is 10<br>// 3 times 5 is 15<br>// 4 times 5 is 20<br>// 5 times 5 is 25<br></em></code></pre><br>遍历的序列是1 到 5的数值范围, 包括1和5,使用闭合区间运算符 (…)提到过。索引值设置给 range (1)的第一个数, 然后循环体中的语句就会执行。 这种情况, 循环体只有一个语句, 打印当前索引值5的倍数。 这个语句执行后, 索引值更新为包含在 range (2) 中的第二个值, print(<em>:separator:terminator:) 函数再次调用。 这个过程直到区间结束。<br><br>上面的例子, 索引值是常量而且自动设置。 像这样, 索引在使用前不必声明。 在循环声明中隐式声明, 不需要let关键字。<br><br>如果你不需要序列中的所有值, 可以在变量名位置处使用下划线来忽略这个值。<br><pre><code><br>let base = 3<br>let power = 10<br>var answer = 1<br>for </code></pre></em> in 1…power {<br>    answer = base<br>}<br>print(“(base) to the power of (power) is (answer)”)<br>// 打印 “3 to the power of 10 is 59049”<br><br>上面的例子计算一个数的幂(这个例子里, 3 的10次幂)。 它乘以一个初始值 1 (就是 3 的0次幂), 十次, 使用一个闭合区间,1开始10结束。下划线用在这里,使得单个值被忽略同时不会在遍历过程中访问当前值。<br><br>使用 for-in 循环来遍历数组的项。<br><pre><code><br>let names = [“Anna”, “Alex”, “Brian”, “Jack”]<br>for name in names {<br>    print(“Hello, (name)!”)<br>}<br>// Hello, Anna!<br>// Hello, Alex!<br>// Hello, Brian!<br>// Hello, Jack!<br></code></pre><br>你还可以遍历一个字典来遍历它的键值对。 字典遍历时每次返回一个 (key, value) 元组, 你可以在for-in循环中显示分解元组的值给常量赋值。这里, 字典的键分解给animalName 常量, 字典的值分配给了 legCount 常量。<br><pre><code><br>let numberOfLegs = [“spider”: 8, “ant”: 6, “cat”: 4]<br>for (animalName, legCount) in numberOfLegs {<br>    print(“(animalName)s have (legCount) legs”)<br>}<br>// ants have 6 legs<br>// spiders have 8 legs<br>// cats have 4 legs<br></code></pre><br>字典项遍历的顺序不需要和插入顺序一致。 字典内容是无序的, 遍历时不能保证获取的顺序。<br><br># While 循环<br><br>while 循环执行一组语句,直到条件失败。 首次遍历前,遍历次数不知道的时候使用这种方式是最好的。Swift 提供两种 while 循环:<br><br>while 每次循环前评估条件。<br>repeat-while 每次循环后评估条件。<br># While<br><br>while 循环从评估条件开始。 如果条件是真的, 一组语句会重复执行直到条件变成假的。<br><br>这是while 循环的基本形式:<br><pre><code><br>while condition {<br>    statements<br>}<br></code></pre><br>这个例子是个蛇与梯子的游戏:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/snakesAndLadders_2x.png"><br></div><br>游戏规则如下:<br><br>棋盘有25个方格, 目标是占据或者超过25。<br>每次, 摇一个6边的骰子然后移动对应数目方格, 沿着上图的点箭头的水平路径移动。<br>如果位于梯子底部, 往梯子上方移动。<br>如果位于蛇头, 往蛇下方移动。<br>游戏棋盘用整形值数组表示。大小基于 finalSquare 常量, 用来初始化数组并且判断取胜的条件。 棋盘用26个0值初始化, 而不是25 (每个索引从0到25)。<br><pre><code><br>let finalSquare = 25<br>var board = <a href="repeating: 0, count: finalSquare + 1" target="_blank" rel="external">Int</a><br></code></pre><br>一些方格会为蛇和梯子设置更多的指定值。梯子方格是正数,蛇方格是负数。<br><pre><code><br>board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02<br>board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08<br></code></pre><br>方格 3 包含了梯子的底部,可以爬到方格11。 为了表示这个, board[03] 等于 +08, 这等于整数值8 (3和11的差值) 加号 (+i) 和减号 (-i)相等, 数值低于10的用0填充,这样所以棋盘都被定义了。<br><br>玩家开始方格是 “方格0”, 靠着棋盘的左下角。 第一次摇骰子总是让玩家进入棋盘。<br><pre><code><br>var square = 0<br>var diceRoll = 0<br>while square &lt; finalSquare {<br>    // roll the dice<br>    diceRoll += 1<br>    if diceRoll == 7 { diceRoll = 1 }<br>    // move by the rolled amount<br>    square += diceRoll<br>    if square &lt; board.count {<br>        // if we’re still on the board, move up or down for a snake or a ladder<br>        square += board[square]<br>    }<br>}<br>print(“Game over!”)<br></code></pre><br>上面的例子用了一个很简单方法去摇骰子。 不用随机数, 用一初始值为0的 diceRoll。 每次循环, diceRoll 加一然后判断它是否过大。 当返回值等于7, 骰子值过大然后重置为1。diceRoll 值总是 1, 2, 3, 4, 5, 6, 1, 2 然后不停循环。<br><br>摇完筛子, 往前移动 diceRoll 方格。 如果移动超过25, 游戏结束。考虑边界安全，在操作方格的时候。<br><br>备注<br><br>没有这个判断, board[square] 可能会越界访问棋盘数组的值, 这会触发一个错误。 如果方格等于 26, 代码会判断board[26] 的值, 这会超过数组的大小。<br><br>当前while 循环执行然后结束, 然后循环的条件会被判断是否再次执行。如果玩家已经移动或者超过25, 循环的条件变成假然后游戏就结束。<br><br>while 循环适合这个例子, 因为开始循环的时候游戏的长度并不清楚。 相反, 一个特定条件满足后循环被执行了。<br><br># Repeat-While<br><br>另外一种while循环的变种, 就是 repeat-while 循环, 先执行一次循环, 然后再考虑循环的条件。 然后继续执行直到条件变成假。<br><br>备注<br><br>Swift 里的 repeat-while 循环类似其他语言里的 do-while 循环。<br><br>这里是 repeat-while 循环的基本样式:<br><pre><code><br>repeat {<br>    statements<br>} while condition<br></code></pre><br>这里还是蛇与梯子的例子, 用 repeat-while 循环来写而不是 while 循环。 finalSquare, board, square, 和 diceRoll的值初始化方式跟while循环一样。<br><pre><code><br>let finalSquare = 25<br>var board = <a href="repeating: 0, count: finalSquare + 1" target="_blank" rel="external">Int</a><br>board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02<br>board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08<br>var square = 0<br>var diceRoll = 0<br></code></pre><br>这个游戏版本, 第一步是判断梯子和蛇。 没有梯子带着玩家直接去方格25, 因为不太可能通过爬梯子去赢得游戏。因此, 判断有没有蛇和梯子是很安全的。<br><br>游戏开始, 玩家在 “square zero”. board[0] 总是等于0没有影响。<br><pre><code><br>repeat {<br>    // move up or down for a snake or ladder<br>    square += board[square]<br>    // roll the dice<br>    diceRoll += 1<br>    if diceRoll == 7 { diceRoll = 1 }<br>    // move by the rolled amount<br>    square += diceRoll<br>} while square &lt; finalSquare<br>print(“Game over!”)<br></code></pre><br>蛇与梯子判断后, 摇动筛子玩家往前移动 diceRoll 方格。 当前循环执行然后结束。<br><br>循环条件 (while square &lt; finalSquare) 和以前一样, 不过这次开始不评估,直到第一次循环结束才评估。repeat-while 循环比 while loop 循环更适合这个游戏。上面的 repeat-while 循环, 当条件确认方格还在棋盘上后, square += board[square] 总是立即执行。 这就不需要像之前那样判断数组边界。<br><br># 条件语句<br><br>基于特定条件执行不同代码片段经常用到。 在碰到错误时你可能想运行额外的代码片段, 或者在数值变得太高或者太低的时候也是。为了做这件事, 你让部分代码带有条件性。<br><br>Swift 提供两种方式给你的代码添加条件分支: if 语句和 switch 语句。你用 if 语句评估条件会有一些可能的结果。 switch 语句在比较复杂的多个排列时很有用, 在模式匹配可以帮助选择合适代码分支执行的情况也是。<br><br># If<br><br>最简单的形式, if 语句有一个单一条件。 条件为真执行一个语句集合。<br><pre><code><br>var temperatureInFahrenheit = 30<br>if temperatureInFahrenheit &lt;= 32 {<br>    print(“It’s very cold. Consider wearing a scarf.”)<br>}<br>// 打印 “It’s very cold. Consider wearing a scarf.”<br></code></pre><br>上面的例子判断文档是否小于等于华氏32度 (冰点)。 如果是, 打印一条信息。 否则, 不打印消息, 代码在大括号后继续执行。<br><br>if 语句还可以提供一个替代语句集合, 就是 else 字句, 针对条件是假的情况。 这些语句用else 关键字表示。<br><pre><code><br>temperatureInFahrenheit = 40<br>if temperatureInFahrenheit &lt;= 32 {<br>    print(“It’s very cold. Consider wearing a scarf.”)<br>} else {<br>    print(“It’s not that cold. Wear a t-shirt.”)<br>}<br>// 打印 “It’s not that cold. Wear a t-shirt.”<br></code></pre><br>两个分支之一总会执行。 因为温度已经增长到华氏40度, 这不够冷到戴围巾,因此else分支被触发了。<br><br>你可以链接多个if语句来考虑额外的语句。<br><pre><code><br>temperatureInFahrenheit = 90<br>if temperatureInFahrenheit &lt;= 32 {<br>    print(“It’s very cold. Consider wearing a scarf.”)<br>} else if temperatureInFahrenheit &gt;= 86 {<br>    print(“It’s really warm. Don’t forget to wear sunscreen.”)<br>} else {<br>    print(“It’s not that cold. Wear a t-shirt.”)<br>}<br>// 打印 “It’s really warm. Don’t forget to wear sunscreen.”<br></code></pre><br>在这个库, 额外的if语句用来响应特别温暖的温度。 最后的else语句保留, 它响应既不太热也不太冷的情况。<br><br>最后的else语句是可选的, 不过, 如果不需要执行可以去掉。<br><pre><code><br>temperatureInFahrenheit = 72<br>if temperatureInFahrenheit &lt;= 32 {<br>    print(“It’s very cold. Consider wearing a scarf.”)<br>} else if temperatureInFahrenheit &gt;= 86 {<br>    print(“It’s really warm. Don’t forget to wear sunscreen.”)<br>}<br></code></pre><br>因为这个温度既不太冷也不太热,所以不会触发if或者else语句,没有打印信息。<br><br># Switch<br><br>switch 语句设想一个值,然后跟一些可能的匹配模式比较。然后执行合适的代码, 基于第一次匹配成功。switch 语句提供了if语句的替代方法来响应多种潜在状态的情况。<br><br>最简单的形式, 一个 switch 语句用一个值跟一个或者多个同类型的值相比较。<br><pre><code><br>switch some value to consider {<br>case value 1:<br>    respond to value 1<br>case value 2,<br>     value 3:<br>    respond to value 2 or 3<br>default:<br>    otherwise, do something else<br>}<br></code></pre><br>每个 switch 语句由多个case分支组成, 每个分支以case 关键字开始。 除了跟指定值比较外, Swift 为case分支提供了指定更复杂匹配模式的方法。这些选项本章后面会描述。<br><br>跟if语句体很像, 每个 case 是代码执行的单独分支。 switch 语句决定是否选择这个分支。这个过程叫分发。<br><br>每个switch 语句务必是详尽的。 就是说, 每个能想到的类型值都要case匹配。 为每个可能值都提供case是不合适的。你可以定义一个默认case覆盖没有显示处理的值。 默认case使用default关键字指明, 必须总是出现在最后。<br><br>这个例子使用一个 switch 语句来出处理一个小写字母someCharacter:<br><pre><code><br>let someCharacter: Character = “z”<br>switch someCharacter {<br>case “a”:<br>    print(“The first letter of the alphabet”)<br>case “z”:<br>    print(“The last letter of the alphabet”)<br>default:<br>    print(“Some other character”)<br>}<br>// 打印 “The last letter of the alphabet”<br></code></pre><br>switch 语句第一个case匹配英文字母表第一个字母 a, 第二个case匹配最后一个字母 z. 因为 switch 语句对于每个可能的字符都要有case, 不是每个字母表字符都需要。这个switch 语句使用了一个default case 去处理a 和 z之外的其他所有字母。这保证了switch语句的详细性。<br><br># 非隐式 Fallthrough<br><br>和C 与 objective-C 的switch语句对比, Swift 中的switch语句不会 fall through case底部并且跳到下一个case。 相反, 在第一次匹配到case后整个switch语句执行就完成了。不要求显示的break语句。 这使得switch语句更安全,更容易使用,而且避免执行多个case的错误。<br><br>备注<br><br>尽管Swift 不要求break, 你仍然可以在Swift中使用。 具体可以参见 Break in a Switch Statement.<br><br>case 体必须包含至少一句可执行语句。下面的代码的无效的, 因为第一个case是空的:<br><pre><code><br>let anotherCharacter: Character = “a”<br>switch anotherCharacter {<br>case “a”: // Invalid, the case has an empty body<br>case “A”:<br>    print(“The letter A”)<br>default:<br>    print(“Not the letter A”)<br>}<br>// 这会报一个编译期错误<br></code></pre><br>跟C中的switch语句不同, 这个 switch 语句不能同时匹配 “a” 和 “A”. 相反, 它会报一个编译期错误,因为case “a”: 没有任何可以执行的语句。这个方法避免了突然从一个case跳入另外一个case, 让代码意图清晰安全。<br><br>如果要用一个case同时匹配”a” 和 “A”, 把这两个值合并到一个case语句, 用逗号把它们分开。<br><pre><code><br>let anotherCharacter: Character = “a”<br>switch anotherCharacter {<br>case “a”, “A”:<br>    print(“The letter A”)<br>default:<br>    print(“Not the letter A”)<br>}<br>// Prints “The letter A”<br></code></pre><br>为了可读性, 复合case也可以写作多行。 具体参见 Compound Cases.<br><br>备注<br><br>为了显式fall through 到某个case下面, 使用 fallthrough 关键字。<br><br># 区间匹配<br><br>switch case里面的值可以包含在区间里判断。 这个例子使用数字区间来提供一个对任何数字大小的自然语言统计。<br><pre><code><br>let approximateCount = 62<br>let countedThings = “moons orbiting Saturn”<br>var naturalCount: String<br>switch approximateCount {<br>case 0:<br>    naturalCount = “no”<br>case 1..<5: naturalcount="a few" case="" 5..<12:="" 12..<100:="" 100..<1000:="" default:="" }="" print("there="" are="" \(naturalcount)="" \(countedthings).")="" prints="" "there="" dozens="" of="" moons="" orbiting="" saturn."="" <="" code=""></5:></code></pre><br>上面的例子, approximateCount 在switch语句里估算。 每个case把这个值跟一个数字或者区间进行比较。因为 approximateCount 值落在 12 和 100之间, naturalCount 被赋值为 “dozens of”, 然后代码执行跳出switch语句继续执行。<br><br># 元组<br><br>你可以在switch语句中使用元组测试多值。元组元素可以跟一个不同值或者值区间进行测试。或者, 使用通配下划线 (<em>) 去匹配可能的值。<br><br>下面的例子有一个 (x, y) 点, 用一个简单的元组类型 (Int, Int) 表示, 并且在下面的图表中标示。<br><pre><code><br>let somePoint = (1, 1)<br>switch somePoint {<br>case (0, 0):<br>    print(“(0, 0) is at the origin”)<br>case (</code></pre></em>, 0):<br>    print(“((somePoint.0), 0) is on the x-axis”)<br>case (0, _):<br>    print(“(0, (somePoint.1)) is on the y-axis”)<br>case (-2…2, -2…2):<br>    print(“((somePoint.0), (somePoint.1)) is inside the box”)<br>default:<br>    print(“((somePoint.0), (somePoint.1)) is outside of the box”)<br>}<br>// 打印 “(1, 1) is inside the box”<br><br><br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphSimple_2x.png"><br></div><br>switch 语句决定这个点是否位于原点 (0, 0), 红色的 x-轴, 橙色 y-轴, 在蓝色 4-by-4 方块里原点在中心, 或者在方块之外。<br><br>跟 C 不同, Swift 允许多个case 去处理相同的值。 事实上, (0, 0)点可以满足例子的四个case。不过, 如果多个匹配都可能, 第一个匹配上的总是执行。 (0, 0) 点首先匹配case (0, 0), 其他所有匹配的case都会被忽略。<br><br># 值绑定<br><br>一个 switch case 可以绑定值到临时的常量或者变量, 用在case 体中。这个就是值绑定, 因为值绑定到case 体中的临时常量或者变量上。<br><br>下面这个例子有一个(x, y) 点, 是元组类型 (Int, Int), 在下面的图表中标示:<br><pre><code><br>let anotherPoint = (2, 0)<br>switch anotherPoint {<br>case (let x, 0):<br>    print(“on the x-axis with an x value of (x)”)<br>case (0, let y):<br>    print(“on the y-axis with a y value of (y)”)<br>case let (x, y):<br>    print(“somewhere else at ((x), (y))”)<br>}<br>// Prints “on the x-axis with an x value of 2”<br></code></pre><br><br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphMedium_2x.png"><br></div>
+<h1 id="Unicode-字符串表示"><a href="#Unicode-字符串表示" class="headerlink" title="Unicode 字符串表示"></a>Unicode 字符串表示</h1><p>当一个 Unicode 字符串写入文本文件或者别的存储时,字符串里的 Unicode 标量会以一些Unicode 定义的编码形式进行编码。 每种字符串编码在人们熟知的代码单元块中。 包括 UTF-8 编码 (把字符串编码成一个 8-位的代码单元), UTF-16 编码 (把字符串编码成一个16-位的代码单元), 和 UTF-32 编码 (把字符串编码成 32-位代码单元)</p>
+<p>Swift 提供了几种不同的方式去访问字符串的Unicode 形式。你可以用for-in语句遍历字符串, 访问作为Unicode 扩展字形集的单个字符值。这个过程在 Working with Characters 描述。</p>
+<p>或者, 或者用以下三种形式来访问字符串的值:</p>
+<p>UTF-8 代码单元集合 (用字符串的utf8属性来访问)<br>UTF-16 代码单元集合 (用字符串的utf16属性来访问)<br>21-位 Unicode 标量值的集合, 等于字符串的 UTF-32 编码方式 (用字符串的 unicodeScalars 属性访问)<br>下面的例子展示字符串的不同表现形式,字符串由字符 D, o, g, ‼ (DOUBLE EXCLAMATION MARK, 或者 Unicode scalar U+203C), 和 🐶 字符 (DOG FACE, 或者 Unicode scalar U+1F436)组成:</p>
+<p>let dogString = “Dog‼🐶”</p>
+<h1 id="UTF-8-形式"><a href="#UTF-8-形式" class="headerlink" title="UTF-8 形式"></a>UTF-8 形式</h1><p>你可以通过遍历字符串的utf8属性来访问它的 UTF-8 表现形式。 这是属性是 String.UTF8View, 这是无符号的 8-位 (UInt8)值的集合, 每个字节一个:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF8_2x.png"><br></div><br><pre><code><br>for codeUnit in dogString.utf8 {<br>    print(“(codeUnit) “, terminator: “”)<br>}<br>print(“”)<br>// 68 111 103 226 128 188 240 159 144 182<br></code></pre><br>上面这个例子, 前三个十进制 codeUnit 值 (68, 111, 103) 代表字符 D, o, 和 g, 它们的 UTF-8 形式和它们的 ASCII 表现形式一样。 接下来三个十进制 codeUnit 值 (226, 128, 188) 是双感叹号的三个字节的 UTF-8 形式。 最后四个 codeUnit 值 (240, 159, 144, 182) 是个四个字节的 UTF-8 形式，代表小狗的脸字符。<br><br># UTF-16 形式<br><br>你可以通过遍历字符串的utf16属性来访问它的 UTF-16 形式。 这个属性是 String.UTF16View, 它是无符号16-位 (UInt16)的值的集合, 每个16-位代码单元一个:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UTF16_2x.png"><br></div><br><pre><code><br>for codeUnit in dogString.utf16 {<br>    print(“(codeUnit) “, terminator: “”)<br>}<br>print(“”)<br>// Prints “68 111 103 8252 55357 56374 “<br></code></pre><br>同样, 前三个 codeUnit 值 (68, 111, 103) 代表字符 D, o, 和 g, 它们的 UTF-16 代码单元和它们的 UTF-8 形式一样(因为这些 Unicode 标量表示 ASCII 字符).<br><br>第四个 codeUnit 值 (8252) 是十六进制 203C的十进制数值, 用 Unicode 标量 U+203C表示双感叹号字符。 在 UTF-16 里表示为一个单独的编码单元。<br><br>第五六个 codeUnit 值 (55357 和 56374) 狗脸字符。 这些值是高八位 U+D83D (十进制值是 55357) 和一个第八位 U+DC36 (十进制值 56374)。<br><br># Unicode 标量形式<br><br>你可以通过遍历字符串的 unicodeScalars 属性来访问它的Unicode 标量形式。 这个是属性是 UnicodeScalarView,它是类型 UnicodeScalar 值的集合。<br><br>每个 UnicodeScalar 有一个值属性，它返回这个标量的 21-位值, 用一个 UInt32 值表示:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/UnicodeScalar_2x.png"><br></div><br><pre><code><br>for scalar in dogString.unicodeScalars {<br>    print(“(scalar.value) “, terminator: “”)<br>}<br>print(“”)<br>// Prints “68 111 103 8252 128054 “<br></code></pre><br>前三个 UnicodeScalar 值 (68, 111, 103) 再次代表 D, o, 和 g.<br><br>第四个 codeUnit 值 (8252) 是十六进制 203C 的十进制值, 是双感叹的 Unicode 标量 U+203C 。<br><br>第五个和最后一个 UnicodeScalar 值, 128054, 是十六进制 1F436的十进制值, 是狗脸字符的的 Unicode 标量 U+1F436。<br><br>作为查询它们值属性的替代, 每个 UnicodeScalar 值也可以用来构建新的字符串, 例如用做字符串插值:<br><pre><code><br>for scalar in dogString.unicodeScalars {<br>    print(“(scalar) “)<br>}<br>// D<br>// o<br>// g<br>// ‼<br>// 🐶<br></code></pre><br><br># 集合类型<br>Swift 提供了三个主要的集合类型, 数组, 集合, 和字典, 用来存储值的集合。 数组是有序的。 集合是唯一值的无序集。 字典是健值匹配的无序集合。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/CollectionTypes_intro_2x.png"><br></div><br>数组, 集合, 和字典在 Swift 里总是清楚的知道存储的值的类型和能够存储的健。 这就意味着你不能往集合里插入错误类型的值。也意味着 你知道可以从集合里或者的值的类型。<br><br>备注<br><br>Swift 的数组, 集合, 和字典类型是用泛型集合实现的。更多泛型和集合, 参见 Generics.<br><br># 集合的不稳定性<br><br>如果你创建了一个数组, 一个集合, 或者一个字典, 然后赋给一个变量。创建的这个集合就是可变的。这就意味着你可以改变这个集合，方式是通过添加, 移除, 或者改变集合里的项。如果把它们赋给一个常量, 这个集合就是不可改变的, 它的大小和内容都不能改变。<br><br>备注<br><br>如果集合不需要变化，在所有情况下创建不可变的集合是个好的实践。这样做的好处是让你容易理解自己的代码,同时让编译器可以优化你创建的集合。<br><br># 数组<br><br>数组有序存储同类型的值。 相同的值可以多次出现在数组的不同位置。<br><br>备注<br><br>Swift的数组类型跟 Foundation的 NSArray 类相桥接。<br><br># 数组类型缩写语法<br><br>T数组类型的全写法是 Array<element>, 这里Element是数组运行存储的值类型。 你可以缩写数组类型为[Element]. 尽管这两种形式功能一样, 缩写是优先考虑的而且这个教程后面一直这么写。<br><br># 创建空数组<br><br>你可以用初始化语法创建一个特定类的空数组:<br><pre><code><br>var someInts = <a href="">Int</a><br>print(“someInts is of type [Int] with (someInts.count) items.”)<br>// Prints “someInts is of type [Int] with 0 items.”<br></code></pre><br>注意 someInts 变量的类型经过初始化类型被推断为 [Int]<br><br>或者, 如果上下文已经提供类型信息, 例如一个函数参数或者一个确定类型的变量或者常量, 你可以用空的字面量来创建空数组, 这个数组通常写作 [] (一个空的中括号对):<br><pre><code><br>someInts.append(3)<br>// someInts now contains 1 value of type Int<br>someInts = []<br>// someInts is now an empty array, but is still of type [Int]<br></code></pre><br># 用默认值创建数组<br><br>Swift的数组类型也提供了一初始化器来创建相同默认值固定大小的数组。 给初始化器传一个匹配类型的默认值 (调用 repeating): 然后是在新数组中需要重复的值的个数 (调用 count):<br><pre><code><br>var threeDoubles = Array(repeating: 0.0, count: 3)<br>// threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]<br></code></pre><br><br># 通过合并数组创建数组<br><br>你可以通过合并两个已存在的数组来创建新的数组,这两个数组只要类型匹配就可以通过加法运算符 (+)来合并。 新数组的类型从合并的数组可以推断出来:<br><pre><code><br>var anotherThreeDoubles = Array(repeating: 2.5, count: 3)<br>// anotherThreeDoubles is of type [Double], and equals [2.5, 2.5, 2.5]<br><br>var sixDoubles = threeDoubles + anotherThreeDoubles<br>// sixDoubles is inferred as [Double], and equals [0.0, 0.0, 0.0, 2.5, 2.5, 2.5]<br></code></pre><br><br># 用字面量创建数组<br><br>你也可以用字面量来初始化数组, 这是种快速写一个或者多个数组值的方式。 一个数组字面量写作一列值, 用逗号分开, 一对方括号包括起来:<br><pre><code><br>[value 1, value 2, value 3]<br></code></pre><br>下面的的例子创建了一个购物列表来存储字符串值:<br><pre><code><br>var shoppingList: [String] = [“Eggs”, “Milk”]<br>// shoppingList has been initialized with two initial items<br></code></pre><br>购物列表变量定义为 “字符串值的数组”, 写作 [String]. 因为这个数组已经指定一个字符串类型值, 它就值运行存储字符串值。 这里, 购物列表数组用两个字符串值 (“Eggs” 和 “Milk”)来初始化, 写在数字字面量里。<br><br>备注<br><br>这个数组被声明为一个变量而不是一个常量，是因为在下面的例子将有更多的项目加入这个购物列表。<br><br>这种情况, 数组字面量只包含两个字符串值。 这个匹配购物列表变量的声明类型 (只能包括字符串值的数组), 用数组字面量赋值来初始化购物列表是被允许的一种方式。<br><br>由于 Swift 的类型推断, 如果你用相同类型的字面量来初始化数组,就不需要写出数组的类型。购物列表的初始化可以简写成以下形式:<br><pre><code><br>var shoppingList = [“Eggs”, “Milk”]<br></code></pre><br><br>因为数组里所有的值都是同样的类型, Swift 能够推断出 [String] 用作购物列表变量是正确的类型。<br><br># 访问和修改数组<br><br>你可以通过数组的方法,属性或者下标语法来访问和修改一个数组。<br><br>为了确定数组的项数, 使用只读属性count:<br><pre><code><br>print(“The shopping list contains (shoppingList.count) items.”)<br>// Prints “The shopping list contains 2 items.”<br></code></pre><br>使用布尔属性 isEmpty 来判断数量属性是否0:<br><pre><code><br>if shoppingList.isEmpty {<br>    print(“The shopping list is empty.”)<br>} else {<br>    print(“The shopping list is not empty.”)<br>}<br>// Prints “The shopping list is not empty.”<br></code></pre><br>通过调用 append(<em>:) 方法你可以在数组最后添加新项:<br><pre><code><br>shoppingList.append(“Flour”)<br>// shoppingList now contains 3 items, and someone is making pancakes<br></code></pre><br>或者, 使用赋值运算 (+=) 添加一个或多个符合的项:<br><pre><code><br>shoppingList += [“Baking Powder”]<br>// shoppingList now contains 4 items<br>shoppingList += [“Chocolate Spread”, “Cheese”, “Butter”]<br>// shoppingList 现在包含 7项<br></code></pre><br>用下标语法从数组中获取一个值, 在数组后的方括号里传入你想得到值的索引:<br><br>var firstItem = shoppingList[0]<br>// firstItem is equal to “Eggs”<br><br>备注<br><br>数组第一项的索引是0,不是1。 Swift 数组总是基于0开始索引。<br><br>你可以使用下标语法去改变给定索引下的值:<br><pre><code><br>shoppingList[0] = “Six eggs”<br>// 第一项现在是 “Six eggs” 而不是 “Eggs”<br></code></pre><br>你还可以通过下标语法一次改变一个范围的值, 尽管取代值跟被取代的长度不同。 下面的例子用 “Bananas” 和 “Apples” 取代了 “Chocolate Spread”, “Cheese”, 和 “Butter”:<br><pre><code><br>shoppingList[4…6] = [“Bananas”, “Apples”]<br>// shoppingList 现在包含 6项<br></code></pre><br>备注<br><br>你不能用下标语法添加新的项到数组最后。<br><br>在特定位置插入新项, 调用数组插入方法 insert(</em>:at:):<br><pre><code><br>shoppingList.insert(“Maple Syrup”, at: 0)<br>// shoppingList now contains 7 items<br>// “Maple Syrup” is now the first item in the list<br></code></pre><br>调用 insert(<em>:at:) 方法在购物列表头插入一个新的项 “Maple Syrup”, 用索引0标明。<br><br>类似的, 移除一项使用 remove(at:) 方法。 这个方法移除指定索引的项然后返回这个移除项 (尽管你可能无视这个返回值):<br><pre><code><br>let mapleSyrup = shoppingList.remove(at: 0)<br>// 位于索引0的项被移除<br>// 购物列表现在包含6项, 没有 Maple Syrup<br>// mapleSyrup 常量现在等于被移除的 “Maple Syrup” 字符串<br></code></pre><br>备注<br><br>如果越界访问数组的值, 你会触发运行时错误。你可以用它跟数组个数属性对比来判断索引的有效性。除了个数为0的情况 (意味着数组是空的), 最大索引值通常是数组个数 - 1, 因为数组是从0开始计数的。<br><br>一个数据项被移除数组空隙就会闭合,所以索引 0 的值再次等于 “Six eggs”:<br><pre><code><br>firstItem = shoppingList[0]<br>// firstItem 现在等于 “Six eggs”<br></code></pre><br>如果你想移除最后一项, 使用 removeLast() 方法而不是 remove(at:) 方法,这样就避免需要查询数组的个数属性。和 remove(at:) 方法一样, removeLast() 返回移除的项:<br><pre><code><br>let apples = shoppingList.removeLast()<br>// 最后一项被移除<br>// 购物列表现在包含5项, 没有苹果<br>// apples 常量现在等于被移除的 “Apples” 字符串<br></code></pre><br><br># 遍历数组<br><br>你可以用for-in循环来遍历数组中的所有值集:<br><pre><code><br>for item in shoppingList {<br>    print(item)<br>}<br>// Six eggs<br>// Milk<br>// Flour<br>// Baking Powder<br>// Bananas<br></code></pre><br>如果需要数据项的值和整数索引, 使用 enumerated() 方法来遍历数组。对于数组中的每一项, enumerated() 方法返回一个包含索引和值的元组。 整数以0开始每项递增; 如果你遍历整个数组, 这些整数匹配数据项的索引。你可以分解元组到临时的常量或者变量,来作为迭代的部分:<br><pre><code><br>for (index, value) in shoppingList.enumerated() {<br>    print(“Item (index + 1): (value)”)<br>}<br>// Item 1: Six eggs<br>// Item 2: Milk<br>// Item 3: Flour<br>// Item 4: Baking Powder<br>// Item 5: Bananas<br></code></pre><br><br># 集合<br><br>集合无序存储同样类型的不同值。 如果排序不重要可以选择使用集合代替数组, 或者你需要确保每项只出现一次。<br><br>备注<br><br>Swift 的 Set 类型跟 Foundation 的 NSSet 类桥接。<br><br># 集合类型的哈希值<br><br>集合里一个类型为了存储就必须可哈希—就是说, 这个类型必须提供一个方式去计算自己的哈希值。 一个哈希值是一个整型值, 这对于相等的对象都是一样的, 如果 if a == b, 那么 a.hashValue == b.hashValue.<br><br>所有 Swift 的基本类型默认都是可哈希的 (比如 String, Int, Double, 和 Bool), 可以被用作集合值类型或者字典建类型。 枚举case 值没有相应的值默认也是可哈希的。<br><br>备注<br><br>你可以使用自定义类型作为集合值类型或者字典健类型,通过让它们遵守Swift 标准库中的 Hashable 协议。 符合协议的类型必须提供一个可获取的整形属性 hashValue. 在相同程序中的不同执行,或者在不同程序中, 类型的哈希属性返回的值不要求相同。<br><br>因为 Hashable 协议符合 Equatable, 符合类型必须提等号运算符 (==)的实现。 Equatable 协议要求任何符合==实现的都是一个相等关系。 就是说, ==  的实现必须满足下面的条件, 对于 a, b, 和 c 所有值:<br><br>a == a (自反性)<br><br>a == b 表示 b == a (对称性)<br><br>a == b &amp;&amp; b == c 表示 a == c (传递性)<br><br># 集合类型语法<br><br>集合类型写作 Set<element>, 这里 Element 是集合允许存储的类型。 跟数组不同, 集合没有等价的缩写形式。<br><br># 创建和初始化空集合<br><br>你可以通过使用初始化器语法创建特定类型的空集合:<br><pre><code><br>var letters = Set<character>()<br>print(“letters is of type Set<character> with (letters.count) items.”)<br>// 打印 “letters is of type Set<character> with 0 items.”<br></character></character></character></code></pre><br>备注<br><br>letters 变量的类型推断为 Set<character>, 通过初始化器的类型。<br><br>或者, 如果上下文已经提供了类型信息, 比如一个函数参数或者一个已经指定类型的变量和常量, 你可以用一个空的数组字面量来创建一个空集合:<br><pre><code><br>letters.insert(“a”)<br>// letters 现在包含了一个字符类型的值<br>letters = []<br>// letters 现在是一个空集合, 但是依然是 Set<character> 类型<br></character></code></pre><br><br># 用数组字面量创建集合<br><br>你可以用数组字面量初始化一个集合, 这是一个速写方式来给一个集合赋值。<br><br>下面的例子创建一个存储字符串值的集合 favoriteGenres:<br><pre><code><br>var favoriteGenres: Set<string> = [“Rock”, “Classical”, “Hip hop”]<br>// favoriteGenres 有了三个初始值<br></string></code></pre><br>favoriteGenres 变量声明成 “字符串值的集合”, 写作 Set<string>. 因为这个集合指定了一个字符串的值类型, 它只允许存储字符串值, favoriteGenres 集合用三个字符串 (“Rock”, “Classical”, 和 “Hip hop”)来初始化, 写在一个数组字面量里。<br><br>备注<br><br>favoriteGenres 集合声明成一个变量而不是一个常量, 这是因为添加和移除的项在下面的示例里。<br><br>集合通过数组字面量不能推断出类型, 所以类型必须显示声明。 不过, 由于Swift的类型推断, 如果数组字面量包含的值类型相同,你就不需要写集合的类型。favoriteGenres 初始化可以简写如下:<br><pre><code><br>var favoriteGenres: Set = [“Rock”, “Classical”, “Hip hop”]<br></code></pre><br>因为数组字面量里的值都是同样类型, Swift 可以推断 Set<string> 用作favoriteGenres 变量是正确的类型。<br><br># 访问和修改集合<br><br>你可以通过集合的方法和属性来访问和修改它。<br><br>为了得到集合的项数, 使用只读的 count 属性:<br><pre><code><br>print(“I have (favoriteGenres.count) favorite music genres.”)<br>// 打印 “I have 3 favorite music genres.”<br></code></pre><br>使用布尔属性 isEmpty 快速判断 count 属性是否等于 0:<br><pre><code><br>if favoriteGenres.isEmpty {<br>    print(“As far as music goes, I’m not picky.”)<br>} else {<br>    print(“I have particular music preferences.”)<br>}<br>// 打印 “I have particular music preferences.”<br></code></pre><br>调用集合的 insert(</string></string></character></element></em>:) 方法插入一个新项:<br><pre><code><br>favoriteGenres.insert(“Jazz”)<br>// favoriteGenres 现在包含 4 项<br></code></pre><br>你可以用集合的 remove(<em>:) 方法从集合里移除项, 如果它是集合一员的话, 然后返回被移除的项, 如果集合不包含这项就返回nil。 或者, 移除所有项可以用 removeAll() 方法。<br><pre><code><br>if let removedGenre = favoriteGenres.remove(“Rock”) {<br>    print(“(removedGenre)? I’m over it.”)<br>} else {<br>    print(“I never much cared for that.”)<br>}<br>// 打印 “Rock? I’m over it.”<br></code></pre><br>检查集合是否包含特定项, 用 contains(</em>:) 方法。<br><pre><code><br>if favoriteGenres.contains(“Funk”) {<br>    print(“I get up on the good foot.”)<br>} else {<br>    print(“It’s too funky in here.”)<br>}<br>// 打印 “It’s too funky in here.”<br></code></pre><br><br># 遍历集合<br><br>你可以用for-in循环遍历集合的值。<br><pre><code><br>for genre in favoriteGenres {<br>    print(“(genre)”)<br>}<br>// Jazz<br>// Hip hop<br>// Classical<br></code></pre><br><br>Swift 的集合类型是无序的。以特定顺序去遍历集合的值, 使用 sorted() 方法, 这个方法返回一个值数组,按照小于运算符排序。<br><pre><code><br>for genre in favoriteGenres.sorted() {<br>    print(“(genre)”)<br>}<br>// Classical<br>// Hip hop<br>// Jazz<br></code></pre><br><br># 集合操作<br><br>你可以有效进行基础的集合操作, 比如合并两个集合, 判断两个集合是否有共同值, 或者判读两个集合是否包含所有,几个,或者没有任何相同值。<br><br># 基本集合操作<br><br>下面的图描述了两个集合a 和 b, 共享区域表示集合操作结果。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setVennDiagram_2x.png"><br></div><br>用 intersection(<em>:) 方法创建交集。<br>用 symmetricDifference(</em>:) 方法创建交集之外的集合。<br>用 union(<em>:) 方法创建并集。<br>用 subtracting(</em>:) 方法创建去掉指定集合的集合。<br><pre><code><br>let oddDigits: Set = [1, 3, 5, 7, 9]<br>let evenDigits: Set = [0, 2, 4, 6, 8]<br>let singleDigitPrimeNumbers: Set = [2, 3, 5, 7]<br><br>oddDigits.union(evenDigits).sorted()<br>// [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]<br>oddDigits.intersection(evenDigits).sorted()<br>// []<br>oddDigits.subtracting(singleDigitPrimeNumbers).sorted()<br>// [1, 9]<br>oddDigits.symmetricDifference(singleDigitPrimeNumbers).sorted()<br>// [1, 2, 9]<br></code></pre><br><br># 集合成语和等式<br><br>下面的图描述了三个集合 a, b 和 c, 重叠区域表示集合共享的元素。 集合a是集合b的超集, 因为a包含b的所有元素。 相反, 集合b是集合a的子集, 因为b中的元素都包含在集合a中。 集合b与集合c不相交, 因为它们没有共同的元素。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/setEulerDiagram_2x.png"><br></div><br>用相等运算符 (==) 判断两个集合是否所有值都相同。<br>用 isSubset(of:) 方法判断一个集合是否是另外一个集合的字集。<br>用 isSuperset(of:) 方法判断一个集合是否是另外一个集合的超集。<br>用 isStrictSubset(of:) 或者 isStrictSuperset(of:) 方法判断一个集合是否是一个子集或者超集, 但是不等于一个指定的集合。用 isDisjoint(with:) 方法判断是否两个集合不相交。<br><pre><code><br>let houseAnimals: Set = [“🐶”, “🐱”]<br>let farmAnimals: Set = [“🐮”, “🐔”, “🐑”, “🐶”, “🐱”]<br>let cityAnimals: Set = [“🐦”, “🐭”]<br><br>houseAnimals.isSubset(of: farmAnimals)<br>// true<br>farmAnimals.isSuperset(of: houseAnimals)<br>// true<br>farmAnimals.isDisjoint(with: cityAnimals)<br>// true<br></code></pre><br><br># 字典<br><br>字典无序存储匹配的同类型的健值。每个值对应一个唯一的健, 它作为值在字典里的标识符。 跟数组项不同, 字典里的项是无序的。如果基于标识符查找值你可以用字典, 很像真实世界字典的用法。<br><br># 字典类型速记语法<br><br>Swift 字典类型完整写法是 Dictionary<key, value="">, Key 是可以用作字典值的值类型, Value 是字典为健存储的值类型。<br><br>备注<br><br>字典 Key 类型一定要符合 Hashable 协议, 跟集合值类型一样。<br><br>你也可以字典类型的简写形式 [Key: Value]. 尽管两个形式功能一样, 简写形式优先使用并贯穿整个教程。<br><br># 创建一个空字典<br><br>跟数组一样, 你可用用初始化语法创建一个特定类型的字典:<br><pre><code><br>var namesOfIntegers = <a href="">Int: String</a><br>// namesOfIntegers is an empty [Int: String] dictionary<br></code></pre><br>这个例子定义了一个空字典,类型是 [Int: String],用来存储人类可读的整数名字。健是整形, 值是字符串类型。<br><br>如果上下文已经提供了类型信息, 你可以用一个空的字典字面量来创建一个空字典, 写作 [:] (一对中括号中间一个冒号):<br><pre><code><br>namesOfIntegers[16] = “sixteen”<br>// namesOfIntegers 现在包含 1 key-value pair<br>namesOfIntegers = [:]<br>// namesOfIntegers 再次成为空,类型是[Int: String]<br></code></pre><br><br># 用字面量创建字典<br><br>你还可以用字面量来初始化一个字典, 跟早前数组字面量语法相似。字典字面量是定义一个或者多个键值对集合的速写方法。<br><br>键值对是健和值的组合。 在一个字典字面量里, 健和值在键值对里用冒号分开。 键值对写作一个列表, 用逗号分开, 包含在一对中括号里:<br><pre><code><br>[key 1: value 1, key 2: value 2, key 3: value 3]<br></code></pre><br>下面的例子创建一个字典来存储国际机场名字。在这个字典里, 健是三个字母的国际航空公司编码, 值是机场名:<br><pre><code><br>var airports: [String: String] = [“YYZ”: “Toronto Pearson”, “DUB”: “Dublin”]<br></code></pre><br>airports 字典类型是 [String: String], 意思是 “一个字典健值都是字符串类型”.<br><br>备注<br><br>airports 字典声明成一个变量而非常量, 因为下面的例子需要添加更多机场进去。<br><br>airports 用两个键值对字面量初始化。第一个键值对有一个健 “YYZ” 和一个值 “Toronto Pearson”. 第二个键值对有一个健 “DUB” 和一个值”Dublin”.<br><br>字面量包含两个 String: String 对。 简直类型匹配机场类型的变量声明 (一个字典只有字符串健和字符串值), 所以字面量赋值是允许的,可以用来初始化机场字典。<br><br>跟数组一样, 如果你用相同类型的键值字典初始化，你就不需要写出字典的声明类型。初始化方法可以简写如下:<br><pre><code><br>var airports = [“YYZ”: “Toronto Pearson”, “DUB”: “Dublin”]<br></code></pre><br>因为字面量的所有健类型都是一样的, 同样所有的值也是, Swift 可以推断出来 [String: String] 是正确的类型声明。<br><br># 访问和修改字典<br><br>你可以通过字典的方法和属性来访问和修改它, 或者使用下标语法。<br><br>跟数组一样, 使用count 属性获取字典的项数:<br><pre><code><br>print(“The airports dictionary contains (airports.count) items.”)<br>// 打印 “The airports dictionary contains 2 items.”<br></code></pre><br>用 isEmpty 属性判断count 属性是否等于 0:<br><pre><code><br>if airports.isEmpty {<br>    print(“The airports dictionary is empty.”)<br>} else {<br>    print(“The airports dictionary is not empty.”)<br>}<br>// 打印 “The airports dictionary is not empty.”<br></code></pre><br>你可以用下标语法往字典添加新项。 使用对应的类型的键作为下标索引, 并赋一个对应的新值:<br><pre><code><br>airports[“LHR”] = “London”<br>// airports 现在包含 3 项<br></code></pre><br>你可以用下标语法改变指定键对应的值:<br><pre><code><br>airports[“LHR”] = “London Heathrow”<br>// “LHR” 的值已经变成”London Heathrow”<br></code></pre><br>作为下标的替代方案, 用字典的 updateValue(<em>:forKey:) 方法设置或者更新指定键的值。 跟上面下标实例一样,  updateValue(</em>:forKey:) 方法在键不存在时设置值, 如果键存在则进行更新。和下标不像的是, updateValue(<em>:forKey:) 方法在执行更新后返回老的值。 这个可以让你知道更新是否生效。<br><br>updateValue(</em>:forKey:) 方法返回可选类型的值。对个存储字符串值的字典来说, 比如, 这个方法返回 String?, 或者 “optional String”. 可选值包括未更新前存在的键对应的老值, 如果值不存在则包括nil:<br><pre><code><br>if let oldValue = airports.updateValue(“Dublin Airport”, forKey: “DUB”) {<br>    print(“The old value for DUB was (oldValue).”)<br>}<br>// 打印 “The old value for DUB was Dublin.”<br></code></pre><br>你可以用下标语法获取特定键对应的值。因为有可能去请求不存在值的键, 字典的下标就会返回一个可选值。 如果字典包含请求键对应的值, 下标就返回一个可选值，这个值包含这个键对应的存在的值。否则返回 nil:<br><pre><code><br>if let airportName = airports[“DUB”] {<br>    print(“The name of the airport is (airportName).”)<br>} else {<br>    print(“That airport is not in the airports dictionary.”)<br>}<br>// 打印 “The name of the airport is Dublin Airport.”<br></code></pre><br>你可以通过把键对应的值赋空的方式,用下标语法从字典移除一个键值对:<br><pre><code><br>airports[“APL”] = “Apple International”<br>// “Apple International” is not the real airport for APL, so delete it<br>airports[“APL”] = nil<br>// APL 现在已经从字典移除<br></code></pre><br>或者, 用 removeValue(forKey:) 这个方法来移除。 这个方法移除的键值对如果存在返回被移除的值,否则返回nil:<br><pre><code><br>if let removedValue = airports.removeValue(forKey: “DUB”) {<br>    print(“The removed airport’s name is (removedValue).”)<br>} else {<br>    print(“The airports dictionary does not contain a value for DUB.”)<br>}<br>// Prints “The removed airport’s name is Dublin Airport.”<br></code></pre><br><br># 遍历字典<br><br>你用for-in 循环来遍历字典。 字典中的每一项都以 (key, value) 元组形式返回, 你可以分解元组到临时的变量或者常量:<br><pre><code><br>for (airportCode, airportName) in airports {<br>    print(“(airportCode): (airportName)”)<br>}<br>// YYZ: Toronto Pearson<br>// LHR: London Heathrow<br></code></pre><br><br>你可以通过访问字典的键值属性来获取键值的集合:<br><pre><code><br>for airportCode in airports.keys {<br>    print(“Airport code: (airportCode)”)<br>}<br>// Airport code: YYZ<br>// Airport code: LHR<br>for airportName in airports.values {<br>    print(“Airport name: (airportName)”)<br>}<br>// Airport name: Toronto Pearson<br>// Airport name: London Heathrow<br></code></pre><br>如果你想使用字典的键值的数组实例, 用键值来初始化一个新的数组:<br><pre><code><br>let airportCodes = <a href="airports.keys">String</a><br>// airportCodes is [“YYZ”, “LHR”]<br><br>let airportNames = <a href="airports.values">String</a><br>// airportNames 是 [“Toronto Pearson”, “London Heathrow”]<br></code></pre><br><br>Swift的字典类型无序的。 为了用特定顺序去遍历字典的键值, 用这个 sorted() 方法。<br><br># 控制流<br>Swift 提供了一系列控制流语句。 包括 while 循环来执行多次任务; if, guard, 金额 switch 语句来再不同条件这些不同代码; 还有 break 和 continue 来转移控制流。<br><br>Swift 同时提供了 for-in 循环使得遍历数组, 字典, 范围, 字符串, 和其他序列变得容易。<br><br>Swift的 switch 语句比多数类C语言相同语句更加高效有力。 因为Swift 的 switch 语句的分支不会落到下一分支, 这就避免了C常见的错误。 分支可以匹配不同的模式, 包括区间匹配, 元组, 转换成指定类型。 switch 分支匹配的值可以绑定到临时的变量或者常量。每个分支可以用where 族来表达符合匹配条件。<br><br># For-In 循环<br><br>你使用 for-in 循环来遍历序列, 比如数值范围, 数组中的项, 字符串中的字符。<br><br>下面的例子是五倍乘法表的前几个条目:<br><pre><code><br>for index in 1…5 {<br>    print(“(index) times 5 is (index <em> 5)”)<br>}<br>// 1 times 5 is 5<br>// 2 times 5 is 10<br>// 3 times 5 is 15<br>// 4 times 5 is 20<br>// 5 times 5 is 25<br></em></code></pre><br>遍历的序列是1 到 5的数值范围, 包括1和5,使用闭合区间运算符 (…)提到过。索引值设置给 range (1)的第一个数, 然后循环体中的语句就会执行。 这种情况, 循环体只有一个语句, 打印当前索引值5的倍数。 这个语句执行后, 索引值更新为包含在 range (2) 中的第二个值, print(<em>:separator:terminator:) 函数再次调用。 这个过程直到区间结束。<br><br>上面的例子, 索引值是常量而且自动设置。 像这样, 索引在使用前不必声明。 在循环声明中隐式声明, 不需要let关键字。<br><br>如果你不需要序列中的所有值, 可以在变量名位置处使用下划线来忽略这个值。<br><pre><code><br>let base = 3<br>let power = 10<br>var answer = 1<br>for </code></pre></em> in 1…power {<br>    answer = base<br>}<br>print(“(base) to the power of (power) is (answer)”)<br>// 打印 “3 to the power of 10 is 59049”<br><br>上面的例子计算一个数的幂(这个例子里, 3 的10次幂)。 它乘以一个初始值 1 (就是 3 的0次幂), 十次, 使用一个闭合区间,1开始10结束。下划线用在这里,使得单个值被忽略同时不会在遍历过程中访问当前值。<br><br>使用 for-in 循环来遍历数组的项。<br><pre><code><br>let names = [“Anna”, “Alex”, “Brian”, “Jack”]<br>for name in names {<br>    print(“Hello, (name)!”)<br>}<br>// Hello, Anna!<br>// Hello, Alex!<br>// Hello, Brian!<br>// Hello, Jack!<br></code></pre><br>你还可以遍历一个字典来遍历它的键值对。 字典遍历时每次返回一个 (key, value) 元组, 你可以在for-in循环中显示分解元组的值给常量赋值。这里, 字典的键分解给animalName 常量, 字典的值分配给了 legCount 常量。<br><pre><code><br>let numberOfLegs = [“spider”: 8, “ant”: 6, “cat”: 4]<br>for (animalName, legCount) in numberOfLegs {<br>    print(“(animalName)s have (legCount) legs”)<br>}<br>// ants have 6 legs<br>// spiders have 8 legs<br>// cats have 4 legs<br></code></pre><br><br>字典项遍历的顺序不需要和插入顺序一致。 字典内容是无序的, 遍历时不能保证获取的顺序。<br><br># While 循环<br><br>while 循环执行一组语句,直到条件失败。 首次遍历前,遍历次数不知道的时候使用这种方式是最好的。Swift 提供两种 while 循环:<br><br>while 每次循环前评估条件。<br>repeat-while 每次循环后评估条件。<br># While<br><br>while 循环从评估条件开始。 如果条件是真的, 一组语句会重复执行直到条件变成假的。<br><br>这是while 循环的基本形式:<br><pre><code><br>while condition {<br>    statements<br>}<br></code></pre><br>这个例子是个蛇与梯子的游戏:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/snakesAndLadders_2x.png"><br></div><br>游戏规则如下:<br><br>棋盘有25个方格, 目标是占据或者超过25。<br>每次, 摇一个6边的骰子然后移动对应数目方格, 沿着上图的点箭头的水平路径移动。<br>如果位于梯子底部, 往梯子上方移动。<br>如果位于蛇头, 往蛇下方移动。<br>游戏棋盘用整形值数组表示。大小基于 finalSquare 常量, 用来初始化数组并且判断取胜的条件。 棋盘用26个0值初始化, 而不是25 (每个索引从0到25)。<br><pre><code><br>let finalSquare = 25<br>var board = <a href="repeating: 0, count: finalSquare + 1" target="_blank" rel="external">Int</a><br></code></pre><br>一些方格会为蛇和梯子设置更多的指定值。梯子方格是正数,蛇方格是负数。<br><pre><code><br>board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02<br>board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08<br></code></pre><br>方格 3 包含了梯子的底部,可以爬到方格11。 为了表示这个, board[03] 等于 +08, 这等于整数值8 (3和11的差值) 加号 (+i) 和减号 (-i)相等, 数值低于10的用0填充,这样所以棋盘都被定义了。<br><br>玩家开始方格是 “方格0”, 靠着棋盘的左下角。 第一次摇骰子总是让玩家进入棋盘。<br><pre><code><br>var square = 0<br>var diceRoll = 0<br>while square &lt; finalSquare {<br>    // roll the dice<br>    diceRoll += 1<br>    if diceRoll == 7 { diceRoll = 1 }<br>    // move by the rolled amount<br>    square += diceRoll<br>    if square &lt; board.count {<br>        // if we’re still on the board, move up or down for a snake or a ladder<br>        square += board[square]<br>    }<br>}<br>print(“Game over!”)<br></code></pre><br>上面的例子用了一个很简单方法去摇骰子。 不用随机数, 用一初始值为0的 diceRoll。 每次循环, diceRoll 加一然后判断它是否过大。 当返回值等于7, 骰子值过大然后重置为1。diceRoll 值总是 1, 2, 3, 4, 5, 6, 1, 2 然后不停循环。<br><br>摇完筛子, 往前移动 diceRoll 方格。 如果移动超过25, 游戏结束。考虑边界安全，在操作方格的时候。<br><br>备注<br><br>没有这个判断, board[square] 可能会越界访问棋盘数组的值, 这会触发一个错误。 如果方格等于 26, 代码会判断board[26] 的值, 这会超过数组的大小。<br><br>当前while 循环执行然后结束, 然后循环的条件会被判断是否再次执行。如果玩家已经移动或者超过25, 循环的条件变成假然后游戏就结束。<br><br>while 循环适合这个例子, 因为开始循环的时候游戏的长度并不清楚。 相反, 一个特定条件满足后循环被执行了。<br><br># Repeat-While<br><br>另外一种while循环的变种, 就是 repeat-while 循环, 先执行一次循环, 然后再考虑循环的条件。 然后继续执行直到条件变成假。<br><br>备注<br><br>Swift 里的 repeat-while 循环类似其他语言里的 do-while 循环。<br><br>这里是 repeat-while 循环的基本样式:<br><pre><code><br>repeat {<br>    statements<br>} while condition<br></code></pre><br>这里还是蛇与梯子的例子, 用 repeat-while 循环来写而不是 while 循环。 finalSquare, board, square, 和 diceRoll的值初始化方式跟while循环一样。<br><pre><code><br>let finalSquare = 25<br>var board = <a href="repeating: 0, count: finalSquare + 1" target="_blank" rel="external">Int</a><br>board[03] = +08; board[06] = +11; board[09] = +09; board[10] = +02<br>board[14] = -10; board[19] = -11; board[22] = -02; board[24] = -08<br>var square = 0<br>var diceRoll = 0<br></code></pre><br>这个游戏版本, 第一步是判断梯子和蛇。 没有梯子带着玩家直接去方格25, 因为不太可能通过爬梯子去赢得游戏。因此, 判断有没有蛇和梯子是很安全的。<br><br>游戏开始, 玩家在 “square zero”. board[0] 总是等于0没有影响。<br><pre><code><br>repeat {<br>    // move up or down for a snake or ladder<br>    square += board[square]<br>    // roll the dice<br>    diceRoll += 1<br>    if diceRoll == 7 { diceRoll = 1 }<br>    // move by the rolled amount<br>    square += diceRoll<br>} while square &lt; finalSquare<br>print(“Game over!”)<br></code></pre><br><br>蛇与梯子判断后, 摇动筛子玩家往前移动 diceRoll 方格。 当前循环执行然后结束。<br><br>循环条件 (while square &lt; finalSquare) 和以前一样, 不过这次开始不评估,直到第一次循环结束才评估。repeat-while 循环比 while loop 循环更适合这个游戏。上面的 repeat-while 循环, 当条件确认方格还在棋盘上后, square += board[square] 总是立即执行。 这就不需要像之前那样判断数组边界。<br><br># 条件语句<br><br>基于特定条件执行不同代码片段经常用到。 在碰到错误时你可能想运行额外的代码片段, 或者在数值变得太高或者太低的时候也是。为了做这件事, 你让部分代码带有条件性。<br><br>Swift 提供两种方式给你的代码添加条件分支: if 语句和 switch 语句。你用 if 语句评估条件会有一些可能的结果。 switch 语句在比较复杂的多个排列时很有用, 在模式匹配可以帮助选择合适代码分支执行的情况也是。<br><br># If<br><br>最简单的形式, if 语句有一个单一条件。 条件为真执行一个语句集合。<br><pre><code><br>var temperatureInFahrenheit = 30<br>if temperatureInFahrenheit &lt;= 32 {<br>    print(“It’s very cold. Consider wearing a scarf.”)<br>}<br>// 打印 “It’s very cold. Consider wearing a scarf.”<br></code></pre><br>上面的例子判断文档是否小于等于华氏32度 (冰点)。 如果是, 打印一条信息。 否则, 不打印消息, 代码在大括号后继续执行。<br><br>if 语句还可以提供一个替代语句集合, 就是 else 字句, 针对条件是假的情况。 这些语句用else 关键字表示。<br><pre><code><br>temperatureInFahrenheit = 40<br>if temperatureInFahrenheit &lt;= 32 {<br>    print(“It’s very cold. Consider wearing a scarf.”)<br>} else {<br>    print(“It’s not that cold. Wear a t-shirt.”)<br>}<br>// 打印 “It’s not that cold. Wear a t-shirt.”<br></code></pre><br>两个分支之一总会执行。 因为温度已经增长到华氏40度, 这不够冷到戴围巾,因此else分支被触发了。<br><br>你可以链接多个if语句来考虑额外的语句。<br><pre><code><br>temperatureInFahrenheit = 90<br>if temperatureInFahrenheit &lt;= 32 {<br>    print(“It’s very cold. Consider wearing a scarf.”)<br>} else if temperatureInFahrenheit &gt;= 86 {<br>    print(“It’s really warm. Don’t forget to wear sunscreen.”)<br>} else {<br>    print(“It’s not that cold. Wear a t-shirt.”)<br>}<br>// 打印 “It’s really warm. Don’t forget to wear sunscreen.”<br></code></pre><br>在这个库, 额外的if语句用来响应特别温暖的温度。 最后的else语句保留, 它响应既不太热也不太冷的情况。<br><br>最后的else语句是可选的, 不过, 如果不需要执行可以去掉。<br><pre><code><br>temperatureInFahrenheit = 72<br>if temperatureInFahrenheit &lt;= 32 {<br>    print(“It’s very cold. Consider wearing a scarf.”)<br>} else if temperatureInFahrenheit &gt;= 86 {<br>    print(“It’s really warm. Don’t forget to wear sunscreen.”)<br>}<br></code></pre><br><br>因为这个温度既不太冷也不太热,所以不会触发if或者else语句,没有打印信息。<br><br># Switch<br><br>switch 语句设想一个值,然后跟一些可能的匹配模式比较。然后执行合适的代码, 基于第一次匹配成功。switch 语句提供了if语句的替代方法来响应多种潜在状态的情况。<br><br>最简单的形式, 一个 switch 语句用一个值跟一个或者多个同类型的值相比较。<br><pre><code><br>switch some value to consider {<br>case value 1:<br>    respond to value 1<br>case value 2,<br>     value 3:<br>    respond to value 2 or 3<br>default:<br>    otherwise, do something else<br>}<br></code></pre><br>每个 switch 语句由多个case分支组成, 每个分支以case 关键字开始。 除了跟指定值比较外, Swift 为case分支提供了指定更复杂匹配模式的方法。这些选项本章后面会描述。<br><br>跟if语句体很像, 每个 case 是代码执行的单独分支。 switch 语句决定是否选择这个分支。这个过程叫分发。<br><br>每个switch 语句务必是详尽的。 就是说, 每个能想到的类型值都要case匹配。 为每个可能值都提供case是不合适的。你可以定义一个默认case覆盖没有显示处理的值。 默认case使用default关键字指明, 必须总是出现在最后。<br><br>这个例子使用一个 switch 语句来出处理一个小写字母someCharacter:<br><pre><code><br>let someCharacter: Character = “z”<br>switch someCharacter {<br>case “a”:<br>    print(“The first letter of the alphabet”)<br>case “z”:<br>    print(“The last letter of the alphabet”)<br>default:<br>    print(“Some other character”)<br>}<br>// 打印 “The last letter of the alphabet”<br></code></pre><br><br>switch 语句第一个case匹配英文字母表第一个字母 a, 第二个case匹配最后一个字母 z. 因为 switch 语句对于每个可能的字符都要有case, 不是每个字母表字符都需要。这个switch 语句使用了一个default case 去处理a 和 z之外的其他所有字母。这保证了switch语句的详细性。<br><br># 非隐式 Fallthrough<br><br>和C 与 objective-C 的switch语句对比, Swift 中的switch语句不会 fall through case底部并且跳到下一个case。 相反, 在第一次匹配到case后整个switch语句执行就完成了。不要求显示的break语句。 这使得switch语句更安全,更容易使用,而且避免执行多个case的错误。<br><br>备注<br><br>尽管Swift 不要求break, 你仍然可以在Swift中使用。 具体可以参见 Break in a Switch Statement.<br><br>case 体必须包含至少一句可执行语句。下面的代码的无效的, 因为第一个case是空的:<br><pre><code><br>let anotherCharacter: Character = “a”<br>switch anotherCharacter {<br>case “a”: // Invalid, the case has an empty body<br>case “A”:<br>    print(“The letter A”)<br>default:<br>    print(“Not the letter A”)<br>}<br>// 这会报一个编译期错误<br></code></pre><br>跟C中的switch语句不同, 这个 switch 语句不能同时匹配 “a” 和 “A”. 相反, 它会报一个编译期错误,因为case “a”: 没有任何可以执行的语句。这个方法避免了突然从一个case跳入另外一个case, 让代码意图清晰安全。<br><br>如果要用一个case同时匹配”a” 和 “A”, 把这两个值合并到一个case语句, 用逗号把它们分开。<br><pre><code><br>let anotherCharacter: Character = “a”<br>switch anotherCharacter {<br>case “a”, “A”:<br>    print(“The letter A”)<br>default:<br>    print(“Not the letter A”)<br>}<br>// Prints “The letter A”<br></code></pre><br>为了可读性, 复合case也可以写作多行。 具体参见 Compound Cases.<br><br>备注<br><br>为了显式fall through 到某个case下面, 使用 fallthrough 关键字。<br><br># 区间匹配<br><br>switch case里面的值可以包含在区间里判断。 这个例子使用数字区间来提供一个对任何数字大小的自然语言统计。<br><pre><code><br>let approximateCount = 62<br>let countedThings = “moons orbiting Saturn”<br>var naturalCount: String<br>switch approximateCount {<br>case 0:<br>    naturalCount = “no”<br>case 1..<5: naturalcount="a few" case="" 5..<12:="" 12..<100:="" 100..<1000:="" default:="" }="" print("there="" are="" \(naturalcount)="" \(countedthings).")="" prints="" "there="" dozens="" of="" moons="" orbiting="" saturn."="" <="" code=""></5:></code></pre><br><br>上面的例子, approximateCount 在switch语句里估算。 每个case把这个值跟一个数字或者区间进行比较。因为 approximateCount 值落在 12 和 100之间, naturalCount 被赋值为 “dozens of”, 然后代码执行跳出switch语句继续执行。<br><br># 元组<br><br>你可以在switch语句中使用元组测试多值。元组元素可以跟一个不同值或者值区间进行测试。或者, 使用通配下划线 (<em>) 去匹配可能的值。<br><br>下面的例子有一个 (x, y) 点, 用一个简单的元组类型 (Int, Int) 表示, 并且在下面的图表中标示。<br><pre><code><br>let somePoint = (1, 1)<br>switch somePoint {<br>case (0, 0):<br>    print(“(0, 0) is at the origin”)<br>case (</code></pre></em>, 0):<br>    print(“((somePoint.0), 0) is on the x-axis”)<br>case (0, _):<br>    print(“(0, (somePoint.1)) is on the y-axis”)<br>case (-2…2, -2…2):<br>    print(“((somePoint.0), (somePoint.1)) is inside the box”)<br>default:<br>    print(“((somePoint.0), (somePoint.1)) is outside of the box”)<br>}<br>// 打印 “(1, 1) is inside the box”<br><br><br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphSimple_2x.png"><br></div><br>switch 语句决定这个点是否位于原点 (0, 0), 红色的 x-轴, 橙色 y-轴, 在蓝色 4-by-4 方块里原点在中心, 或者在方块之外。<br><br>跟 C 不同, Swift 允许多个case 去处理相同的值。 事实上, (0, 0)点可以满足例子的四个case。不过, 如果多个匹配都可能, 第一个匹配上的总是执行。 (0, 0) 点首先匹配case (0, 0), 其他所有匹配的case都会被忽略。<br><br># 值绑定<br><br>一个 switch case 可以绑定值到临时的常量或者变量, 用在case 体中。这个就是值绑定, 因为值绑定到case 体中的临时常量或者变量上。<br><br>下面这个例子有一个(x, y) 点, 是元组类型 (Int, Int), 在下面的图表中标示:<br><pre><code><br>let anotherPoint = (2, 0)<br>switch anotherPoint {<br>case (let x, 0):<br>    print(“on the x-axis with an x value of (x)”)<br>case (0, let y):<br>    print(“on the y-axis with a y value of (y)”)<br>case let (x, y):<br>    print(“somewhere else at ((x), (y))”)<br>}<br>// Prints “on the x-axis with an x value of 2”<br></code></pre><br><br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphMedium_2x.png"><br></div>
 
 <p>switch 语句判断这个点是在红色的 x-轴, 橙色的 y-轴, 还是其他什么地方 (不在轴上)。</p>
 <p>这三个 switch case声明了占位符常量 x 和 y, 临时存放来自 anotherPoint 的一个或者两个元组值。第一个 case, case (let x, 0), 匹配任何y值为0 然后把坐标点x的值赋给临时常量 x. 类似的, 第二个case, case (0, let y), 匹配任何x值为0,然后把坐标点y值赋给临时常量y.</p>
@@ -1361,24 +1203,13 @@ for character in puzzleInput.characters {
 print(puzzleOutput)
 // 打印 "grtmndsthnklk"
 </code></pre>
-上面的代码遇见元音或者空格就会调用 continue 关键字, 当前迭代立即结束然后进入下一次迭代。
 
-# Break
-
-break 立即结束整个控制流语句的执行。break 语句可以用在一个 switch 语句或者循环语句,如果你想早点结束执行的话。
-
-# Break 在循环语句
-
-用在循环语句时, break 立即结束循环,然后跳出循环所在的大括号。
-
-# Break 在Switch 语句
-
-用在switch 语句时, break 终止 switch 语句的执行,然后跳出switch语句所在的大括号。
-
-这种行为可以在switch语句中用来匹配或者忽略一个或者多个case. 因为 Swift 的 switch 语句是详尽的而且不允许有空 case, 有时候需要故意匹配和忽略一个case,为了让你的意图明显。整个case写一个break就可以忽略。当case 匹配时, case 里的break语句立即终止switch语句的执行。
-
-
-下面的例子转换一个字符值,然后判断它在四种语言之一是否表示一个数字, 单个switch case 覆盖了多个值。
+<p>上面的代码遇见元音或者空格就会调用 continue 关键字, 当前迭代立即结束然后进入下一次迭代。</p>
+<h1 id="Break"><a href="#Break" class="headerlink" title="Break"></a>Break</h1><p>break 立即结束整个控制流语句的执行。break 语句可以用在一个 switch 语句或者循环语句,如果你想早点结束执行的话。</p>
+<h1 id="Break-在循环语句"><a href="#Break-在循环语句" class="headerlink" title="Break 在循环语句"></a>Break 在循环语句</h1><p>用在循环语句时, break 立即结束循环,然后跳出循环所在的大括号。</p>
+<h1 id="Break-在Switch-语句"><a href="#Break-在Switch-语句" class="headerlink" title="Break 在Switch 语句"></a>Break 在Switch 语句</h1><p>用在switch 语句时, break 终止 switch 语句的执行,然后跳出switch语句所在的大括号。</p>
+<p>这种行为可以在switch语句中用来匹配或者忽略一个或者多个case. 因为 Swift 的 switch 语句是详尽的而且不允许有空 case, 有时候需要故意匹配和忽略一个case,为了让你的意图明显。整个case写一个break就可以忽略。当case 匹配时, case 里的break语句立即终止switch语句的执行。</p>
+<p>下面的例子转换一个字符值,然后判断它在四种语言之一是否表示一个数字, 单个switch case 覆盖了多个值。</p>
 <pre><code>
 let numberSymbol: Character = "三"  // Chinese symbol for the number 3
 var possibleIntegerValue: Int?
@@ -1550,20 +1381,13 @@ if #available(platform name version, ..., *) {
     fallback statements to execute if the APIs are unavailable
 }
 </code></pre>
-# 函数
-函数包含执行特定任务的代码块。你给出一个函数名来表明它是做什么的, 需要时使用函数名来调用。
 
-Swift 统一的函数语法是很灵活的, 可以像C语言一样没有参数名,也可以像objective-C一样带有名称和参数标签。参数可以提供默认值给简单的函数调用,同时可以作为输入输出参数传入。一旦函数调用就会修改传入的变量。
-
-Swift 中的函数都有类型, 由参数类型和返回类型组成。你可以像使用其他类型一样使用这个类型, 这个让传递函数作为参数变得容易, 也可以从函数返回函数。 函数可以写在其他函数里, 在一个内嵌函数范围封装哟有用的功能。
-
-# 定义和调用函数
-
-当你定义一个函数时, 你可以定义一个或者多个命名, 函数的类型值作为输入, 也就是参数。你还可以定义一个值类型,函数执行完传回值。也就是返回值。
-
-每个函数都有名字, 用来描述函数执行的任务。 为了使用一个函数, 你通过名字调用函数,传给它输入值 (参数) 匹配函数参数的类型。函数参数按照相同顺序提供。
-
-下面例子里的函数叫 greet(person:), 因为它做的事情—它输入一个人的名字然后返回一个问候。为了完成这个, 你定义一个输入参数—一个字符串类型 person—然后返回一个字符串类型, 它包含了对这个人问候语。
+<h1 id="函数"><a href="#函数" class="headerlink" title="函数"></a>函数</h1><p>函数包含执行特定任务的代码块。你给出一个函数名来表明它是做什么的, 需要时使用函数名来调用。</p>
+<p>Swift 统一的函数语法是很灵活的, 可以像C语言一样没有参数名,也可以像objective-C一样带有名称和参数标签。参数可以提供默认值给简单的函数调用,同时可以作为输入输出参数传入。一旦函数调用就会修改传入的变量。</p>
+<p>Swift 中的函数都有类型, 由参数类型和返回类型组成。你可以像使用其他类型一样使用这个类型, 这个让传递函数作为参数变得容易, 也可以从函数返回函数。 函数可以写在其他函数里, 在一个内嵌函数范围封装哟有用的功能。</p>
+<h1 id="定义和调用函数"><a href="#定义和调用函数" class="headerlink" title="定义和调用函数"></a>定义和调用函数</h1><p>当你定义一个函数时, 你可以定义一个或者多个命名, 函数的类型值作为输入, 也就是参数。你还可以定义一个值类型,函数执行完传回值。也就是返回值。</p>
+<p>每个函数都有名字, 用来描述函数执行的任务。 为了使用一个函数, 你通过名字调用函数,传给它输入值 (参数) 匹配函数参数的类型。函数参数按照相同顺序提供。</p>
+<p>下面例子里的函数叫 greet(person:), 因为它做的事情—它输入一个人的名字然后返回一个问候。为了完成这个, 你定义一个输入参数—一个字符串类型 person—然后返回一个字符串类型, 它包含了对这个人问候语。</p>
 <pre><code>
 func greet(person: String) -> String {
     let greeting = "Hello, " + person + "!"
@@ -1597,13 +1421,9 @@ func greetAgain(person: String) -> String {
 print(greetAgain(person: "Anna"))
 // 打印 "Hello again, Anna!"
 </code></pre>
-# 函数参数和返回值
 
-Swift 中函数的参数和返回值非常灵活。 你可以定义任何,从带有不具名参数的简单工具函数到具有表达式参数名和不同参数选项的复杂函数。
-
-# 没有参数的函数
-
-函数不要求有输入参数。 这里有个没有输入参数的函数, 调用的时候总是返回相同字符串信息:
+<h1 id="函数参数和返回值"><a href="#函数参数和返回值" class="headerlink" title="函数参数和返回值"></a>函数参数和返回值</h1><p>Swift 中函数的参数和返回值非常灵活。 你可以定义任何,从带有不具名参数的简单工具函数到具有表达式参数名和不同参数选项的复杂函数。</p>
+<h1 id="没有参数的函数"><a href="#没有参数的函数" class="headerlink" title="没有参数的函数"></a>没有参数的函数</h1><p>函数不要求有输入参数。 这里有个没有输入参数的函数, 调用的时候总是返回相同字符串信息:</p>
 <pre><code>
 func sayHelloWorld() -> String {
     return "hello, world"
@@ -1611,13 +1431,10 @@ func sayHelloWorld() -> String {
 print(sayHelloWorld())
 // 打印 "hello, world"
 </code></pre>
-函数定义是还是需要再函数名后加括号, 尽管它没有任何参数。函数调用的时候函数名后面还是跟着一堆括号。
 
-# 多个参数的函数
-
-函数可以有多个输入参数, 写在函数的括号里, 用逗号分开。
-
-这个函数有两个参数,一个人名和是否他们已经被问候过。然后返回对这个人的问候语:
+<p>函数定义是还是需要再函数名后加括号, 尽管它没有任何参数。函数调用的时候函数名后面还是跟着一堆括号。</p>
+<h1 id="多个参数的函数"><a href="#多个参数的函数" class="headerlink" title="多个参数的函数"></a>多个参数的函数</h1><p>函数可以有多个输入参数, 写在函数的括号里, 用逗号分开。</p>
+<p>这个函数有两个参数,一个人名和是否他们已经被问候过。然后返回对这个人的问候语:</p>
 <pre><code>
 func greet(person: String, alreadyGreeted: Bool) -> String {
     if alreadyGreeted {
@@ -1693,19 +1510,13 @@ let bounds = minMax(array: [8, -6, 2, 109, 3, 71])
 print("min is \(bounds.min) and max is \(bounds.max)")
 // 打印 "min is -6 and max is 109"
 </code></pre>
-注意函数返回元组时,元组的成员不需要命名, 因为它们的名字作为函数返回类型已经被指定了。
 
-# 可选元组返回类型
-
-如果函数返回的元组类型有可能不存在值,你可以使用一个可选元组返回类型来反应整个元组可能为nil。一个可选元组返回类型括号后面跟着一个问号, 比如 (Int, Int)? 或者 (String, Int, Bool)?.
-
-备注
-
-可选元组类型比如s (Int, Int)? 不同于元组中包含可选类型比如 (Int?, Int?). 有一个可选元组类型, 整个元组都是可选的, 不单单是元组里的值。
-
-minMax(array:) 函数返回的元组包含两个整数值。 然而, 函数不会对传入的数组做任何安全检查。 如果数组包含空数组, minMax(array:) 函数, 上面定义的, 尝试访问 array[0] 会触发运行时错误。
-
-为了处理这种情况, minMax(array:) 函数返回值写成可选元组返回类型,如果数组为空则返回nil:
+<p>注意函数返回元组时,元组的成员不需要命名, 因为它们的名字作为函数返回类型已经被指定了。</p>
+<h1 id="可选元组返回类型"><a href="#可选元组返回类型" class="headerlink" title="可选元组返回类型"></a>可选元组返回类型</h1><p>如果函数返回的元组类型有可能不存在值,你可以使用一个可选元组返回类型来反应整个元组可能为nil。一个可选元组返回类型括号后面跟着一个问号, 比如 (Int, Int)? 或者 (String, Int, Bool)?.</p>
+<p>备注</p>
+<p>可选元组类型比如s (Int, Int)? 不同于元组中包含可选类型比如 (Int?, Int?). 有一个可选元组类型, 整个元组都是可选的, 不单单是元组里的值。</p>
+<p>minMax(array:) 函数返回的元组包含两个整数值。 然而, 函数不会对传入的数组做任何安全检查。 如果数组包含空数组, minMax(array:) 函数, 上面定义的, 尝试访问 array[0] 会触发运行时错误。</p>
+<p>为了处理这种情况, minMax(array:) 函数返回值写成可选元组返回类型,如果数组为空则返回nil:</p>
 <pre><code>
 func minMax(array: [Int]) -> (min: Int, max: Int)? {
     if array.isEmpty { return nil }
@@ -1725,9 +1536,8 @@ if let bounds = minMax(array: [8, -6, 2, 109, 3, 71]) {
 }
 // 打印 "min is -6 and max is 109"
 </code></pre>
-# 函数参数标签和参数名
 
-每个函数参数既有参数标签也有参数名。参数标签在调用函数时使用; 函数中的每个参数调用时使用它们的标签。 参数名用于函数的实现。 默认情况, 参数使用参数名作为标签。
+<h1 id="函数参数标签和参数名"><a href="#函数参数标签和参数名" class="headerlink" title="函数参数标签和参数名"></a>函数参数标签和参数名</h1><p>每个函数参数既有参数标签也有参数名。参数标签在调用函数时使用; 函数中的每个参数调用时使用它们的标签。 参数名用于函数的实现。 默认情况, 参数使用参数名作为标签。</p>
 <pre><code>
 func someFunction(firstParameterName: Int, secondParameterName: Int) {
     // In the function body, firstParameterName and secondParameterName
@@ -1736,11 +1546,9 @@ func someFunction(firstParameterName: Int, secondParameterName: Int) {
 
 someFunction(firstParameterName: 1, secondParameterName: 2)
 </code></pre>
-所有参数名必须唯一。 尽管多个参数可能有相同的标签, 唯一的参数标签会让你的代码更有可读性。
 
-# 指定参数标签
-
-参数标签写在参数名之前, 用空格分开:
+<p>所有参数名必须唯一。 尽管多个参数可能有相同的标签, 唯一的参数标签会让你的代码更有可读性。</p>
+<h1 id="指定参数标签"><a href="#指定参数标签" class="headerlink" title="指定参数标签"></a>指定参数标签</h1><p>参数标签写在参数名之前, 用空格分开:</p>
 <pre><code>
 func someFunction(argumentLabel parameterName: Int) {
     // In the function body, parameterName refers to the argument value
@@ -1755,11 +1563,9 @@ func greet(person: String, from hometown: String) -> String {
 print(greet(person: "Bill", from: "Cupertino"))
 // 打印 "Hello Bill!  Glad you could visit from Cupertino."
 </code></pre>
-参数标签的使用允许函数用表达方式调用, 像句子一样。
 
-# 省略参数标签
-
-如果你不想要参数标签, 写一个下划线代替显式的参数标签。
+<p>参数标签的使用允许函数用表达方式调用, 像句子一样。</p>
+<h1 id="省略参数标签"><a href="#省略参数标签" class="headerlink" title="省略参数标签"></a>省略参数标签</h1><p>如果你不想要参数标签, 写一个下划线代替显式的参数标签。</p>
 <pre><code>
 func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
     // In the function body, firstParameterName and secondParameterName
@@ -1767,11 +1573,9 @@ func someFunction(_ firstParameterName: Int, secondParameterName: Int) {
 }
 someFunction(1, secondParameterName: 2)
 </code></pre>
-如果一个参数有参数标签, 那么调用函数的时候参数必须带上标签。
 
-# 默认参数值
-
-你可以给函数参数赋一个默认值,写在类型的后面。如果定义了默认值, 调用函数时你就可以忽略这个参数。
+<p>如果一个参数有参数标签, 那么调用函数的时候参数必须带上标签。</p>
+<h1 id="默认参数值"><a href="#默认参数值" class="headerlink" title="默认参数值"></a>默认参数值</h1><p>你可以给函数参数赋一个默认值,写在类型的后面。如果定义了默认值, 调用函数时你就可以忽略这个参数。</p>
 <pre><code>
 func someFunction(parameterWithoutDefault: Int, parameterWithDefault: Int = 12) {
     // If you omit the second argument when calling this function, then
@@ -1780,15 +1584,11 @@ func someFunction(parameterWithoutDefault: Int, parameterWithDefault: Int = 12) 
 someFunction(parameterWithoutDefault: 3, parameterWithDefault: 6) // parameterWithDefault is 6
 someFunction(parameterWithoutDefault: 4) // parameterWithDefault is 12
 </code></pre>
-没有默认值的参数放在函数参数列表前, 带有默认值的放在后面。没有默认值的参数通常更重要—首先写它们更容易知道相同的函数被调用, 不用管默认参数是否被忽略。
 
-# 可变参数
-
-可变参数接受零个或者多个指定类型的值。你用可变参数指定函数调用时可以传入不同个数的输入值。可变参数写法是在参数类型名后写三个点。
-
-传入可变参数的值在函数体中作为对应类型的数组是可用的。 例如, 带有数字名的可变参数和 Double... 在函数中作为常量数组 [Double]是可用的。
-
-下面的例子计算任意长度的数字的平均数:
+<p>没有默认值的参数放在函数参数列表前, 带有默认值的放在后面。没有默认值的参数通常更重要—首先写它们更容易知道相同的函数被调用, 不用管默认参数是否被忽略。</p>
+<h1 id="可变参数"><a href="#可变参数" class="headerlink" title="可变参数"></a>可变参数</h1><p>可变参数接受零个或者多个指定类型的值。你用可变参数指定函数调用时可以传入不同个数的输入值。可变参数写法是在参数类型名后写三个点。</p>
+<p>传入可变参数的值在函数体中作为对应类型的数组是可用的。 例如, 带有数字名的可变参数和 Double… 在函数中作为常量数组 [Double]是可用的。</p>
+<p>下面的例子计算任意长度的数字的平均数:</p>
 <pre><code>
 func arithmeticMean(_ numbers: Double...) -> Double {
     var total: Double = 0
@@ -1802,23 +1602,15 @@ arithmeticMean(1, 2, 3, 4, 5)
 arithmeticMean(3, 8.25, 18.75)
 // returns 10.0, which is the arithmetic mean of these three numbers
 </code></pre>
-备注
 
-一个函数最多有一个可变参数。
-
-# 输入输出参数
-
-函数参数默认是常量。 尝试改变会导致编译期错误。这就意味着你不能错误的改变参数值。如果你想函数改变参数值, 想要这些改变持续到函数调用结束, 你可以定义输入输出参数来代替。
-
-通过把 in-out 关键字写在参数类型前面来写一个输入输出参数。 输入输出参数有一个传入函数的值, 会被函数修改, 然后传出函数取代原有的值。 详情请参照 In-Out Parameters.
-
-你可以只传入一个变量作为输入输出参数。 你不能传入一个常量或者字面值作为参数, 因为常量和字面量不能改变。当你使用它作为输入输出参数时,你可以直接在变量名前加上 (&), 来表示它可以被函数改变。
-
-备注
-
-输入输出参数不能有默认值, 可变参数不能标记为输入输出的。
-
-这里有一个函数 swapTwoInts(_:_:), 有两个输入输出整形参数 a 和 b:
+<p>备注</p>
+<p>一个函数最多有一个可变参数。</p>
+<h1 id="输入输出参数"><a href="#输入输出参数" class="headerlink" title="输入输出参数"></a>输入输出参数</h1><p>函数参数默认是常量。 尝试改变会导致编译期错误。这就意味着你不能错误的改变参数值。如果你想函数改变参数值, 想要这些改变持续到函数调用结束, 你可以定义输入输出参数来代替。</p>
+<p>通过把 in-out 关键字写在参数类型前面来写一个输入输出参数。 输入输出参数有一个传入函数的值, 会被函数修改, 然后传出函数取代原有的值。 详情请参照 In-Out Parameters.</p>
+<p>你可以只传入一个变量作为输入输出参数。 你不能传入一个常量或者字面值作为参数, 因为常量和字面量不能改变。当你使用它作为输入输出参数时,你可以直接在变量名前加上 (&amp;), 来表示它可以被函数改变。</p>
+<p>备注</p>
+<p>输入输出参数不能有默认值, 可变参数不能标记为输入输出的。</p>
+<p>这里有一个函数 swapTwoInts(<em>:</em>:), 有两个输入输出整形参数 a 和 b:</p>
 <pre><code>
 func swapTwoInts(_ a: inout Int, _ b: inout Int) {
     let temporaryA = a
@@ -1836,17 +1628,12 @@ swapTwoInts(&someInt, &anotherInt)
 print("someInt is now \(someInt), and anotherInt is now \(anotherInt)")
 // 打印 "someInt is now 107, and anotherInt is now 3"
 </code></pre>
-上面例子展示 someInt 和 anotherInt 的原始值被 swapTwoInts(_:_:) 函数改变, 尽管它们定义在函数之外。
 
-备注
-
-输入输出参数与函数返回值不一样。swapTwoInts 没有定义一个返回值或者返回一个值。但是它依然改变了 someInt 和 anotherInt 的值。 输入输出参数是函数影响外部的一种备选方式。
-
-# 函数类型
-
-每个函数都有一个指定的函数类型, 由参数类型和返回值类型组成。
-
-例如:
+<p>上面例子展示 someInt 和 anotherInt 的原始值被 swapTwoInts(<em>:</em>:) 函数改变, 尽管它们定义在函数之外。</p>
+<p>备注</p>
+<p>输入输出参数与函数返回值不一样。swapTwoInts 没有定义一个返回值或者返回一个值。但是它依然改变了 someInt 和 anotherInt 的值。 输入输出参数是函数影响外部的一种备选方式。</p>
+<h1 id="函数类型"><a href="#函数类型" class="headerlink" title="函数类型"></a>函数类型</h1><p>每个函数都有一个指定的函数类型, 由参数类型和返回值类型组成。</p>
+<p>例如:</p>
 <pre><code>
 func addTwoInts(_ a: Int, _ b: Int) -> Int {
     return a + b
@@ -1867,11 +1654,9 @@ func printHelloWorld() {
     print("hello, world")
 }
 </code></pre>
-这个函数类型是 () -> Void, 或者 “一个函数没有参数,返回 Void.”
 
-# 使用函数类型
-
-使用函数类型跟Swift中其他类型很像。例如, 你可以定义一个函数的常量或者变量,然后把一个函数赋值给这个变量:
+<p>这个函数类型是 () -&gt; Void, 或者 “一个函数没有参数,返回 Void.”</p>
+<h1 id="使用函数类型"><a href="#使用函数类型" class="headerlink" title="使用函数类型"></a>使用函数类型</h1><p>使用函数类型跟Swift中其他类型很像。例如, 你可以定义一个函数的常量或者变量,然后把一个函数赋值给这个变量:</p>
 <pre><code>
 var mathFunction: (Int, Int) -> Int = addTwoInts
 </code></pre>
@@ -1897,11 +1682,9 @@ print("Result: \(mathFunction(2, 3))")
 let anotherMathFunction = addTwoInts
 // anotherMathFunction is inferred to be of type (Int, Int) -> Int
 </code></pre>
-# 函数类型作为参数类型
 
-你可以使用一个函数类型比如 (Int, Int) -> Int 作为另外一个函数的参数。当函数调用的时候,你可以把函数实现的一部分留给调用者。
-
-这里有个一个例子打印上面数学函数的结果:
+<h1 id="函数类型作为参数类型"><a href="#函数类型作为参数类型" class="headerlink" title="函数类型作为参数类型"></a>函数类型作为参数类型</h1><p>你可以使用一个函数类型比如 (Int, Int) -&gt; Int 作为另外一个函数的参数。当函数调用的时候,你可以把函数实现的一部分留给调用者。</p>
+<p>这里有个一个例子打印上面数学函数的结果:</p>
 <pre><code>
 func printMathResult(_ mathFunction: (Int, Int) -> Int, _ a: Int, _ b: Int) {
     print("Result: \(mathFunction(a, b))")
@@ -7866,7 +7649,7 @@ Int8保存的最小值是 -128, 或者二进制 10000000. 使用溢出减减1,�
 <p><pre><code><br>extension Vector2D {<br>    static prefix func - (vector: Vector2D) -&gt; Vector2D {<br>        return Vector2D(x: -vector.x, y: -vector.y)<br>    }<br>}<br></code></pre><br>上面的例子给Vector2D 实例实现了一元-运算符。一元-运算符是一个前缀运算符, 所以这个方法使用了前缀修饰符。</p>
 <p>对于简单的数值, 一元-运算符把正数变成负数,反之亦然。Vector2D 实例的实现就是对 x 和 y 同时进行操作:</p>
 <p><pre><code><br>let positive = Vector2D(x: 3.0, y: 4.0)<br>let negative = -positive<br>// negative is a Vector2D instance with values of (-3.0, -4.0)<br>let alsoPositive = -negative<br>// alsoPositive is a Vector2D instance with values of (3.0, 4.0)<br></code></pre></p>
-<h1 id="复合赋值运算符"><a href="#复合赋值运算符" class="headerlink" title="复合赋值运算符"></a>复合赋值运算符</h1><p>复合赋值运算符把=与其他运算合并。例如, 加法赋值运算符合并了加法和赋值到一个单独的操作中。把复合赋值运算符的左边输入参数标记为 inout, 因为这个参数值会在方法内修改。</p>
+<h1 id="复合赋值运算符-1"><a href="#复合赋值运算符-1" class="headerlink" title="复合赋值运算符"></a>复合赋值运算符</h1><p>复合赋值运算符把=与其他运算合并。例如, 加法赋值运算符合并了加法和赋值到一个单独的操作中。把复合赋值运算符的左边输入参数标记为 inout, 因为这个参数值会在方法内修改。</p>
 <p>下面的例子为Vector2D 实例实现了一个加法赋值运算符:</p>
 <p><pre><code><br>extension Vector2D {<br>    static func += (left: inout Vector2D, right: Vector2D) {<br>        left = left + right<br>    }<br>}<br></code></pre><br>因为加法运算符早已定义, 这里你不需要替换加法部分。替代的是, 加法赋值运算符方法采用了已经存在的加法运算符方法, 然后把左右值相加赋值给左值:</p>
 <p><pre><code><br>var original = Vector2D(x: 1.0, y: 2.0)<br>let vectorToAdd = Vector2D(x: 3.0, y: 4.0)<br>original += vectorToAdd<br>// original now has values of (4.0, 6.0)<br></code></pre><br>备注</p>
@@ -7886,7 +7669,7 @@ Int8保存的最小值是 -128, 或者二进制 10000000. 使用溢出减减1,�
 <p><pre><code><br>infix operator +-: AdditionPrecedence<br>extension Vector2D {<br>    static func +- (left: Vector2D, right: Vector2D) -&gt; Vector2D {<br>        return Vector2D(x: left.x + right.x, y: left.y - right.y)<br>    }<br>}<br>let firstVector = Vector2D(x: 1.0, y: 2.0)<br>let secondVector = Vector2D(x: 3.0, y: 4.0)<br>let plusMinusVector = firstVector +- secondVector<br>// plusMinusVector is a Vector2D instance with values of (4.0, -2.0)<br></code></pre><br>这个运算符把两个向量的x值相加, 然后把第二个向量的两个y值相减。因为它实际上是一个 “加法的” 运算符, 它跟其他加法中缀运算符,例如 + 和 - , 有相同的优先级集。</p>
 <p>备注</p>
 <p>定义一个前缀或者后缀运算符的时候,你不要指定优先级。不过, 如果你在相同的操作数上使用前缀和后缀运算符, 后缀运算符会首先发生作用。</p>
-</)></string></element></element></key,></t></t></key,></b)></=></=>]]></content>
+</)></string></element></element></key,></t></t></key,></element>]]></content>
     
     <summary type="html">
     
