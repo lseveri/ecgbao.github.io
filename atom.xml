@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T04:42:49.000Z</updated>
+    <updated>2017-01-23T04:45:08.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -1865,9 +1865,9 @@ default:
 }
 // 这会报一个编译期错误
 </code></pre>
-跟C中的switch语句不同, 这个 switch 语句不能同时匹配 "a" 和 "A". 相反, 它会报一个编译期错误,因为case "a": 没有任何可以执行的语句。这个方法避免了突然从一个case跳入另外一个case, 让代码意图清晰安全。
 
-如果要用一个case同时匹配"a" 和 "A", 把这两个值合并到一个case语句, 用逗号把它们分开。
+<p>跟C中的switch语句不同, 这个 switch 语句不能同时匹配 “a” 和 “A”. 相反, 它会报一个编译期错误,因为case “a”: 没有任何可以执行的语句。这个方法避免了突然从一个case跳入另外一个case, 让代码意图清晰安全。</p>
+<p>如果要用一个case同时匹配”a” 和 “A”, 把这两个值合并到一个case语句, 用逗号把它们分开。</p>
 <pre><code>
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
@@ -1878,15 +1878,11 @@ default:
 }
 // Prints "The letter A"
 </code></pre>
-为了可读性, 复合case也可以写作多行。 具体参见 Compound Cases.
 
-备注
-
-为了显式fall through 到某个case下面, 使用 fallthrough 关键字。
-
-# 区间匹配
-
-switch case里面的值可以包含在区间里判断。 这个例子使用数字区间来提供一个对任何数字大小的自然语言统计。
+<p>为了可读性, 复合case也可以写作多行。 具体参见 Compound Cases.</p>
+<p>备注</p>
+<p>为了显式fall through 到某个case下面, 使用 fallthrough 关键字。</p>
+<h1 id="区间匹配"><a href="#区间匹配" class="headerlink" title="区间匹配"></a>区间匹配</h1><p>switch case里面的值可以包含在区间里判断。 这个例子使用数字区间来提供一个对任何数字大小的自然语言统计。</p>
 <pre><code>
 let approximateCount = 62
 let countedThings = "moons orbiting Saturn"
