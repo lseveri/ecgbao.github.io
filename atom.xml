@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:07:42.000Z</updated>
+    <updated>2017-01-23T05:10:16.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -3109,23 +3109,22 @@ var name: String?
 <pre><code>
 let someResolution = Resolution()
 let someVideoMode = VideoMode()</code></pre>
-结构体和类都使用初始化方法创建实例。 最简单的初始化语法就是使用类或者结构的类型名后面跟着一个空的括号, 比如 Resolution() 和 VideoMode(). 这个创建了类或者结构体的实例,给所有属性设置默认值。
 
-# 访问属性
-
-你可以用点语法访问实例的属性。 在点语法中, 属性名跟着实例名, 用点分开 (.), 没有任何空格:
+<p>结构体和类都使用初始化方法创建实例。 最简单的初始化语法就是使用类或者结构的类型名后面跟着一个空的括号, 比如 Resolution() 和 VideoMode(). 这个创建了类或者结构体的实例,给所有属性设置默认值。</p>
+<h1 id="访问属性"><a href="#访问属性" class="headerlink" title="访问属性"></a>访问属性</h1><p>你可以用点语法访问实例的属性。 在点语法中, 属性名跟着实例名, 用点分开 (.), 没有任何空格:</p>
 <pre><code>
 print("The width of someResolution is \(someResolution.width)")
 // 打印 "The width of someResolution is 0"
 </code></pre>
-在这个例子里, someResolution.width 调用 someResolution 的宽度属性, 然后返回它的默认值0.
 
-你可以获取子属性, 比如 width 属性就是 VideoMode 中的resolution 的属性:
+<p>在这个例子里, someResolution.width 调用 someResolution 的宽度属性, 然后返回它的默认值0.</p>
+<p>你可以获取子属性, 比如 width 属性就是 VideoMode 中的resolution 的属性:</p>
 <pre><code>
 print("The width of someVideoMode is \(someVideoMode.resolution.width)")
 // 打印 "The width of someVideoMode is 0"
 </code></pre>
-你还可以用点语法为变量属性指定新值:
+
+<p>你还可以用点语法为变量属性指定新值:</p>
 <pre><code>
 someVideoMode.resolution.width = 1280
 print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
