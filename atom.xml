@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T03:08:57.000Z</updated>
+    <updated>2017-01-23T03:23:44.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -627,43 +627,21 @@ a = b
 <pre><code>if x = y {
     // This is not valid, because x = y does not return a value.
 }</code></pre>
-这个特性防止=与==混淆。 让if x = y 无效, Swift 帮你避免这种错误。
 
-# 算术运算符
-
-Swift 对所有类型支持四种标准算术运算符:
-
-加号 (+)
-减号 (-)
-乘号 (*)
-除号 (/)
-1 + 2   // 等于 3
-5 - 3       // 等于 2
-2 * 3       // 等于 6
-10.0 / 2.5  // 等于 4.0
-与C语言 和 Objective-C语言不同, Swift 算术运算符默认不允许值溢出。 你可以通过Swift溢出运算符来选择值溢出行为(例如 a &+ b)。
-
-加号也支持字符串连接:
-
+<p>这个特性防止=与==混淆。 让if x = y 无效, Swift 帮你避免这种错误。</p>
+<h1 id="算术运算符"><a href="#算术运算符" class="headerlink" title="算术运算符"></a>算术运算符</h1><p>Swift 对所有类型支持四种标准算术运算符:</p>
+<p>加号 (+)<br>减号 (-)<br>乘号 (<em>)<br>除号 (/)<br>1 + 2   // 等于 3<br>5 - 3       // 等于 2<br>2 </em> 3       // 等于 6<br>10.0 / 2.5  // 等于 4.0<br>与C语言 和 Objective-C语言不同, Swift 算术运算符默认不允许值溢出。 你可以通过Swift溢出运算符来选择值溢出行为(例如 a &amp;+ b)。</p>
+<p>加号也支持字符串连接:</p>
 <pre><code>"hello, " + "world"  // 等于 "hello, world"</code></pre>
-# 余数运算符
 
-余数运算符 (a % b) 计算a中b的倍数，并且返回余数。
+<h1 id="余数运算符"><a href="#余数运算符" class="headerlink" title="余数运算符"></a>余数运算符</h1><p>余数运算符 (a % b) 计算a中b的倍数，并且返回余数。</p>
+<p>备注</p>
+<p>余数运算符 (%) 在其他语言中作为取模运算符。 不过, 在 Swift 中对负数来说, 严格来讲, 它是余数而不是一个取模运算。</p>
+<p>下面演示余数运算符是如何工作的。 计算 9 % 4, 你首先算出9里有多少个4:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/remainderInteger_2x.png"><br></div>
 
-备注
-
-余数运算符 (%) 在其他语言中作为取模运算符。 不过, 在 Swift 中对负数来说, 严格来讲, 它是余数而不是一个取模运算。
-
-下面演示余数运算符是如何工作的。 计算 9 % 4, 你首先算出9里有多少个4:
-
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/remainderInteger_2x.png">
-</div>
-
-你可以确定9里有两个4, 余数是 1 (橙色显示)。
-
-在 Swift 里, 这个会写作:
-
+<p>你可以确定9里有两个4, 余数是 1 (橙色显示)。</p>
+<p>在 Swift 里, 这个会写作:</p>
 <pre><code>9 % 4    // 等于 1</code></pre>
 为了确定 a % b 的结果, % 运算符计算下面的方程式，然后返回余数作为输出:
 
@@ -935,9 +913,8 @@ if emptyString.isEmpty {
 }
 // Prints "Nothing to see here"
 </code></pre>
-# 字符串易变性
 
-你来指定一个特定字符串能不能改变（或者突变），这种变化通过把它赋给一个变量实现。 (这种情况它是可以改变的), 或者赋值给一个常量实现 (这种情况它不能被改变):
+<h1 id="字符串易变性"><a href="#字符串易变性" class="headerlink" title="字符串易变性"></a>字符串易变性</h1><p>你来指定一个特定字符串能不能改变（或者突变），这种变化通过把它赋给一个变量实现。 (这种情况它是可以改变的), 或者赋值给一个常量实现 (这种情况它不能被改变):</p>
 <pre><code>
 var variableString = "Horse"
 variableString += " and carriage"
