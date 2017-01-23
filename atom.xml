@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:21:08.000Z</updated>
+    <updated>2017-01-23T05:23:25.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -4603,18 +4603,253 @@ class SomeClass {
 <p>备注</p>
 <p>如果你用闭包初始化一个属性, 记住,闭包执行时,实例的其他部分还没有进行初始化。这就意味着你不能在闭包里访问其他任何属性, 即使这些属性具有默认值。你也不能使用隐式self 属性, 或是调用任何实例方法。</p>
 <p>下面的例子定义了一个结构体 Chessboard, 它为象棋游戏模拟了一个棋盘。象棋是在一个 8 x 8 的去棋盘上玩的, 带着交替的黑白方格。</p>
-<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/chessBoard_2x.png"><br></div><br>为了表示这个游戏棋盘, Chessboard 结构体有一个属性 boardColors, 它是一个带有64个布尔值的数组。真值代表黑色方块,假值代表白色方块。第一项代表棋盘的左上方块,最后一项代表棋盘的右下方块。<br><br>boardColors 数组使用一个闭包初始化,设定它的颜色值:<br><pre><code><br>struct Chessboard {<br>    let boardColors: [Bool] = {<br>        var temporaryBoard = <a href="">Bool</a><br>        var isBlack = false<br>        for i in 1…8 {<br>            for j in 1…8 {<br>                temporaryBoard.append(isBlack)<br>                isBlack = !isBlack<br>            }<br>            isBlack = !isBlack<br>        }<br>        return temporaryBoard<br>    }()<br>    func squareIsBlackAt(row: Int, column: Int) -&gt; Bool {<br>        return boardColors[(row * 8) + column]<br>    }<br>}<br></code></pre><br><br>一旦新的Chessboard 实例创建, 闭包就会执行, boardColors 默认值会计算和返回。上面例子里的闭包在一个临时数组temporaryBoard 为棋盘上每个方块计算和设置了对应的颜色值, 并且等设置完成就作为闭包返回值返回。返回数组值存储在 boardColors 中,并且可以用squareIsBlackAtRow 功能函数进行查询:<br><pre><code><br>let board = Chessboard()<br>print(board.squareIsBlackAt(row: 0, column: 1))<br>// Prints “true”<br>print(board.squareIsBlackAt(row: 7, column: 7))<br>// 打印 “false”<br></code></pre><br><br># 析构器<br>在一个类实例销毁前,一个析构器会立即调用。使用deinit 关键字来表示析构器, 跟构造器写法类似。析构器只能用在类类型上。 types.<br><br># 析构器如何工作<br><br>Swift 在实例不需要时会自动析构它, 去释放资源。Swift 通过自动引用计数来管理实例的内存(ARC). 当实例销毁时你不需要手动执行清理操作。不过, 当你使用自己的资源时, 你可能需要额外执行一些清理。例如, 如果你创建一个类去读写文件, 在类的实例销毁前你可能需要去关闭这个文件。<br><br>类最多只能有一个析构器。析构器没有任何参数也没有括号:<br><pre><code><br>deinit {<br>    // perform the deinitialization<br>}</code></pre><br>析构器会自动调用, 在实例销毁发生前。禁止自己去调用析构器。子类会继承超类的析构器, 超类析构器在子类析构器实现后调用。 即使子类不提供自己的析构器,超类析构器也会调用。<br><br>因为实例直到析构器调用才会销毁, 一个析构器可以访问调用实例的所有属性,同时也可以改变基于这些属性的行为 (例如寻找需要关闭的文件名).<br><br># 析构器的活动<br><br>这里有一个析构器活动的例子。这个例子定义了两个新类型, Bank 和 Player, Bank 类管理一个虚拟货币, 它的流通货币不会超过 10,000 硬币。游戏里只有能有一个银行, 所以 Bank 用类实现,带有类型属性和方法来存储和管理它的当前状态:<br><pre><code><br>class Bank {<br>    static var coinsInBank = 10<em>000<br>    static func distribute(coins numberOfCoinsRequested: Int) -&gt; Int {<br>        let numberOfCoinsToVend = min(numberOfCoinsRequested, coinsInBank)<br>        coinsInBank -= numberOfCoinsToVend<br>        return numberOfCoinsToVend<br>    }<br>    static func receive(coins: Int) {<br>        coinsInBank += coins<br>    }<br>}</em></code></pre><br><br>Bank 用coinsInBank 属性跟中当前硬币的数量。它同时提供了两个方法s—distribute(coins:) 和 receive(coins:)—来管理硬币的发行和回收。<br><br>distribute(coins:) 方法判断在发行前银行是否有足够的硬币。如果没有足够的硬币, Bank 返回一个比要求数量少的数量 (如果银行没有硬币了就返回0). 它返回一个整数来表示实际提供的硬币数量。<br><br>receive(coins:) 方法简单加上收到的硬币数量。<br><br>Player 类描述了游戏中的一个玩家。 每一个玩家在任何时间都有一定数量的硬币在钱包里。这个用玩家的coinsInPurse 来表示:<br><pre><code><br>class Player {<br>    var coinsInPurse: Int<br>    init(coins: Int) {<br>        coinsInPurse = Bank.distribute(coins: coins)<br>    }<br>    func win(coins: Int) {<br>        coinsInPurse += Bank.distribute(coins: coins)<br>    }<br>    deinit {<br>        Bank.receive(coins: coinsInPurse)<br>    }<br>}</code></pre><br><br>在初始化过程中,每个玩家都会用一定数量的硬币来初始化, 尽管玩家可能在银行硬币不足的时候获取较少的数量。<br><br>Player 类定义了一个方法 win(coins:), 它从银行获取一定数量的硬币然后把它们加入玩家的钱包。Player 类同时实现了一个去构造器, 它在 Player 实例销毁前调用。在这里, 这个构造器简单把玩家的硬币返还给银行:<br><pre><code><br>var playerOne: Player? = Player(coins: 100)<br>print(“A new player has joined the game with (playerOne!.coinsInPurse) coins”)<br>// 打印 “A new player has joined the game with 100 coins”<br>print(“There are now (Bank.coinsInBank) coins left in the bank”)<br>// 打印 “There are now 9900 coins left in the bank”<br></code></pre><br><br>一个新的 Player 实例被创建, 如果有硬币就请求100个硬币。这个Player 实例存在一个可选的 Player 变量 playerOne 中。可选变量用在这里, 因为玩家可能在任何时间离开游戏。可选项让你跟踪玩家当前是否还在游戏中。<br><br>因为 playerOne 是一个可选项, 当它的 coinsInPurse 属性被访问来打印硬币数量时, 需要使用感叹号。一旦它的 winCoins(:) 方法被调用:<br><pre><code><br>playerOne!.win(coins: 2_000)<br>print(“PlayerOne won 2000 coins &amp; now has (playerOne!.coinsInPurse) coins”)<br>// 打印 “PlayerOne won 2000 coins &amp; now has 2100 coins”<br>print(“The bank now only has (Bank.coinsInBank) coins left”)<br>// 打印 “The bank now only has 7900 coins left”<br></code></pre><br><br>在这里, 玩家已经赢得了 2,000 个硬币。玩家的钱包现在有 2,100 个硬币, 银行还有 7,900 个硬币。<br><pre><code><br>playerOne = nil<br>print(“PlayerOne has left the game”)<br>// 打印 “PlayerOne has left the game”<br>print(“The bank now has (Bank.coinsInBank) coins”)<br>// 打印 “The bank now has 10000 coins”<br></code></pre><br><br>玩家现在离开游戏。设置可选playerOne变量为nil 说明了这点。意思是 “没有Player 实例。” 此时, playerOne 变量引用的Player 实例被销毁。没有其他属性或者变量再引用 Player 实例, 所以它被销毁来释放内存。在这个发生之前, 它的析构器自动调用, 然后它的硬币全部归还给银行。<br><br># 自动引用计数<br>Swift 使用自动引用计数来跟踪和管理你的应用的存储使用。在大多数情况里, 这就意味着内存管理 “仅仅工作” 在 Swift, 你自己不需要管理内存。类的实例不再需要的时候,ARC 会自动释放实例使用的内存。<br><br>不过, 在一些少见的情况下,为了替你管理内存,ARC 需要更多关于你代码关系的信息。这个章节描述这些场景并且向你展示你怎么使用 ARC 来管理应用的内存。<br><br>备注<br><br>引用计数只适用于类的实例。结构体和枚举是值类型, 而非引用类型, 不能用引用存储和传递。<br><br># ARC 如何工作<br><br>每次你创建一个新的类实例, ARC 就会分配一块内存来存储实例的信息。这个内存掌握了实例类型的信息, 还有对应实例的存储属性的值。<br><br>另外, 当一个实例不再需要的时候, ARC 会释放实例使用的内存,让内存另有他用。这个确保类的实例不需要的时候,不会继续占用内存空间。<br><br>不过, 如果 ARC 将要销毁在使用的实例, 它将不能访问实例的属性, 或者是实例的方法。 事实上, 如果你访问这个实例, 你的应用可能会崩溃。<br><br>为了确保实例在使用时不会消失, ARC 跟踪有多少属性, 常量和变量正在引用类的每个实例。只要有一个对实例的引用,ARC 都不会销毁这个实例。<br><br>为了实现这种可能, 一旦你把类赋给一个属性, 常量或者变量, 这些属性,常量或者变量就会强引用这个实例。 这个引用之所以叫强引用,是因为它牢牢掌握了这个实例。只要强引用还在,就不会允许它被销毁。<br><br># ARC 的活动<br><br>下面有个自动引用计数的例子,来展示它如何工作。这个例子以一个简单的类 Person 开始, 它定义了一个存储常量属性 name:<br><pre><code><br>class Person {<br>    let name: String<br>    init(name: String) {<br>        self.name = name<br>        print(“(name) is being initialized”)<br>    }<br>    deinit {<br>        print(“(name) is being deinitialized”)<br>    }<br>}</code></pre><br><br>Person 类有一个构造器,用来设置实例的 name 属性,并且打印一条信息来表明构造在进行。Person 类同时也有一个析构器,在类的实例被销毁时打印一条信息。<br><br>下面代码定义了三个 Person? 类型的变量, 在后续代码中,它们用来设置多个对新Person 实例的引用。因为这些变量是可选类型(Person?, 不是 Person), 它们会自动初始化为nil, 并且当前不会引用一个Person 实例。<br><pre><code><br>var reference1: Person?<br>var reference2: Person?<br>var reference3: Person?<br></code></pre><br><br>你现在可以创建一个新的 Person 实例,并且把它赋值给三个变量的其中一个:<br><pre><code><br>reference1 = Person(name: “John Appleseed”)<br>// 打印 “John Appleseed is being initialized”<br></code></pre><br>注意这条信息 “John Appleseed is being initialized” 在调用Person 来的构造器时打印。这个确认了初始化已经发生。<br><br>因为新的 Person 实例已经指定给 reference1 变量, 现在从reference1 到新的Person 实例有了一个强引用。因为有了至少一个强引用, ARC 确保 Person 保持在内存里不被销毁。<br><br>如果你把相同的 Person 实例赋值给另外两个变量, 指向这个实例的两个强引用就建立了:<br><pre><code><br>reference2 = reference1<br>reference3 = reference1<br></code></pre><br><br>现在有三个强引用指向这个单独的 Person 实例。<br><br>通过给其中两个变量赋值为nil,你可以打破这些强引用, 还剩一个强引用, 但是Person 实例不会被销毁:<br><pre><code><br>reference1 = nil<br>reference2 = nil<br></code></pre><br><br>ARC 直到最后一个强引用被打破才会销毁 Person 实例, 在这个时刻很清楚你无法再继续使用这个 Person 实例:<br><pre><code><br>reference3 = nil<br>// 打印 “John Appleseed is being deinitialized”<br></code></pre><br><br># 类实例的强引用循环<br><br>上面的例子中, ARC 可以跟踪你创建的实例的引用数量,并且在实例不需要的时候销毁它。<br><br>不过, 有可能写下这种代码,在代码里一个类实例不知道什么时候强引用数量为0. 如果两个类实例互相强引用就会出现这个问题, 这样每个实例都保有其他活动的实例。这就是众所周知的强引用循环。<br><br>使用weak 或者 unowned 来代替强引用, 这样你可以解决强引用循环的问题。不过, 在你学习如何解决强引用问题前, 有必要先学习循环引用是怎么产生的。<br><br>下面的例子展示强引用循环是如何偶发的。这个例子定义了两个类 Person 和 Apartment, 它模拟了一组公寓和居民:<br><pre><code><br>class Person {<br>    let name: String<br>    init(name: String) { self.name = name }<br>    var apartment: Apartment?<br>    deinit { print(“(name) is being deinitialized”) }<br>}<br><br>class Apartment {<br>    let unit: String<br>    init(unit: String) { self.unit = unit }<br>    var tenant: Person?<br>    deinit { print(“Apartment (unit) is being deinitialized”) }<br>}<br></code></pre><br>每个 Person 实例有一个字符串类型的name属性和一个可选的 apartment 属性,后者初始化为nil. apartment 属性是可选的, 因为一个人有可能没有公寓。<br><br>相似的, 每个 Apartment 实例有一个字符串类型的 unit属性和一个可选的 tenant 属性,后者初始化为nil nil. tenant 属性是可选的,因为一个公寓有可能没有租客。<br><br>两个类都定义了析构器, 它们打印类实例被销毁的事实。这个可以帮你查看两个类的实例是否按照预期销毁了。<br><br>下面的代码片段定义了两个可选类型的变量 john 和 unit4A, 他们将会被设置为特定的 Apartment 和 Person 实例。这两个变量初始值都是 nil, 因为它们是可选的:<br><pre><code><br>var john: Person?<br>var unit4A: Apartment?<br><br>john = Person(name: “John Appleseed”)<br>unit4A = Apartment(unit: “4A”)<br></code></pre><br>这里展示创建和赋值这两个实例后,强引用的样子。john 变量现在强引用这个新的 Person 实例, unit4A 变量现在强引用这个新的 Apartment 实例:<br><br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle01_2x.png"><br></div><br>现在可以联系两个实例到一起,现在人有了公寓,公寓也有了一个租客。注意这里使用了感叹号来拆包和访问 john 和 unit4A 可选变量, 所以这些实例的属性可以被设置:<br><pre><code><br>john!.apartment = unit4A<br>unit4A!.tenant = john<br></code></pre><br>Here’s how the strong references look after you link the two instances together:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle02_2x.png"><br></div><br>不幸运的是, 联系这两个实例,导致在它们之间建立了强引用循环。Person 实例现在有了一个强引用到 Apartment 实例, 然后 Apartment 实例有一个强引用到 Person 实例。因此, 当你打破 john 和 unit4A 变量拥有的强引用, 引用计数也不会降为0, 实例也不会被ARC销毁:<br><pre><code><br>john = nil<br>unit4A = nil<br></code></pre><br>注意当你设置两个变量为nil时,两个析构器都不会调用。强引用循环阻止了 Person 和 Apartment 实例的销毁。导致你的应用内存泄露。<br><br>这里展示设置john 和 unit4A 变量为 nil后强引用的样子:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle03_2x.png"><br></div>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/chessBoard_2x.png"><br></div>
 
-<p>Person 实例和 Apartment 实例之间的强引用依然没有打破。</p>
-<h1 id="解决实例间的强引用循环"><a href="#解决实例间的强引用循环" class="headerlink" title="解决实例间的强引用循环"></a>解决实例间的强引用循环</h1><p>针对类类型的属性, Swift 提供了两个方法来解决强引用循环问题: weak 引用 和 unowned 引用。</p>
-<p>Weak 和 unowned references 可以使一个实例在引用循环中去调用另外一个实例,而不会强引用它。然后实例之间可以互相引用而不会出现强引用循环。</p>
-<p>其他实例有更短的生命期的时候使用一个弱引用—就是说, 当其他实例首先被销毁的时候。 上面的 Apartment 例子, 在公寓的生命周期内, 在某个时刻没有租客是正常的。所以在这个情况下,使用弱引用来打破强引用是合适的方式。相反, 如果其他实例有着相同或者更长的生命周期,就使用无主引用。</p>
-<h1 id="弱引用"><a href="#弱引用" class="headerlink" title="弱引用"></a>弱引用</h1><p>弱引用不会强持有它引用的实例, 并且不会阻止ARC处理引用的实例。这个行为防止出现强引用循环。你可以在属性或者变量声明前加上weak关键字来声明一个弱引用。</p>
-<p>因为弱引用不会强持有它引用的实例, 在弱引用仍然引用实例的时候,有可能这个实例将要被销毁了。因此, 在引用实例销毁时, ARC 自动把弱引用设置为nil. 并且, 由于弱引用要在运行时允许它们的值修改为nil, 它们总是声明成可选类型变量, 而不是常量。</p>
-<p>你可以判断在弱引用中一个值的存在与否, 就像其他可选值一样, 实例不存后,你不会得到一个无效的实例引用。</p>
+<p>为了表示这个游戏棋盘, Chessboard 结构体有一个属性 boardColors, 它是一个带有64个布尔值的数组。真值代表黑色方块,假值代表白色方块。第一项代表棋盘的左上方块,最后一项代表棋盘的右下方块。</p>
+<p>boardColors 数组使用一个闭包初始化,设定它的颜色值:</p>
+<pre><code>
+struct Chessboard {
+    let boardColors: [Bool] = {
+        var temporaryBoard = [Bool]()
+        var isBlack = false
+        for i in 1...8 {
+            for j in 1...8 {
+                temporaryBoard.append(isBlack)
+                isBlack = !isBlack
+            }
+            isBlack = !isBlack
+        }
+        return temporaryBoard
+    }()
+    func squareIsBlackAt(row: Int, column: Int) -> Bool {
+        return boardColors[(row * 8) + column]
+    }
+}
+</code></pre>
+
+<p>一旦新的Chessboard 实例创建, 闭包就会执行, boardColors 默认值会计算和返回。上面例子里的闭包在一个临时数组temporaryBoard 为棋盘上每个方块计算和设置了对应的颜色值, 并且等设置完成就作为闭包返回值返回。返回数组值存储在 boardColors 中,并且可以用squareIsBlackAtRow 功能函数进行查询:</p>
+<pre><code>
+let board = Chessboard()
+print(board.squareIsBlackAt(row: 0, column: 1))
+// Prints "true"
+print(board.squareIsBlackAt(row: 7, column: 7))
+// 打印 "false"
+</code></pre>
+
+<h1 id="析构器"><a href="#析构器" class="headerlink" title="析构器"></a>析构器</h1><p>在一个类实例销毁前,一个析构器会立即调用。使用deinit 关键字来表示析构器, 跟构造器写法类似。析构器只能用在类类型上。 types.</p>
+<h1 id="析构器如何工作"><a href="#析构器如何工作" class="headerlink" title="析构器如何工作"></a>析构器如何工作</h1><p>Swift 在实例不需要时会自动析构它, 去释放资源。Swift 通过自动引用计数来管理实例的内存(ARC). 当实例销毁时你不需要手动执行清理操作。不过, 当你使用自己的资源时, 你可能需要额外执行一些清理。例如, 如果你创建一个类去读写文件, 在类的实例销毁前你可能需要去关闭这个文件。</p>
+<p>类最多只能有一个析构器。析构器没有任何参数也没有括号:</p>
+<pre><code>
+deinit {
+    // perform the deinitialization
+}</code></pre>
+析构器会自动调用, 在实例销毁发生前。禁止自己去调用析构器。子类会继承超类的析构器, 超类析构器在子类析构器实现后调用。 即使子类不提供自己的析构器,超类析构器也会调用。
+
+因为实例直到析构器调用才会销毁, 一个析构器可以访问调用实例的所有属性,同时也可以改变基于这些属性的行为 (例如寻找需要关闭的文件名).
+
+# 析构器的活动
+
+这里有一个析构器活动的例子。这个例子定义了两个新类型, Bank 和 Player, Bank 类管理一个虚拟货币, 它的流通货币不会超过 10,000 硬币。游戏里只有能有一个银行, 所以 Bank 用类实现,带有类型属性和方法来存储和管理它的当前状态:
+<pre><code>
+class Bank {
+    static var coinsInBank = 10_000
+    static func distribute(coins numberOfCoinsRequested: Int) -> Int {
+        let numberOfCoinsToVend = min(numberOfCoinsRequested, coinsInBank)
+        coinsInBank -= numberOfCoinsToVend
+        return numberOfCoinsToVend
+    }
+    static func receive(coins: Int) {
+        coinsInBank += coins
+    }
+}</code></pre>
+
+<p>Bank 用coinsInBank 属性跟中当前硬币的数量。它同时提供了两个方法s—distribute(coins:) 和 receive(coins:)—来管理硬币的发行和回收。</p>
+<p>distribute(coins:) 方法判断在发行前银行是否有足够的硬币。如果没有足够的硬币, Bank 返回一个比要求数量少的数量 (如果银行没有硬币了就返回0). 它返回一个整数来表示实际提供的硬币数量。</p>
+<p>receive(coins:) 方法简单加上收到的硬币数量。</p>
+<p>Player 类描述了游戏中的一个玩家。 每一个玩家在任何时间都有一定数量的硬币在钱包里。这个用玩家的coinsInPurse 来表示:</p>
+<pre><code>
+class Player {
+    var coinsInPurse: Int
+    init(coins: Int) {
+        coinsInPurse = Bank.distribute(coins: coins)
+    }
+    func win(coins: Int) {
+        coinsInPurse += Bank.distribute(coins: coins)
+    }
+    deinit {
+        Bank.receive(coins: coinsInPurse)
+    }
+}</code></pre>
+
+<p>在初始化过程中,每个玩家都会用一定数量的硬币来初始化, 尽管玩家可能在银行硬币不足的时候获取较少的数量。</p>
+<p>Player 类定义了一个方法 win(coins:), 它从银行获取一定数量的硬币然后把它们加入玩家的钱包。Player 类同时实现了一个去构造器, 它在 Player 实例销毁前调用。在这里, 这个构造器简单把玩家的硬币返还给银行:</p>
+<pre><code>
+var playerOne: Player? = Player(coins: 100)
+print("A new player has joined the game with \(playerOne!.coinsInPurse) coins")
+// 打印 "A new player has joined the game with 100 coins"
+print("There are now \(Bank.coinsInBank) coins left in the bank")
+// 打印 "There are now 9900 coins left in the bank"
+</code></pre>
+
+<p>一个新的 Player 实例被创建, 如果有硬币就请求100个硬币。这个Player 实例存在一个可选的 Player 变量 playerOne 中。可选变量用在这里, 因为玩家可能在任何时间离开游戏。可选项让你跟踪玩家当前是否还在游戏中。</p>
+<p>因为 playerOne 是一个可选项, 当它的 coinsInPurse 属性被访问来打印硬币数量时, 需要使用感叹号。一旦它的 winCoins(_:) 方法被调用:</p>
+<pre><code>
+playerOne!.win(coins: 2_000)
+print("PlayerOne won 2000 coins & now has \(playerOne!.coinsInPurse) coins")
+// 打印 "PlayerOne won 2000 coins & now has 2100 coins"
+print("The bank now only has \(Bank.coinsInBank) coins left")
+// 打印 "The bank now only has 7900 coins left"
+</code></pre>
+
+<p>在这里, 玩家已经赢得了 2,000 个硬币。玩家的钱包现在有 2,100 个硬币, 银行还有 7,900 个硬币。</p>
+<pre><code>
+playerOne = nil
+print("PlayerOne has left the game")
+// 打印 "PlayerOne has left the game"
+print("The bank now has \(Bank.coinsInBank) coins")
+// 打印 "The bank now has 10000 coins"
+</code></pre>
+
+<p>玩家现在离开游戏。设置可选playerOne变量为nil 说明了这点。意思是 “没有Player 实例。” 此时, playerOne 变量引用的Player 实例被销毁。没有其他属性或者变量再引用 Player 实例, 所以它被销毁来释放内存。在这个发生之前, 它的析构器自动调用, 然后它的硬币全部归还给银行。</p>
+<h1 id="自动引用计数"><a href="#自动引用计数" class="headerlink" title="自动引用计数"></a>自动引用计数</h1><p>Swift 使用自动引用计数来跟踪和管理你的应用的存储使用。在大多数情况里, 这就意味着内存管理 “仅仅工作” 在 Swift, 你自己不需要管理内存。类的实例不再需要的时候,ARC 会自动释放实例使用的内存。</p>
+<p>不过, 在一些少见的情况下,为了替你管理内存,ARC 需要更多关于你代码关系的信息。这个章节描述这些场景并且向你展示你怎么使用 ARC 来管理应用的内存。</p>
 <p>备注</p>
-<p>ARC 设置一个弱引用为nil时, 属性观察者不会调用。</p>
-<p>下面的例子和上面 Person 和 Apartment 例子是一样的, 只有一个重要的不同。这一次, Apartment 类型的 tenant 属性声明为弱引用:</p>
+<p>引用计数只适用于类的实例。结构体和枚举是值类型, 而非引用类型, 不能用引用存储和传递。</p>
+<h1 id="ARC-如何工作"><a href="#ARC-如何工作" class="headerlink" title="ARC 如何工作"></a>ARC 如何工作</h1><p>每次你创建一个新的类实例, ARC 就会分配一块内存来存储实例的信息。这个内存掌握了实例类型的信息, 还有对应实例的存储属性的值。</p>
+<p>另外, 当一个实例不再需要的时候, ARC 会释放实例使用的内存,让内存另有他用。这个确保类的实例不需要的时候,不会继续占用内存空间。</p>
+<p>不过, 如果 ARC 将要销毁在使用的实例, 它将不能访问实例的属性, 或者是实例的方法。 事实上, 如果你访问这个实例, 你的应用可能会崩溃。</p>
+<p>为了确保实例在使用时不会消失, ARC 跟踪有多少属性, 常量和变量正在引用类的每个实例。只要有一个对实例的引用,ARC 都不会销毁这个实例。</p>
+<p>为了实现这种可能, 一旦你把类赋给一个属性, 常量或者变量, 这些属性,常量或者变量就会强引用这个实例。 这个引用之所以叫强引用,是因为它牢牢掌握了这个实例。只要强引用还在,就不会允许它被销毁。</p>
+<h1 id="ARC-的活动"><a href="#ARC-的活动" class="headerlink" title="ARC 的活动"></a>ARC 的活动</h1><p>下面有个自动引用计数的例子,来展示它如何工作。这个例子以一个简单的类 Person 开始, 它定义了一个存储常量属性 name:</p>
+<pre><code>
+class Person {
+    let name: String
+    init(name: String) {
+        self.name = name
+        print("\(name) is being initialized")
+    }
+    deinit {
+        print("\(name) is being deinitialized")
+    }
+}</code></pre>
+
+<p>Person 类有一个构造器,用来设置实例的 name 属性,并且打印一条信息来表明构造在进行。Person 类同时也有一个析构器,在类的实例被销毁时打印一条信息。</p>
+<p>下面代码定义了三个 Person? 类型的变量, 在后续代码中,它们用来设置多个对新Person 实例的引用。因为这些变量是可选类型(Person?, 不是 Person), 它们会自动初始化为nil, 并且当前不会引用一个Person 实例。</p>
+<pre><code>
+var reference1: Person?
+var reference2: Person?
+var reference3: Person?
+</code></pre>
+
+<p>你现在可以创建一个新的 Person 实例,并且把它赋值给三个变量的其中一个:</p>
+<pre><code>
+reference1 = Person(name: "John Appleseed")
+// 打印 "John Appleseed is being initialized"
+</code></pre>
+注意这条信息 "John Appleseed is being initialized" 在调用Person 来的构造器时打印。这个确认了初始化已经发生。
+
+因为新的 Person 实例已经指定给 reference1 变量, 现在从reference1 到新的Person 实例有了一个强引用。因为有了至少一个强引用, ARC 确保 Person 保持在内存里不被销毁。
+
+如果你把相同的 Person 实例赋值给另外两个变量, 指向这个实例的两个强引用就建立了:
+<pre><code>
+reference2 = reference1
+reference3 = reference1
+</code></pre>
+
+<p>现在有三个强引用指向这个单独的 Person 实例。</p>
+<p>通过给其中两个变量赋值为nil,你可以打破这些强引用, 还剩一个强引用, 但是Person 实例不会被销毁:</p>
+<pre><code>
+reference1 = nil
+reference2 = nil
+</code></pre>
+
+<p>ARC 直到最后一个强引用被打破才会销毁 Person 实例, 在这个时刻很清楚你无法再继续使用这个 Person 实例:</p>
+<pre><code>
+reference3 = nil
+// 打印 "John Appleseed is being deinitialized"
+</code></pre>
+
+<h1 id="类实例的强引用循环"><a href="#类实例的强引用循环" class="headerlink" title="类实例的强引用循环"></a>类实例的强引用循环</h1><p>上面的例子中, ARC 可以跟踪你创建的实例的引用数量,并且在实例不需要的时候销毁它。</p>
+<p>不过, 有可能写下这种代码,在代码里一个类实例不知道什么时候强引用数量为0. 如果两个类实例互相强引用就会出现这个问题, 这样每个实例都保有其他活动的实例。这就是众所周知的强引用循环。</p>
+<p>使用weak 或者 unowned 来代替强引用, 这样你可以解决强引用循环的问题。不过, 在你学习如何解决强引用问题前, 有必要先学习循环引用是怎么产生的。</p>
+<p>下面的例子展示强引用循环是如何偶发的。这个例子定义了两个类 Person 和 Apartment, 它模拟了一组公寓和居民:</p>
+<pre><code>
+class Person {
+    let name: String
+    init(name: String) { self.name = name }
+    var apartment: Apartment?
+    deinit { print("\(name) is being deinitialized") }
+}
+
+class Apartment {
+    let unit: String
+    init(unit: String) { self.unit = unit }
+    var tenant: Person?
+    deinit { print("Apartment \(unit) is being deinitialized") }
+}
+</code></pre>
+每个 Person 实例有一个字符串类型的name属性和一个可选的 apartment 属性,后者初始化为nil. apartment 属性是可选的, 因为一个人有可能没有公寓。
+
+相似的, 每个 Apartment 实例有一个字符串类型的 unit属性和一个可选的 tenant 属性,后者初始化为nil nil. tenant 属性是可选的,因为一个公寓有可能没有租客。
+
+两个类都定义了析构器, 它们打印类实例被销毁的事实。这个可以帮你查看两个类的实例是否按照预期销毁了。
+
+下面的代码片段定义了两个可选类型的变量 john 和 unit4A, 他们将会被设置为特定的 Apartment 和 Person 实例。这两个变量初始值都是 nil, 因为它们是可选的:
+<pre><code>
+var john: Person?
+var unit4A: Apartment?
+
+john = Person(name: "John Appleseed")
+unit4A = Apartment(unit: "4A")
+</code></pre>
+这里展示创建和赋值这两个实例后,强引用的样子。john 变量现在强引用这个新的 Person 实例, unit4A 变量现在强引用这个新的 Apartment 实例:
+
+<div style="text-align:center">
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle01_2x.png">
+</div>
+现在可以联系两个实例到一起,现在人有了公寓,公寓也有了一个租客。注意这里使用了感叹号来拆包和访问 john 和 unit4A 可选变量, 所以这些实例的属性可以被设置:
+<pre><code>
+john!.apartment = unit4A
+unit4A!.tenant = john
+</code></pre>
+Here’s how the strong references look after you link the two instances together:
+<div style="text-align:center">
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle02_2x.png">
+</div>
+不幸运的是, 联系这两个实例,导致在它们之间建立了强引用循环。Person 实例现在有了一个强引用到 Apartment 实例, 然后 Apartment 实例有一个强引用到 Person 实例。因此, 当你打破 john 和 unit4A 变量拥有的强引用, 引用计数也不会降为0, 实例也不会被ARC销毁:
+<pre><code>
+john = nil
+unit4A = nil
+</code></pre>
+注意当你设置两个变量为nil时,两个析构器都不会调用。强引用循环阻止了 Person 和 Apartment 实例的销毁。导致你的应用内存泄露。
+
+这里展示设置john 和 unit4A 变量为 nil后强引用的样子:
+<div style="text-align:center">
+<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/referenceCycle03_2x.png">
+</div>
+
+Person 实例和 Apartment 实例之间的强引用依然没有打破。
+
+# 解决实例间的强引用循环
+
+针对类类型的属性, Swift 提供了两个方法来解决强引用循环问题: weak 引用 和 unowned 引用。
+
+Weak 和 unowned references 可以使一个实例在引用循环中去调用另外一个实例,而不会强引用它。然后实例之间可以互相引用而不会出现强引用循环。
+
+其他实例有更短的生命期的时候使用一个弱引用—就是说, 当其他实例首先被销毁的时候。 上面的 Apartment 例子, 在公寓的生命周期内, 在某个时刻没有租客是正常的。所以在这个情况下,使用弱引用来打破强引用是合适的方式。相反, 如果其他实例有着相同或者更长的生命周期,就使用无主引用。
+
+# 弱引用
+弱引用不会强持有它引用的实例, 并且不会阻止ARC处理引用的实例。这个行为防止出现强引用循环。你可以在属性或者变量声明前加上weak关键字来声明一个弱引用。
+
+因为弱引用不会强持有它引用的实例, 在弱引用仍然引用实例的时候,有可能这个实例将要被销毁了。因此, 在引用实例销毁时, ARC 自动把弱引用设置为nil. 并且, 由于弱引用要在运行时允许它们的值修改为nil, 它们总是声明成可选类型变量, 而不是常量。
+
+你可以判断在弱引用中一个值的存在与否, 就像其他可选值一样, 实例不存后,你不会得到一个无效的实例引用。
+
+备注
+
+ARC 设置一个弱引用为nil时, 属性观察者不会调用。
+
+下面的例子和上面 Person 和 Apartment 例子是一样的, 只有一个重要的不同。这一次, Apartment 类型的 tenant 属性声明为弱引用:
 <pre><code>
 class Person {
     let name: String
