@@ -72,7 +72,7 @@
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowUnsignedSubtraction_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowSignedSubtraction_2x.png">
 <meta property="og:image" content="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/vectorAddition_2x.png">
-<meta property="og:updated_time" content="2017-01-23T05:37:20.000Z">
+<meta property="og:updated_time" content="2017-01-23T05:39:18.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Swift 编程语言（Swift 3.0.1）">
 <meta name="twitter:description" content="基本介绍Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。
@@ -5527,12 +5527,9 @@ for item in library {
 <p>如果向下转换成功了, movie的属性用来为Movie实例打印一条描述信息, 包括导演名。相似的原则用于判断 Song 实例, 在找到Song实例的时候就打印对应的描述信息(包括艺术家名字)。</p>
 <p>备注</p>
 <p>转换不会修改实例的值。潜在的实例依然相同; 它会简单处理和访问作为转换的类型。</p>
-<h1 id="Any-和-AnyObject的类型转换"><a href="#Any-和-AnyObject的类型转换" class="headerlink" title="Any 和 AnyObject的类型转换"></a>Any 和 AnyObject的类型转换</h1><p>Swift 提供两个特别类型来使用未指定的类型:</p>
-<p>Any 可以表示任意类型的实例, 包括函数类型。<br>AnyObject可以表示任意类类型的实例。<br>当你需要它们提供的行为和能力的时候, 可以使用Any 和 AnyObject. 更好的建议是,在你的代码中指定你希望的类型。</p>
-<p>这里有一个例子使用Any来处理不同类型的混合, 包括函数类型和非类的类型。这个例子创建了一个数组 things, 它可以存储Any类型的值:</p>
+<h1 id="Any-和-AnyObject的类型转换"><a href="#Any-和-AnyObject的类型转换" class="headerlink" title="Any 和 AnyObject的类型转换"></a>Any 和 AnyObject的类型转换</h1><p>Swift 提供两个特别类型来使用未指定的类型:<br>Any 可以表示任意类型的实例, 包括函数类型。<br>AnyObject可以表示任意类类型的实例。<br>当你需要它们提供的行为和能力的时候, 可以使用Any 和 AnyObject. 更好的建议是,在你的代码中指定你希望的类型。<br>这里有一个例子使用Any来处理不同类型的混合, 包括函数类型和非类的类型。这个例子创建了一个数组 things, 它可以存储Any类型的值:</p>
 <pre><code>
 var things = [Any]()
-
 things.append(0)
 things.append(0.0)
 things.append(42)
