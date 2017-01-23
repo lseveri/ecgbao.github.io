@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T04:45:08.000Z</updated>
+    <updated>2017-01-23T04:48:04.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -1912,7 +1912,26 @@ default:
 // 打印 "(1, 1) is inside the box"
 </code></pre>
 
-<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphSimple_2x.png"><br></div><br>switch 语句决定这个点是否位于原点 (0, 0), 红色的 x-轴, 橙色 y-轴, 在蓝色 4-by-4 方块里原点在中心, 或者在方块之外。<br><br>跟 C 不同, Swift 允许多个case 去处理相同的值。 事实上, (0, 0)点可以满足例子的四个case。不过, 如果多个匹配都可能, 第一个匹配上的总是执行。 (0, 0) 点首先匹配case (0, 0), 其他所有匹配的case都会被忽略。<br><br># 值绑定<br><br>一个 switch case 可以绑定值到临时的常量或者变量, 用在case 体中。这个就是值绑定, 因为值绑定到case 体中的临时常量或者变量上。<br><br>下面这个例子有一个(x, y) 点, 是元组类型 (Int, Int), 在下面的图表中标示:<br><pre><code><br>let anotherPoint = (2, 0)<br>switch anotherPoint {<br>case (let x, 0):<br>    print(“on the x-axis with an x value of (x)”)<br>case (0, let y):<br>    print(“on the y-axis with a y value of (y)”)<br>case let (x, y):<br>    print(“somewhere else at ((x), (y))”)<br>}<br>// Prints “on the x-axis with an x value of 2”<br></code></pre><br><br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphMedium_2x.png"><br></div>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphSimple_2x.png"><br></div>
+
+<p>switch 语句决定这个点是否位于原点 (0, 0), 红色的 x-轴, 橙色 y-轴, 在蓝色 4-by-4 方块里原点在中心, 或者在方块之外。</p>
+<p>跟 C 不同, Swift 允许多个case 去处理相同的值。 事实上, (0, 0)点可以满足例子的四个case。不过, 如果多个匹配都可能, 第一个匹配上的总是执行。 (0, 0) 点首先匹配case (0, 0), 其他所有匹配的case都会被忽略。</p>
+<h1 id="值绑定"><a href="#值绑定" class="headerlink" title="值绑定"></a>值绑定</h1><p>一个 switch case 可以绑定值到临时的常量或者变量, 用在case 体中。这个就是值绑定, 因为值绑定到case 体中的临时常量或者变量上。</p>
+<p>下面这个例子有一个(x, y) 点, 是元组类型 (Int, Int), 在下面的图表中标示:</p>
+<pre><code>
+let anotherPoint = (2, 0)
+switch anotherPoint {
+case (let x, 0):
+    print("on the x-axis with an x value of \(x)")
+case (0, let y):
+    print("on the y-axis with a y value of \(y)")
+case let (x, y):
+    print("somewhere else at (\(x), \(y))")
+}
+// Prints "on the x-axis with an x value of 2"
+</code></pre>
+
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphMedium_2x.png"><br></div>
 
 <p>switch 语句判断这个点是在红色的 x-轴, 橙色的 y-轴, 还是其他什么地方 (不在轴上)。</p>
 <p>这三个 switch case声明了占位符常量 x 和 y, 临时存放来自 anotherPoint 的一个或者两个元组值。第一个 case, case (let x, 0), 匹配任何y值为0 然后把坐标点x的值赋给临时常量 x. 类似的, 第二个case, case (0, let y), 匹配任何x值为0,然后把坐标点y值赋给临时常量y.</p>
@@ -2014,17 +2033,12 @@ if let integerValue = possibleIntegerValue {
 }
 // 打印 "The integer value of 三 is 3."
 </code></pre>
-上面的例子判断 numberSymbol 是不是拉丁语, 阿拉伯语, 汉语, 或者泰语中的1到4。如果匹配到, switch中的一个case会赋值给可选类型变量 possibleIntegerValue 一个合适的整数值。
 
-在 switch 语句执行完成之后, 例子中使用可选绑定去判断一个值是否找到。possibleIntegerValue 变量是一个可选类型有一个初始值nil, 如果四个case之一给possibleIntegerValue 设置了一个实际值,这个可选绑定就成功了。
-
-因为不可能列出所有的可能字符, 一个默认的case 用来处理其他没匹配的字符。默认case不需要做任何事, 所以它只有一个break语句。当默认case被匹配后, break 语句就结束switch语句的执行n, 代码开始从 if let 语句处继续执行。
-
-# Fallthrough
-
-Swift 的 Switch 语句不会 fall through 到下一个case。 相反, 只有第一个匹配到的case语句执行完成,整个switch语句就完成了执行。不同的是, C 语言要求每个case后面都要加上break 语句,防止 fallthrough. 明显Swift 更加简洁和安全。
-
-如果你想要C语言那种效果的 fallthrough, 你可以选择在case后面加上 fallthrough 关键字。 下面的例子使用fallthrough 创建一个数字的文字描述。
+<p>上面的例子判断 numberSymbol 是不是拉丁语, 阿拉伯语, 汉语, 或者泰语中的1到4。如果匹配到, switch中的一个case会赋值给可选类型变量 possibleIntegerValue 一个合适的整数值。</p>
+<p>在 switch 语句执行完成之后, 例子中使用可选绑定去判断一个值是否找到。possibleIntegerValue 变量是一个可选类型有一个初始值nil, 如果四个case之一给possibleIntegerValue 设置了一个实际值,这个可选绑定就成功了。</p>
+<p>因为不可能列出所有的可能字符, 一个默认的case 用来处理其他没匹配的字符。默认case不需要做任何事, 所以它只有一个break语句。当默认case被匹配后, break 语句就结束switch语句的执行n, 代码开始从 if let 语句处继续执行。</p>
+<h1 id="Fallthrough"><a href="#Fallthrough" class="headerlink" title="Fallthrough"></a>Fallthrough</h1><p>Swift 的 Switch 语句不会 fall through 到下一个case。 相反, 只有第一个匹配到的case语句执行完成,整个switch语句就完成了执行。不同的是, C 语言要求每个case后面都要加上break 语句,防止 fallthrough. 明显Swift 更加简洁和安全。</p>
+<p>如果你想要C语言那种效果的 fallthrough, 你可以选择在case后面加上 fallthrough 关键字。 下面的例子使用fallthrough 创建一个数字的文字描述。</p>
 <pre><code>
 let integerToDescribe = 5
 var description = "The number \(integerToDescribe) is"
@@ -2038,19 +2052,13 @@ default:
 print(description)
 // 打印 "The number 5 is a prime number, and also an integer."
 </code></pre>
-上例声明了一个字符串变量 description ,然后赋了一个初始值。后面的函数在switch语句中用了这个值 integerToDescribe. 如果 integerToDescribe 的是列表中的一个素数, 函数就把一段文本添加到 description 的后面, 去备注说这个数字是素数。然后用了fallthrough 关键字进入默认的case. 默认的case添加一段额外的文本到 description 之后, 然后switch语句就结束了。
 
-除非integerToDescribe 的值在已知素数列表里, 否则第一个case就不会匹配。 因为没有其他case, integerToDescribe 会被默认的case 匹配。
-
-switch 语句执行完后, 使用 print(_:separator:terminator:) 函数打印description。 这个例子里, 数字5就是一个素数。
-
-# 标签语句
-
-在 Swift 里, 你可以在循环和条件语句种内嵌循环和条件语句,来创建更复杂的控制流结构。不过, 循环和条件语句都可以使用break 语句来提前结束执行。因此, 有时候这很有用,当你决定哪个循环或者条件语句要用break来终止执行。类似的, 如果你有多个嵌套的循环, 它也是有用的,可以明确哪个循环语句继续有效。
-
-为了达到这些目的, 你可以用一个语句标签来标记一个循环或者条件语句。对于条件语句, 你可以使用带着break语句的语句标签来结束标签的语句。对于循环语句, 你可以用带着break或者continue的语句标签来结束或者继续标签语句的执行。
-
-一个标签语句通过放置一个标签来指示,标签放在相同行作为语句的关键字。跟着是一个冒号。 这里有一个while循环语法的例子, 对于所有的循环和switch语句都是相当的规则:
+<p>上例声明了一个字符串变量 description ,然后赋了一个初始值。后面的函数在switch语句中用了这个值 integerToDescribe. 如果 integerToDescribe 的是列表中的一个素数, 函数就把一段文本添加到 description 的后面, 去备注说这个数字是素数。然后用了fallthrough 关键字进入默认的case. 默认的case添加一段额外的文本到 description 之后, 然后switch语句就结束了。</p>
+<p>除非integerToDescribe 的值在已知素数列表里, 否则第一个case就不会匹配。 因为没有其他case, integerToDescribe 会被默认的case 匹配。</p>
+<p>switch 语句执行完后, 使用 print(_:separator:terminator:) 函数打印description。 这个例子里, 数字5就是一个素数。</p>
+<h1 id="标签语句"><a href="#标签语句" class="headerlink" title="标签语句"></a>标签语句</h1><p>在 Swift 里, 你可以在循环和条件语句种内嵌循环和条件语句,来创建更复杂的控制流结构。不过, 循环和条件语句都可以使用break 语句来提前结束执行。因此, 有时候这很有用,当你决定哪个循环或者条件语句要用break来终止执行。类似的, 如果你有多个嵌套的循环, 它也是有用的,可以明确哪个循环语句继续有效。</p>
+<p>为了达到这些目的, 你可以用一个语句标签来标记一个循环或者条件语句。对于条件语句, 你可以使用带着break语句的语句标签来结束标签的语句。对于循环语句, 你可以用带着break或者continue的语句标签来结束或者继续标签语句的执行。</p>
+<p>一个标签语句通过放置一个标签来指示,标签放在相同行作为语句的关键字。跟着是一个冒号。 这里有一个while循环语法的例子, 对于所有的循环和switch语句都是相当的规则:</p>
 <pre><code>
 label name: while condition {
     statements
@@ -2134,18 +2142,12 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 // 打印 "Hello Jane!"
 // 打印 "I hope the weather is nice in Cupertino."
 </code></pre>
-如果 guard 语句的条件满足, 代码继续在guard 语句的大括号后执行。所有变量或者常量使用一个可选绑定赋值,它们作为条件的一部分。
-如果条件没有满足, else 分支会执行。这个分支转移控制跳出guard 语句所在的代码块。可以使用控制转移语句 return, break, continue, 或者 throw, 或者也可以调用不返回的函数或者方法, 比如 fatalError(_:file:line:).
 
-跟 if 语句做同样的判断比较,使用 guard 语句为了提高代码的可读性。它让你可以写通常不在else 快执行的代码, 同时让你保持代码,来处理违法要求的要求。
-
-# 判断 API 可用性
-
-Swift 支持判断 API 的有效性, 这样可以保证你不会在给定设备上使用不可用的API。
-
-编译器使用SDK中的有效性信息来判断你代码中的所有API。 如果你使用不可用的API,Swift 会报一个编译错误。
-
-在if或者guard语句中使用一个可用性条件去执行一块代码, 取决于你用的API是否运行时可用。一旦编译器验证API在代码块可以用,它就会用这些信息。
+<p>如果 guard 语句的条件满足, 代码继续在guard 语句的大括号后执行。所有变量或者常量使用一个可选绑定赋值,它们作为条件的一部分。<br>如果条件没有满足, else 分支会执行。这个分支转移控制跳出guard 语句所在的代码块。可以使用控制转移语句 return, break, continue, 或者 throw, 或者也可以调用不返回的函数或者方法, 比如 fatalError(_:file:line:).</p>
+<p>跟 if 语句做同样的判断比较,使用 guard 语句为了提高代码的可读性。它让你可以写通常不在else 快执行的代码, 同时让你保持代码,来处理违法要求的要求。</p>
+<h1 id="判断-API-可用性"><a href="#判断-API-可用性" class="headerlink" title="判断 API 可用性"></a>判断 API 可用性</h1><p>Swift 支持判断 API 的有效性, 这样可以保证你不会在给定设备上使用不可用的API。</p>
+<p>编译器使用SDK中的有效性信息来判断你代码中的所有API。 如果你使用不可用的API,Swift 会报一个编译错误。</p>
+<p>在if或者guard语句中使用一个可用性条件去执行一块代码, 取决于你用的API是否运行时可用。一旦编译器验证API在代码块可以用,它就会用这些信息。</p>
 <pre><code>
 if #available(iOS 10, macOS 10.12, *) {
     // Use iOS 10 APIs on iOS, and use macOS 10.12 APIs on macOS
