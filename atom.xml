@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:44:29.000Z</updated>
+    <updated>2017-01-23T05:47:18.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -7114,8 +7114,7 @@ public struct TrackedString {
 <h1 id="使用扩展添加协议一致性"><a href="#使用扩展添加协议一致性" class="headerlink" title="使用扩展添加协议一致性"></a>使用扩展添加协议一致性</h1><p>如果你用扩展来添加协议一致性,你就不能为扩展提供一个显式的访问级别修饰符。相反, 协议自己的访问级别,通常用来为在扩展中实现的协议需求提供默认访问级别。</p>
 <h1 id="泛型-1"><a href="#泛型-1" class="headerlink" title="泛型"></a>泛型</h1><p>泛型类型和泛型函数的访问级别, 是它们自身的访问级别和它们的类型参数的任何类型限制的访问级别之间最小的那个。 </p>
 <h1 id="类型别名-1"><a href="#类型别名-1" class="headerlink" title="类型别名"></a>类型别名</h1><p>你定义的所有类型别名,因为访问控制的目的,会被看做是不同的类型。一个类型别名的访问级别小于或者等于这个类型。例如, 一个private 类型的别名可以是一个 private, file-private, internal, public, 或者 open type的别名, 但是一个 public 类型别名不能是一个 internal, file-private, 或者 private 类型的别名。</p>
-<p>#备注</p>
-<p>这个规则也适用于用来满足协议一致性的关联类型的类型别名。</p>
+<h1 id="备注"><a href="#备注" class="headerlink" title="备注"></a>备注</h1><p>这个规则也适用于用来满足协议一致性的关联类型的类型别名。</p>
 <h1 id="高级运算符"><a href="#高级运算符" class="headerlink" title="高级运算符"></a>高级运算符</h1><p>除了基本运算符之外, Swift 提供了一些高级运算符来进行更复杂的值操作。包括位和位移运算符。</p>
 <p>跟C的算术运算符不同, Swift 的算术运算符默认不会溢出。溢出会被捕获和报错。 选择溢出行为, 使用 Swift 的溢出算术运算符, 例如溢出加运算符 (&amp;+). 所有溢出算术运算符都是以 (&amp;)开始。</p>
 <p>当你定义结构体,类和枚举的时候, 为这些自定义类型实现自己的标准Swift运算符是很有用的。Swift 让提供这些实现变得容易,并且能精确决定每种类型的行为。</p>
@@ -7167,7 +7166,35 @@ let outputBits = firstBits ^ otherBits  // 等于 00010001
 <h1 id="无符号整数移动"><a href="#无符号整数移动" class="headerlink" title="无符号整数移动"></a>无符号整数移动</h1><p>无符号整数位移表现如下:</p>
 <p>左移或者右移请求数量的位。<br>超出整数存储范围的移位被舍弃。<br>左移或者右移后,缺失的位用0填充。<br>这个方法叫逻辑移位。</p>
 <p>下面这个图展示了 11111111 &lt;&lt; 1 和 11111111 &gt;&gt; 1 的结果。蓝色数字是要移动的, 灰色数字是要舍弃的, 橙色的0是填充的:</p>
-<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftUnsigned_2x.png"><br></div><br>下面是位移动在Swift 代码里的表现:<br><pre><code><br>let shiftBits: UInt8 = 4   // 00000100 in binary<br>shiftBits &lt;&lt; 1             // 00001000<br>shiftBits &lt;&lt; 2             // 00010000<br>shiftBits &lt;&lt; 5             // 10000000<br>shiftBits &lt;&lt; 6             // 00000000<br>shiftBits &gt;&gt; 2             // 00000001<br></code></pre><br><br>你可以使用位移动在其他数据类型里进行编解码:<br><pre><code><br>let pink: UInt32 = 0xCC6699<br>let redComponent = (pink &amp; 0xFF0000) &gt;&gt; 16    // redComponent 是 0xCC, 或者 204<br>let greenComponent = (pink &amp; 0x00FF00) &gt;&gt; 8   // greenComponent 是 0x66, 或者 102<br>let blueComponent = pink &amp; 0x0000FF           // blueComponent 是 0x99, 或者 153<br></code></pre><br><br>这个例子使用了一个 UInt32 类型的常量 pink 来保存粉色的CSS颜色值。CSS 颜色值 #CC6699 十六进制形式写作 0xCC6699. 经过位移 AND (&amp;)和右移运算符（&gt;&gt;）操作, 这个颜色会被分解为 red (CC), green (66), 和 blue (99) .<br><br>红色部分通过把数字 0xCC6699 和 0xFF0000进行位AND获取。 0xFF0000 中的0 “掩藏”了 0xCC6699的第二个和第三个字节, 导致 6699 被忽略,只留下 0xCC0000 的结果。<br><br>然后把这个数字向右移动16位 (&gt;&gt; 16). 十六进制数字每对字母使用8位, 所以向右移动16位把 0xCC0000 转化为 0x0000CC. 它等于 0xCC, 它的十进制值是 204.<br><br>类似的, 绿色部分通过把数字 0xCC6699 和 0x00FF00进行位AND获取, 它的输出值是 0x006600. 然后把输出值向右移动8位 0x66, 它的十进制值是 102.<br><br>最后, 蓝色部分通过把数字 0xCC6699 和 0x0000FF进行位AND获取, 它的输出值是 0x000099. 它不需要向右移动, 因为 0x000099 已经等于 0x99, 它的十进制值是 153.<br><br># 有符号整数移动<br><br>有符号整数的移动比无符号的要复杂, 因为有符号整数是用二进制表示的(为了简单,下面的例子用8位有符号整数展示, 不过这个原则适用于任何大小的有符号整数。)<br><br>有符号整数使用第一个数位来表示正负 (标志位)。 0表示正数, 1表示负数。<br><br>剩余位用来存储实际的值。正数的存储和无符号整数的方式是一样的, 从0往上数。这里是4在Int8中的数位的形式:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedFour_2x.png"><br></div>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftUnsigned_2x.png"><br></div>
+
+<p>下面是位移动在Swift 代码里的表现:</p>
+<pre><code>
+let shiftBits: UInt8 = 4   // 00000100 in binary
+shiftBits << 1             // 00001000
+shiftBits << 2             // 00010000
+shiftBits << 5             // 10000000
+shiftBits << 6             // 00000000
+shiftBits >> 2             // 00000001
+</code></pre>
+
+<p>你可以使用位移动在其他数据类型里进行编解码:</p>
+<pre><code>
+let pink: UInt32 = 0xCC6699
+let redComponent = (pink & 0xFF0000) >> 16    // redComponent 是 0xCC, 或者 204
+let greenComponent = (pink & 0x00FF00) >> 8   // greenComponent 是 0x66, 或者 102
+let blueComponent = pink & 0x0000FF           // blueComponent 是 0x99, 或者 153
+</code></pre>
+
+<p>这个例子使用了一个 UInt32 类型的常量 pink 来保存粉色的CSS颜色值。CSS 颜色值 #CC6699 十六进制形式写作 0xCC6699. 经过位移 AND (&amp;)和右移运算符（&gt;&gt;）操作, 这个颜色会被分解为 red (CC), green (66), 和 blue (99) .</p>
+<p>红色部分通过把数字 0xCC6699 和 0xFF0000进行位AND获取。 0xFF0000 中的0 “掩藏”了 0xCC6699的第二个和第三个字节, 导致 6699 被忽略,只留下 0xCC0000 的结果。</p>
+<p>然后把这个数字向右移动16位 (&gt;&gt; 16). 十六进制数字每对字母使用8位, 所以向右移动16位把 0xCC0000 转化为 0x0000CC. 它等于 0xCC, 它的十进制值是 204.</p>
+<p>类似的, 绿色部分通过把数字 0xCC6699 和 0x00FF00进行位AND获取, 它的输出值是 0x006600. 然后把输出值向右移动8位 0x66, 它的十进制值是 102.</p>
+<p>最后, 蓝色部分通过把数字 0xCC6699 和 0x0000FF进行位AND获取, 它的输出值是 0x000099. 它不需要向右移动, 因为 0x000099 已经等于 0x99, 它的十进制值是 153.</p>
+<h1 id="有符号整数移动"><a href="#有符号整数移动" class="headerlink" title="有符号整数移动"></a>有符号整数移动</h1><p>有符号整数的移动比无符号的要复杂, 因为有符号整数是用二进制表示的(为了简单,下面的例子用8位有符号整数展示, 不过这个原则适用于任何大小的有符号整数。)</p>
+<p>有符号整数使用第一个数位来表示正负 (标志位)。 0表示正数, 1表示负数。</p>
+<p>剩余位用来存储实际的值。正数的存储和无符号整数的方式是一样的, 从0往上数。这里是4在Int8中的数位的形式:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedFour_2x.png"><br></div>
 
 <p>标志位是 0 (意思是正数), 7个数值位正好是数字 4, 用二进制符号表示。</p>
 <p>负数存储是不同的。它们存储的值是绝对值减去2的n次方。这里n是数值位的数字。一个8位数有7个数值位, 所以2的7次方, 或者 128.</p>
