@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:03:24.000Z</updated>
+    <updated>2017-01-23T05:07:42.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -2994,22 +2994,18 @@ let earthsOrder = Planet.earth.rawValue
 let sunsetDirection = CompassPoint.west.rawValue
 // sunsetDirection is "west"
 </code></pre>
-# 用原始值初始化
 
-如果你用原始值类型定义一个枚举, 枚举自动得到一个初始化方法, 这个初始化方法有一个原始值类型 (参数 rawValue) 并且返回一个枚举case或者nil. 你可以用这个初始化方法试着创建新的枚举实例。
-
-这个例子用原始值7标识 Uranus :
+<h1 id="用原始值初始化"><a href="#用原始值初始化" class="headerlink" title="用原始值初始化"></a>用原始值初始化</h1><p>如果你用原始值类型定义一个枚举, 枚举自动得到一个初始化方法, 这个初始化方法有一个原始值类型 (参数 rawValue) 并且返回一个枚举case或者nil. 你可以用这个初始化方法试着创建新的枚举实例。</p>
+<p>这个例子用原始值7标识 Uranus :</p>
 <pre><code>
 let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet 是 Planet?类型并且等于Planet.uranus
 </code></pre>
-不是所有的整数值都能找到一个对应的星球, 不过。 因为如此, 原始值初始化方法总是返回一个可选的枚举case. 上面的例子, possiblePlanet 是Planet?类型, 或者 “可选的 Planet.”
 
-备注
-
-原始值初始化方法是灵活的, 因为不是每个原始值都会返回一个枚举case.
-
-如果尝试查找位置是11的星球, 原始值初始化方法返回的 Planet 值为nil:
+<p>不是所有的整数值都能找到一个对应的星球, 不过。 因为如此, 原始值初始化方法总是返回一个可选的枚举case. 上面的例子, possiblePlanet 是Planet?类型, 或者 “可选的 Planet.”</p>
+<p>备注</p>
+<p>原始值初始化方法是灵活的, 因为不是每个原始值都会返回一个枚举case.</p>
+<p>如果尝试查找位置是11的星球, 原始值初始化方法返回的 Planet 值为nil:</p>
 <pre><code>
 let positionToFind = 11
 if let somePlanet = Planet(rawValue: positionToFind) {
@@ -3024,13 +3020,10 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 }
 // 打印 "There isn't a planet at position 11"
 </code></pre>
-这个例子使用可选绑定访问原始值是11的星球。 语句 if let somePlanet = Planet(rawValue: 11) 创建了一个可选的 Planet, 然后设置 somePlanet 值为这个可选绑定的 Planet. 这种情况, 不可能获取到位置是11的星球, 所有else分支被执行了。
 
-# 递归枚举
-
-递归枚举是这样一种枚举,它有另外一个枚举的实例,这个实例作为一个或者多个case的关联值。通过在枚举case 前书写indirect 来标明枚举是递归的。告诉编译器插入必要的间接层。
-
-例如, 这里有一个枚举存储了简单的算术表达式:
+<p>这个例子使用可选绑定访问原始值是11的星球。 语句 if let somePlanet = Planet(rawValue: 11) 创建了一个可选的 Planet, 然后设置 somePlanet 值为这个可选绑定的 Planet. 这种情况, 不可能获取到位置是11的星球, 所有else分支被执行了。</p>
+<h1 id="递归枚举"><a href="#递归枚举" class="headerlink" title="递归枚举"></a>递归枚举</h1><p>递归枚举是这样一种枚举,它有另外一个枚举的实例,这个实例作为一个或者多个case的关联值。通过在枚举case 前书写indirect 来标明枚举是递归的。告诉编译器插入必要的间接层。</p>
+<p>例如, 这里有一个枚举存储了简单的算术表达式:</p>
 <pre><code>
 enum ArithmeticExpression {
     case number(Int)
@@ -3038,7 +3031,8 @@ enum ArithmeticExpression {
     indirect case multiplication(ArithmeticExpression, ArithmeticExpression)
 }
 </code></pre>
-你也可以在枚举开始写 indirect, 来保证所有需要的枚举case 是间接的:
+
+<p>你也可以在枚举开始写 indirect, 来保证所有需要的枚举case 是间接的:</p>
 <pre><code>
 indirect enum ArithmeticExpression {
     case number(Int)
@@ -3046,14 +3040,16 @@ indirect enum ArithmeticExpression {
     case multiplication(ArithmeticExpression, ArithmeticExpression)
 }
 </code></pre>
-这个枚举可以存储三种算术表达式: 一个简单数字, 两个表达式相加, 两个表达式相乘。 加法和乘法分支对应值也是算术表达式—内嵌表达式。 例如, 表达式 (5 + 4) * 2 乘法右边有一个数字,乘法左边有一个表达式。 因为数据是嵌套的, 枚举存储这个数据也需要支持嵌套—意思就是说枚举需要递归。 下面的代码展示为(5 + 4) * 2创建了一个递归枚举 ArithmeticExpression :
+
+<p>这个枚举可以存储三种算术表达式: 一个简单数字, 两个表达式相加, 两个表达式相乘。 加法和乘法分支对应值也是算术表达式—内嵌表达式。 例如, 表达式 (5 + 4) <em> 2 乘法右边有一个数字,乘法左边有一个表达式。 因为数据是嵌套的, 枚举存储这个数据也需要支持嵌套—意思就是说枚举需要递归。 下面的代码展示为(5 + 4) </em> 2创建了一个递归枚举 ArithmeticExpression :</p>
 <pre><code>
 let five = ArithmeticExpression.number(5)
 let four = ArithmeticExpression.number(4)
 let sum = ArithmeticExpression.addition(five, four)
 let product = ArithmeticExpression.multiplication(sum, ArithmeticExpression.number(2))
 </code></pre>
-递归函数直接使用具有递归结构的数据。例如, 这里有个函数执行一个算术表达式:
+
+<p>递归函数直接使用具有递归结构的数据。例如, 这里有个函数执行一个算术表达式:</p>
 <pre><code>
 func evaluate(_ expression: ArithmeticExpression) -> Int {
     switch expression {
@@ -3069,42 +3065,19 @@ func evaluate(_ expression: ArithmeticExpression) -> Int {
 print(evaluate(product))
 // 打印 "18"
 </code></pre>
-这个函数通过返回关联值执行一个简单的数字。它执行一个加法和一个乘法,执行左边的表达式和右边的表达式,然后相加或者相乘它们。
 
-# 类和结构体
-类和结构体是通用的,灵活的结构, 成为你程序代码的构建块。通过对常量,变量,函数使用相同的语法,你定义属性和方法来给类和结构体添加功能
-
-跟其他语言不一样, Swift 不要你给类和结构体创建单独的接口和实现文件。在 Swift里, 你在一个单独的文件中定义类和结构体。 这些类和结构的对外接口对于其他代码是自动可用的。
-
-备注
-
-类的实例一般认为是一个对象。 不过, Swift 的类和结构体在功能上比其他语言更加接近, 这种描述的功能即可用在类的实例也可以用在结构体的实例上。因为如此, 更多通用术语实例被使用了。
-
-# 比较类和结构体
-
-在Swift里类和结构体有很多相同的地方,它们都可以:
-
-定义属性来存储值
-定义函数提供功能
-定义下标,提供下标语法访问值
-定义初始化方法来设定初始状态
-扩展默认实现的功能
-遵守协议提供特定类型的标准功能
-
-类具备结构体没有的额外能力:
-
-继承,让一个类继承另外一个类的特征。
-类型转换,类型转换让你可以在运行是判断和解释类的实例。
-析构器可以释放类实例分配的任何资源。
-引用计数允许对类实例的多次引用。
-
-备注
-
-结构体传值时都是拷贝,它不使用引用计数。
-
-# 定义语法
-
-类和结构体有相同的定义语法。 使用class 关键字引入类,使用struct关键字引入结构体。两者都把全部定义放在一堆大括号内:
+<p>这个函数通过返回关联值执行一个简单的数字。它执行一个加法和一个乘法,执行左边的表达式和右边的表达式,然后相加或者相乘它们。</p>
+<h1 id="类和结构体"><a href="#类和结构体" class="headerlink" title="类和结构体"></a>类和结构体</h1><p>类和结构体是通用的,灵活的结构, 成为你程序代码的构建块。通过对常量,变量,函数使用相同的语法,你定义属性和方法来给类和结构体添加功能</p>
+<p>跟其他语言不一样, Swift 不要你给类和结构体创建单独的接口和实现文件。在 Swift里, 你在一个单独的文件中定义类和结构体。 这些类和结构的对外接口对于其他代码是自动可用的。</p>
+<p>备注</p>
+<p>类的实例一般认为是一个对象。 不过, Swift 的类和结构体在功能上比其他语言更加接近, 这种描述的功能即可用在类的实例也可以用在结构体的实例上。因为如此, 更多通用术语实例被使用了。</p>
+<h1 id="比较类和结构体"><a href="#比较类和结构体" class="headerlink" title="比较类和结构体"></a>比较类和结构体</h1><p>在Swift里类和结构体有很多相同的地方,它们都可以:</p>
+<p>定义属性来存储值<br>定义函数提供功能<br>定义下标,提供下标语法访问值<br>定义初始化方法来设定初始状态<br>扩展默认实现的功能<br>遵守协议提供特定类型的标准功能</p>
+<p>类具备结构体没有的额外能力:</p>
+<p>继承,让一个类继承另外一个类的特征。<br>类型转换,类型转换让你可以在运行是判断和解释类的实例。<br>析构器可以释放类实例分配的任何资源。<br>引用计数允许对类实例的多次引用。</p>
+<p>备注</p>
+<p>结构体传值时都是拷贝,它不使用引用计数。</p>
+<h1 id="定义语法"><a href="#定义语法" class="headerlink" title="定义语法"></a>定义语法</h1><p>类和结构体有相同的定义语法。 使用class 关键字引入类,使用struct关键字引入结构体。两者都把全部定义放在一堆大括号内:</p>
 <pre><code>
 class SomeClass {
 // class definition goes here
@@ -3128,15 +3101,11 @@ var interlaced = false
 var frameRate = 0.0
 var name: String?
 }</code></pre>
-上面的例子定义了一个新的结构体 Resolution, 描述一个基于像素的显示器解决方案。 这个结构体有两个存储属性 width 和 height. 存储属性是常量或者变量,捆绑存储作为类或者结构体的一部分。这两个属性因为初始值为0而被推断为整型。
 
-上面的例子同时定义了一个新类 VideoMode, 来描述一个指定的视频模式用来视频显示。 这个类有四个变量存储属性。 第一个是 resolution, 用一个新的 Resolution 结构体实例来初始化, 推断为 Resolution 属性类型。 其他三个属性, 新的 VideoMode 实例将会用一个设置为false的交错设置来初始化 (意思是 “非交错视频”), 一个回放帧率是 0.0, 一个可选字符串 name. name 属性自动得到默认值nil, 或者 “没有名字值”, 因为它是一个可选类型。
-
-# 类和结构体实例
-
-Resolution 结构体定义和 VideoMode 类定义仅仅描述了一个 Resolution 或者 VideoMode 看起来是什么样子。 他们没有描述一个指定的 resolution 或者video mode. 为了实现这个, 你需要创建结构体或者类的实例。
-
-结构体和类实例的创建语法非常相似:
+<p>上面的例子定义了一个新的结构体 Resolution, 描述一个基于像素的显示器解决方案。 这个结构体有两个存储属性 width 和 height. 存储属性是常量或者变量,捆绑存储作为类或者结构体的一部分。这两个属性因为初始值为0而被推断为整型。</p>
+<p>上面的例子同时定义了一个新类 VideoMode, 来描述一个指定的视频模式用来视频显示。 这个类有四个变量存储属性。 第一个是 resolution, 用一个新的 Resolution 结构体实例来初始化, 推断为 Resolution 属性类型。 其他三个属性, 新的 VideoMode 实例将会用一个设置为false的交错设置来初始化 (意思是 “非交错视频”), 一个回放帧率是 0.0, 一个可选字符串 name. name 属性自动得到默认值nil, 或者 “没有名字值”, 因为它是一个可选类型。</p>
+<h1 id="类和结构体实例"><a href="#类和结构体实例" class="headerlink" title="类和结构体实例"></a>类和结构体实例</h1><p>Resolution 结构体定义和 VideoMode 类定义仅仅描述了一个 Resolution 或者 VideoMode 看起来是什么样子。 他们没有描述一个指定的 resolution 或者video mode. 为了实现这个, 你需要创建结构体或者类的实例。</p>
+<p>结构体和类实例的创建语法非常相似:</p>
 <pre><code>
 let someResolution = Resolution()
 let someVideoMode = VideoMode()</code></pre>
@@ -3162,34 +3131,27 @@ someVideoMode.resolution.width = 1280
 print("The width of someVideoMode is now \(someVideoMode.resolution.width)")
 // 打印 "The width of someVideoMode is now 1280"
 </code></pre>
-备注
 
-跟 Objective-C 不同, Swift 让你可以直接设置结构体属性的子属性。 上面最后一个例子, someVideoMode 属性resolution的子属性width 就是直接设置的, 无需你把整个resolution 属性设置成新值。
-
-# 结构体类型成员初始化方法
-
-所有的结构体都有一个自动产生的成员初始化方法, 你可以用来初始化新的结构体实例的成员属性。 新实例属性的初始值可以根据名字传入成员初始化方法:
+<p>备注</p>
+<p>跟 Objective-C 不同, Swift 让你可以直接设置结构体属性的子属性。 上面最后一个例子, someVideoMode 属性resolution的子属性width 就是直接设置的, 无需你把整个resolution 属性设置成新值。</p>
+<h1 id="结构体类型成员初始化方法"><a href="#结构体类型成员初始化方法" class="headerlink" title="结构体类型成员初始化方法"></a>结构体类型成员初始化方法</h1><p>所有的结构体都有一个自动产生的成员初始化方法, 你可以用来初始化新的结构体实例的成员属性。 新实例属性的初始值可以根据名字传入成员初始化方法:</p>
 <pre><code>
-let vga = Resolution(width: 640, height: 480)</code></pre>
-跟结构体不同, 类实例不会接受一个默认的成员初始化方法。
+let vga = Resolution(width: 640, height: 480)
+</code></pre>
 
-# 结构体和枚举是值类型
-
-值类型指的是赋给变量或者常量的时候会进行拷贝的类型, 或者在传给函数使用的时候。
-
-通过前面的章节,你实际上已经广泛使用了值类型。 事实上, 所有Swift 的基础类型—整型, 浮点数, 布尔类型, 字符串类型, 数组和字典都是值类型, 背后都是用结构体实现。
-
-Swift 中所有的结构体和枚举都是值类型。意思就是你创建的任何结构体和枚举—任何它们作为属性的值类型—当它们在你的代码中传递时总是拷贝的。
-
-看一下这个例子, 使用了前一个例子中的 Resolution 结构体:
+<p>跟结构体不同, 类实例不会接受一个默认的成员初始化方法。</p>
+<h1 id="结构体和枚举是值类型"><a href="#结构体和枚举是值类型" class="headerlink" title="结构体和枚举是值类型"></a>结构体和枚举是值类型</h1><p>值类型指的是赋给变量或者常量的时候会进行拷贝的类型, 或者在传给函数使用的时候。</p>
+<p>通过前面的章节,你实际上已经广泛使用了值类型。 事实上, 所有Swift 的基础类型—整型, 浮点数, 布尔类型, 字符串类型, 数组和字典都是值类型, 背后都是用结构体实现。</p>
+<p>Swift 中所有的结构体和枚举都是值类型。意思就是你创建的任何结构体和枚举—任何它们作为属性的值类型—当它们在你的代码中传递时总是拷贝的。</p>
+<p>看一下这个例子, 使用了前一个例子中的 Resolution 结构体:</p>
 <pre><code>
 let hd = Resolution(width: 1920, height: 1080)
-var cinema = hd</code></pre>
-这个例子定义了一个常量 hd 然后用初始化方法赋值给它。
+var cinema = hd
+</code></pre>
 
-然后声明一个变量 cinema 并且把hd 的当前值赋给它。因为 Resolution 是一个结构体, 存在实例的拷贝就创建了。新的拷贝赋值给 cinema. 尽管 hd 和 cinema 现在有了相同的宽和高, 它们背后是完全不同的两个实例。
-
-下一步, cinema 宽度属性修改为2K标准的宽度,用于数字电影项目(2048 像素宽和 1080 像素高):
+<p>这个例子定义了一个常量 hd 然后用初始化方法赋值给它。</p>
+<p>然后声明一个变量 cinema 并且把hd 的当前值赋给它。因为 Resolution 是一个结构体, 存在实例的拷贝就创建了。新的拷贝赋值给 cinema. 尽管 hd 和 cinema 现在有了相同的宽和高, 它们背后是完全不同的两个实例。</p>
+<p>下一步, cinema 宽度属性修改为2K标准的宽度,用于数字电影项目(2048 像素宽和 1080 像素高):</p>
 <pre><code>
 cinema.width = 2048
 检查cinema的宽度属性,显示它的确被修改为 2048:
@@ -3202,9 +3164,9 @@ print("cinema is now \(cinema.width) pixels wide")
 print("hd is still \(hd.width) pixels wide")
 // 打印 "hd is still 1920 pixels wide"
 </code></pre>
-一旦cinema赋值为hd的值, 存储在hd中的值就会拷贝到新的cinema实例。 最后的结果是两个完全独立的实例, 正好都包含相同的数值。 因为它们是单独的实例, 设置cinema 的宽度为 2048 并不影响 hd 的宽度。
 
-相同的行为适用于枚举:
+<p>一旦cinema赋值为hd的值, 存储在hd中的值就会拷贝到新的cinema实例。 最后的结果是两个完全独立的实例, 正好都包含相同的数值。 因为它们是单独的实例, 设置cinema 的宽度为 2048 并不影响 hd 的宽度。</p>
+<p>相同的行为适用于枚举:</p>
 <pre><code>
 enum CompassPoint {
 case north, south, east, west
@@ -3217,13 +3179,10 @@ print("The remembered direction is still .west")
 }
 // 打印 "The remembered direction is still .west"
 </code></pre>
-当 rememberedDirection 被赋值为 currentDirection的值时, 实际上设置的是一个值的拷贝。 改变 currentDirection 的值之后不会影响原先存储在rememberedDirection 中的值。
 
-# 类是引用类型
-
-跟值类型不同, 它们赋值给变量或者常量的时候不会发生拷贝, 传递给函数也一样。 相对一个拷贝, 用的是引用已经存在的实例。
-
-这里有一个例子, 使用上面定义的 VideoMode 类:
+<p>当 rememberedDirection 被赋值为 currentDirection的值时, 实际上设置的是一个值的拷贝。 改变 currentDirection 的值之后不会影响原先存储在rememberedDirection 中的值。</p>
+<h1 id="类是引用类型"><a href="#类是引用类型" class="headerlink" title="类是引用类型"></a>类是引用类型</h1><p>跟值类型不同, 它们赋值给变量或者常量的时候不会发生拷贝, 传递给函数也一样。 相对一个拷贝, 用的是引用已经存在的实例。</p>
+<p>这里有一个例子, 使用上面定义的 VideoMode 类:</p>
 <pre><code>
 let tenEighty = VideoMode()
 tenEighty.resolution = hd
@@ -3231,26 +3190,24 @@ tenEighty.interlaced = true
 tenEighty.name = "1080i"
 tenEighty.frameRate = 25.0
 </code></pre>
-这个例子声明了一个新的变量 tenEighty 并且把一个新的VideoMode 实例赋值给它。视频模式还是用的19020乘以1080 的HD 的拷贝。它设置成交错的,给了一个名字 "1080i". 最后, 设置了25 帧每秒的帧速。
 
-下一步, tenEighty 赋值给一个新的常量 alsoTenEighty, 然后改变 alsoTenEighty 帧速:
+<p>这个例子声明了一个新的变量 tenEighty 并且把一个新的VideoMode 实例赋值给它。视频模式还是用的19020乘以1080 的HD 的拷贝。它设置成交错的,给了一个名字 “1080i”. 最后, 设置了25 帧每秒的帧速。</p>
+<p>下一步, tenEighty 赋值给一个新的常量 alsoTenEighty, 然后改变 alsoTenEighty 帧速:</p>
 <pre><code>
 let alsoTenEighty = tenEighty
 alsoTenEighty.frameRate = 30.0
 </code></pre>
-因为类是引用类型, tenEighty 和 alsoTenEighty 实际上引用的是相同的 VideoMode 实例。它们不过是同一个实例的两个不同的名字。
 
-查看tenEighty 的帧速属性, 显示它变成了新的帧速率 30.0:
+<p>因为类是引用类型, tenEighty 和 alsoTenEighty 实际上引用的是相同的 VideoMode 实例。它们不过是同一个实例的两个不同的名字。</p>
+<p>查看tenEighty 的帧速属性, 显示它变成了新的帧速率 30.0:</p>
 <pre><code>
 print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
-// 打印 "The frameRate property of tenEighty is now 30.0"</code></pre>
-注意 tenEighty 和 alsoTenEighty 声明成常量而不是变量。 不过, 你仍然可以改变 tenEighty.frameRate 和 alsoTenEighty.frameRate, 因为 tenEighty 和 alsoTenEighty 常量的值实际没有改变。 tenEighty 和 alsoTenEighty 它们不保存 VideoMode 实例, 背后它们都是引用一个 VideoMode 实例。 是VideoMode 下面的 frameRate 属性被改变了, 不是引用VideoMode 的常量值被改变。
+// 打印 "The frameRate property of tenEighty is now 30.0"
+</code></pre>
 
-# 等号运算符
-
-因为类是引用类型, 背后可能是多个常量或变量引用同一个类实例。 (结构体和枚举不是这样, 因为它们赋值给常量或者变量,或者传给函数总是拷贝的)
-
-有时候,找出两个常量或者变量是否引用同一个类实例是很有用的。为了实现这个, Swift 提供了两个等号运算符:
+<p>注意 tenEighty 和 alsoTenEighty 声明成常量而不是变量。 不过, 你仍然可以改变 tenEighty.frameRate 和 alsoTenEighty.frameRate, 因为 tenEighty 和 alsoTenEighty 常量的值实际没有改变。 tenEighty 和 alsoTenEighty 它们不保存 VideoMode 实例, 背后它们都是引用一个 VideoMode 实例。 是VideoMode 下面的 frameRate 属性被改变了, 不是引用VideoMode 的常量值被改变。</p>
+<h1 id="等号运算符"><a href="#等号运算符" class="headerlink" title="等号运算符"></a>等号运算符</h1><p>因为类是引用类型, 背后可能是多个常量或变量引用同一个类实例。 (结构体和枚举不是这样, 因为它们赋值给常量或者变量,或者传给函数总是拷贝的)</p>
+<p>有时候,找出两个常量或者变量是否引用同一个类实例是很有用的。为了实现这个, Swift 提供了两个等号运算符:</p>
 <pre><code>
 相同 (===)
 不相同 (!==)</code></pre>
@@ -3258,61 +3215,28 @@ print("The frameRate property of tenEighty is now \(tenEighty.frameRate)")
 <pre><code>
 if tenEighty === alsoTenEighty {
 print("tenEighty and alsoTenEighty refer to the same VideoMode instance.")
-}</code></pre>
+}
 // 打印 "tenEighty and alsoTenEighty refer to the same VideoMode instance."
-注意“相同” (用三个等号表示) 跟“等于” (用两个等号表示)还不同:
+</code></pre>
 
-“相同” 意思是两个类实例常量或者变量引用相同的类实例。
-“等于” 意思是两个实例值相等, 一些“等于”的相关意思, 由类型设计者定义。
-当你自定义类和结构体时, 你有责任决定两个实例“等于”在符合条件。实现“等于” and “不等于” 运算符的过程在等于运算符中描述。
-
-# 指针
-
-如果你熟悉 C, C++, 或者 Objective-C, 你可能会知道这些语言使用指针来指向内存地址。 Swift 的常量或者变量,引用一个实例很像C语言的指针, 但是不会直接指向内存地址, 并且不需要你书写 (*)来表明你要创建一个引用。 相反, 这些引用和Swift 中的其他任何常量或者变量的定义很像。
-
-# 在类与结构体中选择
-
-你可以在你的代码块中同时使用类和结构体来定义自定义数据类型。
-
-不过, 结构体实例总是用值传递, 而类总是使用引用传递。这就意味着它们适用于不同的任务种类。在你需要考虑数据构建和功能时, 觉得是否每一个数据构建应该选用类还是结构体。
-
-一个通用的指导是, 下面一个或者多个条件符合时考虑使用一个结构体:
-
-结构体的主要目的是封装一些相关的简单数据值。
-传递结构体实例是拷贝而非引用。
-结构体存储的任意属性也是值类型, 这些属性期望是拷贝而非引用使用。
-结构体不需要继承其他存在类型的属性或者行为。
-适合结构体的好例子:
-
-几何形状的大小, 可能要封装一个宽度属性和一个高度属性, 两者都是浮点型。
-使用一个系列的范围, 可能封装一个起点属性和一个长度属性, 两者都是整型。
-3D坐标系的点, 可能要封装 x, y 和 z 属性, 每个都是浮点型。
-其他情况, 定义一个类, 然后创建类的实例用来管理和传递引用。 在实践中, 意思自定义数据构建使用类而不是结构体。
-
-# 字符串,数组和字典的赋值和拷贝行为
-
-在 Swift 中, 一些基本的数据类型像String, Array, 和 Dictionary 都是用结构体实现的。 这就意味着例如字符串,数组和字典在赋值给常量或者变量时,也是被拷贝的, 传递给函数或者方法时也一样。
-
-这个行为不同于 Foundation: NSString, NSArray, 和 NSDictionary, 它们是用类实现的。字符串,数组和字典在 Foundation 中赋值时用的引用而非拷贝。
-
-备注
-
-上面描述的拷贝。 在你的代码里这种行为似乎总是发生。 然而, Swift 只有在真正需要这么做的时候才进行实际的拷贝。 Swift管理所有的值拷贝来确保性能最优, 所以你不应避免赋值来抢占这种优化。
-
-# 属性
-属性关联特定的类,结构体或者枚举的值。 存储属性作为实例的一部分用来存储常量或者变量的值, 而计算属性用来计算一个值。 计算属性由类,结构体和枚举提供。 存储属性仅由类和结构体提供。
-
-存储和计算属性通常关联特定类型的实例。 不过, 属性也可以管理类型本身。 比如类型属性。
-
-另外, 你可以定义观察者来监视属性值的改变, 自定义响应的行为。 属性观察者可以添加到你定义的存储属性, 也可以是子类集成父类的属性。
-
-# 存储属性
-
-最简单的形式, 一个存储属性是作为特定类和结构体的常量或者变量。 存储属性既可以是变量也可以是常量。
-
-你可以提供一个默认值作为存储属性定义的一部分。你也可以在初始化时改变它的初始值。对于常量存储属性也是如此。
-
-下面的例子定义了一个结构体 FixedLengthRange, 描述了一个整型的范围, 它有一个长度一旦创建就不可修改:
+<p>注意“相同” (用三个等号表示) 跟“等于” (用两个等号表示)还不同:</p>
+<p>“相同” 意思是两个类实例常量或者变量引用相同的类实例。<br>“等于” 意思是两个实例值相等, 一些“等于”的相关意思, 由类型设计者定义。<br>当你自定义类和结构体时, 你有责任决定两个实例“等于”在符合条件。实现“等于” and “不等于” 运算符的过程在等于运算符中描述。</p>
+<h1 id="指针"><a href="#指针" class="headerlink" title="指针"></a>指针</h1><p>如果你熟悉 C, C++, 或者 Objective-C, 你可能会知道这些语言使用指针来指向内存地址。 Swift 的常量或者变量,引用一个实例很像C语言的指针, 但是不会直接指向内存地址, 并且不需要你书写 (*)来表明你要创建一个引用。 相反, 这些引用和Swift 中的其他任何常量或者变量的定义很像。</p>
+<h1 id="在类与结构体中选择"><a href="#在类与结构体中选择" class="headerlink" title="在类与结构体中选择"></a>在类与结构体中选择</h1><p>你可以在你的代码块中同时使用类和结构体来定义自定义数据类型。</p>
+<p>不过, 结构体实例总是用值传递, 而类总是使用引用传递。这就意味着它们适用于不同的任务种类。在你需要考虑数据构建和功能时, 觉得是否每一个数据构建应该选用类还是结构体。</p>
+<p>一个通用的指导是, 下面一个或者多个条件符合时考虑使用一个结构体:</p>
+<p>结构体的主要目的是封装一些相关的简单数据值。<br>传递结构体实例是拷贝而非引用。<br>结构体存储的任意属性也是值类型, 这些属性期望是拷贝而非引用使用。<br>结构体不需要继承其他存在类型的属性或者行为。<br>适合结构体的好例子:</p>
+<p>几何形状的大小, 可能要封装一个宽度属性和一个高度属性, 两者都是浮点型。<br>使用一个系列的范围, 可能封装一个起点属性和一个长度属性, 两者都是整型。<br>3D坐标系的点, 可能要封装 x, y 和 z 属性, 每个都是浮点型。<br>其他情况, 定义一个类, 然后创建类的实例用来管理和传递引用。 在实践中, 意思自定义数据构建使用类而不是结构体。</p>
+<h1 id="字符串-数组和字典的赋值和拷贝行为"><a href="#字符串-数组和字典的赋值和拷贝行为" class="headerlink" title="字符串,数组和字典的赋值和拷贝行为"></a>字符串,数组和字典的赋值和拷贝行为</h1><p>在 Swift 中, 一些基本的数据类型像String, Array, 和 Dictionary 都是用结构体实现的。 这就意味着例如字符串,数组和字典在赋值给常量或者变量时,也是被拷贝的, 传递给函数或者方法时也一样。</p>
+<p>这个行为不同于 Foundation: NSString, NSArray, 和 NSDictionary, 它们是用类实现的。字符串,数组和字典在 Foundation 中赋值时用的引用而非拷贝。</p>
+<p>备注</p>
+<p>上面描述的拷贝。 在你的代码里这种行为似乎总是发生。 然而, Swift 只有在真正需要这么做的时候才进行实际的拷贝。 Swift管理所有的值拷贝来确保性能最优, 所以你不应避免赋值来抢占这种优化。</p>
+<h1 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h1><p>属性关联特定的类,结构体或者枚举的值。 存储属性作为实例的一部分用来存储常量或者变量的值, 而计算属性用来计算一个值。 计算属性由类,结构体和枚举提供。 存储属性仅由类和结构体提供。</p>
+<p>存储和计算属性通常关联特定类型的实例。 不过, 属性也可以管理类型本身。 比如类型属性。</p>
+<p>另外, 你可以定义观察者来监视属性值的改变, 自定义响应的行为。 属性观察者可以添加到你定义的存储属性, 也可以是子类集成父类的属性。</p>
+<h1 id="存储属性"><a href="#存储属性" class="headerlink" title="存储属性"></a>存储属性</h1><p>最简单的形式, 一个存储属性是作为特定类和结构体的常量或者变量。 存储属性既可以是变量也可以是常量。</p>
+<p>你可以提供一个默认值作为存储属性定义的一部分。你也可以在初始化时改变它的初始值。对于常量存储属性也是如此。</p>
+<p>下面的例子定义了一个结构体 FixedLengthRange, 描述了一个整型的范围, 它有一个长度一旦创建就不可修改:</p>
 <pre><code>
 struct FixedLengthRange {
 var firstValue: Int
@@ -3323,34 +3247,24 @@ var rangeOfThreeItems = FixedLengthRange(firstValue: 0, length: 3)
 rangeOfThreeItems.firstValue = 6
 // the range now represents integer values 6, 7, and 8
 </code></pre>
-FixedLengthRange 实例有一个变量存储属性 firstValue 和一个常量存储属性 length. 上面这个例子, length 在新实例创建时初始化而后不可修改, 因为它是一个常量属性。
 
-# 常量结构体的存储属性
-
-如果你创建一个结构体实例并把它赋值给一个常量, 你就不能修改这个实例的属性, 即使它们定义成变量属性:
+<p>FixedLengthRange 实例有一个变量存储属性 firstValue 和一个常量存储属性 length. 上面这个例子, length 在新实例创建时初始化而后不可修改, 因为它是一个常量属性。</p>
+<h1 id="常量结构体的存储属性"><a href="#常量结构体的存储属性" class="headerlink" title="常量结构体的存储属性"></a>常量结构体的存储属性</h1><p>如果你创建一个结构体实例并把它赋值给一个常量, 你就不能修改这个实例的属性, 即使它们定义成变量属性:</p>
 <pre><code>
 let rangeOfFourItems = FixedLengthRange(firstValue: 0, length: 4)
 // this range represents integer values 0, 1, 2, and 3
 rangeOfFourItems.firstValue = 6
 // 这里会报错, 即使 firstValue 是变量属性
 </code></pre>
-因为rangeOfFourItems 声明成一个常量, 所以不能修改 firstValue 属性, 即使 firstValue 是一个变量属性。
 
-这个行为是因为结构体是值类型。 一个值类型的实例被标记为常量, 那么它所有的属性也变成了常量。
-
-对于类来说不是这样, 类是引用类型。 如果你把类实例赋值给一个常量, 你依然可以修改类的变量属性。
-
-# 延迟存储属性
-
-延迟存储属性的初始值在首次使用时才会计算。标示延迟存储属性通过在声明前书写 lazy 修饰符实现。
-
-备注
-
-你应该总是把延迟属性声明成变量, 因为它的初始值可能在实例初始化完成后才获取到。Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.
-
-延迟属性在初始化值需要依赖外部因素时很有用,它们的值直到实例初始化完成后才知道。 当属性初始值需要复杂和大量计算时，延迟属性需要时再执行加载也非常有用。
-
-下面的例子使用一个延迟存储属性来避免一个复合类的不必要的初始化。这个例子定义了两个类 DataImporter 和 DataManager, 两个都没有完整显示:
+<p>因为rangeOfFourItems 声明成一个常量, 所以不能修改 firstValue 属性, 即使 firstValue 是一个变量属性。</p>
+<p>这个行为是因为结构体是值类型。 一个值类型的实例被标记为常量, 那么它所有的属性也变成了常量。</p>
+<p>对于类来说不是这样, 类是引用类型。 如果你把类实例赋值给一个常量, 你依然可以修改类的变量属性。</p>
+<h1 id="延迟存储属性"><a href="#延迟存储属性" class="headerlink" title="延迟存储属性"></a>延迟存储属性</h1><p>延迟存储属性的初始值在首次使用时才会计算。标示延迟存储属性通过在声明前书写 lazy 修饰符实现。</p>
+<p>备注</p>
+<p>你应该总是把延迟属性声明成变量, 因为它的初始值可能在实例初始化完成后才获取到。Constant properties must always have a value before initialization completes, and therefore cannot be declared as lazy.</p>
+<p>延迟属性在初始化值需要依赖外部因素时很有用,它们的值直到实例初始化完成后才知道。 当属性初始值需要复杂和大量计算时，延迟属性需要时再执行加载也非常有用。</p>
+<p>下面的例子使用一个延迟存储属性来避免一个复合类的不必要的初始化。这个例子定义了两个类 DataImporter 和 DataManager, 两个都没有完整显示:</p>
 <pre><code>
 class DataImporter {
 /*
@@ -3372,31 +3286,22 @@ manager.data.append("Some data")
 manager.data.append("Some more data")
 // the DataImporter instance for the importer property has not yet been created
 </code></pre>
-DataManager 类有一个存储属性 data, 用一个新的,空的字符串数组初始化。 尽管它其余的功能没有显示, DataManager 类的目的是管理和提供对字符串数据数组的访问。
 
-类的部分功能是可以从文件导入数据。 这个功能由 DataImporter 类提供, 假设初始化时间微不足道。 这是因为当DataImporter实例被初始化时, DataImporter 实例需要读取文件内容到内存。
-
-DataManager 实例在没有任何文件输入的情况下管理数据也是有可能的, 所以 DataManager 创建时不需要创建一个新的 DataImporter 实例。 相反, 真正需要使用DataImporter的时候再创建更有意义。
-
-因为它标记了lazy 修饰符, DataImporter 实例只会在 importer 属性首次被访问的时候创建, 比如当它的 fileName 属性需要的时候:
+<p>DataManager 类有一个存储属性 data, 用一个新的,空的字符串数组初始化。 尽管它其余的功能没有显示, DataManager 类的目的是管理和提供对字符串数据数组的访问。</p>
+<p>类的部分功能是可以从文件导入数据。 这个功能由 DataImporter 类提供, 假设初始化时间微不足道。 这是因为当DataImporter实例被初始化时, DataImporter 实例需要读取文件内容到内存。</p>
+<p>DataManager 实例在没有任何文件输入的情况下管理数据也是有可能的, 所以 DataManager 创建时不需要创建一个新的 DataImporter 实例。 相反, 真正需要使用DataImporter的时候再创建更有意义。</p>
+<p>因为它标记了lazy 修饰符, DataImporter 实例只会在 importer 属性首次被访问的时候创建, 比如当它的 fileName 属性需要的时候:</p>
 <pre><code>
 print(manager.importer.fileName)
 // the DataImporter instance for the importer property has now been created
 // 打印 "data.txt"
 </code></pre>
-备注
 
-如果lazy 标示的属性被多线程同时访问并且这个属性还未初始化, 不能保证这个属性只会初始化一次。
-
-# 存储属性和实例变量
-
-如果你熟悉 Objective-C, 你可能了解它提供了两种方式来存储值和引用。 除了属性, 你可以使用实例变量作为属性的后备来存储值。
-
-Swift 把这些概念结合到单独的属性声明。 一个 Swift 属性没有相应的实例变量, 属性的后备存储不能直接访问。 这个方法避免了在不同上下文访问值的混乱并且把属性的声明简化到单独明确的语句。所有的属性信息—包括它的名字, 类型, 和内存管理特性—作为类型定义的部分定义在单独的位置。
-
-# 计算属性
-
-除了存储属性, 类, 结构体, 和枚举还可以定义计算属性, 计算属性不存储值。相反, 它们提供了一个 getter 和一个可选的 setter 方法来简介获取或者设定其他属性和值。
+<p>备注</p>
+<p>如果lazy 标示的属性被多线程同时访问并且这个属性还未初始化, 不能保证这个属性只会初始化一次。</p>
+<h1 id="存储属性和实例变量"><a href="#存储属性和实例变量" class="headerlink" title="存储属性和实例变量"></a>存储属性和实例变量</h1><p>如果你熟悉 Objective-C, 你可能了解它提供了两种方式来存储值和引用。 除了属性, 你可以使用实例变量作为属性的后备来存储值。</p>
+<p>Swift 把这些概念结合到单独的属性声明。 一个 Swift 属性没有相应的实例变量, 属性的后备存储不能直接访问。 这个方法避免了在不同上下文访问值的混乱并且把属性的声明简化到单独明确的语句。所有的属性信息—包括它的名字, 类型, 和内存管理特性—作为类型定义的部分定义在单独的位置。</p>
+<h1 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h1><p>除了存储属性, 类, 结构体, 和枚举还可以定义计算属性, 计算属性不存储值。相反, 它们提供了一个 getter 和一个可选的 setter 方法来简介获取或者设定其他属性和值。</p>
 <pre><code>
 struct Point {
 var x = 0.0, y = 0.0
@@ -3426,24 +3331,15 @@ square.center = Point(x: 15.0, y: 15.0)
 print("square.origin is now at (\(square.origin.x), \(square.origin.y))")
 // 打印 "square.origin is now at (10.0, 10.0)"
 </code></pre>
-这个例子定义了三个结构体使用几何形状:
 
-Point 封装了一个点的x和y坐标。
-Size 封装了一个宽度和高度。
-Rect 用一个原点和大小定义了一个矩形。
-Rect 结构体也提供了一个计算属性 center. 一个Rect 的当前中心位置总是取决于它的原点和大小。所以你不需要显示存储中心的值。 相反, Rect 为计算center自定义了 getter 和 setter 方法。确保你像使用真正的存储属性一样使用矩形的中心。
+<p>这个例子定义了三个结构体使用几何形状:</p>
+<p>Point 封装了一个点的x和y坐标。<br>Size 封装了一个宽度和高度。<br>Rect 用一个原点和大小定义了一个矩形。<br>Rect 结构体也提供了一个计算属性 center. 一个Rect 的当前中心位置总是取决于它的原点和大小。所以你不需要显示存储中心的值。 相反, Rect 为计算center自定义了 getter 和 setter 方法。确保你像使用真正的存储属性一样使用矩形的中心。</p>
+<p>前面的例子创建了一个新的 Rect 变量 square. square 原点初始化为 (0, 0), 宽度和高度都是 10. 这个正方形在下面的图表里用蓝色正方形表示。</p>
+<p>square 变量的 center 属性通过点语法访问, 这个导致 getter 方法被调用, 来获取当前属性值。 相比返回存在的值, getter 实际上计算并返回一个新的 Point 来表示正方形的中心。从上面可以看到, getter 正确返回了中心点 (5, 5).</p>
+<p>center 属性然后被设置成新值 (15, 15), 这会把正方形往右上方移动, 如下图中的橙色正方形。 设置 center 属性会调用 setter 方法, 这个会修改原点属性的x和y值, 然后移动正方形到新的位置。</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/computedProperties_2x.png"><br></div>
 
-前面的例子创建了一个新的 Rect 变量 square. square 原点初始化为 (0, 0), 宽度和高度都是 10. 这个正方形在下面的图表里用蓝色正方形表示。
-
-square 变量的 center 属性通过点语法访问, 这个导致 getter 方法被调用, 来获取当前属性值。 相比返回存在的值, getter 实际上计算并返回一个新的 Point 来表示正方形的中心。从上面可以看到, getter 正确返回了中心点 (5, 5).
-
-center 属性然后被设置成新值 (15, 15), 这会把正方形往右上方移动, 如下图中的橙色正方形。 设置 center 属性会调用 setter 方法, 这个会修改原点属性的x和y值, 然后移动正方形到新的位置。
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/computedProperties_2x.png">
-</div>
-# Setter 简化声明
-
-如果一个计算属性的 setter 没有定义设置用的新值名, 默认的名字 newValue 会被使用。这里有一个Rect 结构体的替代版本, 使用了这种简化符号:
+<h1 id="Setter-简化声明"><a href="#Setter-简化声明" class="headerlink" title="Setter 简化声明"></a>Setter 简化声明</h1><p>如果一个计算属性的 setter 没有定义设置用的新值名, 默认的名字 newValue 会被使用。这里有一个Rect 结构体的替代版本, 使用了这种简化符号:</p>
 <pre><code>
 struct AlternativeRect {
 var origin = Point()
@@ -3461,15 +3357,11 @@ origin.y = newValue.y - (size.height / 2)
 }
 }
 </code></pre>
-# 只读计算属性
 
-只有getter 没有 setter 的计算属性就是人们所说的只读计算属性。一个只读计算属性总是返回一个值, 可以通过点语法访问, 但是不可以设置为其他值。
-
-备注
-
-你必须把计算属性包含只读计算属性声明为变量, 因为它们的值是不固定的。let 关键字只有用于常量属性, 表明它们一旦初始化就不能再更改。
-
-去掉 get 关键字和它的括号,你可以简化一个只读计算属性的声明:
+<h1 id="只读计算属性"><a href="#只读计算属性" class="headerlink" title="只读计算属性"></a>只读计算属性</h1><p>只有getter 没有 setter 的计算属性就是人们所说的只读计算属性。一个只读计算属性总是返回一个值, 可以通过点语法访问, 但是不可以设置为其他值。</p>
+<p>备注</p>
+<p>你必须把计算属性包含只读计算属性声明为变量, 因为它们的值是不固定的。let 关键字只有用于常量属性, 表明它们一旦初始化就不能再更改。</p>
+<p>去掉 get 关键字和它的括号,你可以简化一个只读计算属性的声明:</p>
 <pre><code>
 struct Cuboid {
 var width = 0.0, height = 0.0, depth = 0.0
@@ -3481,27 +3373,16 @@ let fourByFiveByTwo = Cuboid(width: 4.0, height: 5.0, depth: 2.0)
 print("the volume of fourByFiveByTwo is \(fourByFiveByTwo.volume)")
 // 打印 "the volume of fourByFiveByTwo is 40.0"
 </code></pre>
-这个例子定义了一个新的结构体 Cuboid, 表示一个三维长方体, 具有 width, height, 和 depth 属性。 这个结构体同时有一个只读计算属性 volume, 用来计算和返回长方体的体积。 设置体积是没有意义的, 因为特定体积值用哪些长宽高是不清楚的。 尽管如此, 给外部用户提供一个只读计算属性来得到立方体的计算后的体积还是有用的。
 
-# 属性观察者
-
-属性观察者观察并响应一个属性值的变化。 每次属性值设置都会调用属性观察者, 即使新值和属性当前值一样也会调用。
-
-你可以给任何你定义的存储属性添加观察者, 除了延迟加载的存储属性。 你也可以给一个继承来的属性添加观察者,只需要在子类重写这个属性即可。你不需要给一个非重写的计算属性添加属性观察者, 因为你可以在它们的setter 方法里观察和响应变化。
-
-你可以选择定义这些属性观察者之一或全部:
-
-willSet 在值存储前调用。
-didSet 在新值存储后立即调用。
-如果你实现一个 willSet 观察者, 它会以常量参数形式传递新属性的值。 你可以简化参数名作为 willSet 的实现部分。 如果你在实现中不写参数名和括号, 参数名默认是 newValue.
-
-类似的, 如果你实现 didSet 观察者, 它包含旧的属性值作为常量产生传递。 你可以命名这个参数或者使用默认参数名 oldValue. 如果你在它自己的didset 观察者里给这个属性设置值, 你赋给它的新值会替换刚刚设置的值。
-
-备注
-
-父类初始化方法调用后, 父类属性的 willSet 和 didSet 观察者在子类初始化属性的时候调用。 在父类初始化调用之前, 当一个类设置它自己的属性时它们不会再被调用。
-
-这里有一个 willSet 和 didSet 的例子。 下面的例子定义了一个新类 StepCounter, 用来计算一个人走路的总步数。 这个类用在输入数据或者其他记录一个人日常锻炼的计步器。
+<p>这个例子定义了一个新的结构体 Cuboid, 表示一个三维长方体, 具有 width, height, 和 depth 属性。 这个结构体同时有一个只读计算属性 volume, 用来计算和返回长方体的体积。 设置体积是没有意义的, 因为特定体积值用哪些长宽高是不清楚的。 尽管如此, 给外部用户提供一个只读计算属性来得到立方体的计算后的体积还是有用的。</p>
+<h1 id="属性观察者"><a href="#属性观察者" class="headerlink" title="属性观察者"></a>属性观察者</h1><p>属性观察者观察并响应一个属性值的变化。 每次属性值设置都会调用属性观察者, 即使新值和属性当前值一样也会调用。</p>
+<p>你可以给任何你定义的存储属性添加观察者, 除了延迟加载的存储属性。 你也可以给一个继承来的属性添加观察者,只需要在子类重写这个属性即可。你不需要给一个非重写的计算属性添加属性观察者, 因为你可以在它们的setter 方法里观察和响应变化。</p>
+<p>你可以选择定义这些属性观察者之一或全部:</p>
+<p>willSet 在值存储前调用。<br>didSet 在新值存储后立即调用。<br>如果你实现一个 willSet 观察者, 它会以常量参数形式传递新属性的值。 你可以简化参数名作为 willSet 的实现部分。 如果你在实现中不写参数名和括号, 参数名默认是 newValue.</p>
+<p>类似的, 如果你实现 didSet 观察者, 它包含旧的属性值作为常量产生传递。 你可以命名这个参数或者使用默认参数名 oldValue. 如果你在它自己的didset 观察者里给这个属性设置值, 你赋给它的新值会替换刚刚设置的值。</p>
+<p>备注</p>
+<p>父类初始化方法调用后, 父类属性的 willSet 和 didSet 观察者在子类初始化属性的时候调用。 在父类初始化调用之前, 当一个类设置它自己的属性时它们不会再被调用。</p>
+<p>这里有一个 willSet 和 didSet 的例子。 下面的例子定义了一个新类 StepCounter, 用来计算一个人走路的总步数。 这个类用在输入数据或者其他记录一个人日常锻炼的计步器。</p>
 <pre><code>
 class StepCounter {
 var totalSteps: Int = 0 {
@@ -3526,53 +3407,28 @@ stepCounter.totalSteps = 896
 // About to set totalSteps to 896
 // Added 536 steps
 </code></pre>
-StepCounter 类声明了一个整型 totalSteps. 这是一个存储属性,带有 willSet 和 didSet 观察者。
 
-totalSteps 属性设置新值的时候 willSet 和 didSet 观察者会调用。即使这个新值跟当前值一样, 也会调用。
-
-这个例子 willSet 观察值使用一个自定义的参数 newTotalSteps 来更新值。在这个例子里, 它简单打印将要设置的值。
-
-didSet 观察者在 totalSteps 值更新后调用。它比较 totalSteps 的新旧值。如果总步数增加了, 打印增加步数的信息。didSet 观察者没有提供一个自定义参数名, 用的是and the default name of oldValue is used instead.
-
-备注
-
-你如果传递一个带有观察者的属性给函数作为输入输出参数的话, willSet 和 didSet 观察者总会被调用。这是因为输入输出参数的内存赋值模型: 函数结尾这个值总会写回属性。
-
-# 全局变量和局部变量
-
-上述描述的计算和观察属性的能力也可以用于全局变量和局部变量。全局变量定义在函数,方法,闭包或者类型上下文之外。局部变量则是定义在函数,方法或者闭包上下文内。
-
-前面章节遇到的全局和局部变量都是存储变量。 存储变量很像存储属性, 提供特定类型值的存储并且允许值的设置和获取。
-
-不过, 不过你可以在全局获取局部范围,定义计算变量,为存储变量定义观察者。计算变量计算它们的值, 而非存储它, 它们和计算属性写法一样。
-
-备注
-
-Global 常量和变量总是延迟计算, 跟延迟的存储属性类似方式。但是和延迟存储属性不同的是, 全局常量和变量不需要标记 lazy 修饰符。
-
-局部常量和变量不能是延迟计算的。
-
-# 类型属性
-
-Instance 属性属于特定类型的实例。 每次你创建这种类型的实例, 它都有自己一组属性值, 和其他实例区分开来。
-
-你还可以定义类型自己的属性, 而不是这种类型实例的属性。这里只会有这些属性一个拷贝, 不管你创建多少那种类型的实例。这些属性就是类型属性。
-
-定义某种类型实例的通用值时类型属性很有用, 比如常量属性所有实例都可以用 (像C里面的静态常量), 或者变量属性用来存储那种类型的通用值 (想C里面的静态变量).
-
-存储类型属性可以是常量或者变量。计算类型属性总是变量, 和计算实例属性一样。
-
-备注
-
-跟存储实例属性不同, 你必须给存储类型属性一个默认值。这是因为类型本身没有初始化方法, 不能在初始化时给存储类型属性指定一个初始值。
-
-存储类型属性首次访问时是延迟初始化的。它们保证只进行一次初始化, 即使被多线程同时访问, 它们不需要用lazy 修饰符标记。
-
-# 类型属性语法
-
-在 C 和 Objective-C 中, 你定义静态常量和变量作为全局静态变量。 在 Swift 里, 类型属性写作类型定义的一部分, 在类型外部的大括号里, 并且每种类型属性显式局限于它支持的类型。
-
-用static关键字定义类型属性。 对于类的计算类型属性, 你可以用 class 关键字去允许子类重写父类的实现。下面的例子展示存储和计算类型属性的语法:
+<p>StepCounter 类声明了一个整型 totalSteps. 这是一个存储属性,带有 willSet 和 didSet 观察者。</p>
+<p>totalSteps 属性设置新值的时候 willSet 和 didSet 观察者会调用。即使这个新值跟当前值一样, 也会调用。</p>
+<p>这个例子 willSet 观察值使用一个自定义的参数 newTotalSteps 来更新值。在这个例子里, 它简单打印将要设置的值。</p>
+<p>didSet 观察者在 totalSteps 值更新后调用。它比较 totalSteps 的新旧值。如果总步数增加了, 打印增加步数的信息。didSet 观察者没有提供一个自定义参数名, 用的是and the default name of oldValue is used instead.</p>
+<p>备注</p>
+<p>你如果传递一个带有观察者的属性给函数作为输入输出参数的话, willSet 和 didSet 观察者总会被调用。这是因为输入输出参数的内存赋值模型: 函数结尾这个值总会写回属性。</p>
+<h1 id="全局变量和局部变量"><a href="#全局变量和局部变量" class="headerlink" title="全局变量和局部变量"></a>全局变量和局部变量</h1><p>上述描述的计算和观察属性的能力也可以用于全局变量和局部变量。全局变量定义在函数,方法,闭包或者类型上下文之外。局部变量则是定义在函数,方法或者闭包上下文内。</p>
+<p>前面章节遇到的全局和局部变量都是存储变量。 存储变量很像存储属性, 提供特定类型值的存储并且允许值的设置和获取。</p>
+<p>不过, 不过你可以在全局获取局部范围,定义计算变量,为存储变量定义观察者。计算变量计算它们的值, 而非存储它, 它们和计算属性写法一样。</p>
+<p>备注</p>
+<p>Global 常量和变量总是延迟计算, 跟延迟的存储属性类似方式。但是和延迟存储属性不同的是, 全局常量和变量不需要标记 lazy 修饰符。</p>
+<p>局部常量和变量不能是延迟计算的。</p>
+<h1 id="类型属性"><a href="#类型属性" class="headerlink" title="类型属性"></a>类型属性</h1><p>Instance 属性属于特定类型的实例。 每次你创建这种类型的实例, 它都有自己一组属性值, 和其他实例区分开来。</p>
+<p>你还可以定义类型自己的属性, 而不是这种类型实例的属性。这里只会有这些属性一个拷贝, 不管你创建多少那种类型的实例。这些属性就是类型属性。</p>
+<p>定义某种类型实例的通用值时类型属性很有用, 比如常量属性所有实例都可以用 (像C里面的静态常量), 或者变量属性用来存储那种类型的通用值 (想C里面的静态变量).</p>
+<p>存储类型属性可以是常量或者变量。计算类型属性总是变量, 和计算实例属性一样。</p>
+<p>备注</p>
+<p>跟存储实例属性不同, 你必须给存储类型属性一个默认值。这是因为类型本身没有初始化方法, 不能在初始化时给存储类型属性指定一个初始值。</p>
+<p>存储类型属性首次访问时是延迟初始化的。它们保证只进行一次初始化, 即使被多线程同时访问, 它们不需要用lazy 修饰符标记。</p>
+<h1 id="类型属性语法"><a href="#类型属性语法" class="headerlink" title="类型属性语法"></a>类型属性语法</h1><p>在 C 和 Objective-C 中, 你定义静态常量和变量作为全局静态变量。 在 Swift 里, 类型属性写作类型定义的一部分, 在类型外部的大括号里, 并且每种类型属性显式局限于它支持的类型。</p>
+<p>用static关键字定义类型属性。 对于类的计算类型属性, 你可以用 class 关键字去允许子类重写父类的实现。下面的例子展示存储和计算类型属性的语法:</p>
 <pre><code>
 struct SomeStructure {
 static var storedTypeProperty = "Some value."
@@ -6411,7 +6267,7 @@ extension SomeType: SomeProtocol, AnotherProtocol {
 
 <p>备注</p>
 <p>如果定义一个扩展来给已存在的类型添加新功能, 这个新功能给所有这种类型的实例使用, 即使它们在扩展定义前已经创建。</p>
-<h1 id="计算属性"><a href="#计算属性" class="headerlink" title="计算属性"></a>计算属性</h1><p>扩展可以给已存在类型添加计算实例属性和计算类型属性。下面的例子给Swift的内建浮点类型添加了五个计算实例属性, 提供了基本支持来使用距离单位:</p>
+<h1 id="计算属性-1"><a href="#计算属性-1" class="headerlink" title="计算属性"></a>计算属性</h1><p>扩展可以给已存在类型添加计算实例属性和计算类型属性。下面的例子给Swift的内建浮点类型添加了五个计算实例属性, 提供了基本支持来使用距离单位:</p>
 <pre><code>
 extension Double {
     var km: Double { return self * 1_000.0 }
