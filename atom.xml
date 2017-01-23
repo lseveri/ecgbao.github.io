@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T04:36:40.000Z</updated>
+    <updated>2017-01-23T04:38:37.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -1396,13 +1396,10 @@ var favoriteGenres: Set<string> = ["Rock", "Classical", "Hip hop"]
 <pre><code>
 var favoriteGenres: Set = ["Rock", "Classical", "Hip hop"]
 </code></pre>
-因为数组字面量里的值都是同样类型, Swift 可以推断 Set<string> 用作favoriteGenres 变量是正确的类型。
 
-# 访问和修改集合
-
-你可以通过集合的方法和属性来访问和修改它。
-
-为了得到集合的项数, 使用只读的 count 属性:
+<p>因为数组字面量里的值都是同样类型, Swift 可以推断 Set<string> 用作favoriteGenres 变量是正确的类型。</string></p>
+<h1 id="访问和修改集合"><a href="#访问和修改集合" class="headerlink" title="访问和修改集合"></a>访问和修改集合</h1><p>你可以通过集合的方法和属性来访问和修改它。</p>
+<p>为了得到集合的项数, 使用只读的 count 属性:</p>
 <pre><code>
 print("I have \(favoriteGenres.count) favorite music genres.")
 // 打印 "I have 3 favorite music genres."
@@ -7648,7 +7645,7 @@ let afterDoubling = +++toBeDoubled
 <p><pre><code><br>infix operator +-: AdditionPrecedence<br>extension Vector2D {<br>    static func +- (left: Vector2D, right: Vector2D) -&gt; Vector2D {<br>        return Vector2D(x: left.x + right.x, y: left.y - right.y)<br>    }<br>}<br>let firstVector = Vector2D(x: 1.0, y: 2.0)<br>let secondVector = Vector2D(x: 3.0, y: 4.0)<br>let plusMinusVector = firstVector +- secondVector<br>// plusMinusVector is a Vector2D instance with values of (4.0, -2.0)<br></code></pre><br>这个运算符把两个向量的x值相加, 然后把第二个向量的两个y值相减。因为它实际上是一个 “加法的” 运算符, 它跟其他加法中缀运算符,例如 + 和 - , 有相同的优先级集。</p>
 <p>备注</p>
 <p>定义一个前缀或者后缀运算符的时候,你不要指定优先级。不过, 如果你在相同的操作数上使用前缀和后缀运算符, 后缀运算符会首先发生作用。</p>
-</string></element></element></key,></t></t></key,></string></character>]]></content>
+</string></element></element></key,></t></t></key,></character>]]></content>
     
     <summary type="html">
     
