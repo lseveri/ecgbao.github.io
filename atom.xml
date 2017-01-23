@@ -289,7 +289,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:27:37.000Z</updated>
+    <updated>2017-01-23T05:35:23.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -5381,20 +5381,18 @@ if let johnsStreet = john.residence?.address?.street {
 }
 // 打印 "John's street name is Laurel Street."
 </code></pre>
-在这个例子里, 尝试设置john.residence的address属性会成功, 因为john.residence现在包含了一个有效的 Residence 实例。
 
-# 使用可选返回值链接方法
-
-前面的例子展示如何通过可选链接获取一个可选类型的属性值。你也可以使用可选链接,调用返回值是可选类型的方法, 如果需要可以链接方法的返回值。
-
-下面的例子使用可选链接调用 Address 类的 buildingIdentifier() 方法。这个方法返回值类型是 String?. 就像上面描述的, 可选链接最后的返回类型也是 String?:
+<p>在这个例子里, 尝试设置john.residence的address属性会成功, 因为john.residence现在包含了一个有效的 Residence 实例。</p>
+<h1 id="使用可选返回值链接方法"><a href="#使用可选返回值链接方法" class="headerlink" title="使用可选返回值链接方法"></a>使用可选返回值链接方法</h1><p>前面的例子展示如何通过可选链接获取一个可选类型的属性值。你也可以使用可选链接,调用返回值是可选类型的方法, 如果需要可以链接方法的返回值。</p>
+<p>下面的例子使用可选链接调用 Address 类的 buildingIdentifier() 方法。这个方法返回值类型是 String?. 就像上面描述的, 可选链接最后的返回类型也是 String?:</p>
 <pre><code>
 if let buildingIdentifier = john.residence?.address?.buildingIdentifier() {
     print("John's building identifier is \(buildingIdentifier).")
 }
 // 打印 "John's building identifier is The Larches."
 </code></pre>
-如果你想执行更深的操作链接方法的返回值, 就在方法括号的后面放上可选链接的问号:
+
+<p>如果你想执行更深的操作链接方法的返回值, 就在方法括号的后面放上可选链接的问号:</p>
 <pre><code>
 if let beginsWithThe =
     john.residence?.address?.buildingIdentifier()?.hasPrefix("The") {
@@ -5406,21 +5404,14 @@ if let beginsWithThe =
 }
 // 打印 "John's building identifier begins with "The"."
 </code></pre>
-备注
 
-在上面的例子里, 你在括号后面放上了可选链接问号, 因为你链接的可选值是 buildingIdentifier() 方法的返回值, 并不是buildingIdentifier() 方法本身。
-# 错误处理
-错误处理是在你的程序中响应错误条件并恢复的过程。Swift 为在运行时抛出,捕获,传递和恢复错误提供了一级支持。
-
-有些操作不能保证总能顺利执行或者产生有用的输出。可选用来代表缺值, 但是当一个操作失败了, 知道失败怎么产生的通常很有用, 所以你的代码可以相应作出响应。
-
-例如, 考虑从磁盘读取和处理数据的任务。这个任务有很多方式失败, 包括指定位置文件不存在, 文件没有读的权限, 或者文件不能以兼容的格式进行编码。这些不同场景的区分允许程序去解决一些错误,和用户沟通它不能解决的任何错误。
-
-# 表示和抛出错误
-
-在 Swift里, 错误用符合错误协议的类型值表示。这个空协议表明一个类型可以用来错误处理。
-
-Swift 枚举类型特别适合用来模拟一组相关的错误条件, 带有对应的值来传达错误的额外信息。例如, 这里有一组,在一个游戏中操作自动售货机的错误条件:
+<p>备注</p>
+<p>在上面的例子里, 你在括号后面放上了可选链接问号, 因为你链接的可选值是 buildingIdentifier() 方法的返回值, 并不是buildingIdentifier() 方法本身。</p>
+<h1 id="错误处理-1"><a href="#错误处理-1" class="headerlink" title="错误处理"></a>错误处理</h1><p>错误处理是在你的程序中响应错误条件并恢复的过程。Swift 为在运行时抛出,捕获,传递和恢复错误提供了一级支持。</p>
+<p>有些操作不能保证总能顺利执行或者产生有用的输出。可选用来代表缺值, 但是当一个操作失败了, 知道失败怎么产生的通常很有用, 所以你的代码可以相应作出响应。</p>
+<p>例如, 考虑从磁盘读取和处理数据的任务。这个任务有很多方式失败, 包括指定位置文件不存在, 文件没有读的权限, 或者文件不能以兼容的格式进行编码。这些不同场景的区分允许程序去解决一些错误,和用户沟通它不能解决的任何错误。</p>
+<h1 id="表示和抛出错误"><a href="#表示和抛出错误" class="headerlink" title="表示和抛出错误"></a>表示和抛出错误</h1><p>在 Swift里, 错误用符合错误协议的类型值表示。这个空协议表明一个类型可以用来错误处理。</p>
+<p>Swift 枚举类型特别适合用来模拟一组相关的错误条件, 带有对应的值来传达错误的额外信息。例如, 这里有一组,在一个游戏中操作自动售货机的错误条件:</p>
 <pre><code>
 enum VendingMachineError: Error {
     case invalidSelection
@@ -5428,7 +5419,8 @@ enum VendingMachineError: Error {
     case outOfStock
 }
 </code></pre>
-抛出一个错误,让你表明异常发生了,正常执行语句不能继续了。例如, 下面的代码抛出一个错误,表明自动售货机需要五个以上的硬币:
+
+<p>抛出一个错误,让你表明异常发生了,正常执行语句不能继续了。例如, 下面的代码抛出一个错误,表明自动售货机需要五个以上的硬币:</p>
 <pre><code>
 throw VendingMachineError.insufficientFunds(coinsNeeded: 5)
 </code></pre>
@@ -5444,13 +5436,11 @@ func canThrowErrors() throws -> String
 
 func cannotThrowErrors() -> String
 </code></pre>
-一个抛出函数把错误传递到它被调用的地方。
 
-备注
-
-只有抛出函数可以传递错误。非抛出函数内部的错误只能在函数内部处理。
-
-在下面的代码里, VendingMachine 类有一个方法 vend(itemNamed:),如果请求项目不合理,它会抛出一个对应的VendingMachineError, 超出存货, 或者有一笔消费超过了当前的存量:
+<p>一个抛出函数把错误传递到它被调用的地方。</p>
+<p>备注</p>
+<p>只有抛出函数可以传递错误。非抛出函数内部的错误只能在函数内部处理。</p>
+<p>在下面的代码里, VendingMachine 类有一个方法 vend(itemNamed:),如果请求项目不合理,它会抛出一个对应的VendingMachineError, 超出存货, 或者有一笔消费超过了当前的存量:</p>
 <pre><code>
 struct Item {
     var price: Int
@@ -5471,9 +5461,9 @@ class VendingMachine {
             throw VendingMachineError.outOfStock
         }
         guard item.price <= coinsdeposited="" else="" {="" throw="" vendingmachineerror.insufficientfunds(coinsneeded:="" item.price="" -="" coinsdeposited)="" }="" var="" newitem="item" newitem.count="" inventory[name]="newItem" print("dispensing="" \(name)")="" <="" code=""></=></code></pre>
-vend(itemNamed:) 方法使用 guard 语句,如果任何购买小吃的要求不能满足,就尽早退出和抛出错误。因为一个throw 语句会立即转移程序控制, 只有所有的要求都满足才会出售货品。
 
-因为 vend(itemNamed:) 方法会传递所有抛出的错误, 任何调用这个方法的代码要么处理这个错误—用 do-catch 语句, try?, 或者 try!—要么继续传递这些错误。例如, 这个例子里的buyFavoriteSnack(person:vendingMachine:) 方法也是一个抛出函数, vend(itemNamed:) 方法抛出的错误会传递到 buyFavoriteSnack(person:vendingMachine:) 函数被调用的地方。
+<p>vend(itemNamed:) 方法使用 guard 语句,如果任何购买小吃的要求不能满足,就尽早退出和抛出错误。因为一个throw 语句会立即转移程序控制, 只有所有的要求都满足才会出售货品。</p>
+<p>因为 vend(itemNamed:) 方法会传递所有抛出的错误, 任何调用这个方法的代码要么处理这个错误—用 do-catch 语句, try?, 或者 try!—要么继续传递这些错误。例如, 这个例子里的buyFavoriteSnack(person:vendingMachine:) 方法也是一个抛出函数, vend(itemNamed:) 方法抛出的错误会传递到 buyFavoriteSnack(person:vendingMachine:) 函数被调用的地方。</p>
 <pre><code>
 let favoriteSnacks = [
     "Alice": "Chips",
@@ -5485,9 +5475,9 @@ func buyFavoriteSnack(person: String, vendingMachine: VendingMachine) throws {
     try vendingMachine.vend(itemNamed: snackName)
 }
 </code></pre>
-在这个例子里,buyFavoriteSnack(person: vendingMachine:) 函数查询给定客户最喜欢的小吃,然后调用vend(itemNamed:)方法来购买。由于 vend(itemNamed:) 方法可以抛出错误, 所以在它前面加上try关键字来调用。
 
-抛出构造器和抛出函数一样可以传递错误。例如, 下面PurchasedSnack 结构体的构造器调用了一个抛出函数作为构造过程的一部分, 通过传递错误给调用者,它处理任何它遇见的错误。
+<p>在这个例子里,buyFavoriteSnack(person: vendingMachine:) 函数查询给定客户最喜欢的小吃,然后调用vend(itemNamed:)方法来购买。由于 vend(itemNamed:) 方法可以抛出错误, 所以在它前面加上try关键字来调用。</p>
+<p>抛出构造器和抛出函数一样可以传递错误。例如, 下面PurchasedSnack 结构体的构造器调用了一个抛出函数作为构造过程的一部分, 通过传递错误给调用者,它处理任何它遇见的错误。</p>
 <pre><code>
 struct PurchasedSnack {
     let name: String
@@ -5510,9 +5500,9 @@ do {
     statements
 }
 </code></pre>
-在catch后面写上模式来表明这个字句可以处理什么错误。如果一个 catch 字句没有一个模式, 字句就会匹配所有的错误并且把错误绑定到一个本地的常量 error. 更多模式匹配,参见模式。
 
-catch 字句并不需要处理所有do字句抛出来的错误。如果没有 catch 字句处理这个错误, 这个错误就会传递到周围代码。不过, 这个错误必须被周围代码处理—或者被一个封闭的 do-catch 字句或者在一个抛出函数内部处理。例如, 下面的代码处理了VendingMachineError 列举的所有三种情况, 但是所有其他的错我必须被周围代码处理:
+<p>在catch后面写上模式来表明这个字句可以处理什么错误。如果一个 catch 字句没有一个模式, 字句就会匹配所有的错误并且把错误绑定到一个本地的常量 error. 更多模式匹配,参见模式。</p>
+<p>catch 字句并不需要处理所有do字句抛出来的错误。如果没有 catch 字句处理这个错误, 这个错误就会传递到周围代码。不过, 这个错误必须被周围代码处理—或者被一个封闭的 do-catch 字句或者在一个抛出函数内部处理。例如, 下面的代码处理了VendingMachineError 列举的所有三种情况, 但是所有其他的错我必须被周围代码处理:</p>
 <pre><code>
 var vendingMachine = VendingMachine()
 vendingMachine.coinsDeposited = 8
@@ -5527,11 +5517,9 @@ do {
 }
 // 打印 "Insufficient funds. Please insert an additional 2 coins."
 </code></pre>
-在上面的例子里, buyFavoriteSnack(person:vendingMachine:) 在一个try表达式里调用, 因为它可以抛出一个错误。如果一个错误抛出了, 语句执行立即转到 catch 字句, 它觉得是否允许传递继续。如果没有错误抛出来, do 语句剩下的语句会继续执行。
 
-# 转换错误成可选值
-
-通过转换错误成一个可选值,你可以使用 try? 来处理错误。当执行try?表达式时,如果一个错误抛出来了,表达式的值就会变成nil. 例如, 下面的例子里x和y有着相同的值和行为:
+<p>在上面的例子里, buyFavoriteSnack(person:vendingMachine:) 在一个try表达式里调用, 因为它可以抛出一个错误。如果一个错误抛出了, 语句执行立即转到 catch 字句, 它觉得是否允许传递继续。如果没有错误抛出来, do 语句剩下的语句会继续执行。</p>
+<h1 id="转换错误成可选值"><a href="#转换错误成可选值" class="headerlink" title="转换错误成可选值"></a>转换错误成可选值</h1><p>通过转换错误成一个可选值,你可以使用 try? 来处理错误。当执行try?表达式时,如果一个错误抛出来了,表达式的值就会变成nil. 例如, 下面的例子里x和y有着相同的值和行为:</p>
 <pre><code>
 func someThrowingFunction() throws -> Int {
     // ...
@@ -5546,9 +5534,9 @@ do {
     y = nil
 }
 </code></pre>
-如果 someThrowingFunction() 抛出一个错误, x和y的值就是nil. 否则, x和y值就是函数的返回值。注意,无论函数返回什么类型,x和y都是可选的。这里函数返回的是一个整数, 所以x和y是可选的整数。
 
-当你想处理所有相同方式的错误时,使用 try? 让你可以写出更加精确的错误处理代码。例如, 下面的代码使用了一些简单的方法来获取数据, 如果所有的方法都失败了则返回nil.
+<p>如果 someThrowingFunction() 抛出一个错误, x和y的值就是nil. 否则, x和y值就是函数的返回值。注意,无论函数返回什么类型,x和y都是可选的。这里函数返回的是一个整数, 所以x和y是可选的整数。</p>
+<p>当你想处理所有相同方式的错误时,使用 try? 让你可以写出更加精确的错误处理代码。例如, 下面的代码使用了一些简单的方法来获取数据, 如果所有的方法都失败了则返回nil.</p>
 <pre><code>
 func fetchData() -> Data? {
     if let data = try? fetchDataFromDisk() { return data }
@@ -5562,11 +5550,9 @@ func fetchData() -> Data? {
 <pre><code>
 let photo = try! loadImage(atPath: "./Resources/John Appleseed.jpg")
 </code></pre>
-# 指定清理行为
 
-在代码执行离开当前代码块之前,你可以用一个defer语句来执行一组语句。这个语句让你可以做一些必须的清理工作,这个工作执行时无视怎样离开当前代码块—不管它是因为错误发生还是因为return或者break语句。例如, 你可以使用一个defer语句,来确保文件描述符被关闭,手动分配的内存被释放。
-
-一个defer语句一直到当前代码块退出才会执行。这个语句由defer关键字和执行语句组成。推迟语句不会包含任何把控制转移的语句。 比如 break 或者 return 语句, 也不会抛出错误。推迟行为以它们被指定的相反顺序执行—也就说, defer语句第一行代码会在第二行代码后执行,以此类推。
+<h1 id="指定清理行为"><a href="#指定清理行为" class="headerlink" title="指定清理行为"></a>指定清理行为</h1><p>在代码执行离开当前代码块之前,你可以用一个defer语句来执行一组语句。这个语句让你可以做一些必须的清理工作,这个工作执行时无视怎样离开当前代码块—不管它是因为错误发生还是因为return或者break语句。例如, 你可以使用一个defer语句,来确保文件描述符被关闭,手动分配的内存被释放。</p>
+<p>一个defer语句一直到当前代码块退出才会执行。这个语句由defer关键字和执行语句组成。推迟语句不会包含任何把控制转移的语句。 比如 break 或者 return 语句, 也不会抛出错误。推迟行为以它们被指定的相反顺序执行—也就说, defer语句第一行代码会在第二行代码后执行,以此类推。</p>
 <pre><code>
 func processFile(filename: String) throws {
     if exists(filename) {
@@ -5581,23 +5567,15 @@ func processFile(filename: String) throws {
     }
 }
 </code></pre>
-上面的例子使用了一个 defer 语句来确保 open(_:) 函数会调用 close(_:).
 
-备注
-
-即使没有涉及错误处理代码,你也可以使用一个defer语句。
-# 类型转换
-类型转换是是判断实例类型的一种方法, 或者在它的继承层次里,把来自某些地方的实例作为不同的超类或者子类。
-
-Swift中的类型转换使用is和as操作符。这两个操作符提供了简单有效的方式来判断一个值的类型或者把一个值转换成不同的类型。
-
-你可以通过类型转换来判断一个类型是否遵守某个协议, hecking for Protocol Conformance 有描述。
-
-# 为类型转换定义类层次
-
-你可以在类和子类层次使用类型转换,来判断特定类实例的类型,同时可以在相同的层次里把实例转换成另外一个类类型。下面三个代码片段定义了一类层次,还有一个包含这些类实例的数组, 在类型转换的例子中使用。
-
-第一个代码片段定义了了一个新的基类 MediaItem. 这个类为任何出现在数字媒体库中的项目提供基本的功能。特别的是, 它声明了一个字符串类型的 name属性, 还有个一个 init 构造器。 (它假定所有媒体项,包括电影和歌曲,都有名字)
+<p>上面的例子使用了一个 defer 语句来确保 open(<em>:) 函数会调用 close(</em>:).</p>
+<p>备注</p>
+<p>即使没有涉及错误处理代码,你也可以使用一个defer语句。</p>
+<h1 id="类型转换"><a href="#类型转换" class="headerlink" title="类型转换"></a>类型转换</h1><p>类型转换是是判断实例类型的一种方法, 或者在它的继承层次里,把来自某些地方的实例作为不同的超类或者子类。</p>
+<p>Swift中的类型转换使用is和as操作符。这两个操作符提供了简单有效的方式来判断一个值的类型或者把一个值转换成不同的类型。</p>
+<p>你可以通过类型转换来判断一个类型是否遵守某个协议, hecking for Protocol Conformance 有描述。</p>
+<h1 id="为类型转换定义类层次"><a href="#为类型转换定义类层次" class="headerlink" title="为类型转换定义类层次"></a>为类型转换定义类层次</h1><p>你可以在类和子类层次使用类型转换,来判断特定类实例的类型,同时可以在相同的层次里把实例转换成另外一个类类型。下面三个代码片段定义了一类层次,还有一个包含这些类实例的数组, 在类型转换的例子中使用。</p>
+<p>第一个代码片段定义了了一个新的基类 MediaItem. 这个类为任何出现在数字媒体库中的项目提供基本的功能。特别的是, 它声明了一个字符串类型的 name属性, 还有个一个 init 构造器。 (它假定所有媒体项,包括电影和歌曲,都有名字)</p>
 <pre><code>
 class MediaItem {
     var name: String
@@ -5606,7 +5584,8 @@ class MediaItem {
     }
 }
 </code></pre>
-下面的代码片段定义了两个 MediaItem的子类。第一个子类, Movie, 封装了一部电影的额外信息。它添加了一个 director 属性和一个对应的构造器。第二个子类, Song, 添加了一个add属性和一个构造器:
+
+<p>下面的代码片段定义了两个 MediaItem的子类。第一个子类, Movie, 封装了一部电影的额外信息。它添加了一个 director 属性和一个对应的构造器。第二个子类, Song, 添加了一个add属性和一个构造器:</p>
 <pre><code>
 class Movie: MediaItem {
     var director: String
@@ -5624,7 +5603,8 @@ class Song: MediaItem {
     }
 }
 </code></pre>
-最后的代码片段创建了一个常量数组 library, 它包括了两个 Movie 实例和三个 Song 实例。library 数组的类型通过用字面量内容初始化可以推断出来。 Swift 类型检查者可以推断出 Movie 和 Song 有一个共同的基类 MediaItem, 所以它推断library 数组是 [MediaItem] 类型:
+
+<p>最后的代码片段创建了一个常量数组 library, 它包括了两个 Movie 实例和三个 Song 实例。library 数组的类型通过用字面量内容初始化可以推断出来。 Swift 类型检查者可以推断出 Movie 和 Song 有一个共同的基类 MediaItem, 所以它推断library 数组是 [MediaItem] 类型:</p>
 <pre><code>
 let library = [
     Movie(name: "Casablanca", director: "Michael Curtiz"),
@@ -5635,13 +5615,10 @@ let library = [
 ]
 // the type of "library" is inferred to be [MediaItem]
 </code></pre>
-实际上存储在 library 数组里的依然是 Movie 和 Song 实例。不过, 如果遍历这个数组的内容, 你获得的类型是 MediaItem, 而不是 Movie 或者 Song. 为了使用它们本来的类型, 你需要检测它们的类型, 或者向下转换它们的类型。0
 
-# 判断类型
-
-使用类型判断操作符 (is) 来判断一个实例是否是每个子类类型。如果实例是那个子类类型,类型判断操作符就返回真,否则就返回假。
-
-下面的例子定义了两个变量, movieCount 和 songCount, 用来计算存储在library数组中的 Movie 和 Song 实例的数量:
+<p>实际上存储在 library 数组里的依然是 Movie 和 Song 实例。不过, 如果遍历这个数组的内容, 你获得的类型是 MediaItem, 而不是 Movie 或者 Song. 为了使用它们本来的类型, 你需要检测它们的类型, 或者向下转换它们的类型。0</p>
+<h1 id="判断类型"><a href="#判断类型" class="headerlink" title="判断类型"></a>判断类型</h1><p>使用类型判断操作符 (is) 来判断一个实例是否是每个子类类型。如果实例是那个子类类型,类型判断操作符就返回真,否则就返回假。</p>
+<p>下面的例子定义了两个变量, movieCount 和 songCount, 用来计算存储在library数组中的 Movie 和 Song 实例的数量:</p>
 <pre><code>
 var movieCount = 0
 var songCount = 0
@@ -5657,23 +5634,15 @@ for item in library {
 print("Media library contains \(movieCount) movies and \(songCount) songs")
 // 打印 "Media library contains 2 movies and 3 songs"
 </code></pre>
-上面的例子遍历library数组所有的项。每次传递, for-in 循环把item常量设置成数组里的下一个 MediaItem.
 
-如果当前MediaItem 是一个Movie 实例, 就返回真。否则就返回假。类似的, MediaItem是 Song 就判断它是不是一个 Song 实例。for-in 循环结束后, movieCount 和 songCount 包含了对应实例的数量。
-
-# 向下转换
-
-实际上,特定类类型的常量或者变量调用是子类的实例。你可以使用类型转换操作符(as? 或者 as!)向下转换成子类类型。
-
-由于向下转换会失败, 所以类型转换操作符有两种形式。条件形式, as?, 返回你想转换类型的可选值。强制形式, as!, 尝试向下转换并强制拆包结果。
-
-当你不能确定向下转换能否成功时,使用条件形式的类型转换操作符 (as?). 这个操作符总是返回一个可选值, 如果向下转换不可能就会返回nil. 这个确保你可以判断转换的成功。
-
-当你确定向下转换可以成功时,使用强制形式的类型转换操作符 (as!). 如果你转换到一个错误的类类型,这个形式的操作符会引发一个运行时的错误。
-
-下面的例子遍历了library数组里的的每一个 MediaItem , 然后为每一项打印一条对应的描述信息。为了实现这个, 它需要每一项作为真实的 Movie 或者 Song来访问, 不仅仅是作为 MediaItem. 为了能可以访问 director 或者 artist 属性,然后用在描述里,这样做是必须的。
-
-在这个例子里, 数组里的每一项有可能是 Movie, 或者 Song. 你不会提前知道每一项实际使用哪个类, 所以这里很适合使用条件形式的操作符 (as?) 来在循环中判断向下转换成功与否:
+<p>上面的例子遍历library数组所有的项。每次传递, for-in 循环把item常量设置成数组里的下一个 MediaItem.</p>
+<p>如果当前MediaItem 是一个Movie 实例, 就返回真。否则就返回假。类似的, MediaItem是 Song 就判断它是不是一个 Song 实例。for-in 循环结束后, movieCount 和 songCount 包含了对应实例的数量。</p>
+<h1 id="向下转换"><a href="#向下转换" class="headerlink" title="向下转换"></a>向下转换</h1><p>实际上,特定类类型的常量或者变量调用是子类的实例。你可以使用类型转换操作符(as? 或者 as!)向下转换成子类类型。</p>
+<p>由于向下转换会失败, 所以类型转换操作符有两种形式。条件形式, as?, 返回你想转换类型的可选值。强制形式, as!, 尝试向下转换并强制拆包结果。</p>
+<p>当你不能确定向下转换能否成功时,使用条件形式的类型转换操作符 (as?). 这个操作符总是返回一个可选值, 如果向下转换不可能就会返回nil. 这个确保你可以判断转换的成功。</p>
+<p>当你确定向下转换可以成功时,使用强制形式的类型转换操作符 (as!). 如果你转换到一个错误的类类型,这个形式的操作符会引发一个运行时的错误。</p>
+<p>下面的例子遍历了library数组里的的每一个 MediaItem , 然后为每一项打印一条对应的描述信息。为了实现这个, 它需要每一项作为真实的 Movie 或者 Song来访问, 不仅仅是作为 MediaItem. 为了能可以访问 director 或者 artist 属性,然后用在描述里,这样做是必须的。</p>
+<p>在这个例子里, 数组里的每一项有可能是 Movie, 或者 Song. 你不会提前知道每一项实际使用哪个类, 所以这里很适合使用条件形式的操作符 (as?) 来在循环中判断向下转换成功与否:</p>
 <pre><code>
 for item in library {
     if let movie = item as? Movie {
@@ -5689,27 +5658,16 @@ for item in library {
 // Song: The One And Only, by Chesney Hawkes
 // Song: Never Gonna Give You Up, by Rick Astley
 </code></pre>
-这个例子开始先尝试将当前项向下转换到类型 Movie. 因为当前项是 MediaItem 实例, 它有可能是一个 Movie; 它也有可能是一个 Song, 或者仅仅是一个基本的 MediaItem. 因为不确定性, as? 形式的类型转换符会返回一个可选值,在尝试向下转换成一个子类型时。item as? Movie 返回结果是 Movie? 类型, 或者 “可选的 Movie”.
 
-如果对数组中的Song实例向下转换到 Movie 就会失败。为了处理这个情况, 例子里使用可选绑定来判断可选的l Movie 是否包含了一个值 (就是说, 判断向下转换是否成功) 可选绑定写作 “if let movie = item as? Movie”, 它可以这样读:
-
-“尝试作为一个Movie来访问。 如果成功了, 把可选返回值设置给一个临时常量 movie.”
-
-如果向下转换成功了, movie的属性用来为Movie实例打印一条描述信息, 包括导演名。相似的原则用于判断 Song 实例, 在找到Song实例的时候就打印对应的描述信息(包括艺术家名字)。
-
-备注
-
-转换不会修改实例的值。潜在的实例依然相同; 它会简单处理和访问作为转换的类型。
-
-# Any 和 AnyObject的类型转换
-
-Swift 提供两个特别类型来使用未指定的类型:
-
-Any 可以表示任意类型的实例, 包括函数类型。
-AnyObject可以表示任意类类型的实例。
-当你需要它们提供的行为和能力的时候, 可以使用Any 和 AnyObject. 更好的建议是,在你的代码中指定你希望的类型。
-
-这里有一个例子使用Any来处理不同类型的混合, 包括函数类型和非类的类型。这个例子创建了一个数组 things, 它可以存储Any类型的值:
+<p>这个例子开始先尝试将当前项向下转换到类型 Movie. 因为当前项是 MediaItem 实例, 它有可能是一个 Movie; 它也有可能是一个 Song, 或者仅仅是一个基本的 MediaItem. 因为不确定性, as? 形式的类型转换符会返回一个可选值,在尝试向下转换成一个子类型时。item as? Movie 返回结果是 Movie? 类型, 或者 “可选的 Movie”.</p>
+<p>如果对数组中的Song实例向下转换到 Movie 就会失败。为了处理这个情况, 例子里使用可选绑定来判断可选的l Movie 是否包含了一个值 (就是说, 判断向下转换是否成功) 可选绑定写作 “if let movie = item as? Movie”, 它可以这样读:</p>
+<p>“尝试作为一个Movie来访问。 如果成功了, 把可选返回值设置给一个临时常量 movie.”</p>
+<p>如果向下转换成功了, movie的属性用来为Movie实例打印一条描述信息, 包括导演名。相似的原则用于判断 Song 实例, 在找到Song实例的时候就打印对应的描述信息(包括艺术家名字)。</p>
+<p>备注</p>
+<p>转换不会修改实例的值。潜在的实例依然相同; 它会简单处理和访问作为转换的类型。</p>
+<h1 id="Any-和-AnyObject的类型转换"><a href="#Any-和-AnyObject的类型转换" class="headerlink" title="Any 和 AnyObject的类型转换"></a>Any 和 AnyObject的类型转换</h1><p>Swift 提供两个特别类型来使用未指定的类型:</p>
+<p>Any 可以表示任意类型的实例, 包括函数类型。<br>AnyObject可以表示任意类类型的实例。<br>当你需要它们提供的行为和能力的时候, 可以使用Any 和 AnyObject. 更好的建议是,在你的代码中指定你希望的类型。</p>
+<p>这里有一个例子使用Any来处理不同类型的混合, 包括函数类型和非类的类型。这个例子创建了一个数组 things, 它可以存储Any类型的值:</p>
 <pre><code>
 var things = [Any]()
 
@@ -5722,9 +5680,9 @@ things.append((3.0, 5.0))
 things.append(Movie(name: "Ghostbusters", director: "Ivan Reitman"))
 things.append({ (name: String) -> String in "Hello, \(name)" })
 </code></pre>
-things 数组包含了两个整型值, 两个浮点值, 一个字符串值, 一个元组类型 (Double, Double), 电影 “Ghostbusters”, 和一组表达式,这个表达式有一个字符串参数和一个字符串返回值。
 
-为了找出一个常量或者变量的特定类型, Any 和 AnyObject 类型, 你可以在一个switch语句分支里使用is或者as. 下面的例子遍历了things数组里的每一项,然后使用一个switch语句来查询它们的类型。一些分支绑定了指定类型常量的匹配值来确保它的值被打印出来:
+<p>things 数组包含了两个整型值, 两个浮点值, 一个字符串值, 一个元组类型 (Double, Double), 电影 “Ghostbusters”, 和一组表达式,这个表达式有一个字符串参数和一个字符串返回值。</p>
+<p>为了找出一个常量或者变量的特定类型, Any 和 AnyObject 类型, 你可以在一个switch语句分支里使用is或者as. 下面的例子遍历了things数组里的每一项,然后使用一个switch语句来查询它们的类型。一些分支绑定了指定类型常量的匹配值来确保它的值被打印出来:</p>
 <pre><code>
 for thing in things {
     switch thing {
@@ -5760,9 +5718,9 @@ for thing in things {
 // a movie called Ghostbusters, dir. Ivan Reitman
 // Hello, Michael
 </code></pre>
-NOTE
 
-Any 类型表示任意类型值, 包括可选类型。如果某个地方需要一个Any类型值,你而你使用了可选值, Swift 会给你一个警告。如果你真的需要使用一个可选值作为 Any 值, 你可以使用 as 操作符显式转换 optional 为 Any, 就像下面展示的这样。
+<p>NOTE</p>
+<p>Any 类型表示任意类型值, 包括可选类型。如果某个地方需要一个Any类型值,你而你使用了可选值, Swift 会给你一个警告。如果你真的需要使用一个可选值作为 Any 值, 你可以使用 as 操作符显式转换 optional 为 Any, 就像下面展示的这样。</p>
 <pre><code>
 let optionalNumber: Int? = 3
 things.append(optionalNumber)        // Warning
@@ -5812,29 +5770,21 @@ struct BlackjackCard {
     }
 }
 </code></pre>
-Suit 枚举描述了玩牌的四种花色, 带有原始字符值来表示它们的符号。
 
-Rank 枚举描述了13种玩牌排名, 带有一个原始整型值来表示它们的牌面值 (这个原始整型值没有用于Jack, Queen, King, 和 Ace)
-
-正如上面提到的,Rank 枚举定义了更深的嵌套结构体 Values. 这个结构体封装了大多数牌都有一个值的事实, 不过 Ace 牌有两个值。 Values 结构体定义了两个属性来表示这个:
-
-第一个, 类型是 Int
-第二个, 类型是 Int?, 或者“可选 Int”
-Rank 同时定义了一个计算属性values, 它会返回 Values 结构体的实例。这个计算属性考察牌的排名并且基于排名用对应的值来初始化新的 Values 实例。它为jack, queen, king, 和 ace使用特别的值。对于数子牌, 它使用原始整型值。
-
-BlackjackCard 结构体自己有两个属性—rank 和 suit. 它也定义了一个计算属性description, 它使用rank 和 suit中的值建立牌名字和数值的描述。description 属性使用可选绑定来判断是否有第二个值需要展示, 如果是, 把第二个值插入描述信息。
-
-由于 BlackjackCard 是一个没有自定义构造器的结构体, 它有一个隐式的成员构造器。你可以用这个构造器来构造一个新的常量theAceOfSpades:
+<p>Suit 枚举描述了玩牌的四种花色, 带有原始字符值来表示它们的符号。</p>
+<p>Rank 枚举描述了13种玩牌排名, 带有一个原始整型值来表示它们的牌面值 (这个原始整型值没有用于Jack, Queen, King, 和 Ace)</p>
+<p>正如上面提到的,Rank 枚举定义了更深的嵌套结构体 Values. 这个结构体封装了大多数牌都有一个值的事实, 不过 Ace 牌有两个值。 Values 结构体定义了两个属性来表示这个:</p>
+<p>第一个, 类型是 Int<br>第二个, 类型是 Int?, 或者“可选 Int”<br>Rank 同时定义了一个计算属性values, 它会返回 Values 结构体的实例。这个计算属性考察牌的排名并且基于排名用对应的值来初始化新的 Values 实例。它为jack, queen, king, 和 ace使用特别的值。对于数子牌, 它使用原始整型值。</p>
+<p>BlackjackCard 结构体自己有两个属性—rank 和 suit. 它也定义了一个计算属性description, 它使用rank 和 suit中的值建立牌名字和数值的描述。description 属性使用可选绑定来判断是否有第二个值需要展示, 如果是, 把第二个值插入描述信息。</p>
+<p>由于 BlackjackCard 是一个没有自定义构造器的结构体, 它有一个隐式的成员构造器。你可以用这个构造器来构造一个新的常量theAceOfSpades:</p>
 <pre><code>
 let theAceOfSpades = BlackjackCard(rank: .ace, suit: .spades)
 print("theAceOfSpades: \(theAceOfSpades.description)")
 // 打印 "theAceOfSpades: suit is ♠, value is 1 or 11"
 </code></pre>
-尽管 Rank 和 Suit 嵌套在 BlackjackCard里面, 它们的类型可以通过上下文推断出来, 所以这个实例的初始化可以根据分支名调用枚举分支 (.ace 和 .spades) . 上面的例子里, description 属性正确报出黑桃 Ace 牌面值是1或者11.
 
-# 调用嵌套类型
-
-在定义上下文之外调用嵌套类型, 要在它的名字前加上它内嵌的类型名:
+<p>尽管 Rank 和 Suit 嵌套在 BlackjackCard里面, 它们的类型可以通过上下文推断出来, 所以这个实例的初始化可以根据分支名调用枚举分支 (.ace 和 .spades) . 上面的例子里, description 属性正确报出黑桃 Ace 牌面值是1或者11.</p>
+<h1 id="调用嵌套类型"><a href="#调用嵌套类型" class="headerlink" title="调用嵌套类型"></a>调用嵌套类型</h1><p>在定义上下文之外调用嵌套类型, 要在它的名字前加上它内嵌的类型名:</p>
 <pre><code>
 let heartsSymbol = BlackjackCard.Suit.hearts.rawValue
 // heartsSymbol is "♡"
@@ -5875,33 +5825,24 @@ let threeFeet = 3.ft
 print("Three feet is \(threeFeet) meters")
 // 打印 "Three feet is 0.914399970739201 meters"
 </code></pre>
-这些计算属性表示,一个浮点值应该被当做一个特定的长度单位。尽管它们实现成计算属性, 这些属性的名字可以用点语法添加到浮点值的后面, 使用这些字面量来执行距离的转换。
 
-在这个例子里, 浮点值 1.0 被认为表示1米。就是为什么m计算属性返回self—1.m 表达式被认为是计算1.0的浮点值。
-
-其他单位转换使用米测量。一千米相当于 1,000 米, 所以km计算属性把数值乘以1_000.00 来转换成用米表示的数。相似的, 一米有3.28084 尺, 所以 ft 计算属性用潜在的浮点数值除以3.28084, 把尺转换为米。
-
-这些属性是只读的计算属性, 所以它们表示的时候没有带上 get 关键字, 为了简洁性。它们的返回值是浮点型, 可以用在接受浮点数的数学运算中。
+<p>这些计算属性表示,一个浮点值应该被当做一个特定的长度单位。尽管它们实现成计算属性, 这些属性的名字可以用点语法添加到浮点值的后面, 使用这些字面量来执行距离的转换。</p>
+<p>在这个例子里, 浮点值 1.0 被认为表示1米。就是为什么m计算属性返回self—1.m 表达式被认为是计算1.0的浮点值。</p>
+<p>其他单位转换使用米测量。一千米相当于 1,000 米, 所以km计算属性把数值乘以1_000.00 来转换成用米表示的数。相似的, 一米有3.28084 尺, 所以 ft 计算属性用潜在的浮点数值除以3.28084, 把尺转换为米。</p>
+<p>这些属性是只读的计算属性, 所以它们表示的时候没有带上 get 关键字, 为了简洁性。它们的返回值是浮点型, 可以用在接受浮点数的数学运算中。</p>
 <pre><code>
 let aMarathon = 42.km + 195.m
 print("A marathon is \(aMarathon) meters long")
 // 打印 "A marathon is 42195.0 meters long"
 </code></pre>
-备注
 
-扩展可以添加新的计算属性, 但是它们不能添加存储属性, 也不能给已存在的属性添加观察者。
-
-# 构造器
-
-扩展可以给已存在类型添加新的构造器。这让你可以扩展其他类型来接受你自定的类型作为构造器的参数, 或者提供额外的构造选项,这些不会包含在类型的原始实现代码中。
-
-扩展可以给一个类添加新的便利构造器, 但是不能添加新的指定构造器或者析构器。指定构造器和析构器必须在原始类实现中提供。
-
-备注
-
-如果使用扩展为值类型添加一个构造器, 为所有的存储属性提供默认值,同时不会定义任何自定义的构造器。你可以在你的扩展构造器里调用默认的构造器和成员构造器。
-
-下面的例子定义了一个 Rect 结构体来表示一个算术矩形。这个例子同时定义了两个辅助的结构体Size 和 Point, 两个结构体都给所有的属性提供默认值 0.0:
+<p>备注</p>
+<p>扩展可以添加新的计算属性, 但是它们不能添加存储属性, 也不能给已存在的属性添加观察者。</p>
+<h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><p>扩展可以给已存在类型添加新的构造器。这让你可以扩展其他类型来接受你自定的类型作为构造器的参数, 或者提供额外的构造选项,这些不会包含在类型的原始实现代码中。</p>
+<p>扩展可以给一个类添加新的便利构造器, 但是不能添加新的指定构造器或者析构器。指定构造器和析构器必须在原始类实现中提供。</p>
+<p>备注</p>
+<p>如果使用扩展为值类型添加一个构造器, 为所有的存储属性提供默认值,同时不会定义任何自定义的构造器。你可以在你的扩展构造器里调用默认的构造器和成员构造器。</p>
+<p>下面的例子定义了一个 Rect 结构体来表示一个算术矩形。这个例子同时定义了两个辅助的结构体Size 和 Point, 两个结构体都给所有的属性提供默认值 0.0:</p>
 <pre><code>
 struct Size {
     var width = 0.0, height = 0.0
@@ -5914,7 +5855,8 @@ struct Rect {
     var size = Size()
 }
 </code></pre>
-由于 Rect 结构体给所有的属性提供了默认值, 它会有一个默认的构造器和一个成员构造器。 这些构造器可以用来创建新的 Rect 实例:
+
+<p>由于 Rect 结构体给所有的属性提供了默认值, 它会有一个默认的构造器和一个成员构造器。 这些构造器可以用来创建新的 Rect 实例:</p>
 <pre><code>
 let defaultRect = Rect()
 let memberwiseRect = Rect(origin: Point(x: 2.0, y: 2.0),
@@ -5930,7 +5872,8 @@ extension Rect {
     }
 }
  </code></pre>
-新的构造器一开始先基于提供的中心点和大小,计算出一个对应的原点。然后调用结构体的成员构造器 init(origin:size:), 它在对应的属性中存储最新的原点和大小值:
+
+<p>新的构造器一开始先基于提供的中心点和大小,计算出一个对应的原点。然后调用结构体的成员构造器 init(origin:size:), 它在对应的属性中存储最新的原点和大小值:</p>
 <pre><code>
 let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
                       size: Size(width: 3.0, height: 3.0))
@@ -5944,9 +5887,9 @@ let centerRect = Rect(center: Point(x: 4.0, y: 4.0),
 extension Int {
     func repetitions(task: () -> Void) {
         for _ in 0..<self {="" task()="" }="" <="" code=""></self></code></pre>
-repetitions(task:) 方法只有一个参数 () -> Void, 它表明一个没有参数和返回值的函数。
 
-扩展定义之后, 你可以在任何整数上调用 repetitions(task:) 方法来执行多次同样的任务:
+<p>repetitions(task:) 方法只有一个参数 () -&gt; Void, 它表明一个没有参数和返回值的函数。</p>
+<p>扩展定义之后, 你可以在任何整数上调用 repetitions(task:) 方法来执行多次同样的任务:</p>
 <pre><code>
 3.repetitions {
     print("Hello!")
@@ -6002,11 +5945,10 @@ extension Int {
     }
 }
 </code></pre>
-这个例子向Int类型添加了一个新的嵌套枚举。这个枚举 Kind, 表示一个整数表示的数字种类。特别的是, 它表示这个数组是否是正数,0,或者负数。
 
-这个例子同时也添加了一个新的计算属性 kind, 它会根据整数返回对应的 Kind 枚举分支。
-
-这个嵌套的枚举可以用在任意整数值:
+<p>这个例子向Int类型添加了一个新的嵌套枚举。这个枚举 Kind, 表示一个整数表示的数字种类。特别的是, 它表示这个数组是否是正数,0,或者负数。</p>
+<p>这个例子同时也添加了一个新的计算属性 kind, 它会根据整数返回对应的 Kind 枚举分支。</p>
+<p>这个嵌套的枚举可以用在任意整数值:</p>
 <pre><code>
 func printIntegerKinds(_ numbers: [Int]) {
     for number in numbers {
@@ -6100,13 +6042,10 @@ class Starship: FullyNamed {
 var ncc1701 = Starship(name: "Enterprise", prefix: "USS")
 // ncc1701.fullName is "USS Enterprise"
 </code></pre>
-这个类把fullName 属性实现为一个只读计算属性。 每个Starship 类实例存储一个强制名和一个可选的前缀。如果前缀存在,fullName 属性就使用它。放在 name 前,为 starship 创建一个完整的名字。
 
-# 方法需求
-
-协议可以要求符合类型实现特定的实例方法和类型方法。这些方法写在协议定义里面,跟普通实例方法和类型方法写法一致。但是没有花括号或者方法体。允许有可变参数, 遵守普通方法的规则限制。不过,协议定义中的方法参数不能指定默认值。
-
-像类型属性需求一样, 定义在协议里的类型方法需要在前面加上static关键字:
+<p>这个类把fullName 属性实现为一个只读计算属性。 每个Starship 类实例存储一个强制名和一个可选的前缀。如果前缀存在,fullName 属性就使用它。放在 name 前,为 starship 创建一个完整的名字。</p>
+<h1 id="方法需求"><a href="#方法需求" class="headerlink" title="方法需求"></a>方法需求</h1><p>协议可以要求符合类型实现特定的实例方法和类型方法。这些方法写在协议定义里面,跟普通实例方法和类型方法写法一致。但是没有花括号或者方法体。允许有可变参数, 遵守普通方法的规则限制。不过,协议定义中的方法参数不能指定默认值。</p>
+<p>像类型属性需求一样, 定义在协议里的类型方法需要在前面加上static关键字:</p>
 <pre><code>
 protocol SomeProtocol {
     static func someTypeMethod()
@@ -6118,11 +6057,10 @@ protocol RandomNumberGenerator {
     func random() -> Double
 }
 </code></pre>
-这个协议, RandomNumberGenerator, 要求任何符合类型必须有一个实例方法 random, 这个方法调用后会返回一个浮点值。 尽管它不是协议指定的部分, 它假设这个值会从0.0 到 1.0 (但是不包括)
 
-RandomNumberGenerator 协议不会假设每个随机数怎么产生—它简单要求生成器提供一个标准方法来产生新的随机数。
-
-这里实现了一个类,它采用并遵守了 RandomNumberGenerator 协议。这个类实现了一个伪随机数算法,线性同余生成器:
+<p>这个协议, RandomNumberGenerator, 要求任何符合类型必须有一个实例方法 random, 这个方法调用后会返回一个浮点值。 尽管它不是协议指定的部分, 它假设这个值会从0.0 到 1.0 (但是不包括)</p>
+<p>RandomNumberGenerator 协议不会假设每个随机数怎么产生—它简单要求生成器提供一个标准方法来产生新的随机数。</p>
+<p>这里实现了一个类,它采用并遵守了 RandomNumberGenerator 协议。这个类实现了一个伪随机数算法,线性同余生成器:</p>
 <pre><code>
 class LinearCongruentialGenerator: RandomNumberGenerator {
     var lastRandom = 42.0
@@ -6152,9 +6090,9 @@ protocol Togglable {
     mutating func toggle()
 }
 </code></pre>
-如果你为一个结构体或者枚举实现这个协议, 通过实现标记为mutating 的toggle()方法,这个结构体或者枚举就可以符合这个协议了。
 
-下面的例子定义了一个枚举 OnOffSwitch. 这个枚举开关有两个状态, 用枚举分支 on 和 off表示。枚举开关实现标记为 mutating, 为了匹配 Togglable 协议的需求:
+<p>如果你为一个结构体或者枚举实现这个协议, 通过实现标记为mutating 的toggle()方法,这个结构体或者枚举就可以符合这个协议了。</p>
+<p>下面的例子定义了一个枚举 OnOffSwitch. 这个枚举开关有两个状态, 用枚举分支 on 和 off表示。枚举开关实现标记为 mutating, 为了匹配 Togglable 协议的需求:</p>
 <pre><code>
 enum OnOffSwitch: Togglable {
     case off, on
@@ -6187,13 +6125,11 @@ class SomeClass: SomeProtocol {
     }
 }
 </code></pre>
-使用required 修饰符确保你在所有符合协议的子类上,提供一个显式或者继承的构造器需求实现, 它们也遵守这个协议。
 
-备注
-
-如果符合协议的类标记了final修饰符,你就不需要用required标记协议构造器的实现,因为final 类不能子类化。
-
-如果一个子类重写了超类的指定构造器, 然也实现了协议的构造器需求, 这个构造器就要同时标记required 和 override的修饰符:
+<p>使用required 修饰符确保你在所有符合协议的子类上,提供一个显式或者继承的构造器需求实现, 它们也遵守这个协议。</p>
+<p>备注</p>
+<p>如果符合协议的类标记了final修饰符,你就不需要用required标记协议构造器的实现,因为final 类不能子类化。</p>
+<p>如果一个子类重写了超类的指定构造器, 然也实现了协议的构造器需求, 这个构造器就要同时标记required 和 override的修饰符:</p>
 <pre><code>
 protocol SomeProtocol {
     init()
@@ -6233,15 +6169,12 @@ class Dice {
     }
 }
 </code></pre>
-这个例子定义了一个新类 Dice, 它在棋盘游戏里代表一个n面的骰子。 Dice 实例有一个整数属性 sides, 它表示骰子有多少面,然后还有一个属性 generator, 它用来产生一个随机数作为骰子的值。
 
-generator 属性是 RandomNumberGenerator 类型。因此, 你可以用任何采用RandomNumberGenerator协议的类型来设置它。 你赋值给这个属性的实例无需其他, 主要这个实例采用RandomNumberGenerator 协议即可。
-
-Dice 也有一个构造器, 来设置它的初始状态。这个构造器有一个参数 generator, 它也是 RandomNumberGenerator 类型。在初始化新的Dice实例时,你可以传入任何符合类型的值作为这个参数。
-
-Dice 还提供了一个实例方法, roll, 它返回骰子的值。这个方法调用了生成器的 random() 方法来创建一个0.0到1.0的随机数。 然后使用随机数来生成一个正确的值。因为生成器采用了 RandomNumberGenerator, 它会保证有一个random() 方法可以调用。
-
-这里展示Dice类如何产生一个6面的骰子, 它使用一个LinearCongruentialGenerator 实例作为随机数生成器:
+<p>这个例子定义了一个新类 Dice, 它在棋盘游戏里代表一个n面的骰子。 Dice 实例有一个整数属性 sides, 它表示骰子有多少面,然后还有一个属性 generator, 它用来产生一个随机数作为骰子的值。</p>
+<p>generator 属性是 RandomNumberGenerator 类型。因此, 你可以用任何采用RandomNumberGenerator协议的类型来设置它。 你赋值给这个属性的实例无需其他, 主要这个实例采用RandomNumberGenerator 协议即可。</p>
+<p>Dice 也有一个构造器, 来设置它的初始状态。这个构造器有一个参数 generator, 它也是 RandomNumberGenerator 类型。在初始化新的Dice实例时,你可以传入任何符合类型的值作为这个参数。</p>
+<p>Dice 还提供了一个实例方法, roll, 它返回骰子的值。这个方法调用了生成器的 random() 方法来创建一个0.0到1.0的随机数。 然后使用随机数来生成一个正确的值。因为生成器采用了 RandomNumberGenerator, 它会保证有一个random() 方法可以调用。</p>
+<p>这里展示Dice类如何产生一个6面的骰子, 它使用一个LinearCongruentialGenerator 实例作为随机数生成器:</p>
 <pre><code>
 var d6 = Dice(sides: 6, generator: LinearCongruentialGenerator())
 for _ in 1...5 {
@@ -6267,9 +6200,9 @@ protocol DiceGameDelegate {
     func gameDidEnd(_ game: DiceGame)
 }
 </code></pre>
-DiceGame 协议可以被任何包含骰子的游戏采用。DiceGameDelegate 协议可以被任何跟踪DiceGame过程的类型采用。
 
-这里是有一个前面控制流中介绍过的蛇与梯子的游戏。这个版本使用一个 Dice 实例来摇骰子; 采用了 DiceGame 协议; 然后通知DiceGameDelegate 游戏的进程:
+<p>DiceGame 协议可以被任何包含骰子的游戏采用。DiceGameDelegate 协议可以被任何跟踪DiceGame过程的类型采用。</p>
+<p>这里是有一个前面控制流中介绍过的蛇与梯子的游戏。这个版本使用一个 Dice 实例来摇骰子; 采用了 DiceGame 协议; 然后通知DiceGameDelegate 游戏的进程:</p>
 <pre><code>
 class SnakesAndLadders: DiceGame {
     let finalSquare = 25
@@ -6328,13 +6261,11 @@ class DiceGameTracker: DiceGameDelegate {
     }
 }
 </code></pre>
-DiceGameTracker 实现了所有 DiceGameDelegate 协议要求的方法。它用三个方法来跟踪游戏玩了几轮。它在游戏开始时重置 numberOfTurns 属性的值为0, 在每次游戏开始的时候加1, 然后在游戏结束后打印出游戏的总轮数。
 
-gameDidStart(_:) 函数使用了game 参数来打印一些游戏介绍的信息。game 参数类型是 DiceGame, 而不是 SnakesAndLadders,  gameDidStart(_:) 可以访问和使用, 作为DiceGame 协议部分被实现的方法和属性。不过, 这个方法仍然可以使用类型转换来查询潜在实例的类型。在这个例子里, 它会判断有些是否是一个SnakesAndLadders 实例, 然后打印一条对应的信息。
-
-gameDidStart(_:) 方法也会访问game参数的 dice属性。因为已经知道 game 遵守了DiceGame 协议, 它可以保证有一个 dice 属性, 所以 gameDidStart(_:) 方法也可以访问和打印dice 的 sides 属性, 而不用管正在玩什么类型的游戏。
-
-这里是 DiceGameTracker 的行为:
+<p>DiceGameTracker 实现了所有 DiceGameDelegate 协议要求的方法。它用三个方法来跟踪游戏玩了几轮。它在游戏开始时重置 numberOfTurns 属性的值为0, 在每次游戏开始的时候加1, 然后在游戏结束后打印出游戏的总轮数。</p>
+<p>gameDidStart(<em>:) 函数使用了game 参数来打印一些游戏介绍的信息。game 参数类型是 DiceGame, 而不是 SnakesAndLadders,  gameDidStart(</em>:) 可以访问和使用, 作为DiceGame 协议部分被实现的方法和属性。不过, 这个方法仍然可以使用类型转换来查询潜在实例的类型。在这个例子里, 它会判断有些是否是一个SnakesAndLadders 实例, 然后打印一条对应的信息。</p>
+<p>gameDidStart(<em>:) 方法也会访问game参数的 dice属性。因为已经知道 game 遵守了DiceGame 协议, 它可以保证有一个 dice 属性, 所以 gameDidStart(</em>:) 方法也可以访问和打印dice 的 sides 属性, 而不用管正在玩什么类型的游戏。</p>
+<p>这里是 DiceGameTracker 的行为:</p>
 <pre><code>
 let tracker = DiceGameTracker()
 let game = SnakesAndLadders()
@@ -6348,15 +6279,11 @@ game.play()
 // Rolled a 5
 // The game lasted for 4 turns
 </code></pre>
-# 给扩展添加协议
 
-你可以扩展一个已存在的类型来采用和遵守一个新的协议, 即使你无法访问已存在类型的源代码。扩展可以给已存在的类型添加新属性,方法和下标, 因此可以添加协议要求的任何需求。
-
-备注
-
-当在扩展里给一个实例类型添加协议时, 这个实例就会自动采用和遵守这个协议。
-
-例如, 这个协议 TextRepresentable, 任何可以表示为文本的类型都可以实现。这可能是自我的描述或者当前状态的文本版本:
+<h1 id="给扩展添加协议"><a href="#给扩展添加协议" class="headerlink" title="给扩展添加协议"></a>给扩展添加协议</h1><p>你可以扩展一个已存在的类型来采用和遵守一个新的协议, 即使你无法访问已存在类型的源代码。扩展可以给已存在的类型添加新属性,方法和下标, 因此可以添加协议要求的任何需求。</p>
+<p>备注</p>
+<p>当在扩展里给一个实例类型添加协议时, 这个实例就会自动采用和遵守这个协议。</p>
+<p>例如, 这个协议 TextRepresentable, 任何可以表示为文本的类型都可以实现。这可能是自我的描述或者当前状态的文本版本:</p>
 <pre><code>
 protocol TextRepresentable {
     var textualDescription: String { get }
@@ -6370,9 +6297,9 @@ extension Dice: TextRepresentable {
     }
 }
 </code></pre>
-扩展采用新协议的方式跟原来Dice提供的实现一样。协议名写在类型名后,用冒号隔开, 协议需求的所有实现都写在扩展的花括号中。
 
-所以 Dice 实例都可以认为是 TextRepresentable:
+<p>扩展采用新协议的方式跟原来Dice提供的实现一样。协议名写在类型名后,用冒号隔开, 协议需求的所有实现都写在扩展的花括号中。</p>
+<p>所以 Dice 实例都可以认为是 TextRepresentable:</p>
 <pre><code>
 let d12 = Dice(sides: 12, generator: LinearCongruentialGenerator())
 print(d12.textualDescription)
@@ -6399,20 +6326,18 @@ struct Hamster {
 }
 extension Hamster: TextRepresentable {}
 </code></pre>
-现在需要TextRepresentable 类型的地方都可以使用 Hamster 实例:
+
+<p>现在需要TextRepresentable 类型的地方都可以使用 Hamster 实例:</p>
 <pre><code>
 let simonTheHamster = Hamster(name: "Simon")
 let somethingTextRepresentable: TextRepresentable = simonTheHamster
 print(somethingTextRepresentable.textualDescription)
 // 打印 "A hamster named Simon"
 </code></pre>
-备注
 
-仅仅满足协议的需求,类型还不会自动采用这个协议。必须显式声明它们采用了这个协议。
-
-# 协议类型集合
-
-一个协议可以用作一个类型,存储在诸如数组或者字典的集合中。下面的例子创建了一组 TextRepresentable:
+<p>备注</p>
+<p>仅仅满足协议的需求,类型还不会自动采用这个协议。必须显式声明它们采用了这个协议。</p>
+<h1 id="协议类型集合"><a href="#协议类型集合" class="headerlink" title="协议类型集合"></a>协议类型集合</h1><p>一个协议可以用作一个类型,存储在诸如数组或者字典的集合中。下面的例子创建了一组 TextRepresentable:</p>
 <pre><code>
 let things: [TextRepresentable] = [game, d12, simonTheHamster]
 </code></pre>
@@ -6425,25 +6350,24 @@ for thing in things {
 // A 12-sided dice
 // A hamster named Simon
 </code></pre>
-注意 thing 常量的类型是 TextRepresentable. 不是 Dice, 或者 DiceGame, 或者 Hamster类型, 尽管背后是这些类型。 由于它是 TextRepresentable 类型, 它又一个 textualDescription 属性, 通过循环每次访问thing.textualDescription 是安全的。
 
-# 协议继承
-
-一个协议可以继承一个或多个其他协议,在继承的需求顶层还可以添加更多的需求。协议继承的语法和类继承的语法很相似, 但是可以选择列出多个继承协议, 然后用逗号分开:
+<p>注意 thing 常量的类型是 TextRepresentable. 不是 Dice, 或者 DiceGame, 或者 Hamster类型, 尽管背后是这些类型。 由于它是 TextRepresentable 类型, 它又一个 textualDescription 属性, 通过循环每次访问thing.textualDescription 是安全的。</p>
+<h1 id="协议继承"><a href="#协议继承" class="headerlink" title="协议继承"></a>协议继承</h1><p>一个协议可以继承一个或多个其他协议,在继承的需求顶层还可以添加更多的需求。协议继承的语法和类继承的语法很相似, 但是可以选择列出多个继承协议, 然后用逗号分开:</p>
 <pre><code>
 protocol InheritingProtocol: SomeProtocol, AnotherProtocol {
     // protocol definition goes here
 }
 </code></pre>
-这里有一个协议的例子,它继承了上面的 TextRepresentable 协议:
+
+<p>这里有一个协议的例子,它继承了上面的 TextRepresentable 协议:</p>
 <pre><code>
 protocol PrettyTextRepresentable: TextRepresentable {
     var prettyTextualDescription: String { get }
 }
 </code></pre>
-这个例子定义了一个新协议, PrettyTextRepresentable, 它继承自 TextRepresentable. 任何采用 PrettyTextRepresentable 协议的都必须满足TextRepresentable 强制要求的所有需求, 然后加上PrettyTextRepresentable 强制要求的额外需求。在这个例子里, PrettyTextRepresentable 只添加了一个需求, 提供了一个 gettable 属性 prettyTextualDescription 来返回一个字符串。
 
-SnakesAndLadders 类可以扩展成采用和遵守 PrettyTextRepresentable 协议:
+<p>这个例子定义了一个新协议, PrettyTextRepresentable, 它继承自 TextRepresentable. 任何采用 PrettyTextRepresentable 协议的都必须满足TextRepresentable 强制要求的所有需求, 然后加上PrettyTextRepresentable 强制要求的额外需求。在这个例子里, PrettyTextRepresentable 只添加了一个需求, 提供了一个 gettable 属性 prettyTextualDescription 来返回一个字符串。</p>
+<p>SnakesAndLadders 类可以扩展成采用和遵守 PrettyTextRepresentable 协议:</p>
 <pre><code>
 extension SnakesAndLadders: PrettyTextRepresentable {
     var prettyTextualDescription: String {
@@ -6462,12 +6386,9 @@ extension SnakesAndLadders: PrettyTextRepresentable {
     }
 }
 </code></pre>
-这个扩展表明它采用了 PrettyTextRepresentable 协议,然后为SnakesAndLadders类型提供了prettyTextualDescription属性的实现。任何是 PrettyTextRepresentable 类型的也是 TextRepresentable 类型, 因此 prettyTextualDescription 实现的开始就是访问TextRepresentable的属性 textualDescription,用它作为输出字符串的开始部分。它往后面添加一个冒号和一个换行符, 然后使用它作为文本的开始。然后它遍历棋盘方格数组的项目, 然后把代表每个方格的几何形状添加到最后:
 
-如果方格的值大于0, 它是梯子的底, 用 ▲表示。
-如果方格的值小于0, 它是蛇的头, 用 ▼表示。
-否则, 方格的值等于 0, 这是一个空方格, 用 ○ 表示。
-现在 prettyTextualDescription 属性可以用来为SnakesAndLadders实例打印一条文本描述:
+<p>这个扩展表明它采用了 PrettyTextRepresentable 协议,然后为SnakesAndLadders类型提供了prettyTextualDescription属性的实现。任何是 PrettyTextRepresentable 类型的也是 TextRepresentable 类型, 因此 prettyTextualDescription 实现的开始就是访问TextRepresentable的属性 textualDescription,用它作为输出字符串的开始部分。它往后面添加一个冒号和一个换行符, 然后使用它作为文本的开始。然后它遍历棋盘方格数组的项目, 然后把代表每个方格的几何形状添加到最后:</p>
+<p>如果方格的值大于0, 它是梯子的底, 用 ▲表示。<br>如果方格的值小于0, 它是蛇的头, 用 ▼表示。<br>否则, 方格的值等于 0, 这是一个空方格, 用 ○ 表示。<br>现在 prettyTextualDescription 属性可以用来为SnakesAndLadders实例打印一条文本描述:</p>
 <pre><code>
 print(game.prettyTextualDescription)
 // A game of Snakes and Ladders with 25 squares:
@@ -6530,9 +6451,9 @@ class Country: HasArea {
     init(area: Double) { self.area = area }
 }
 </code></pre>
-Circle 类把 area 属性要求实现成了一个计算属性, 它基于一个存储属性 radius. Country 类直接把 area 属性需求实现成了一个存储属性。两个类都准确的符合了 HasArea 协议。
 
-这里有一个类 Animal, 它不符合 HasArea 协议:
+<p>Circle 类把 area 属性要求实现成了一个计算属性, 它基于一个存储属性 radius. Country 类直接把 area 属性需求实现成了一个存储属性。两个类都准确的符合了 HasArea 协议。</p>
+<p>这里有一个类 Animal, 它不符合 HasArea 协议:</p>
 <pre><code>
 class Animal {
     var legs: Int
@@ -6547,9 +6468,9 @@ let objects: [AnyObject] = [
     Animal(legs: 4)
 ]
 </code></pre>
-objects 数组用三个字面量来初始化,包括半径为2的 Circle 实例; 用英国表面积初始化的 Country 实例; 有四条腿的 Animal 实例。
 
-现在可以遍历objects 数组, 可以判断数组里的每一项,看看它们是否符合 HasArea 协议:
+<p>objects 数组用三个字面量来初始化,包括半径为2的 Circle 实例; 用英国表面积初始化的 Country 实例; 有四条腿的 Animal 实例。</p>
+<p>现在可以遍历objects 数组, 可以判断数组里的每一项,看看它们是否符合 HasArea 协议:</p>
 <pre><code>
 for object in objects {
     if let objectWithArea = object as? HasArea {
@@ -6575,13 +6496,11 @@ for object in objects {
     @objc optional var fixedIncrement: Int { get }
 }
 </code></pre>
-CounterDataSource 协议定义了一个可选方法需求 increment(forCount:) 和一个可选属性需求 fixedIncrement. 这些需求为外部数据源定义了两个不同方法,来为Counter 实例提供一个合适的增长数。
 
-备注
-
-严格来说, 你可以写一个符合CounterDataSource协议的自定义类,却不用实现它的需求。它们都是可选的。
-
-下面定义的Counter 类, 有一个CounterDataSource?类型的可选的 dataSource 属性:
+<p>CounterDataSource 协议定义了一个可选方法需求 increment(forCount:) 和一个可选属性需求 fixedIncrement. 这些需求为外部数据源定义了两个不同方法,来为Counter 实例提供一个合适的增长数。</p>
+<p>备注</p>
+<p>严格来说, 你可以写一个符合CounterDataSource协议的自定义类,却不用实现它的需求。它们都是可选的。</p>
+<p>下面定义的Counter 类, 有一个CounterDataSource?类型的可选的 dataSource 属性:</p>
 <pre><code>
 class Counter {
     var count = 0
@@ -6595,19 +6514,14 @@ class Counter {
     }
 }
 </code></pre>
-Counter 在一个变量属性count中存储当前值。同时定义了一个方法increment, 每次方法调用时,它就会增加count属性的值。
 
-increment() 方法通过数据源的increment(forCount:)方法实现,先尝试去获取一个增长数。increment() 方法使用可选链接尝试调用 increment(forCount:), 然后把当前值传入作为参数。
-
-注意,这里有两层可选链接。首先, dataSource 可能为nil, 所以它后面有个问号,来表明如果dataSource 不是nil,就可以调用 increment(forCount:). 其次, 即使 dataSource 存在, 也不能保证它实现了increment(forCount:), 因为它是一个可选需求。在这里, increment(forCount:) 没有实现的可能性也是用可选链接处理的。只有 increment(forCount:) 方法存在,它才会被调用—就是说, 它不为nil. 这就是为什么 increment(forCount:)名字后也有一个问号的原因。
-
-由于上述两种原因的任意一个,调用 increment(forCount:) 都有可能会失败, 所以调用返回一个可选整型值。尽管 increment(forCount:) 在CounterDataSource 中定义的返回值是非可选的,这个也会发生。尽管有两个可选链接操作, 一个接着一个, 结果依然包在一个可选项中。
-
-调用完 increment(forCount:), 返回的可选整型值会拆包到一个常量 amount, 使用可选绑定的方式。如果可选整型值的确包含一个值—就是说, 如果委托和方法都存在, 方法返回一个值—拆包得到的数量会加到存储属性count 上, 然后增长完成。
-
-如果不能从increment(forCount:)方法获取到值—或者是因为 dataSource 为nil, 或者数据源没有实现 increment(forCount:)—然后 increment() 方法尝试从数据源的 fixedIncrement 属性获取值。fixedIncrement 属性也是一个可选的需求, 所以它的值是一个可选的整型值。尽管 fixedIncrement 定义时是一个非可选的属性。
-
-这里有个 CounterDataSource 协议的简单实现,在这里数据源返回一个常量值3,每当它被查询的时候。它通过实现fixedIncrement 属性需求来实现这点:
+<p>Counter 在一个变量属性count中存储当前值。同时定义了一个方法increment, 每次方法调用时,它就会增加count属性的值。</p>
+<p>increment() 方法通过数据源的increment(forCount:)方法实现,先尝试去获取一个增长数。increment() 方法使用可选链接尝试调用 increment(forCount:), 然后把当前值传入作为参数。</p>
+<p>注意,这里有两层可选链接。首先, dataSource 可能为nil, 所以它后面有个问号,来表明如果dataSource 不是nil,就可以调用 increment(forCount:). 其次, 即使 dataSource 存在, 也不能保证它实现了increment(forCount:), 因为它是一个可选需求。在这里, increment(forCount:) 没有实现的可能性也是用可选链接处理的。只有 increment(forCount:) 方法存在,它才会被调用—就是说, 它不为nil. 这就是为什么 increment(forCount:)名字后也有一个问号的原因。</p>
+<p>由于上述两种原因的任意一个,调用 increment(forCount:) 都有可能会失败, 所以调用返回一个可选整型值。尽管 increment(forCount:) 在CounterDataSource 中定义的返回值是非可选的,这个也会发生。尽管有两个可选链接操作, 一个接着一个, 结果依然包在一个可选项中。</p>
+<p>调用完 increment(forCount:), 返回的可选整型值会拆包到一个常量 amount, 使用可选绑定的方式。如果可选整型值的确包含一个值—就是说, 如果委托和方法都存在, 方法返回一个值—拆包得到的数量会加到存储属性count 上, 然后增长完成。</p>
+<p>如果不能从increment(forCount:)方法获取到值—或者是因为 dataSource 为nil, 或者数据源没有实现 increment(forCount:)—然后 increment() 方法尝试从数据源的 fixedIncrement 属性获取值。fixedIncrement 属性也是一个可选的需求, 所以它的值是一个可选的整型值。尽管 fixedIncrement 定义时是一个非可选的属性。</p>
+<p>这里有个 CounterDataSource 协议的简单实现,在这里数据源返回一个常量值3,每当它被查询的时候。它通过实现fixedIncrement 属性需求来实现这点:</p>
 <pre><code>
 class ThreeSource: NSObject, CounterDataSource {
     let fixedIncrement = 3
@@ -6624,9 +6538,9 @@ for _ in 1...4 {
 // 9
 // 12
 </code></pre>
-上面的代码创建了一个新的 Counter 实例; 然后把数据源设置成新的 ThreeSource 实例; 然后调用 increment() 方法四次。 如预料的一样, 每次increment()调用, count 属性都会增加。
 
-这里有一个更复杂的数据源 TowardsZeroSource, 它让 Counter 实例从当前值向上或者向下往0靠近:
+<p>上面的代码创建了一个新的 Counter 实例; 然后把数据源设置成新的 ThreeSource 实例; 然后调用 increment() 方法四次。 如预料的一样, 每次increment()调用, count 属性都会增加。</p>
+<p>这里有一个更复杂的数据源 TowardsZeroSource, 它让 Counter 实例从当前值向上或者向下往0靠近:</p>
 <pre><code>
 @objc class TowardsZeroSource: NSObject, CounterDataSource {
     func increment(forCount count: Int) -> Int {
@@ -6640,9 +6554,9 @@ for _ in 1...4 {
     }
 }
 </code></pre>
-TowardsZeroSource 类实现了来自CounterDataSource协议的可选方法 increment(forCount:), 同时使用 count 参数值来判断往哪个方向计数。如果 count 已经为0, 方法返回0,表明无需继续计算。
 
-你可以用一个 TowardsZeroSource 实例配合存在的 Counter 实例来计数从-4 到 0. 一旦计数到了0, 计数停止:
+<p>TowardsZeroSource 类实现了来自CounterDataSource协议的可选方法 increment(forCount:), 同时使用 count 参数值来判断往哪个方向计数。如果 count 已经为0, 方法返回0,表明无需继续计算。</p>
+<p>你可以用一个 TowardsZeroSource 实例配合存在的 Counter 实例来计数从-4 到 0. 一旦计数到了0, 计数停止:</p>
 <pre><code>
 counter.count = -4
 counter.dataSource = TowardsZeroSource()
@@ -6666,7 +6580,8 @@ extension RandomNumberGenerator {
     }
 }
 </code></pre>
-通过在协议上创建一个扩展, 所有符合类型无需额外改变即可自动获取这个方法的实现。
+
+<p>通过在协议上创建一个扩展, 所有符合类型无需额外改变即可自动获取这个方法的实现。</p>
 <pre><code>
 let generator = LinearCongruentialGenerator()
 print("Here's a random number: \(generator.random())")
@@ -6697,32 +6612,27 @@ extension Collection where Iterator.Element: TextRepresentable {
     }
 }
 </code></pre>
-通过把集合里的每个元素的文本描述连接在一起, textualDescription 属性返回整个集合的文本描述, 然后用方括号括起来。
 
-考虑前面的结构体 Hamster, 它符合 TextRepresentable 协议, 然后是一个 Hamster 值的数组:
+<p>通过把集合里的每个元素的文本描述连接在一起, textualDescription 属性返回整个集合的文本描述, 然后用方括号括起来。</p>
+<p>考虑前面的结构体 Hamster, 它符合 TextRepresentable 协议, 然后是一个 Hamster 值的数组:</p>
 <pre><code>
 let murrayTheHamster = Hamster(name: "Murray")
 let morganTheHamster = Hamster(name: "Morgan")
 let mauriceTheHamster = Hamster(name: "Maurice")
 let hamsters = [murrayTheHamster, morganTheHamster, mauriceTheHamster]
 </code></pre>
-因为数组符合 Collection 协议,并且数组的元素符合 TextRepresentable 协议, 所以数组可以用 textualDescription 属性获取它内容的文本表示:
+
+<p>因为数组符合 Collection 协议,并且数组的元素符合 TextRepresentable 协议, 所以数组可以用 textualDescription 属性获取它内容的文本表示:</p>
 <pre><code>
 print(hamsters.textualDescription)
 // 打印 "[A hamster named Murray, A hamster named Morgan, A hamster named Maurice]"
 </code></pre>
-备注
 
-如果一个符合类型满足了多个限制表达式的要求, Swift 会使用对应特定限制的实现。
-
-# 泛型
-泛型代码让你可以写出灵活,可重用的函数和类型,它们可以使用任何类型,受你定义的需求的约束。你可以写出代码,避免重复而且可以用一个清晰抽象的方式来表达它的意图。
-
-泛型是Swift中最有力的特征之一, 而且大部分Swift的标准库是用泛型代码建立的。事实上, 在整个语言教程中，你一直在使用泛型,尽管你没有意识到这点。例如, Swift 的数组和字典类型都是泛型集合。 你可以创建一个整数数组,一个字符串数组,甚至是Swift允许创建的任何类型的数组。相似的, 你可以创建字典来保存任何指定类型的值, 什么类型并没有限制。
-
-# 泛型解决的问题
-
-这里有一个标准的非泛型的函数 swapTwoInts(_:_:), 用来交换两个整数值:
+<p>备注</p>
+<p>如果一个符合类型满足了多个限制表达式的要求, Swift 会使用对应特定限制的实现。</p>
+<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型代码让你可以写出灵活,可重用的函数和类型,它们可以使用任何类型,受你定义的需求的约束。你可以写出代码,避免重复而且可以用一个清晰抽象的方式来表达它的意图。</p>
+<p>泛型是Swift中最有力的特征之一, 而且大部分Swift的标准库是用泛型代码建立的。事实上, 在整个语言教程中，你一直在使用泛型,尽管你没有意识到这点。例如, Swift 的数组和字典类型都是泛型集合。 你可以创建一个整数数组,一个字符串数组,甚至是Swift允许创建的任何类型的数组。相似的, 你可以创建字典来保存任何指定类型的值, 什么类型并没有限制。</p>
+<h1 id="泛型解决的问题"><a href="#泛型解决的问题" class="headerlink" title="泛型解决的问题"></a>泛型解决的问题</h1><p>这里有一个标准的非泛型的函数 swapTwoInts(<em>:</em>:), 用来交换两个整数值:</p>
 <pre><code>
 func swapTwoInts(_ a: inout Int, _ b: inout Int) {
     let temporaryA = a
@@ -6730,9 +6640,9 @@ func swapTwoInts(_ a: inout Int, _ b: inout Int) {
     b = temporaryA
 }
 </code></pre>
-这个函数用了输入输出参数来交换a和b的值。
 
-swapTwoInts(_:_:) 函数把b的原始值交换到a, a的原始值到b. 你可以调用这个函数来交换两个整型变量中的值:
+<p>这个函数用了输入输出参数来交换a和b的值。</p>
+<p>swapTwoInts(<em>:</em>:) 函数把b的原始值交换到a, a的原始值到b. 你可以调用这个函数来交换两个整型变量中的值:</p>
 <pre><code>
 var someInt = 3
 var anotherInt = 107
@@ -6754,17 +6664,12 @@ func swapTwoDoubles(_ a: inout Double, _ b: inout Double) {
     b = temporaryA
 }
 </code></pre>
-你可能注意到了,swapTwoInts(_:_:), swapTwoStrings(_:_:), 和 swapTwoDoubles(_:_:) 的函数体是一样的。唯一不同的是它们接受的值的类型 (Int, String, 和 Double).
 
-写一个可以交换任何类型值的函数,可能更有用和灵活。泛型代码让你可以写出这种函数。(这些函数的泛型版本会在下面定义。)
-
-备注
-
-在所有三个函数中, 重要的是a和b的类型要一样。如果a和b的类型不一样, 就不可能交换它们两个的值。 Swift 是一门类型安全的语言, 不允许把一个字符串和浮点数进行交换。如果这样做,会报一个编译期错误。
-
-# 泛型函数
-
-泛型函数可以使用任何类型。这里有一个上面 swapTwoInts(_:_:)函数的泛型版本 swapTwoValues(_:_:):
+<p>你可能注意到了,swapTwoInts(<em>:</em>:), swapTwoStrings(<em>:</em>:), 和 swapTwoDoubles(<em>:</em>:) 的函数体是一样的。唯一不同的是它们接受的值的类型 (Int, String, 和 Double).</p>
+<p>写一个可以交换任何类型值的函数,可能更有用和灵活。泛型代码让你可以写出这种函数。(这些函数的泛型版本会在下面定义。)</p>
+<p>备注</p>
+<p>在所有三个函数中, 重要的是a和b的类型要一样。如果a和b的类型不一样, 就不可能交换它们两个的值。 Swift 是一门类型安全的语言, 不允许把一个字符串和浮点数进行交换。如果这样做,会报一个编译期错误。</p>
+<h1 id="泛型函数"><a href="#泛型函数" class="headerlink" title="泛型函数"></a>泛型函数</h1><p>泛型函数可以使用任何类型。这里有一个上面 swapTwoInts(<em>:</em>:)函数的泛型版本 swapTwoValues(<em>:</em>:):</p>
 <pre><code>
 func swapTwoValues<t>(_ a: inout T, _ b: inout T) {
     let temporaryA = a
@@ -6777,13 +6682,11 @@ swapTwoValues(_:_:) 函数体和 swapTwoInts(_:_:) 函数体是一样的。不�
 func swapTwoInts(_ a: inout Int, _ b: inout Int)
 func swapTwoValues<t>(_ a: inout T, _ b: inout T)
 </t></code></pre>
-泛型版本的函数用了一个占位符类型名(这里叫T) ,而不是使用实际的类型名 (比如 Int, String, 或者 Double). 这个占位符类型名不说T是到底是什么, 但是它表明a和b是同样的类型 T, 无论T表示什么。每次swapTwoValues(_:_:)函数调用的时候,再决定T是什么类型。
 
-其他的不同是泛型函数名后面跟着一个T包括在尖括号中 (<t>). 括号告诉 Swift ,T 在 swapTwoValues(_:_:) 函数定义中是一个占位符类型名。因为 T 是一个占位符, Swift 不能找到真正的类型 T.
-
-现在可以像调用swapTwoInts一样调用 swapTwoValues(_:_:) 函数, 不过你可以传入两个任何类型的值, 只要两个值的类型是一样的。每次调用 swapTwoValues(_:_:), T的类型会从传入的值的类型推断出来。
-
-下面两个例子里, T 分别推断为整型和字符串类型:
+<p>泛型版本的函数用了一个占位符类型名(这里叫T) ,而不是使用实际的类型名 (比如 Int, String, 或者 Double). 这个占位符类型名不说T是到底是什么, 但是它表明a和b是同样的类型 T, 无论T表示什么。每次swapTwoValues(<em>:</em>:)函数调用的时候,再决定T是什么类型。</p>
+<p>其他的不同是泛型函数名后面跟着一个T包括在尖括号中 (<t>). 括号告诉 Swift ,T 在 swapTwoValues(<em>:</em>:) 函数定义中是一个占位符类型名。因为 T 是一个占位符, Swift 不能找到真正的类型 T.</t></p>
+<p>现在可以像调用swapTwoInts一样调用 swapTwoValues(<em>:</em>:) 函数, 不过你可以传入两个任何类型的值, 只要两个值的类型是一样的。每次调用 swapTwoValues(<em>:</em>:), T的类型会从传入的值的类型推断出来。</p>
+<p>下面两个例子里, T 分别推断为整型和字符串类型:</p>
 <pre><code>
 var someInt = 3
 var anotherInt = 107
@@ -6795,107 +6698,24 @@ var anotherString = "world"
 swapTwoValues(&someString, &anotherString)
 // someString is now "world", and anotherString is now "hello"
 </code></pre>
-备注
 
-上面定义的 swapTwoValues(_:_:) 函数是受到Swift 标准库函数swap的启发。它可以在你的应用里直接使用。如果你需要 swapTwoValues(_:_:) 函数的功能, 你可以使用 Swift 已存在的 swap(_:_:) 函数而不用自己重新实现。
+<p>备注</p>
+<p>上面定义的 swapTwoValues(<em>:</em>:) 函数是受到Swift 标准库函数swap的启发。它可以在你的应用里直接使用。如果你需要 swapTwoValues(<em>:</em>:) 函数的功能, 你可以使用 Swift 已存在的 swap(<em>:</em>:) 函数而不用自己重新实现。</p>
+<h1 id="类型参数"><a href="#类型参数" class="headerlink" title="类型参数"></a>类型参数</h1><p>上面的 swapTwoValues(<em>:</em>:) 例子, 占位符类型 T 是类型参数的例子。类型参数指定和命名一个占位符类型, 直接写在函数名的后面, 在一对尖括号里面 (例如 <t>).</t></p>
+<p>只要你指定了一个类型参数, 你就可以用它来定义一个函数的参数类型 (例如 swapTwoValues(<em>:</em>:) 函数里的a和b), 或者作为函数的返回值类型, 或者在函数体中用作一个类型注释。每种情况下, 函数调用时,类型参数会被真实的类型替换。</p>
+<p>你可以在尖括号里写上多个类型参数,来提供更多的类型参数。用逗号分开就行。</p>
+<h1 id="命名类型参数"><a href="#命名类型参数" class="headerlink" title="命名类型参数"></a>命名类型参数</h1><p>在大多数情况下, 类型参数有描述性的名字, 例如 Dictionary<key, value=""> 中的Key 和 Value , Array<element>里的Element, 它会告诉读者类型参数和泛型类型或者所在函数的关系。不过, 当它们之间没有一个有意义的关系时, 通常做法是用单个字母来给它们命名,比如 T, U, 和 V, 比如上面 swapTwoValues(<em>:</em>:) 函数中的T。</element></key,></p>
+<p>备注</p>
+<p>用驼峰式方法给参数类型命名来表明它们是一个占位符类型,而不是一个值。(例如 T 和 MyTypeParameter).</p>
+<h1 id="泛型类型"><a href="#泛型类型" class="headerlink" title="泛型类型"></a>泛型类型</h1><p>除了泛型函数, Swift 也可以定义泛型类型。它们是可以使用任何类型的类,结构体和枚举。跟数组和字典有着相似的方式。</p>
+<p>这部分内容展示如何写一个泛型集合 Stack. 栈是有序集合, 跟数组类似, 但是操作更加严格。数组允许任何位置的项的插入和移除。栈只允许在集合尾部添加 (压栈)。类似的, 栈只允许项目从集合尾部移除 (出栈)。</p>
+<p>备注</p>
+<p>UINavigationController 使用栈来模拟在导航层次中的视图控制器。调用 UINavigationController 的 pushViewController(<em>:animated:) 方法在导航栈上添加一个视图控制器, 调用 popViewControllerAnimated(</em>:) 方法从导航栈上移除一个视图控制器。如果你要一个后进先出的方式来管理集合,栈可以派上用场。</p>
+<p>下面的图展示了栈的压栈和出栈的行为:</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPushPop_2x.png"><br></div><br>当前栈上有三个值。第四个值添加到栈顶。现在栈内有四个值, 最近的值在最上面。<br>栈顶的值被移除或者出栈。弹出一个值后, 栈内现在再次是三个值。<br>这里有个非泛型版本的栈, 针对的是整型值的情况:<br><pre><code><br>struct IntStack {<br>    var items = <a href="">Int</a><br>    mutating func push(<em> item: Int) {<br>        items.append(item)<br>    }<br>    mutating func pop() -&gt; Int {<br>        return items.removeLast()<br>    }<br>}<br></em></code></pre><br><br>这个结构体使用数组属性items来保存栈内的值。IntStack 提供了两个方法, push 和 pop, 用来压栈和出栈。这两个方法都是 mutating, 因为它们要改变结构体的 items 数组。<br><br>IntStack 类型只能用于整数, 不过。如果能定义一个泛型栈类可能会更有用, 它可以管理任何类型值。<br><br>Here’s a generic version of the same code:<br><pre><code><br>struct Stack<element> {<br>    var items = <a href="">Element</a><br>    mutating func push( item: Element) {<br>        items.append(item)<br>    }<br>    mutating func pop() -&gt; Element {<br>        return items.removeLast()<br>    }<br>}<br></element></code></pre><br><br>注意,事实上泛型版本的栈和非泛型的版本很像, 只不过有一个类型参数 Element 取代了实际类型 Int. 这个类型名写在结构体名的后面,放在一对尖括号里面(<element>).<br><br>Element 是一个占位符的名字。这个未来类型可以在结构体定义中作为元素使用。在这种情况下, Element 在三个地方用作占位符:<br><br>创建一个属性items, 它是用Element 类型值来初始化的空数组。<br>指定 push(_:) 方法有一个参数 item, 类型是 Element<br>指定 pop() 方法的返回值,类型是 Element<br>因为它是一个泛型类型, Stack可以用来创建Swift中任何有效的类型的栈, 跟字典和数组的用法类似。<br><br>在方括号里写上栈存储类型来创建一个新的 Stack 实例。例如, 创建一个字符串的栈, 这样写 Stack<string>():<br><pre><code><br>var stackOfStrings = Stack<string>()<br>stackOfStrings.push(“uno”)<br>stackOfStrings.push(“dos”)<br>stackOfStrings.push(“tres”)<br>stackOfStrings.push(“cuatro”)<br>// 这个栈现在有4个字符串<br></string></code></pre><br>下面是压入四个值之后stackOfStrings 变化:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPushedFourStrings_2x.png"><br></div><br>从栈中移除一个值并且返回栈顶的值, “cuatro”:<br><pre><code><br>let fromTheTop = stackOfStrings.pop()<br>// fromTheTop 等于 “cuatro”, 现在栈内有3个字符串<br></code></pre><br>下面的弹出一个值后栈的变化:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPoppedOneString_2x.png"><br></div>
 
-# 类型参数
-
-上面的 swapTwoValues(_:_:) 例子, 占位符类型 T 是类型参数的例子。类型参数指定和命名一个占位符类型, 直接写在函数名的后面, 在一对尖括号里面 (例如 <t>).
-
-只要你指定了一个类型参数, 你就可以用它来定义一个函数的参数类型 (例如 swapTwoValues(_:_:) 函数里的a和b), 或者作为函数的返回值类型, 或者在函数体中用作一个类型注释。每种情况下, 函数调用时,类型参数会被真实的类型替换。
-
-你可以在尖括号里写上多个类型参数,来提供更多的类型参数。用逗号分开就行。
-
-# 命名类型参数
-
-在大多数情况下, 类型参数有描述性的名字, 例如 Dictionary<key, value=""> 中的Key 和 Value , Array<element>里的Element, 它会告诉读者类型参数和泛型类型或者所在函数的关系。不过, 当它们之间没有一个有意义的关系时, 通常做法是用单个字母来给它们命名,比如 T, U, 和 V, 比如上面 swapTwoValues(_:_:) 函数中的T。
-
-备注
-
-用驼峰式方法给参数类型命名来表明它们是一个占位符类型,而不是一个值。(例如 T 和 MyTypeParameter).
-
-# 泛型类型
-
-除了泛型函数, Swift 也可以定义泛型类型。它们是可以使用任何类型的类,结构体和枚举。跟数组和字典有着相似的方式。
-
-这部分内容展示如何写一个泛型集合 Stack. 栈是有序集合, 跟数组类似, 但是操作更加严格。数组允许任何位置的项的插入和移除。栈只允许在集合尾部添加 (压栈)。类似的, 栈只允许项目从集合尾部移除 (出栈)。
-
-备注
-
-UINavigationController 使用栈来模拟在导航层次中的视图控制器。调用 UINavigationController 的 pushViewController(_:animated:) 方法在导航栈上添加一个视图控制器, 调用 popViewControllerAnimated(_:) 方法从导航栈上移除一个视图控制器。如果你要一个后进先出的方式来管理集合,栈可以派上用场。
-
-下面的图展示了栈的压栈和出栈的行为:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPushPop_2x.png">
-</div>
-当前栈上有三个值。第四个值添加到栈顶。现在栈内有四个值, 最近的值在最上面。
-栈顶的值被移除或者出栈。弹出一个值后, 栈内现在再次是三个值。
-这里有个非泛型版本的栈, 针对的是整型值的情况:
-<pre><code>
-struct IntStack {
-    var items = [Int]()
-    mutating func push(_ item: Int) {
-        items.append(item)
-    }
-    mutating func pop() -> Int {
-        return items.removeLast()
-    }
-}
-</code></pre>
-这个结构体使用数组属性items来保存栈内的值。IntStack 提供了两个方法, push 和 pop, 用来压栈和出栈。这两个方法都是 mutating, 因为它们要改变结构体的 items 数组。
-
-IntStack 类型只能用于整数, 不过。如果能定义一个泛型栈类可能会更有用, 它可以管理任何类型值。
-
-Here’s a generic version of the same code:
-<pre><code>
-struct Stack<element> {
-    var items = [Element]()
-    mutating func push(_ item: Element) {
-        items.append(item)
-    }
-    mutating func pop() -> Element {
-        return items.removeLast()
-    }
-}
-</element></code></pre>
-注意,事实上泛型版本的栈和非泛型的版本很像, 只不过有一个类型参数 Element 取代了实际类型 Int. 这个类型名写在结构体名的后面,放在一对尖括号里面(<element>).
-
-Element 是一个占位符的名字。这个未来类型可以在结构体定义中作为元素使用。在这种情况下, Element 在三个地方用作占位符:
-
-创建一个属性items, 它是用Element 类型值来初始化的空数组。
-指定 push(_:) 方法有一个参数 item, 类型是 Element
-指定 pop() 方法的返回值,类型是 Element
-因为它是一个泛型类型, Stack可以用来创建Swift中任何有效的类型的栈, 跟字典和数组的用法类似。
-
-在方括号里写上栈存储类型来创建一个新的 Stack 实例。例如, 创建一个字符串的栈, 这样写 Stack<string>():
-<pre><code>
-var stackOfStrings = Stack<string>()
-stackOfStrings.push("uno")
-stackOfStrings.push("dos")
-stackOfStrings.push("tres")
-stackOfStrings.push("cuatro")
-// 这个栈现在有4个字符串
-</string></code></pre>
-下面是压入四个值之后stackOfStrings 变化:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPushedFourStrings_2x.png">
-</div>
-从栈中移除一个值并且返回栈顶的值, "cuatro":
-<pre><code>
-let fromTheTop = stackOfStrings.pop()
-// fromTheTop 等于 "cuatro", 现在栈内有3个字符串
-</code></pre>
-下面的弹出一个值后栈的变化:
-<div style="text-align:center">
-<img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/stackPoppedOneString_2x.png">
-</div>
-
-# 扩展泛型类型
-
-当你扩展一个泛型类型, 你不需要在扩展定义中提供一个类型参数列表。相反, 原类型定义的类型参数列表可以在扩展内部使用, 并且,使用原类型类型参数名在原来的定义中调用类型参数。
-
-下面的例子扩展了泛型 Stack 类型,添加了一个只读计算属性 topItem, 它返回栈顶元素,而且不用弹出这个元素:
+<h1 id="扩展泛型类型"><a href="#扩展泛型类型" class="headerlink" title="扩展泛型类型"></a>扩展泛型类型</h1><p>当你扩展一个泛型类型, 你不需要在扩展定义中提供一个类型参数列表。相反, 原类型定义的类型参数列表可以在扩展内部使用, 并且,使用原类型类型参数名在原来的定义中调用类型参数。</p>
+<p>下面的例子扩展了泛型 Stack 类型,添加了一个只读计算属性 topItem, 它返回栈顶元素,而且不用弹出这个元素:</p>
 <pre><code>
 extension Stack {
     var topItem: Element? {
@@ -6903,11 +6723,10 @@ extension Stack {
     }
 }
 </code></pre>
-topItem 属性返回可选的Element 类型值。如果栈是空的, topItem 返回nil; 如果栈非空, topItem 返回items数组最后一个值。
 
-注意,这个扩展没有定义类型参数列表。相反, Stack 类型已存在的类型参数名, Element, 在扩展内部使用来表示topItem 是一个可选类型。
-
-计算属性topItem 现在可以使用 Stack 实例来访问栈顶的元素,而不用去移除它:
+<p>topItem 属性返回可选的Element 类型值。如果栈是空的, topItem 返回nil; 如果栈非空, topItem 返回items数组最后一个值。</p>
+<p>注意,这个扩展没有定义类型参数列表。相反, Stack 类型已存在的类型参数名, Element, 在扩展内部使用来表示topItem 是一个可选类型。</p>
+<p>计算属性topItem 现在可以使用 Stack 实例来访问栈顶的元素,而不用去移除它:</p>
 <pre><code>
 if let topItem = stackOfStrings.topItem {
     print("The top item on the stack is \(topItem).")
@@ -6946,9 +6765,9 @@ if let foundIndex = findIndex(ofString: "llama", in: strings) {
 }
 // 打印 "The index of llama is 2"
 </code></pre>
-这种查找字符串的方式只对字符串有用, 不过。 你可以写一个泛型函数来处理其他类型。
 
-这里有一个你期待的泛型版本的 findIndex(ofString:in:)函数, 叫 findIndex(of:in:). 注意,函数返回值仍然是 Int?, 因为函数返回的是可选的索引值, 不是来自数组的可选值。 不过这个函数不能编译, 原因在这个例子后面再解释:
+<p>这种查找字符串的方式只对字符串有用, 不过。 你可以写一个泛型函数来处理其他类型。</p>
+<p>这里有一个你期待的泛型版本的 findIndex(ofString:in:)函数, 叫 findIndex(of:in:). 注意,函数返回值仍然是 Int?, 因为函数返回的是可选的索引值, 不是来自数组的可选值。 不过这个函数不能编译, 原因在这个例子后面再解释:</p>
 <pre><code>
 func findIndex<t>(of valueToFind: T, in array:[T]) -> Int? {
     for (index, value) in array.enumerated() {
@@ -6973,9 +6792,9 @@ func findIndex<t: equatable="">(of valueToFind: T, in array:[T]) -> Int? {
     return nil
 }
 </t:></code></pre>
-findIndex(of:in:) 的参数类型写作 T: Equatable, 意思是 “符合Equatable 协议的任意 T 类型。”
 
-限制 findIndex(of:in:) 函数编译成功了,然后可以使用任意可以比较的类型, 例如 Double 或者 String:
+<p>findIndex(of:in:) 的参数类型写作 T: Equatable, 意思是 “符合Equatable 协议的任意 T 类型。”</p>
+<p>限制 findIndex(of:in:) 函数编译成功了,然后可以使用任意可以比较的类型, 例如 Double 或者 String:</p>
 <pre><code>
 let doubleIndex = findIndex(of: 9.3, in: [3.14159, 0.1, 0.25])
 // doubleIndex is an optional Int with no value, because 9.3 is not in the array
@@ -7023,13 +6842,11 @@ struct IntStack: Container {
     }
 }
 </code></pre>
-IntStack 类型实现了 Container 协议要求的三个功能。
 
-此外, IntStack 指定,为了实现 Container, 关联 ItemType 使用Int类型。typealias ItemType = Int 定义,为Container 协议的实现,把抽象类型转换为实际的Int类型。
-
-由于 Swift 的类型推断, 实际上你不需要声明ItemType 为Int. 因为 IntStack 符合 Container 协议所有的要求, Swift 可以推断使用的关联类型 ItemType, 只要简单查找 append(_:) 方法的参数类型和下标的返回类型。事实上, 如果你删除上面的 typealias ItemType = Int, 一切都正常, 因为它知道什么类型用于 ItemType.
-
-你也可以让你泛型版本的 Stack 类型来符合 Container 协议:
+<p>IntStack 类型实现了 Container 协议要求的三个功能。</p>
+<p>此外, IntStack 指定,为了实现 Container, 关联 ItemType 使用Int类型。typealias ItemType = Int 定义,为Container 协议的实现,把抽象类型转换为实际的Int类型。</p>
+<p>由于 Swift 的类型推断, 实际上你不需要声明ItemType 为Int. 因为 IntStack 符合 Container 协议所有的要求, Swift 可以推断使用的关联类型 ItemType, 只要简单查找 append(_:) 方法的参数类型和下标的返回类型。事实上, 如果你删除上面的 typealias ItemType = Int, 一切都正常, 因为它知道什么类型用于 ItemType.</p>
+<p>你也可以让你泛型版本的 Stack 类型来符合 Container 协议:</p>
 <pre><code>
 struct Stack<element>: Container {
     // original Stack<element> implementation
@@ -7059,17 +6876,12 @@ struct Stack<element>: Container {
 <pre><code>
 extension Array: Container {}
 </code></pre>
-数组存在的 append(_:) 方法和下标让 Swift 可以推断使用ItemType的关联类型, 和上面的泛型 Stack 类型一样。扩展定义后, 你可以把数组当成 Container 使用。
 
-# 泛型 Where 子句
-
-类型限制, 让你在使用泛型函数或者类型时,可以在类型参数上定义需求。
-
-给关联类型定义需求也是有用的。可以通过定义一个泛型where子句实现。 一个泛型wheare子句,让你可以要求关联类型必须符合一个协议, 或者特定类型参数和关联类型必须一样。一个泛型where子句以where关键字开始, 后面是关联类型的限制或者是类型和关联类型的相等关系。泛型where子句写在类型或者函数体花括号的前面。
-
-下面的例子定义了一个泛型函数 allItemsMatch, 用来判断两个容器实例是否有相同顺序的相同元素。这个函数返回一个布尔值,如果所有元素都满足条件就返回 true 否则返回 false.
-
-待比较的两个容器不需要是相同类型, 但是它们要有相同类型的元素。通过类型限制的组合跟一个泛型where子句来表示这第一点:
+<p>数组存在的 append(_:) 方法和下标让 Swift 可以推断使用ItemType的关联类型, 和上面的泛型 Stack 类型一样。扩展定义后, 你可以把数组当成 Container 使用。</p>
+<h1 id="泛型-Where-子句"><a href="#泛型-Where-子句" class="headerlink" title="泛型 Where 子句"></a>泛型 Where 子句</h1><p>类型限制, 让你在使用泛型函数或者类型时,可以在类型参数上定义需求。</p>
+<p>给关联类型定义需求也是有用的。可以通过定义一个泛型where子句实现。 一个泛型wheare子句,让你可以要求关联类型必须符合一个协议, 或者特定类型参数和关联类型必须一样。一个泛型where子句以where关键字开始, 后面是关联类型的限制或者是类型和关联类型的相等关系。泛型where子句写在类型或者函数体花括号的前面。</p>
+<p>下面的例子定义了一个泛型函数 allItemsMatch, 用来判断两个容器实例是否有相同顺序的相同元素。这个函数返回一个布尔值,如果所有元素都满足条件就返回 true 否则返回 false.</p>
+<p>待比较的两个容器不需要是相同类型, 但是它们要有相同类型的元素。通过类型限制的组合跟一个泛型where子句来表示这第一点:</p>
 <pre><code>
 func allItemsMatch<c1: container,="" c2:="" container="">
     (_ someContainer: C1, _ anotherContainer: C2) -> Bool
@@ -7082,33 +6894,17 @@ func allItemsMatch<c1: container,="" c2:="" container="">
 
         // Check each pair of items to see if they are equivalent.
         for i in 0..<somecontainer.count {="" if="" somecontainer[i]="" !="anotherContainer[i]" return="" false="" }="" all="" items="" match,="" so="" true.="" true="" <="" code=""></somecontainer.count></c1:></code></pre>
-这个函数有两个参数 someContainer 和 anotherContainer. someContainer 参数类型是 C1, anotherContainer 参数类型是 C2.  C1 和 C2 是两个容器类型的类型参数,在函数调用的时候确定实际类型。
 
-函数的两个类型参数要求如下:
-
-C1 必须符合 Container 协议 (写作 C1: Container).
-C2 也必须符合 Container 协议 (写作 C2: Container).
-C1 的 ItemType 必须和C2的 ItemType 一样 (写作 C1.ItemType == C2.ItemType).
-C1的 ItemType 必须符合 Equatable 协议 (写作 C1.ItemType: Equatable).
-第一第二个要求定义在函数的类型参数列表里, 第三第四的要求定义在函数的泛型where子句中。
-
-这些要求的意思是:
-
-someContainer 是类型为C1的容器。
-anotherContainer 是类型为C2的容器。
-someContainer 和 anotherContainer 包含类型相同的元素。
-someContainer 中的元素可以用不等于判断,看它们是否彼此不同。
-第三第四个要求合并意思是, anotherContainer中的元素也可以用不等于判断, 因为它和someContainer 有着相同类型的元素。
-
-allItemsMatch(_:_:) 函数的这些要求使得它可以用来比较两个容器, 即使它们是不同的容器类型。
-
-allItemsMatch(_:_:) 函数一开始判断两个容器是否含有相同数量的元素。如果它们包含的元素的个数不一样, 它们就无法比较,函数返回false.
-
-这个判断满足后, 函数使用for-in循环和半开区间运算符遍历someContainer中所有的元素。对于每个元素来说, 函数判断someContainer 的元素是否不等于anotherContainer 中对应的元素。如果两个元素不同, 说明两个容器不一样, 函数返回 false.
-
-如果循环结束没有发现不匹配, 说明这两个容器是匹配的, 函数返回true.
-
-Here’s how the allItemsMatch(_:_:) function looks in action:
+<p>这个函数有两个参数 someContainer 和 anotherContainer. someContainer 参数类型是 C1, anotherContainer 参数类型是 C2.  C1 和 C2 是两个容器类型的类型参数,在函数调用的时候确定实际类型。</p>
+<p>函数的两个类型参数要求如下:</p>
+<p>C1 必须符合 Container 协议 (写作 C1: Container).<br>C2 也必须符合 Container 协议 (写作 C2: Container).<br>C1 的 ItemType 必须和C2的 ItemType 一样 (写作 C1.ItemType == C2.ItemType).<br>C1的 ItemType 必须符合 Equatable 协议 (写作 C1.ItemType: Equatable).<br>第一第二个要求定义在函数的类型参数列表里, 第三第四的要求定义在函数的泛型where子句中。</p>
+<p>这些要求的意思是:</p>
+<p>someContainer 是类型为C1的容器。<br>anotherContainer 是类型为C2的容器。<br>someContainer 和 anotherContainer 包含类型相同的元素。<br>someContainer 中的元素可以用不等于判断,看它们是否彼此不同。<br>第三第四个要求合并意思是, anotherContainer中的元素也可以用不等于判断, 因为它和someContainer 有着相同类型的元素。</p>
+<p>allItemsMatch(<em>:</em>:) 函数的这些要求使得它可以用来比较两个容器, 即使它们是不同的容器类型。</p>
+<p>allItemsMatch(<em>:</em>:) 函数一开始判断两个容器是否含有相同数量的元素。如果它们包含的元素的个数不一样, 它们就无法比较,函数返回false.</p>
+<p>这个判断满足后, 函数使用for-in循环和半开区间运算符遍历someContainer中所有的元素。对于每个元素来说, 函数判断someContainer 的元素是否不等于anotherContainer 中对应的元素。如果两个元素不同, 说明两个容器不一样, 函数返回 false.</p>
+<p>如果循环结束没有发现不匹配, 说明这两个容器是匹配的, 函数返回true.</p>
+<p>Here’s how the allItemsMatch(<em>:</em>:) function looks in action:</p>
 <pre><code>
 var stackOfStrings = Stack<string>()
 stackOfStrings.push("uno")
@@ -7124,79 +6920,30 @@ if allItemsMatch(stackOfStrings, arrayOfStrings) {
 }
 // 打印 "All items match."
 </string></code></pre>
-上面的例子创建了一个 Stack 实例来保存字符串, 然后把三个字符串压入栈。这个例子同时也创建了一个数组实例,它用和栈内容一样的字面量来初始化。尽管栈和数组是不同的类型, 不过它们都符合 Container 协议, 然后都包含相同类型的值。所以使用这两个容器作为参数,来调用 allItemsMatch(_:_:) 函数。在上面的例子里, allItemsMatch(_:_:) 函数正确的显示出两个容器中的所有元素都是匹配的。
 
-# 访问控制
-访问控制可以让限制其他资源文件和模块访问你的代码块。这个特性可以确保你隐藏代码实现的细节。然后指定一个首选的接口,通过它可以访问和使用代码。
-
-你可以针对单个类型指定访问级别 (类, 结构体和枚举), 像属于这些类型的属性,方法,构造器和下标一样。协议可以限制到特定的上下文, 全局常量,变量和函数也可以。
-
-除了提供多个级别的访问控制, 通过为特殊场景提供默认访问级别, Swift 减少指定显式访问控制级别的需要。事实上, 如果你写的是单一目的的应用, 你根本不需要指定显式访问控制级别。
-
-备注
-
-你的代码大部分可以使用访问控制 (属性, 类型, 函数等) ,它们被作为 “entities” 在下面部分引用, 为了简洁。
-
-# 模块和源文件
-
-Swift 的访问控制模型基于模块和源文件的概念。
-
-一个模块是单独的代码分发单元—作为单独单元构建和传输的框架或者程序, 可以用Swift 的import 关键字被其他模块引入。 
-
-在Swift里,用Xcode 构建的每个目标都被作为单独的模块。 (例如应用的bundle或者框架)。如果你把代码组合成一个标准的独立框架—通过多个应用封装和重用这个代码—当它引入和用于一个应用时, 框架里定义的所有都会是独立模块的一部分。或者当它用在其他框架里的时候。
-
-Swift里的源文件指的是模块中的源代码文件。尽管通常做法是在不同的源文件中定义独立的类型。一个单独的源文件可以定义多个类型,函数等等。
-
-# 访问级别
-
-Swift 为你的代码实体提供了五个不同的访问级别。这些访问级别和实体所在的源文件相关。同时也和源文件所属模块相关。
-
-Open 访问和 public 访问让实体可以在任何定义它们的模块的源文件中使用, 也可以在引入该定义模块是其他模块的源文件中使用。当框架指定了pulic接口时,你就可以使用 open 或者 public 访问。open 和 pulic访问的不同下面会描述。
-Internal 访问让实体可以在任何定义它们的模块的源文件中使用, 但是不能在该模块之外的源文件里使用。当定义一个应用的内部结构体或者框架的内部结构体时,你可以使用internal 访问。
-私有文件访问只允许实体在自己定义的源文件中使用。使用私有文件访问隐藏了某个功能的实现细节。
-私有访问限制实体在封闭声明时使用。当某个功能实现细节用在单独声明时,使用私有访问来隐藏这些细节。
-Open 是最高级别的访问权限, 私有访问是最低级别的访问权限。
-
-Open 访问只适用于类和类的成员, 它跟public 访问不同之处如下:
-
-带有public访问权限的类, 或者任何更严格的访问级别, 只能在它们定义的模块里子类化。
-带有public访问权限的类成员, 或者任何更严格的访问级别, 只能在它们定义的模块里,被子类重写。
-Open 类可以在它们定义的模块中被子类化, 引入该模块的其他任意模块也可以。
-Open 类可以在它们定义的模块中被子类重写, 引入该模块的其他任意模块也可以。
-让一个类显式open表明, 你可以考虑到了来自其他模块的代码影响,这个模块使用这个类作为一个子类。你也相应的设计了自己的类的代码。
-
-# 访问级别的指导原则
-
-Swift 中的访问级别遵守统一的指导原则: 实体不可以定义成另一种低级别的实体。
-
-# 例如:
-
-一个 public 变量不能定义成internal, file-private, 或者 private 类型, 因为这个类型不能像pulic变量一样到处使用。
-一个函数不能有比它的参数类型和返回类型更高的访问级别。因为函数不能用在它的组合类型不适用于周围代码的地方。
-
-# 默认访问级别
-
-如果你没有指定显式的访问级别,所有的代码中的实体会有一个默认的内部访问级别。这样做的结果是, 大多数情况下,你都不需要指定一个显式的访问级别。
-
-# 单目标应用的访问级别
-
-在你写一个单目标的应用的时候, 你的程序代码通常自包含在应用里,不需要给模块外部使用。默认的内部访问级别已经满足要求。因此, 你无需指定一个自定义的访问级别。不过你可能想把部分代码标记成 file private 或者 private,为了因此内部实现细节。
-
-# 框架访问级别
-
-当你开发一个框架的时候, 把对外的接口标记为 open 或者 public,这样它就可以被其他模块看到和访问, 比如引入这个框架的应用。 对外公开的接口是框架的API.
-
-备注
-
-框架的所有内部实现细节依然可以使用默认的内部访问级别, 如果想对框架内部其他代码隐藏实现细节,可以标记为 private 或者 file. 如果你想让它成为框架的API,你就需要把实体标记为 open 或者 public.
-
-# 单元测试目标的访问级别
-
-当你用单元测试目标写应用的时候, 你的代码需要对这个模块可用,为了能够测试。默认情况下, 只有标记为 open 或者 public 的实体才可以被其他模块访问。不过, 如果你使用@testable属性为产品模块标记引入声明并且使用可测试编译产品模块,单元测试目标可以访问任意内部实体。
-
-# 访问控制语法
-
-通过在实体前放置 open, public, internal, fileprivate, 或者 privateDefine 修饰符来给实体定义访问级别:
+<p>上面的例子创建了一个 Stack 实例来保存字符串, 然后把三个字符串压入栈。这个例子同时也创建了一个数组实例,它用和栈内容一样的字面量来初始化。尽管栈和数组是不同的类型, 不过它们都符合 Container 协议, 然后都包含相同类型的值。所以使用这两个容器作为参数,来调用 allItemsMatch(<em>:</em>:) 函数。在上面的例子里, allItemsMatch(<em>:</em>:) 函数正确的显示出两个容器中的所有元素都是匹配的。</p>
+<h1 id="访问控制"><a href="#访问控制" class="headerlink" title="访问控制"></a>访问控制</h1><p>访问控制可以让限制其他资源文件和模块访问你的代码块。这个特性可以确保你隐藏代码实现的细节。然后指定一个首选的接口,通过它可以访问和使用代码。</p>
+<p>你可以针对单个类型指定访问级别 (类, 结构体和枚举), 像属于这些类型的属性,方法,构造器和下标一样。协议可以限制到特定的上下文, 全局常量,变量和函数也可以。</p>
+<p>除了提供多个级别的访问控制, 通过为特殊场景提供默认访问级别, Swift 减少指定显式访问控制级别的需要。事实上, 如果你写的是单一目的的应用, 你根本不需要指定显式访问控制级别。</p>
+<p>备注</p>
+<p>你的代码大部分可以使用访问控制 (属性, 类型, 函数等) ,它们被作为 “entities” 在下面部分引用, 为了简洁。</p>
+<h1 id="模块和源文件"><a href="#模块和源文件" class="headerlink" title="模块和源文件"></a>模块和源文件</h1><p>Swift 的访问控制模型基于模块和源文件的概念。</p>
+<p>一个模块是单独的代码分发单元—作为单独单元构建和传输的框架或者程序, 可以用Swift 的import 关键字被其他模块引入。 </p>
+<p>在Swift里,用Xcode 构建的每个目标都被作为单独的模块。 (例如应用的bundle或者框架)。如果你把代码组合成一个标准的独立框架—通过多个应用封装和重用这个代码—当它引入和用于一个应用时, 框架里定义的所有都会是独立模块的一部分。或者当它用在其他框架里的时候。</p>
+<p>Swift里的源文件指的是模块中的源代码文件。尽管通常做法是在不同的源文件中定义独立的类型。一个单独的源文件可以定义多个类型,函数等等。</p>
+<h1 id="访问级别"><a href="#访问级别" class="headerlink" title="访问级别"></a>访问级别</h1><p>Swift 为你的代码实体提供了五个不同的访问级别。这些访问级别和实体所在的源文件相关。同时也和源文件所属模块相关。</p>
+<p>Open 访问和 public 访问让实体可以在任何定义它们的模块的源文件中使用, 也可以在引入该定义模块是其他模块的源文件中使用。当框架指定了pulic接口时,你就可以使用 open 或者 public 访问。open 和 pulic访问的不同下面会描述。<br>Internal 访问让实体可以在任何定义它们的模块的源文件中使用, 但是不能在该模块之外的源文件里使用。当定义一个应用的内部结构体或者框架的内部结构体时,你可以使用internal 访问。<br>私有文件访问只允许实体在自己定义的源文件中使用。使用私有文件访问隐藏了某个功能的实现细节。<br>私有访问限制实体在封闭声明时使用。当某个功能实现细节用在单独声明时,使用私有访问来隐藏这些细节。<br>Open 是最高级别的访问权限, 私有访问是最低级别的访问权限。</p>
+<p>Open 访问只适用于类和类的成员, 它跟public 访问不同之处如下:</p>
+<p>带有public访问权限的类, 或者任何更严格的访问级别, 只能在它们定义的模块里子类化。<br>带有public访问权限的类成员, 或者任何更严格的访问级别, 只能在它们定义的模块里,被子类重写。<br>Open 类可以在它们定义的模块中被子类化, 引入该模块的其他任意模块也可以。<br>Open 类可以在它们定义的模块中被子类重写, 引入该模块的其他任意模块也可以。<br>让一个类显式open表明, 你可以考虑到了来自其他模块的代码影响,这个模块使用这个类作为一个子类。你也相应的设计了自己的类的代码。</p>
+<h1 id="访问级别的指导原则"><a href="#访问级别的指导原则" class="headerlink" title="访问级别的指导原则"></a>访问级别的指导原则</h1><p>Swift 中的访问级别遵守统一的指导原则: 实体不可以定义成另一种低级别的实体。</p>
+<h1 id="例如"><a href="#例如" class="headerlink" title="例如:"></a>例如:</h1><p>一个 public 变量不能定义成internal, file-private, 或者 private 类型, 因为这个类型不能像pulic变量一样到处使用。<br>一个函数不能有比它的参数类型和返回类型更高的访问级别。因为函数不能用在它的组合类型不适用于周围代码的地方。</p>
+<h1 id="默认访问级别"><a href="#默认访问级别" class="headerlink" title="默认访问级别"></a>默认访问级别</h1><p>如果你没有指定显式的访问级别,所有的代码中的实体会有一个默认的内部访问级别。这样做的结果是, 大多数情况下,你都不需要指定一个显式的访问级别。</p>
+<h1 id="单目标应用的访问级别"><a href="#单目标应用的访问级别" class="headerlink" title="单目标应用的访问级别"></a>单目标应用的访问级别</h1><p>在你写一个单目标的应用的时候, 你的程序代码通常自包含在应用里,不需要给模块外部使用。默认的内部访问级别已经满足要求。因此, 你无需指定一个自定义的访问级别。不过你可能想把部分代码标记成 file private 或者 private,为了因此内部实现细节。</p>
+<h1 id="框架访问级别"><a href="#框架访问级别" class="headerlink" title="框架访问级别"></a>框架访问级别</h1><p>当你开发一个框架的时候, 把对外的接口标记为 open 或者 public,这样它就可以被其他模块看到和访问, 比如引入这个框架的应用。 对外公开的接口是框架的API.</p>
+<p>备注</p>
+<p>框架的所有内部实现细节依然可以使用默认的内部访问级别, 如果想对框架内部其他代码隐藏实现细节,可以标记为 private 或者 file. 如果你想让它成为框架的API,你就需要把实体标记为 open 或者 public.</p>
+<h1 id="单元测试目标的访问级别"><a href="#单元测试目标的访问级别" class="headerlink" title="单元测试目标的访问级别"></a>单元测试目标的访问级别</h1><p>当你用单元测试目标写应用的时候, 你的代码需要对这个模块可用,为了能够测试。默认情况下, 只有标记为 open 或者 public 的实体才可以被其他模块访问。不过, 如果你使用@testable属性为产品模块标记引入声明并且使用可测试编译产品模块,单元测试目标可以访问任意内部实体。</p>
+<h1 id="访问控制语法"><a href="#访问控制语法" class="headerlink" title="访问控制语法"></a>访问控制语法</h1><p>通过在实体前放置 open, public, internal, fileprivate, 或者 privateDefine 修饰符来给实体定义访问级别:</p>
 <pre><code>
 public class SomePublicClass {}
 internal class SomeInternalClass {}
@@ -7208,7 +6955,8 @@ internal let someInternalConstant = 0
 fileprivate func someFilePrivateFunction() {}
 private func somePrivateFunction() {}
 </code></pre>
-除非另有说明, 默认访问级别都是内部的。也就说说 SomeInternalClass 和 someInternalConstant 即使不写访问级别修饰符, 它们依然有内部访问级别:
+
+<p>除非另有说明, 默认访问级别都是内部的。也就说说 SomeInternalClass 和 someInternalConstant 即使不写访问级别修饰符, 它们依然有内部访问级别:</p>
 <pre><code>
 class SomeInternalClass {}              // implicitly internal
 let someInternalConstant = 0            // implicitly internal
@@ -7252,9 +7000,9 @@ func someFunction() -> (SomeInternalClass, SomePrivateClass) {
     // function implementation goes here
 }
 </code></pre>
-函数的返回值是由两个自定义类组合成的元组。一个类定义成 “internal”, 另外一个类定义成 “private”. 因为, 元组类型的访问级别是 “private” .
 
-因为这个函数的返回类型是 private, 为了函数声明的有效性,你必须标记整个函数的访问级别是 private modifier:
+<p>函数的返回值是由两个自定义类组合成的元组。一个类定义成 “internal”, 另外一个类定义成 “private”. 因为, 元组类型的访问级别是 “private” .</p>
+<p>因为这个函数的返回类型是 private, 为了函数声明的有效性,你必须标记整个函数的访问级别是 private modifier:</p>
 <pre><code>
 private func someFunction() -> (SomeInternalClass, SomePrivateClass) {
     // function implementation goes here
@@ -7299,13 +7047,10 @@ internal class B: A {
     }
 }
 </code></pre>
-因为超类 A 和子类 B 在同一个源文件里定义, B 的 someMethod()方法可以有效调用 super.someMethod().
 
-# 常量,变量,属性和下标
-
-一个常量,变量,属性或属性不能比它的类型更 public. 用private类型来写一个public属性是无效的。相似的, 一个下标不能比它的索引和返回类型更public.
-
-如果一个常量,变量,属性或者下标使用 private 类型, 这个常量,变量,属性或者下标也必须标记为 private:
+<p>因为超类 A 和子类 B 在同一个源文件里定义, B 的 someMethod()方法可以有效调用 super.someMethod().</p>
+<h1 id="常量-变量-属性和下标"><a href="#常量-变量-属性和下标" class="headerlink" title="常量,变量,属性和下标"></a>常量,变量,属性和下标</h1><p>一个常量,变量,属性或属性不能比它的类型更 public. 用private类型来写一个public属性是无效的。相似的, 一个下标不能比它的索引和返回类型更public.</p>
+<p>如果一个常量,变量,属性或者下标使用 private 类型, 这个常量,变量,属性或者下标也必须标记为 private:</p>
 <pre><code>
 private var privateInstance = SomePrivateClass()
 </code></pre>
@@ -7325,11 +7070,10 @@ struct TrackedString {
     }
 }
 </code></pre>
-TrackedString 结构体定义了一个存储字符串属性 value, 初始值为空。这个结构体同时定义了存储整型属性 numberOfEdits, 它用来跟踪value被改变的次数。通过在value属性上使用didSet属性观察者来实现跟踪。每次value属性设置新值的时候,它就把 numberOfEdits 值加1.
 
-TrackedString 结构体和 value 属性没有显式提供访问级别修饰符, 所以它们默认的访问级别是 internal. 不过, numberOfEdits 属性的访问级别标记为 private(set),表明这个属性的 getter的访问级别仍然是 internal, 但是这个属性只能在结构体实现的代码里使用 setter. 这使得 TrackedString 可以在内部修改 numberOfEdits 属性, 但是也表示这个属性对于外部代码来说是只读的—包括 TrackedString 的扩展。
-
-如果你创建一个 TrackedString 实例然后修改它的字符串 value 值几次, 你会看到 numberOfEdits 属性值随着变化次数一起更新:
+<p>TrackedString 结构体定义了一个存储字符串属性 value, 初始值为空。这个结构体同时定义了存储整型属性 numberOfEdits, 它用来跟踪value被改变的次数。通过在value属性上使用didSet属性观察者来实现跟踪。每次value属性设置新值的时候,它就把 numberOfEdits 值加1.</p>
+<p>TrackedString 结构体和 value 属性没有显式提供访问级别修饰符, 所以它们默认的访问级别是 internal. 不过, numberOfEdits 属性的访问级别标记为 private(set),表明这个属性的 getter的访问级别仍然是 internal, 但是这个属性只能在结构体实现的代码里使用 setter. 这使得 TrackedString 可以在内部修改 numberOfEdits 属性, 但是也表示这个属性对于外部代码来说是只读的—包括 TrackedString 的扩展。</p>
+<p>如果你创建一个 TrackedString 实例然后修改它的字符串 value 值几次, 你会看到 numberOfEdits 属性值随着变化次数一起更新:</p>
 <pre><code>
 var stringToEdit = TrackedString()
 stringToEdit.value = "This string will be tracked."
@@ -7352,7 +7096,7 @@ public struct TrackedString {
 }
 </code></pre>
 
-<h1 id="构造器"><a href="#构造器" class="headerlink" title="构造器"></a>构造器</h1><p>自定义构造器可以指定一个访问级别,这个级别小于或者等于它构造的类型。唯一的区别是必须的构造器。一个必须构造器访问级别必须跟它所属的类一致。</p>
+<h1 id="构造器-1"><a href="#构造器-1" class="headerlink" title="构造器"></a>构造器</h1><p>自定义构造器可以指定一个访问级别,这个级别小于或者等于它构造的类型。唯一的区别是必须的构造器。一个必须构造器访问级别必须跟它所属的类一致。</p>
 <p>跟函数和方法参数一样, 构造器的参数类型不能比构造器拥有的访问级别更加私有。</p>
 <h1 id="默认构造器"><a href="#默认构造器" class="headerlink" title="默认构造器"></a>默认构造器</h1><p>就像默认构造器中描述的那样, Swift 会自动为所有结构体或者基类提供一个没有参数的默认构造器,这些结构体或者基类给所有属性提供了默认值,但是没有提供任何的构造器。</p>
 <p>默认构造器的访问级别和它要构造的类型是一样的, 除非这个类型定义为 public. 对于定义为public的类型来说, 默认构造器访问级别是 internal. 在其他模块使用时,如果你想用无参数的构造器来构造 public 类型, 你必须显式定义一个 public 无参数构造器。</p>
@@ -7362,7 +7106,7 @@ public struct TrackedString {
 <p>协议定义中每个需求的访问级别和协议的访问级别是一样的。你不能把需求设置成协议不支持的访问级别。这可以保证采用协议的类型可以看见所有的需求。</p>
 <p>备注</p>
 <p>如果你定义了一个 public 协议, 协议的需求实现时要求一个 public 访问级别。这个行为不同于其他类型, public 类型定义意味着类型成员的访问级别是 internal.</p>
-<h1 id="协议继承"><a href="#协议继承" class="headerlink" title="协议继承"></a>协议继承</h1><p>如果定义了一个新协议,它继承自一个存在的协议, 新协议的访问级别最多和继承协议的级别一样。例如, 已存在的协议访问级别是internal, 你写的新协议却是是 public.</p>
+<h1 id="协议继承-1"><a href="#协议继承-1" class="headerlink" title="协议继承"></a>协议继承</h1><p>如果定义了一个新协议,它继承自一个存在的协议, 新协议的访问级别最多和继承协议的级别一样。例如, 已存在的协议访问级别是internal, 你写的新协议却是是 public.</p>
 <h1 id="协议一致性"><a href="#协议一致性" class="headerlink" title="协议一致性"></a>协议一致性</h1><p>一个类型可以符合一个访问级别比自己低的协议。例如, 你可以定义一个 public 类型用在其他模块里。如果它符合一个 internal 协议,就只能用在 internal 协议的定义模块内。</p>
 <p>一个类型符合某个协议的上下文,访问级别是这个类型和协议中最小的一个。如果一个类型是 public, 但是协议是 internal, 这个类型的一致性协议也是 internal.</p>
 <p>一个类型符合一个协议或者扩展符合一个协议,你必须确保类型对协议需求的实现,至少和类型的一致性协议有一样的访问级别。例如, 如果一个public 类型符合一个 internal, 这个类型实现的协议需求必须是 “internal”.</p>
@@ -7371,7 +7115,7 @@ public struct TrackedString {
 <h1 id="扩展-1"><a href="#扩展-1" class="headerlink" title="扩展"></a>扩展</h1><p>你可以在任何访问权限的上下文中扩展一个类,结构体或者枚举。扩展中添加的类型成员和被扩展类型中声明的类型成员有着一样的访问级别。如果你扩展一个 public 或者 internal 类型, 你添加的任何类型成员默认访问级别是 internal. 如果你扩展一个 file-private 类型, 你添加的所有类型成员的访问级别都是file private. 如果你扩展一个 private 类型, 你添加的任何类型成员访问级别都是 private.</p>
 <p>另外, 你可以用显式访问级别修饰符来标记一个扩展,来为定义在扩展里的所有的成员设置一个新的默认访问属性。单个类型成员的扩展里依然可以重写这些新的默认级别。 </p>
 <h1 id="使用扩展添加协议一致性"><a href="#使用扩展添加协议一致性" class="headerlink" title="使用扩展添加协议一致性"></a>使用扩展添加协议一致性</h1><p>如果你用扩展来添加协议一致性,你就不能为扩展提供一个显式的访问级别修饰符。相反, 协议自己的访问级别,通常用来为在扩展中实现的协议需求提供默认访问级别。</p>
-<h1 id="泛型"><a href="#泛型" class="headerlink" title="泛型"></a>泛型</h1><p>泛型类型和泛型函数的访问级别, 是它们自身的访问级别和它们的类型参数的任何类型限制的访问级别之间最小的那个。 </p>
+<h1 id="泛型-1"><a href="#泛型-1" class="headerlink" title="泛型"></a>泛型</h1><p>泛型类型和泛型函数的访问级别, 是它们自身的访问级别和它们的类型参数的任何类型限制的访问级别之间最小的那个。 </p>
 <h1 id="类型别名-1"><a href="#类型别名-1" class="headerlink" title="类型别名"></a>类型别名</h1><p>你定义的所有类型别名,因为访问控制的目的,会被看做是不同的类型。一个类型别名的访问级别小于或者等于这个类型。例如, 一个private 类型的别名可以是一个 private, file-private, internal, public, 或者 open type的别名, 但是一个 public 类型别名不能是一个 internal, file-private, 或者 private 类型的别名。</p>
 <p>#备注</p>
 <p>这个规则也适用于用来满足协议一致性的关联类型的类型别名。</p>
@@ -7382,7 +7126,65 @@ public struct TrackedString {
 <h1 id="位运算符"><a href="#位运算符" class="headerlink" title="位运算符"></a>位运算符</h1><p>位运算符可以操作数据结构里的单个数据位。它们通常用于低级别编程, 例如图形编程和设备驱动编写。使用外部资源数据时,位运算符也很有用, 例如编解码数据。</p>
 <p>Swift 支持C中所有的位运算符, 描述如下。</p>
 <h1 id="位-NOT-运算符"><a href="#位-NOT-运算符" class="headerlink" title="位 NOT 运算符"></a>位 NOT 运算符</h1><p>位 NOT 运算符 (~) 把所有位转换成一个数:</p>
-<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseNOT_2x.png"><br></div><br>位 NOT 运算符是一个前缀运算符, 直接出现在操作数的前面, 没有空格:<br><pre><code><br>let initialBits: UInt8 = 0b00001111<br>let invertedBits = ~initialBits  // 等于 11110000<br></code></pre><br>UInt8 整数有8位,可以存储0到255之间的任何值。这个例子用二进制值00001111来初始化一个 UInt8 整数, 它的前四位全是0,后四位全是1. 它等于十进制的 15.<br><br>位 NOT 运算符用来创建一个新常量 invertedBits, 它等于 initialBits, 不过所有位都是反转的。0变成1, 1变成0.  invertedBits 的值是 11110000, 它等于十进制的 240.<br><br># 位 AND 运算符<br><br>位 AND 运算符 (&amp;) 合并两个数的位。它返回一个新的数组,如果两个输入数的位都是1,这个新数的位才是1:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseAND_2x.png"><br></div><br>在上面的例子里, firstSixBits 和 lastSixBits 中间四位都是 1. 位 AND 运算符合并它们变成 00111100, 它等于十进制的 60:<br><pre><code><br>let firstSixBits: UInt8 = 0b11111100<br>let lastSixBits: UInt8  = 0b00111111<br>let middleFourBits = firstSixBits &amp; lastSixBits  // 等于 00111100<br></code></pre><br># 位 OR 运算符<br><br>位 OR 运算符 (|) 比较两个数的位。如果两个数任意一个数位为1,这个运算符返回的数位就是1:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseOR_2x.png"><br></div><br>在上面的例子里, someBits 和 moreBits 不同位设置为 1. 位 OR 运算符合并它们变成 11111110, 它等于一个无符号十进制254:<br><pre><code><br>let someBits: UInt8 = 0b10110010<br>let moreBits: UInt8 = 0b01011110<br>let combinedbits = someBits | moreBits  // 等于 11111110<br></code></pre><br># 位 XOR 运算符<br><br>位 XOR 运算符, 或者 “异或运算符” (^), 比较两个数的位。如果两个数位不同返回1,如果相同则返回0:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseXOR_2x.png"><br></div><br><pre><code><br>let firstBits: UInt8 = 0b00010100<br>let otherBits: UInt8 = 0b00000101<br>let outputBits = firstBits ^ otherBits  // 等于 00010001<br></code></pre><br><br># 左右移位运算符<br><br>左移位运算符 (&lt;&lt;) 和右移位运算符 (&gt;&gt;) 往左或者往右移动数位, 规则如下。<br><br>左移位和右移位实际上是乘以或者除以2. 左移一个整数1位相当于乘以2, 而右移一个整数1位相当于除以2.<br><br># 无符号整数移动<br><br>无符号整数位移表现如下:<br><br>左移或者右移请求数量的位。<br>超出整数存储范围的移位被舍弃。<br>左移或者右移后,缺失的位用0填充。<br>这个方法叫逻辑移位。<br><br>下面这个图展示了 11111111 &lt;&lt; 1 和 11111111 &gt;&gt; 1 的结果。蓝色数字是要移动的, 灰色数字是要舍弃的, 橙色的0是填充的:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftUnsigned_2x.png"><br></div><br>下面是位移动在Swift 代码里的表现:<br><pre><code><br>let shiftBits: UInt8 = 4   // 00000100 in binary<br>shiftBits &lt;&lt; 1             // 00001000<br>shiftBits &lt;&lt; 2             // 00010000<br>shiftBits &lt;&lt; 5             // 10000000<br>shiftBits &lt;&lt; 6             // 00000000<br>shiftBits &gt;&gt; 2             // 00000001<br></code></pre><br>你可以使用位移动在其他数据类型里进行编解码:<br><pre><code><br>let pink: UInt32 = 0xCC6699<br>let redComponent = (pink &amp; 0xFF0000) &gt;&gt; 16    // redComponent 是 0xCC, 或者 204<br>let greenComponent = (pink &amp; 0x00FF00) &gt;&gt; 8   // greenComponent 是 0x66, 或者 102<br>let blueComponent = pink &amp; 0x0000FF           // blueComponent 是 0x99, 或者 153<br></code></pre><br>这个例子使用了一个 UInt32 类型的常量 pink 来保存粉色的CSS颜色值。CSS 颜色值 #CC6699 十六进制形式写作 0xCC6699. 经过位移 AND (&amp;)和右移运算符（&gt;&gt;）操作, 这个颜色会被分解为 red (CC), green (66), 和 blue (99) .<br><br>红色部分通过把数字 0xCC6699 和 0xFF0000进行位AND获取。 0xFF0000 中的0 “掩藏”了 0xCC6699的第二个和第三个字节, 导致 6699 被忽略,只留下 0xCC0000 的结果。<br><br>然后把这个数字向右移动16位 (&gt;&gt; 16). 十六进制数字每对字母使用8位, 所以向右移动16位把 0xCC0000 转化为 0x0000CC. 它等于 0xCC, 它的十进制值是 204.<br><br>类似的, 绿色部分通过把数字 0xCC6699 和 0x00FF00进行位AND获取, 它的输出值是 0x006600. 然后把输出值向右移动8位 0x66, 它的十进制值是 102.<br><br>最后, 蓝色部分通过把数字 0xCC6699 和 0x0000FF进行位AND获取, 它的输出值是 0x000099. 它不需要向右移动, 因为 0x000099 已经等于 0x99, 它的十进制值是 153.<br><br># 有符号整数移动<br><br>有符号整数的移动比无符号的要复杂, 因为有符号整数是用二进制表示的(为了简单,下面的例子用8位有符号整数展示, 不过这个原则适用于任何大小的有符号整数。)<br><br>有符号整数使用第一个数位来表示正负 (标志位)。 0表示正数, 1表示负数。<br><br>剩余位用来存储实际的值。正数的存储和无符号整数的方式是一样的, 从0往上数。这里是4在Int8中的数位的形式:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedFour_2x.png"><br></div><br>标志位是 0 (意思是正数), 7个数值位正好是数字 4, 用二进制符号表示。<br><br>负数存储是不同的。它们存储的值是绝对值减去2的n次方。这里n是数值位的数字。一个8位数有7个数值位, 所以2的7次方, 或者 128.<br><br>这里是-4在Int8中数位的形式 -4:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedMinusFour_2x.png"><br></div><br>这次符号位是 1 (意思是负数), 七位数值位值是 124 (128 - 4):<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedMinusFourValue_2x.png"><br></div><br>负数编码是一个二进制补码表示。这似乎不是负数的常见表示方法, 但是它有几个优点。<br><br>首先, 你可以把-4加-1, 可以进行8位的简单二进制加法 (包括标志位), 完成后舍弃不符合8位的:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedAddition_2x.png"><br></div><br>其次, 二进制补码表示让你可以像正数那样移动负数的数位。向左移动后依然会翻倍, 向右移动后会减半。为了实现这个, 当有符号整数向右移动时,使用额外的规则: 当你向右移动有符号整数时, 和无符号整数规则一样, 但是左边空出来的位要用标志位填充, 而不是0.<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSigned_2x.png"><br></div><br>这个行为保证有符号整数向右移动后,有相同的标志位。 也就是算术移位。<br><br>由于正负数存储的特殊方式, 向右移动它们接近于0. 移动过程中保持标志位不变,意味着负数在接近0过程中依然是负数。<br><br># 溢出运算符<br><br>如果你尝试向一个整数常数或者变量插入无法保存的值, 默认情况下, Swift 会报错而不是允许无效值的创建。当你使用过大或者过小值的时候,这个规则可以提供额外的安全性。<br><br>例如, Int16 整数范围是 -32768 到 32767. 尝试存储超过这个范围的数字会导致错误:<br><pre><code><br>var potentialOverflow = Int16.max<br>// potentialOverflow equals 32767, which is the maximum value an Int16 can hold<br>potentialOverflow += 1<br>// 这个会报错<br></code></pre><br><br>当值变的过大或者过小的时候,提供错误处理,在给边界值条件编码时,会更加灵活。<br><br>不过, 当你特别想要一个溢出条件来截断可用位数的时候, 你可以选择这个行为而不是触发一个错误。Swift 提供了三个算术溢出运算符,来为整数计算选择溢出行为。这些运算符都以(&amp;)开始:<br><br>溢出加 (&amp;+)<br>溢出减 (&amp;-)<br>溢出乘 (&amp;<em>)<br># 值溢出<br><br>负数和整数都可以溢出。<br><br>这里有一个例子,展示当一个无符号整数在正数方向溢出时,会发生什么, 使用的是溢出加运算符 (&amp;+):<br><pre><code><br>var unsignedOverflow = UInt8.max<br>// unsignedOverflow 等于 255, 它是UInt8可以保存的最大值<br>unsignedOverflow = unsignedOverflow &amp;+ 1<br>// unsignedOverflow 现在等于 0<br></code></pre><br>变量 unsignedOverflow 使用UInt8 的最大值初始化nt8 (255, 或者 11111111). 然后使用溢出加运算符加1. 这个让它的二进制表示正好超过UInt8可以保存的最大值,这个导致了溢出, 如下表所示。溢出加之后这个值00000000依然在UInt8的界限内。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowAddition_2x.png"><br></div><br>相似的事情会发生在无符号数向负数方向的溢出上。下面是使用了溢出减运算符的例子:<br><pre><code><br>var unsignedOverflow = UInt8.min<br>// unsignedOverflow 等于 0, 是UInt8可以保存的最小值<br>unsignedOverflow = unsignedOverflow &amp;- 1<br>// unsignedOverflow 现在等于 255<br></code></pre><br>UInt8可以保存的最小值是0, 或者二进制 00000000. 如果使用溢出减运算符减1, 这个数字会溢出变成 11111111, 或者十进制 255 .<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowUnsignedSubtraction_2x.png"><br></div><br>溢出也会发生在有符号整数。有符号整数的加减法以位形式执行, 标志位也参与加减。<br><pre><code><br>var signedOverflow = Int8.min<br>// signedOverflow 等于 -128, 是Int8可以保存的最小值<br>signedOverflow = signedOverflow &amp;- 1<br>// signedOverflow 现在等于 127<br></code></pre><br><br>Int8保存的最小值是 -128, 或者二进制 10000000. 使用溢出减减1,结果是 01111111, 它会切换标志位然后得正数 127, 它是Int8可以保存的最大正数值。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowSignedSubtraction_2x.png"><br></div><br>对于有符号和无符号整数来说, 向正数方向溢出会回到最小值, 向负数方向溢出会回到最大值。<br><br># 优先级和关联性<br><br>运算符优先级给一些运算符提供更高的优先级; 这些运算符首先起作用。<br><br>运算符关联性确定相同优先级的运算符分组的行为—或者从左边分组, 或者从右边分组。可以这样考虑 “它们关联左边的表达式,” 或者 “它们关联右边的表达式。”<br><br>在使用复合表达式计算时,考虑每个运算符的优先级和关联性非常重要。例如, 运算符优先级解释了为什么下面的表达式结果是 17.<br><pre><code><br>2 + 3 % 4 </code></pre></em> 5<br>// this equals 17<br><br>如果从左到右严格读, 你可能期望表达式按照如下执行:<br><br>2 加 3 等于 5<br>5 除以 4 取余为 1<br>1 乘以 5 等于 5<br>不过, 实际结果是 17, 而不是 5. 高优先级的运算符比低优先级运算符先执行。在 Swift 中, 和 C 一样, 取余运算符 (%) 和乘法运算符 (<em>) 比加法运算符有更高的优先级 (+). 结果就是, 它们都比加法先执行。<br><br>不过, 取余和乘法运算符优先级是相同的。为了解决准确的执行顺序, 你也需要考虑它们的关联性。取余和乘法运算符都是关联它们左边的表达式。把它想象为从左边开始,在它们的表达式部分加了一个隐式的括号:<br><pre><code><br>2 + ((3 % 4) </code></pre></em> 5)<br>(3 % 4) 是 3, 这个等于:<br><br>2 + (3 <em> 5)<br>(3 </em> 5) 是 15, 这个等于:<br><br>2 + 15<br>计算结果是 17.<br><br><br>要查看完整的 Swift 运算符优先级和关联性规则的列表, 参见表达式部分。更多表达式, 参见 Swift 标准库运算符参考。<br><br>备注<br><br>Swift 的运算符优先级和关联性,比 C 和 Objective-C 中的更加简单和可预测。不过, 这个意味着它们和基于C语言的语言有所不同。在移植代码到 Swift 时,谨慎的确保运算符行为要和你想的一样。<br><br># 运算符方法<br><br>类和结构体可以为已存在的运算符提供自己的实现。这就是运算符的重载。<br><br>下面的例子展示如何给一个自定义的结构体,实现一个算术加法运算符(+). 算术加法运算符是一个二目运算符,因为它操作两个目标。因为它在两个目标之间,它又是一个中缀运算符。<br><br>下面的例子为一个二维位置向量(x, y)定义了一个 Vector2D 结构体, 后面是一个运算符方法的定义,这个方法把两个 Vector2D 结构体实例进行相加:<br><pre><code><br>struct Vector2D {<br>    var x = 0.0, y = 0.0<br>}<br><br>extension Vector2D {<br>    static func + (left: Vector2D, right: Vector2D) -&gt; Vector2D {<br>        return Vector2D(x: left.x + right.x, y: left.y + right.y)<br>    }<br>}<br></code></pre><br>这个运算符方法定义为Vector2D 的类型方法, 方法名符合重载的(+)运算符。因为加法不是向量本来的行为, 所以这个类型方法定义在结构体的扩展中,而不是主结构中。因为算术加法运算符是二目运算符, 这个运算符方法接受两个Vector2D 类型的参数,然后返回Vector2D 类型的值。<br><br>在这个实现里, 输入参数名 left 和 right 表示 Vector2D 实例在 + 运算符的左右两侧。这个方法返回了一个新的 Vector2D 实例, 它的 x 和 y 属性是左右实例 x 和 y 之和。<br><br>这个类型方法可以在两个 Vector2D 实例中用作中缀运算符:<br><pre><code><br>let vector = Vector2D(x: 3.0, y: 1.0)<br>let anotherVector = Vector2D(x: 2.0, y: 4.0)<br>let combinedVector = vector + anotherVector<br>// combinedVector 是一个 Vector2D 实例,值是 (5.0, 5.0)<br></code></pre><br><br>这个例子把向量 (3.0, 1.0) 和 (2.0, 4.0) 相加得到向量 (5.0, 5.0), 如下图所示。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/vectorAddition_2x.png"><br></div>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseNOT_2x.png"><br></div><br>位 NOT 运算符是一个前缀运算符, 直接出现在操作数的前面, 没有空格:<br><pre><code><br>let initialBits: UInt8 = 0b00001111<br>let invertedBits = ~initialBits  // 等于 11110000<br></code></pre><br>UInt8 整数有8位,可以存储0到255之间的任何值。这个例子用二进制值00001111来初始化一个 UInt8 整数, 它的前四位全是0,后四位全是1. 它等于十进制的 15.<br><br>位 NOT 运算符用来创建一个新常量 invertedBits, 它等于 initialBits, 不过所有位都是反转的。0变成1, 1变成0.  invertedBits 的值是 11110000, 它等于十进制的 240.<br><br># 位 AND 运算符<br><br>位 AND 运算符 (&amp;) 合并两个数的位。它返回一个新的数组,如果两个输入数的位都是1,这个新数的位才是1:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseAND_2x.png"><br></div><br>在上面的例子里, firstSixBits 和 lastSixBits 中间四位都是 1. 位 AND 运算符合并它们变成 00111100, 它等于十进制的 60:<br><pre><code><br>let firstSixBits: UInt8 = 0b11111100<br>let lastSixBits: UInt8  = 0b00111111<br>let middleFourBits = firstSixBits &amp; lastSixBits  // 等于 00111100<br></code></pre><br># 位 OR 运算符<br><br>位 OR 运算符 (|) 比较两个数的位。如果两个数任意一个数位为1,这个运算符返回的数位就是1:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseOR_2x.png"><br></div><br>在上面的例子里, someBits 和 moreBits 不同位设置为 1. 位 OR 运算符合并它们变成 11111110, 它等于一个无符号十进制254:<br><pre><code><br>let someBits: UInt8 = 0b10110010<br>let moreBits: UInt8 = 0b01011110<br>let combinedbits = someBits | moreBits  // 等于 11111110<br></code></pre><br># 位 XOR 运算符<br><br>位 XOR 运算符, 或者 “异或运算符” (^), 比较两个数的位。如果两个数位不同返回1,如果相同则返回0:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitwiseXOR_2x.png"><br></div><br><pre><code><br>let firstBits: UInt8 = 0b00010100<br>let otherBits: UInt8 = 0b00000101<br>let outputBits = firstBits ^ otherBits  // 等于 00010001<br></code></pre><br><br># 左右移位运算符<br><br>左移位运算符 (&lt;&lt;) 和右移位运算符 (&gt;&gt;) 往左或者往右移动数位, 规则如下。<br><br>左移位和右移位实际上是乘以或者除以2. 左移一个整数1位相当于乘以2, 而右移一个整数1位相当于除以2.<br><br># 无符号整数移动<br><br>无符号整数位移表现如下:<br><br>左移或者右移请求数量的位。<br>超出整数存储范围的移位被舍弃。<br>左移或者右移后,缺失的位用0填充。<br>这个方法叫逻辑移位。<br><br>下面这个图展示了 11111111 &lt;&lt; 1 和 11111111 &gt;&gt; 1 的结果。蓝色数字是要移动的, 灰色数字是要舍弃的, 橙色的0是填充的:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftUnsigned_2x.png"><br></div><br>下面是位移动在Swift 代码里的表现:<br><pre><code><br>let shiftBits: UInt8 = 4   // 00000100 in binary<br>shiftBits &lt;&lt; 1             // 00001000<br>shiftBits &lt;&lt; 2             // 00010000<br>shiftBits &lt;&lt; 5             // 10000000<br>shiftBits &lt;&lt; 6             // 00000000<br>shiftBits &gt;&gt; 2             // 00000001<br></code></pre><br>你可以使用位移动在其他数据类型里进行编解码:<br><pre><code><br>let pink: UInt32 = 0xCC6699<br>let redComponent = (pink &amp; 0xFF0000) &gt;&gt; 16    // redComponent 是 0xCC, 或者 204<br>let greenComponent = (pink &amp; 0x00FF00) &gt;&gt; 8   // greenComponent 是 0x66, 或者 102<br>let blueComponent = pink &amp; 0x0000FF           // blueComponent 是 0x99, 或者 153<br></code></pre><br>这个例子使用了一个 UInt32 类型的常量 pink 来保存粉色的CSS颜色值。CSS 颜色值 #CC6699 十六进制形式写作 0xCC6699. 经过位移 AND (&amp;)和右移运算符（&gt;&gt;）操作, 这个颜色会被分解为 red (CC), green (66), 和 blue (99) .<br><br>红色部分通过把数字 0xCC6699 和 0xFF0000进行位AND获取。 0xFF0000 中的0 “掩藏”了 0xCC6699的第二个和第三个字节, 导致 6699 被忽略,只留下 0xCC0000 的结果。<br><br>然后把这个数字向右移动16位 (&gt;&gt; 16). 十六进制数字每对字母使用8位, 所以向右移动16位把 0xCC0000 转化为 0x0000CC. 它等于 0xCC, 它的十进制值是 204.<br><br>类似的, 绿色部分通过把数字 0xCC6699 和 0x00FF00进行位AND获取, 它的输出值是 0x006600. 然后把输出值向右移动8位 0x66, 它的十进制值是 102.<br><br>最后, 蓝色部分通过把数字 0xCC6699 和 0x0000FF进行位AND获取, 它的输出值是 0x000099. 它不需要向右移动, 因为 0x000099 已经等于 0x99, 它的十进制值是 153.<br><br># 有符号整数移动<br><br>有符号整数的移动比无符号的要复杂, 因为有符号整数是用二进制表示的(为了简单,下面的例子用8位有符号整数展示, 不过这个原则适用于任何大小的有符号整数。)<br><br>有符号整数使用第一个数位来表示正负 (标志位)。 0表示正数, 1表示负数。<br><br>剩余位用来存储实际的值。正数的存储和无符号整数的方式是一样的, 从0往上数。这里是4在Int8中的数位的形式:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedFour_2x.png"><br></div><br>标志位是 0 (意思是正数), 7个数值位正好是数字 4, 用二进制符号表示。<br><br>负数存储是不同的。它们存储的值是绝对值减去2的n次方。这里n是数值位的数字。一个8位数有7个数值位, 所以2的7次方, 或者 128.<br><br>这里是-4在Int8中数位的形式 -4:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedMinusFour_2x.png"><br></div><br>这次符号位是 1 (意思是负数), 七位数值位值是 124 (128 - 4):<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedMinusFourValue_2x.png"><br></div><br>负数编码是一个二进制补码表示。这似乎不是负数的常见表示方法, 但是它有几个优点。<br><br>首先, 你可以把-4加-1, 可以进行8位的简单二进制加法 (包括标志位), 完成后舍弃不符合8位的:<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSignedAddition_2x.png"><br></div><br>其次, 二进制补码表示让你可以像正数那样移动负数的数位。向左移动后依然会翻倍, 向右移动后会减半。为了实现这个, 当有符号整数向右移动时,使用额外的规则: 当你向右移动有符号整数时, 和无符号整数规则一样, 但是左边空出来的位要用标志位填充, 而不是0.<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/bitshiftSigned_2x.png"><br></div><br>这个行为保证有符号整数向右移动后,有相同的标志位。 也就是算术移位。<br><br>由于正负数存储的特殊方式, 向右移动它们接近于0. 移动过程中保持标志位不变,意味着负数在接近0过程中依然是负数。<br><br># 溢出运算符<br><br>如果你尝试向一个整数常数或者变量插入无法保存的值, 默认情况下, Swift 会报错而不是允许无效值的创建。当你使用过大或者过小值的时候,这个规则可以提供额外的安全性。<br><br>例如, Int16 整数范围是 -32768 到 32767. 尝试存储超过这个范围的数字会导致错误:<br><pre><code><br>var potentialOverflow = Int16.max<br>// potentialOverflow equals 32767, which is the maximum value an Int16 can hold<br>potentialOverflow += 1<br>// 这个会报错<br></code></pre><br><br>当值变的过大或者过小的时候,提供错误处理,在给边界值条件编码时,会更加灵活。<br><br>不过, 当你特别想要一个溢出条件来截断可用位数的时候, 你可以选择这个行为而不是触发一个错误。Swift 提供了三个算术溢出运算符,来为整数计算选择溢出行为。这些运算符都以(&amp;)开始:<br><br>溢出加 (&amp;+)<br>溢出减 (&amp;-)<br>溢出乘 (&amp;*)<br><br># 值溢出<br><br>负数和整数都可以溢出。<br><br>这里有一个例子,展示当一个无符号整数在正数方向溢出时,会发生什么, 使用的是溢出加运算符 (&amp;+):<br><pre><code><br>var unsignedOverflow = UInt8.max<br>// unsignedOverflow 等于 255, 它是UInt8可以保存的最大值<br>unsignedOverflow = unsignedOverflow &amp;+ 1<br>// unsignedOverflow 现在等于 0<br></code></pre><br><br>变量 unsignedOverflow 使用UInt8 的最大值初始化nt8 (255, 或者 11111111). 然后使用溢出加运算符加1. 这个让它的二进制表示正好超过UInt8可以保存的最大值,这个导致了溢出, 如下表所示。溢出加之后这个值00000000依然在UInt8的界限内。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowAddition_2x.png"><br></div><br>相似的事情会发生在无符号数向负数方向的溢出上。下面是使用了溢出减运算符的例子:<br><pre><code><br>var unsignedOverflow = UInt8.min<br>// unsignedOverflow 等于 0, 是UInt8可以保存的最小值<br>unsignedOverflow = unsignedOverflow &amp;- 1<br>// unsignedOverflow 现在等于 255<br></code></pre><br><br>UInt8可以保存的最小值是0, 或者二进制 00000000. 如果使用溢出减运算符减1, 这个数字会溢出变成 11111111, 或者十进制 255 .<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowUnsignedSubtraction_2x.png"><br></div><br>溢出也会发生在有符号整数。有符号整数的加减法以位形式执行, 标志位也参与加减。<br><pre><code><br>var signedOverflow = Int8.min<br>// signedOverflow 等于 -128, 是Int8可以保存的最小值<br>signedOverflow = signedOverflow &amp;- 1<br>// signedOverflow 现在等于 127<br></code></pre><br><br>Int8保存的最小值是 -128, 或者二进制 10000000. 使用溢出减减1,结果是 01111111, 它会切换标志位然后得正数 127, 它是Int8可以保存的最大正数值。<br><div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/overflowSignedSubtraction_2x.png"><br></div>
+
+<p>对于有符号和无符号整数来说, 向正数方向溢出会回到最小值, 向负数方向溢出会回到最大值。</p>
+<h1 id="优先级和关联性"><a href="#优先级和关联性" class="headerlink" title="优先级和关联性"></a>优先级和关联性</h1><p>运算符优先级给一些运算符提供更高的优先级; 这些运算符首先起作用。</p>
+<p>运算符关联性确定相同优先级的运算符分组的行为—或者从左边分组, 或者从右边分组。可以这样考虑 “它们关联左边的表达式,” 或者 “它们关联右边的表达式。”</p>
+<p>在使用复合表达式计算时,考虑每个运算符的优先级和关联性非常重要。例如, 运算符优先级解释了为什么下面的表达式结果是 17.</p>
+<pre><code>
+2 + 3 % 4 * 5
+// this equals 17
+</code></pre>
+如果从左到右严格读, 你可能期望表达式按照如下执行:
+
+2 加 3 等于 5
+5 除以 4 取余为 1
+1 乘以 5 等于 5
+不过, 实际结果是 17, 而不是 5. 高优先级的运算符比低优先级运算符先执行。在 Swift 中, 和 C 一样, 取余运算符 (%) 和乘法运算符 (*) 比加法运算符有更高的优先级 (+). 结果就是, 它们都比加法先执行。
+
+不过, 取余和乘法运算符优先级是相同的。为了解决准确的执行顺序, 你也需要考虑它们的关联性。取余和乘法运算符都是关联它们左边的表达式。把它想象为从左边开始,在它们的表达式部分加了一个隐式的括号:
+<pre><code>
+2 + ((3 % 4) * 5)
+(3 % 4) 是 3, 这个等于:
+
+2 + (3 * 5)
+(3 * 5) 是 15, 这个等于:
+
+2 + 15
+计算结果是 17.
+</code></pre>
+
+<p>要查看完整的 Swift 运算符优先级和关联性规则的列表, 参见表达式部分。更多表达式, 参见 Swift 标准库运算符参考。</p>
+<p>备注</p>
+<p>Swift 的运算符优先级和关联性,比 C 和 Objective-C 中的更加简单和可预测。不过, 这个意味着它们和基于C语言的语言有所不同。在移植代码到 Swift 时,谨慎的确保运算符行为要和你想的一样。</p>
+<h1 id="运算符方法-1"><a href="#运算符方法-1" class="headerlink" title="运算符方法"></a>运算符方法</h1><p>类和结构体可以为已存在的运算符提供自己的实现。这就是运算符的重载。 </p>
+<p>下面的例子展示如何给一个自定义的结构体,实现一个算术加法运算符(+). 算术加法运算符是一个二目运算符,因为它操作两个目标。因为它在两个目标之间,它又是一个中缀运算符。 </p>
+<p>下面的例子为一个二维位置向量(x, y)定义了一个 Vector2D 结构体, 后面是一个运算符方法的定义,这个方法把两个 Vector2D 结构体实例进行相加:</p>
+<pre><code>
+struct Vector2D {
+    var x = 0.0, y = 0.0
+}
+
+extension Vector2D {
+    static func + (left: Vector2D, right: Vector2D) -> Vector2D {
+        return Vector2D(x: left.x + right.x, y: left.y + right.y)
+    }
+}
+</code></pre>
+
+<p>这个运算符方法定义为Vector2D 的类型方法, 方法名符合重载的(+)运算符。因为加法不是向量本来的行为, 所以这个类型方法定义在结构体的扩展中,而不是主结构中。因为算术加法运算符是二目运算符, 这个运算符方法接受两个Vector2D 类型的参数,然后返回Vector2D 类型的值。</p>
+<p>在这个实现里, 输入参数名 left 和 right 表示 Vector2D 实例在 + 运算符的左右两侧。这个方法返回了一个新的 Vector2D 实例, 它的 x 和 y 属性是左右实例 x 和 y 之和。</p>
+<p>这个类型方法可以在两个 Vector2D 实例中用作中缀运算符:</p>
+<pre><code>
+let vector = Vector2D(x: 3.0, y: 1.0)
+let anotherVector = Vector2D(x: 2.0, y: 4.0)
+let combinedVector = vector + anotherVector
+// combinedVector 是一个 Vector2D 实例,值是 (5.0, 5.0)
+</code></pre>
+
+<p>这个例子把向量 (3.0, 1.0) 和 (2.0, 4.0) 相加得到向量 (5.0, 5.0), 如下图所示。</p>
+<div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/vectorAddition_2x.png"><br></div>
 
 <h1 id="前缀和后缀运算符"><a href="#前缀和后缀运算符" class="headerlink" title="前缀和后缀运算符"></a>前缀和后缀运算符</h1><p>上面的例子展示了一个中缀运算符的自定义实现。类和结构体也可以提供标准一元运算符的实现。一元运算符只操作一个目标。如果它在目标前面就是前缀运算符 (例如 -a) ,如果在目标后面就是后缀运算符 (例如 b!).</p>
 <p>定义运算符方法的时候,在 func 关键字前写上前后缀修饰符,就可以定义前后缀一元运算符:</p>
@@ -7393,9 +7195,9 @@ extension Vector2D {
     }
 }
 </code></pre>
-上面的例子给Vector2D 实例实现了一元-运算符。一元-运算符是一个前缀运算符, 所以这个方法使用了前缀修饰符。
 
-对于简单的数值, 一元-运算符把正数变成负数,反之亦然。Vector2D 实例的实现就是对 x 和 y 同时进行操作:
+<p>上面的例子给Vector2D 实例实现了一元-运算符。一元-运算符是一个前缀运算符, 所以这个方法使用了前缀修饰符。</p>
+<p>对于简单的数值, 一元-运算符把正数变成负数,反之亦然。Vector2D 实例的实现就是对 x 和 y 同时进行操作:</p>
 <pre><code>
 let positive = Vector2D(x: 3.0, y: 4.0)
 let negative = -positive
@@ -7413,7 +7215,8 @@ extension Vector2D {
     }
 }
 </code></pre>
-因为加法运算符早已定义, 这里你不需要替换加法部分。替代的是, 加法赋值运算符方法采用了已经存在的加法运算符方法, 然后把左右值相加赋值给左值:
+
+<p>因为加法运算符早已定义, 这里你不需要替换加法部分。替代的是, 加法赋值运算符方法采用了已经存在的加法运算符方法, 然后把左右值相加赋值给左值:</p>
 <pre><code>
 var original = Vector2D(x: 1.0, y: 2.0)
 let vectorToAdd = Vector2D(x: 3.0, y: 4.0)
@@ -7470,10 +7273,23 @@ let afterDoubling = +++toBeDoubled
 <h1 id="自定义中缀运算符的优先级"><a href="#自定义中缀运算符的优先级" class="headerlink" title="自定义中缀运算符的优先级"></a>自定义中缀运算符的优先级</h1><p>自定义中缀运算符每个都属于一个优先级集。一个优先级集指定一个运算符相对于其他中缀运算符的优先级, 也就是运算符的关联性。 </p>
 <p>没有显式加入优先级集的自定义中缀运算符,会被给予一个默认的优先级集。它的优先级比三目条件运算符要高。</p>
 <p>下面的例子定义了一个新的自定义的中缀运算符 +-, 它属于优先级集 AdditionPrecedence:</p>
-<p><pre><code><br>infix operator +-: AdditionPrecedence<br>extension Vector2D {<br>    static func +- (left: Vector2D, right: Vector2D) -&gt; Vector2D {<br>        return Vector2D(x: left.x + right.x, y: left.y - right.y)<br>    }<br>}<br>let firstVector = Vector2D(x: 1.0, y: 2.0)<br>let secondVector = Vector2D(x: 3.0, y: 4.0)<br>let plusMinusVector = firstVector +- secondVector<br>// plusMinusVector is a Vector2D instance with values of (4.0, -2.0)<br></code></pre><br>这个运算符把两个向量的x值相加, 然后把第二个向量的两个y值相减。因为它实际上是一个 “加法的” 运算符, 它跟其他加法中缀运算符,例如 + 和 - , 有相同的优先级集。</p>
+<pre><code>
+infix operator +-: AdditionPrecedence
+extension Vector2D {
+    static func +- (left: Vector2D, right: Vector2D) -> Vector2D {
+        return Vector2D(x: left.x + right.x, y: left.y - right.y)
+    }
+}
+let firstVector = Vector2D(x: 1.0, y: 2.0)
+let secondVector = Vector2D(x: 3.0, y: 4.0)
+let plusMinusVector = firstVector +- secondVector
+// plusMinusVector is a Vector2D instance with values of (4.0, -2.0)
+</code></pre>
+
+<p>这个运算符把两个向量的x值相加, 然后把第二个向量的两个y值相减。因为它实际上是一个 “加法的” 运算符, 它跟其他加法中缀运算符,例如 + 和 - , 有相同的优先级集。</p>
 <p>备注</p>
 <p>定义一个前缀或者后缀运算符的时候,你不要指定优先级。不过, 如果你在相同的操作数上使用前缀和后缀运算符, 后缀运算符会首先发生作用。</p>
-</string></element></element></key,></t></t></character>]]></content>
+</string></element></character>]]></content>
     
     <summary type="html">
     
