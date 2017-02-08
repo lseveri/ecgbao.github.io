@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-01-22T01:08:31.000Z</updated>
+  <updated>2017-02-08T05:01:45.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,29 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>Pushing to Git returning Error Code 403 fatal: HTTP request failed 解决方案</title>
+    <link href="http://yoursite.com/2017/02/08/Pushing-to-Git-returning-Error-Code-403-fatal-HTTP-request-failed-%E8%A7%A3%E5%86%B3%E6%96%B9%E6%A1%88/"/>
+    <id>http://yoursite.com/2017/02/08/Pushing-to-Git-returning-Error-Code-403-fatal-HTTP-request-failed-解决方案/</id>
+    <published>2017-02-08T04:42:38.000Z</published>
+    <updated>2017-02-08T05:01:45.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>原因可能是使用了 https 协议登录了, 首先你要向 git 的<code>Remote URI</code> 设置自己的身份验证的凭证:</p>
+<p><pre><code>git remote set-url origin <a href="https://username@github.com/user/xxx.git" target="_blank" rel="external">https://username@github.com/user/xxx.git</a></code></pre><br>当 <code>git push</code> 的时候,会要求你输入git的密码。</p>
+<p>实际上, 如果是 http 鉴权的格式。你也可以设置一个密码:</p>
+<p><pre><code><a href="https://youruser:password@github.com/user/repo.git" target="_blank" rel="external">https://youruser:password@github.com/user/repo.git</a></code></pre><br>这样做你得注意, 你的 github 会存在 .git 目录下面的文本里, 这显然是不可取的做法。</p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;p&gt;原因可能是使用了 https 协议登录了, 首先你要向 git 的&lt;code&gt;Remote URI&lt;/code&gt; 设置自己的身份验证的凭证:&lt;/p&gt;
+&lt;p&gt;&lt;pre&gt;&lt;code&gt;git remote set-url origin &lt;a href=&quot;https://usern
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Using Swift with Cocoa and Objective-C (Swift 3.0.1)</title>
