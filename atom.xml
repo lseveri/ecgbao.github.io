@@ -312,7 +312,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-01-23T05:47:18.000Z</updated>
+    <updated>2017-02-20T01:38:29.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p>Swift 是为 iOS，macOS，watchOS，和 tvOS 应用开发的一门新的开发语言，尽管如此，Swift很多部分都跟你以往从事C和Objective-C开发经验很相似。</p>
 <p>基于C 和 Objective-C 的数据类型，Swift 提供了自己的版本，包括 Int， Double， Float，Bool 和 String。它同时也提供了三种集合类型，Array，Set 和 Dictionary。</p>
@@ -428,7 +428,7 @@ let one: UInt8 = 1
 let twoThousandAndOne = twoThousand + UInt16(one)</code></pre>
 
 <p>因为加好两边的值类型都是UInt16，所以加法是进行的。输出常量推断是UInt16，因为它是两个UInt16值的和。</p>
-<p>SomeType(ofInitialValue) 默认调用Swift类型的初始化函数，然后传递一个初始值。这个语句之前，UInt16有一个初始化器接受一个UInt8的值，所以这个初始化器就用存在的UInt8 创建了一个新的UInt16.这里你不能随便传入类型-必须传入UInt16初始化器接受的值。</p>
+<p>SomeType(ofInitialValue) 默认调用Swift类型的初始化函数，然后传递一个初始值。这个语句之前，UInt16有一个构造器接受一个UInt8的值，所以这个构造器就用存在的UInt8 创建了一个新的UInt16.这里你不能随便传入类型-必须传入UInt16构造器接受的值。</p>
 <h1 id="整数和浮点数转换"><a href="#整数和浮点数转换" class="headerlink" title="整数和浮点数转换"></a>整数和浮点数转换</h1><p>整数和浮点数之间的转换必须是显示的：</p>
 <pre><code>let three = 3
 let pointOneFourOneFiveNine = 0.14159
@@ -510,14 +510,14 @@ print("The status message is \(http404Error.1)")
 print("The status message is \(http200Status.description)")
 // Prints "The status message is OK"</code></pre>
 
-<h1 id="可选类型"><a href="#可选类型" class="headerlink" title="可选类型"></a>可选类型</h1><p>当一个值可能缺失的时候使用optionals。一个可选值包含两种可能：或者有一个值，你可以通过拆包访问这个值，或者根本没有值。</p>
-<p>这里有一个例子，说明可选类型如何在值缺失的时候使用。Swift 的Int 类型有一个初始化器，可以把String 转换为Int 值。不过，不是每一个字符串都可以转换的。“123”可以转换为123，但是“helloworld”就不可以。</p>
-<p>下面的例子使用初始化器去转换String：</p>
+<h1 id="可选类型"><a href="#可选类型" class="headerlink" title="可选类型"></a>可选类型</h1><p>当一个值可能缺失的时候使用可选类型。一个可选值包含两种可能：或者有一个值，你可以通过拆包访问这个值，或者根本没有值。</p>
+<p>这里有一个例子，说明可选类型如何在值缺失的时候使用。Swift 的Int 类型有一个构造器，可以把String 转换为Int 值。不过，不是每一个字符串都可以转换的。“123”可以转换为123，但是“helloworld”就不可以。</p>
+<p>下面的例子使用构造器去转换String：</p>
 <pre><code>let possibleNumber = "123"
 let convertedNumber = Int(possibleNumber)
 // convertedNumber is inferred to be of type "Int?", or "optional Int"</code></pre>
 
-<p>因为初始化器有可能失败，所以它返回一个optional Int，而不是Int。一个可选Int写作Int？，不是Int。问号表示包含的值是可选的，意思就是它可能包含某个Int值，也可能不包含任何值。</p>
+<p>因为构造器有可能失败，所以它返回一个可选的 Int，而不是Int。一个可选Int写作Int？，不是Int。问号表示包含的值是可选的，意思就是它可能包含某个Int值，也可能不包含任何值。</p>
 <h1 id="nil"><a href="#nil" class="headerlink" title="nil"></a>nil</h1><p>通过赋值nil来把可选值设置成无值状态：</p>
 <pre><code>var serverResponseCode: Int? = 404
 // serverResponseCode contains an actual Int value of 404
@@ -541,7 +541,7 @@ serverResponseCode = nil
 // Prints "convertedNumber has an integer value of 123."</code></pre>
 
 
-<h1 id="可选绑定"><a href="#可选绑定" class="headerlink" title="可选绑定"></a>可选绑定</h1><p>使用optional binding找出一个可选项是否包含一个值。如果这样的话，使这个值作为一个临时常量或者变量。可选绑定用if和while语句来判断可选项的值，然后提取这个值到常量或者变量，作为操作的一部分。</p>
+<h1 id="可选绑定"><a href="#可选绑定" class="headerlink" title="可选绑定"></a>可选绑定</h1><p>使用可选绑定找出可选项是否包含一个值。如果要这样，使这个值作为一个临时常量或者变量。可选绑定用if和while语句来判断可选项的值，然后提取这个值到常量或者变量，作为操作的一部分。</p>
 <p>用if语句写可选绑定像下面这样：</p>
 <pre><code>if let constantName = someOptional {
     statements
@@ -580,10 +580,10 @@ if let firstNumber = Int("4") {
 <p>当可选项的值在首次定义后就能确定存在的事，隐式拆包可选项很有用。隐式拆包可选项主要用在类的初始化。</p>
 <p>隐式拆包可选项在这种场景下，是正常可选项，但是也可以用作一个非可选项，无需每次访问都拆包。下面的例子展示了，可选字符串和隐式拆包可选项字符串作为显示String时访问它们包含的值的不同行为。</p>
 <pre><code>let possibleString: String? = "An optional string."
-let forcedString: String = possibleString! // requires an exclamation mark
+let forcedString: String = possibleString! // 需要一个感叹号
 
 let assumedString: String! = "An implicitly unwrapped optional string."
-let implicitString: String = assumedString // no need for an exclamation mark</code></pre>
+let implicitString: String = assumedString // 不需要感叹号</code></pre>
 
 <p>你依然可以把隐式拆包可选项当做正常的可选项，来判断它是否包含一个值：</p>
 <pre><code>if assumedString != nil {
@@ -1234,7 +1234,7 @@ someInts = []
 // someInts is now an empty array, but is still of type [Int]
 </code></pre>
 
-<h1 id="用默认值创建数组"><a href="#用默认值创建数组" class="headerlink" title="用默认值创建数组"></a>用默认值创建数组</h1><p>Swift的数组类型也提供了一初始化器来创建相同默认值固定大小的数组。 给初始化器传一个匹配类型的默认值 (调用 repeating): 然后是在新数组中需要重复的值的个数 (调用 count):</p>
+<h1 id="用默认值创建数组"><a href="#用默认值创建数组" class="headerlink" title="用默认值创建数组"></a>用默认值创建数组</h1><p>Swift的数组类型也提供了一构造器来创建相同默认值固定大小的数组。 给构造器传一个匹配类型的默认值 (调用 repeating): 然后是在新数组中需要重复的值的个数 (调用 count):</p>
 <pre><code>
 var threeDoubles = Array(repeating: 0.0, count: 3)
 // threeDoubles is of type [Double], and equals [0.0, 0.0, 0.0]
@@ -1387,7 +1387,7 @@ for (index, value) in shoppingList.enumerated() {
 <p>a == b 表示 b == a (对称性)</p>
 <p>a == b &amp;&amp; b == c 表示 a == c (传递性)</p>
 <h1 id="集合类型语法"><a href="#集合类型语法" class="headerlink" title="集合类型语法"></a>集合类型语法</h1><p>集合类型写作 Set<element>, 这里 Element 是集合允许存储的类型。 跟数组不同, 集合没有等价的缩写形式。</element></p>
-<h1 id="创建和初始化空集合"><a href="#创建和初始化空集合" class="headerlink" title="创建和初始化空集合"></a>创建和初始化空集合</h1><p>你可以通过使用初始化器语法创建特定类型的空集合:</p>
+<h1 id="创建和初始化空集合"><a href="#创建和初始化空集合" class="headerlink" title="创建和初始化空集合"></a>创建和初始化空集合</h1><p>你可以通过使用构造器语法创建特定类型的空集合:</p>
 <pre><code>
 var letters = Set<character>()
 print("letters is of type Set<character> with \(letters.count) items.")
@@ -1395,7 +1395,7 @@ print("letters is of type Set<character> with \(letters.count) items.")
 </character></character></character></code></pre>
 备注
 
-letters 变量的类型推断为 Set<character>, 通过初始化器的类型。
+letters 变量的类型推断为 Set<character>, 通过构造器的类型。
 
 或者, 如果上下文已经提供了类型信息, 比如一个函数参数或者一个已经指定类型的变量和常量, 你可以用一个空的数组字面量来创建一个空集合:
 <pre><code>
@@ -1589,7 +1589,7 @@ airports["LHR"] = "London Heathrow"
 </code></pre>
 作为下标的替代方案, 用字典的 updateValue(_:forKey:) 方法设置或者更新指定键的值。 跟上面下标实例一样,  updateValue(_:forKey:) 方法在键不存在时设置值, 如果键存在则进行更新。和下标不像的是, updateValue(_:forKey:) 方法在执行更新后返回老的值。 这个可以让你知道更新是否生效。
 
-updateValue(_:forKey:) 方法返回可选类型的值。对个存储字符串值的字典来说, 比如, 这个方法返回 String?, 或者 “optional String”. 可选值包括未更新前存在的键对应的老值, 如果值不存在则包括nil:
+updateValue(_:forKey:) 方法返回可选类型的值。对个存储字符串值的字典来说, 比如, 这个方法返回 String?, 或者 “可选的 String”. 可选值包括未更新前存在的键对应的老值, 如果值不存在则包括nil:
 <pre><code>
 if let oldValue = airports.updateValue("Dublin Airport", forKey: "DUB") {
     print("The old value for DUB was \(oldValue).")
@@ -4199,7 +4199,7 @@ size: Size(width: 3.0, height: 3.0))
 // centerRect's origin is (2.5, 2.5) and its size is (3.0, 3.0)
 </code></pre>
 
-<p>init(center:size:) 初始化方法可以给对应的属性指定新的原点值和大小。不过, 对于 init(center:size:) 初始化方法来说采用已存在的初始化器更加遍历。</p>
+<p>init(center:size:) 初始化方法可以给对应的属性指定新的原点值和大小。不过, 对于 init(center:size:) 初始化方法来说采用已存在的构造器更加遍历。</p>
 <h1 id="类继承和初始化"><a href="#类继承和初始化" class="headerlink" title="类继承和初始化"></a>类继承和初始化</h1><p>类的所有存储属性—包含来自超类的任何属性—初始化的时候必须分配一个初始值。</p>
 <p>Swift 为了类类型定义了两种初始化方法,帮助确保所有的存储属性都有初始值。这就大家熟知的指定初始化方法和便利初始化方法。</p>
 <h1 id="指定构造器和便利构造器"><a href="#指定构造器和便利构造器" class="headerlink" title="指定构造器和便利构造器"></a>指定构造器和便利构造器</h1><p>指定初始化方法是类的主要初始化方法。一个指定初始化方法会完全初始化类引入的所有属性,同时会调用合适的超类初始化方法来继续超类链的初始化过程。</p>
@@ -4589,7 +4589,7 @@ class UntitledDocument: Document {
     }
 }</code></pre>
 
-<p>在这种情况下, 如果超类的 init(name:) 构造器用空名字字符串调用, 强制拆包操作会引发一个运行时错误。不过, 它是用常量字符串调用的, 你可以看到这个初始化器不会失败, 所以这种情况不会发生运行时错误。</p>
+<p>在这种情况下, 如果超类的 init(name:) 构造器用空名字字符串调用, 强制拆包操作会引发一个运行时错误。不过, 它是用常量字符串调用的, 你可以看到这个构造器不会失败, 所以这种情况不会发生运行时错误。</p>
 <h1 id="init-可失败构造器"><a href="#init-可失败构造器" class="headerlink" title="init! 可失败构造器"></a>init! 可失败构造器</h1><p>通过在init关键之后面加上一个问号,你可以定义一个可失败构造器来创建一个对应类型的可选实例。或者, 你可以定义一个可失败构造器,来创建对应类型隐式拆包可选实例。 这个可以通过在init关键之后面加上感叹号而不是问好来实现。</p>
 <p>你可以从init? 调用到 init! ,反之亦然, 而且你可以用init!重写 init? with init! ,反之亦然。你还可以从init 调用到 init!, 尽管这样做会触发一个断言,如果 init! 构造器导致构造失败的话。</p>
 <h1 id="必需构造器"><a href="#必需构造器" class="headerlink" title="必需构造器"></a>必需构造器</h1><p>在一个类的构造器前写上 required 修饰符来表明这个类的每个子类都要实现这些构造器:</p>
@@ -5740,7 +5740,7 @@ for thing in things {
 </code></pre>
 
 <p>NOTE</p>
-<p>Any 类型表示任意类型值, 包括可选类型。如果某个地方需要一个Any类型值,你而你使用了可选值, Swift 会给你一个警告。如果你真的需要使用一个可选值作为 Any 值, 你可以使用 as 操作符显式转换 optional 为 Any, 就像下面展示的这样。</p>
+<p>Any 类型表示任意类型值, 包括可选类型。如果某个地方需要一个Any类型值,你而你使用了可选值, Swift 会给你一个警告。如果你真的需要使用一个可选值作为 Any 值, 你可以使用 as 操作符显式把可选项转换为 Any, 就像下面展示的这样。</p>
 <pre><code>
 let optionalNumber: Int? = 3
 things.append(optionalNumber)        // Warning
