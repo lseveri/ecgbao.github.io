@@ -312,7 +312,7 @@ gabrielle.value(forKeyPath: #keyPath(Person.friends.name))
     <link href="http://yoursite.com/2016/10/28/Swift-%E7%BC%96%E7%A8%8B%E8%AF%AD%E8%A8%80%EF%BC%88Swift-3-0-1%EF%BC%89/"/>
     <id>http://yoursite.com/2016/10/28/Swift-编程语言（Swift-3-0-1）/</id>
     <published>2016-10-28T05:54:48.000Z</published>
-    <updated>2017-02-20T06:13:22.000Z</updated>
+    <updated>2017-02-21T07:55:45.000Z</updated>
     
     <content type="html"><![CDATA[<h1 id="基本介绍"><a href="#基本介绍" class="headerlink" title="基本介绍"></a>基本介绍</h1><p><code>Swift</code> 是为 <code>iOS</code>，<code>macOS</code>，<code>watchOS</code>，和 <code>tvOS</code> 应用开发的一门新的开发语言，尽管如此，<code>Swift</code>很多部分都跟你以往从事<code>C</code>和<code>Objective-C</code>开发经验很相似。</p>
 <p>基于<code>C</code> 和 <code>Objective-C</code> 的数据类型，<code>Swift</code> 提供了自己的版本，包括 <code>Int</code>， <code>Double</code>， <code>Float</code>，<code>Bool</code> 和 <code>String</code>。它同时也提供了三种集合类型，<code>Array</code>，<code>Set</code> 和 <code>Dictionary</code>。</p>
@@ -1288,7 +1288,7 @@ for (index, value) in shoppingList.enumerated() {
 <p>备注</p>
 <p><code>Swift</code> 的 <code>Set</code> 类型跟 <code>Foundation</code> 的 <code>NSSet</code> 类桥接。</p>
 <h1 id="集合类型的哈希值"><a href="#集合类型的哈希值" class="headerlink" title="集合类型的哈希值"></a>集合类型的哈希值</h1><p>集合里一个类型为了存储就必须可哈希—就是说, 这个类型必须提供一个方式去计算自己的哈希值。 一个哈希值是一个整型值, 这对于相等的对象都是一样的, 如果 <code>if a == b</code>, 那么 <code>a.hashValue == b.hashValue</code>.</p>
-<p>所有<code> Swift</code> 的基本类型默认都是可哈希的 (比如 <code>String</code>, <code>Int</code>, <code>Double</code>, 和 <code>Bool</code>), 可以被用作集合值类型或者字典建类型。 枚举case 值没有相应的值默认也是可哈希的。</p>
+<p>所有<code> Swift</code> 的基本类型默认都是可哈希的 (比如 <code>String</code>, <code>Int</code>, <code>Double</code>, 和 <code>Bool</code>), 可以被用作集合值类型或者字典建类型。 枚举分支值没有相应的值默认也是可哈希的。</p>
 <p>备注</p>
 <p>你可以使用自定义类型作为集合值类型或者字典健类型,通过让它们遵守<code>Swift</code> 标准库中的 <code>Hashable</code> 协议。 符合协议的类型必须提供一个可获取的整形属性 <code>hashValue</code>. 在相同程序中的不同执行,或者在不同程序中, 类型的哈希属性返回的值不要求相同。</p>
 <p>因为 <code>Hashable</code> 协议符合 <code>Equatable</code>, 符合类型必须提等号运算符<code> (==)</code>的实现。 <code>Equatable</code> 协议要求任何符合<code>==</code>实现的都是一个相等关系。 就是说, <code>== </code> 的实现必须满足下面的条件, 对于 <code>a</code>,<code> b</code>, 和 <code>c</code> 所有值:</p>
@@ -1655,7 +1655,7 @@ print("Game over!")
 <p>上面的例子用了一个很简单方法去摇骰子。 不用随机数, 用一初始值为0的 <code>diceRoll</code>。 每次循环, <code>diceRoll </code>加一然后判断它是否过大。 当返回值等于7, 骰子值过大然后重置为1。<code>diceRoll</code> 值总是 1, 2, 3, 4, 5, 6, 1, 2 然后不停循环。</p>
 <p>摇完筛子, 往前移动 <code>diceRoll</code> 方格。 如果移动超过25, 游戏结束。考虑边界安全，在操作方格的时候。</p>
 <p>备注</p>
-<p>没有这个判断, <code>board[square] &lt;/<code>code&gt;可能会越界访问棋盘数组的值, 这会触发一个错误。 如果方格等于 26, 代码会判断board[26]</code> 的值, 这会超过数组的大小。</code></p>
+<p>没有这个判断, <code>board[square] </code>可能会越界访问棋盘数组的值, 这会触发一个错误。 如果方格等于 26, 代码会判断board[26] 的值, 这会超过数组的大小。</p>
 <p>当前<code>while</code> 循环执行然后结束, 然后循环的条件会被判断是否再次执行。如果玩家已经移动或者超过25, 循环的条件变成假然后游戏就结束。</p>
 <p><code>while</code> 循环适合这个例子, 因为开始循环的时候游戏的长度并不清楚。 相反, 一个特定条件满足后循环被执行了。</p>
 <h1 id="Repeat-While"><a href="#Repeat-While" class="headerlink" title="Repeat-While"></a>Repeat-While</h1><p>另外一种<code>while</code>循环的变种, 就是 <code>repeat-while</code> 循环, 先执行一次循环, 然后再考虑循环的条件。 然后继续执行直到条件变成假。</p>
@@ -1744,9 +1744,9 @@ default:
 }
 </code></pre>
 
-<p>每个 <code>switch</code> 语句由多个<code>case</code>分支组成, 每个分支以<code>case</code> 关键字开始。 除了跟指定值比较外, <code>Swift</code> 为<code>case</code>分支提供了指定更复杂匹配模式的方法。这些选项本章后面会描述。</p>
-<p>跟<code>if</code>语句体很像, 每个 <code>case</code> 是代码执行的单独分支。<code> switch </code>语句决定是否选择这个分支。这个过程叫分发。</p>
-<p>每个<code>switch</code> 语句务必是详尽的。 就是说, 每个能想到的类型值都要<code>case</code>匹配。 为每个可能值都提供<code>case</code>是不合适的。你可以定义一个默认<code>case</code>覆盖没有显示处理的值。 默认<code>case</code>使用<code>default</code>关键字指明, 必须总是出现在最后。</p>
+<p>每个 <code>switch</code> 语句由多个分支组成, 每个分支以<code>case</code> 关键字开始。 除了跟指定值比较外, <code>Swift</code> 为分支提供了指定更复杂匹配模式的方法。这些选项本章后面会描述。</p>
+<p>跟<code>if</code>语句体很像, 每个分支是代码执行的单独分支。<code> switch </code>语句决定是否选择这个分支。这个过程叫分发。</p>
+<p>每个<code>switch</code> 语句务必是详尽的。 就是说, 每个能想到的类型值都要分支匹配。 为每个可能值都提供分支是不合适的。你可以定义一个默认分支覆盖没有显示处理的值。 默认分支使用<code>default</code>关键字指明, 必须总是出现在最后。</p>
 <p>这个例子使用一个 switch 语句来出处理一个小写字母someCharacter:</p>
 <pre><code>
 let someCharacter: Character = "z"
@@ -1761,11 +1761,11 @@ default:
 // 打印 "The last letter of the alphabet"
 </code></pre>
 
-<p><code>switch</code> 语句第一个<code>case</code>匹配英文字母表第一个字母 <code>a</code>, 第二个<code>case</code>匹配最后一个字母 <code>z</code>. 因为 <code>switch</code> 语句对于每个可能的字符都要有<code>case</code>, 不是每个字母表字符都需要。这个<code>switch</code> 语句使用了一个<code>default case</code> 去处理<code>a</code> 和 <code>z</code>之外的其他所有字母。这保证了<code>switch</code>语句的详细性。</p>
-<h1 id="非隐式-Fallthrough"><a href="#非隐式-Fallthrough" class="headerlink" title="非隐式 Fallthrough"></a>非隐式 Fallthrough</h1><p>和<code>C</code> 与 <code>Objective-C</code> 的<code>switch</code>语句对比, <code>Swift</code> 中的<code>switch</code>语句不会 <code>fall through case</code>底部并且跳到下一个<code>case</code>。 相反, 在第一次匹配到<code>case</code>后整个<code>switch</code>语句执行就完成了。不要求显示的<code>break</code>语句。 这使得<code>switch</code>语句更安全,更容易使用,而且避免执行多个<code>case</code>的错误。</p>
+<p><code>switch</code> 语句第一个分支匹配英文字母表第一个字母 <code>a</code>, 第二个分支匹配最后一个字母 <code>z</code>. 因为 <code>switch</code> 语句对于每个可能的字符都要有分支, 不是每个字母表字符都需要。这个<code>switch</code> 语句使用了一个<code>default 分支</code> 去处理<code>a</code> 和 <code>z</code>之外的其他所有字母。这保证了<code>switch</code>语句的详细性。</p>
+<h1 id="非隐式-Fallthrough"><a href="#非隐式-Fallthrough" class="headerlink" title="非隐式 Fallthrough"></a>非隐式 Fallthrough</h1><p>和<code>C</code> 与 <code>Objective-C</code> 的<code>switch</code>语句对比, <code>Swift</code> 中的<code>switch</code>语句不会 <code>fall through 分支</code>底部并且跳到下一个分支。 相反, 在第一次匹配到分支后整个<code>switch</code>语句执行就完成了。不要求显示的<code>break</code>语句。 这使得<code>switch</code>语句更安全,更容易使用,而且避免执行多个分支的错误。</p>
 <p>备注</p>
 <p>尽管<code>Swift</code> 不要求<code>break</code>, 你仍然可以在<code>Swift</code>中使用。 </p>
-<p><code>case</code> 体必须包含至少一句可执行语句。下面的代码的无效的, 因为第一个<code>case</code>是空的:</p>
+<p>分支体必须包含至少一句可执行语句。下面的代码的无效的, 因为第一个分支是空的:</p>
 <pre><code>
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
@@ -1778,8 +1778,8 @@ default:
 // 这会报一个编译期错误
 </code></pre>
 
-<p>跟<code>C</code>中的<code>switch</code>语句不同, 这个 <code>switch</code> 语句不能同时匹配 <code>“a”</code> 和 <code>“A”</code>. 相反, 它会报一个编译期错误,因为<code>case “a”</code>: 没有任何可以执行的语句。这个方法避免了突然从一个<code>case</code>跳入另外一个<code>case</code>, 让代码意图清晰安全。</p>
-<p>如果要用一个<code>case</code>同时匹配<code>“a”</code> 和 <code>“A”</code>, 把这两个值合并到一个<code>case</code>语句, 用逗号把它们分开。</p>
+<p>跟<code>C</code>中的<code>switch</code>语句不同, 这个 <code>switch</code> 语句不能同时匹配 <code>“a”</code> 和 <code>“A”</code>. 相反, 它会报一个编译期错误,因为<code>case “a”</code>: 没有任何可以执行的语句。这个方法避免了突然从一个分支跳入另外一个分支, 让代码意图清晰安全。</p>
+<p>如果要用一个分支同时匹配<code>“a”</code> 和 <code>“A”</code>, 把这两个值合并到一个分支语句, 用逗号把它们分开。</p>
 <pre><code>
 let anotherCharacter: Character = "a"
 switch anotherCharacter {
@@ -1791,10 +1791,10 @@ default:
 // 打印 "The letter A"
 </code></pre>
 
-<p>为了可读性, 复合<code>case</code>也可以写作多行。 </p>
+<p>为了可读性, 复合分支也可以写作多行。 </p>
 <p>备注</p>
-<p>为了显式<code>fall through </code>到某个<code>case</code>下面, 使用 <code>fallthrough</code> 关键字。</p>
-<h1 id="区间匹配"><a href="#区间匹配" class="headerlink" title="区间匹配"></a>区间匹配</h1><p><code>switch case</code>里面的值可以包含在区间里判断。 这个例子使用数字区间来提供一个对任何数字大小的自然语言统计。</p>
+<p>为了显式<code>fall through </code>到某个分支下面, 使用 <code>fallthrough</code> 关键字。</p>
+<h1 id="区间匹配"><a href="#区间匹配" class="headerlink" title="区间匹配"></a>区间匹配</h1><p><code>switch 分支</code>里面的值可以包含在区间里判断。 这个例子使用数字区间来提供一个对任何数字大小的自然语言统计。</p>
 <pre><code>
 let approximateCount = 62
 let countedThings = "moons orbiting Saturn"
@@ -1804,9 +1804,9 @@ case 0:
     naturalCount = "no"
 case 1..<5: naturalcount="a few" case="" 5..<12:="" 12..<100:="" 100..<1000:="" default:="" }="" print("there="" are="" \(naturalcount)="" \(countedthings).")="" 打印="" "there="" dozens="" of="" moons="" orbiting="" saturn."="" <="" code=""></5:></code></pre>
 
-<p>上面的例子, <code>approximateCount</code> 在switch语句里估算。 每个case把这个值跟一个数字或者区间进行比较。因为 approximateCount 值落在 12 和 100之间, naturalCount 被赋值为 “dozens of”, 然后代码执行跳出switch语句继续执行。</p>
-<h1 id="元组-1"><a href="#元组-1" class="headerlink" title="元组"></a>元组</h1><p>你可以在switch语句中使用元组测试多值。元组元素可以跟一个不同值或者值区间进行测试。或者, 使用通配下划线 (_) 去匹配可能的值。</p>
-<p>下面的例子有一个 (x, y) 点, 用一个简单的元组类型 (Int, Int) 表示, 并且在下面的图表中标示。</p>
+<p>上面的例子, <code>approximateCount</code> 在<code>switch</code>语句里估算。 每个分支把这个值跟一个数字或者区间进行比较。因为 <code>approximateCount</code> 值落在 12 和 100之间, <code>naturalCount</code> 被赋值为 <code>“dozens of”</code>, 然后代码执行跳出<code>switch</code>语句继续执行。</p>
+<h1 id="元组-1"><a href="#元组-1" class="headerlink" title="元组"></a>元组</h1><p>你可以在<code>switch</code>语句中使用元组测试多值。元组元素可以跟一个不同值或者值区间进行测试。或者, 使用通配下划线 <code>(_) </code>去匹配可能的值。</p>
+<p>下面的例子有一个<code> (x, y) </code>点, 用一个简单的元组类型 <code>(Int, Int)</code> 表示, 并且在下面的图表中标示。</p>
 <pre><code>
 let somePoint = (1, 1)
 switch somePoint {
@@ -1826,10 +1826,10 @@ default:
 
 <div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphSimple_2x.png"><br></div>
 
-<p>switch 语句决定这个点是否位于原点 (0, 0), 红色的 x-轴, 橙色 y-轴, 在蓝色 4-by-4 方块里原点在中心, 或者在方块之外。</p>
-<p>跟 C 不同, Swift 允许多个case 去处理相同的值。 事实上, (0, 0)点可以满足例子的四个case。不过, 如果多个匹配都可能, 第一个匹配上的总是执行。 (0, 0) 点首先匹配case (0, 0), 其他所有匹配的case都会被忽略。</p>
-<h1 id="值绑定"><a href="#值绑定" class="headerlink" title="值绑定"></a>值绑定</h1><p>一个 switch case 可以绑定值到临时的常量或者变量, 用在case 体中。这个就是值绑定, 因为值绑定到case 体中的临时常量或者变量上。</p>
-<p>下面这个例子有一个(x, y) 点, 是元组类型 (Int, Int), 在下面的图表中标示:</p>
+<p><code>switch</code> 语句决定这个点是否位于原点 <code>(0, 0)</code>, 红色的 x-轴, 橙色 y-轴, 在蓝色 <code>4-by-4 </code>方块里原点在中心, 或者在方块之外。</p>
+<p>跟 <code>C</code> 不同, <code>Swift</code> 允许多个分支去处理相同的值。 事实上, <code>(0, 0)</code>点可以满足例子的四个分支。不过, 如果多个匹配都可能, 第一个匹配上的总是执行。 <code>(0, 0)</code> 点首先匹配<code>case (0, 0)</code>, 其他所有匹配的分支都会被忽略。</p>
+<h1 id="值绑定"><a href="#值绑定" class="headerlink" title="值绑定"></a>值绑定</h1><p>一个 <code>switch 分支</code> 可以绑定值到临时的常量或者变量, 用在分支体中。这个就是值绑定, 因为值绑定到分支体中的临时常量或者变量上。</p>
+<p>下面这个例子有一个<code>(x, y)</code> 点, 是元组类型 <code>(Int, Int)</code>, 在下面的图表中标示:</p>
 <pre><code>
 let anotherPoint = (2, 0)
 switch anotherPoint {
@@ -1845,12 +1845,12 @@ case let (x, y):
 
 <div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphMedium_2x.png"><br></div>
 
-<p>switch 语句判断这个点是在红色的 x-轴, 橙色的 y-轴, 还是其他什么地方 (不在轴上)。</p>
-<p>这三个 switch case声明了占位符常量 x 和 y, 临时存放来自 anotherPoint 的一个或者两个元组值。第一个 case, case (let x, 0), 匹配任何y值为0 然后把坐标点x的值赋给临时常量 x. 类似的, 第二个case, case (0, let y), 匹配任何x值为0,然后把坐标点y值赋给临时常量y.</p>
-<p>临时常量声明后, 它们就可以用在case 体中。在这里, 它们用来打印这个点的标示。</p>
-<p>这个 switch 语句没有默认的default case. 最后一个case, case let (x, y), 声明了带有两个占位符常量的元组,它可以匹配任何值。因为 anotherPoint 总是两个值的元组, 这个case 匹配所有可能的剩余值, 所以默认的default case 是不需要的。</p>
-<h1 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h1><p>一个 switch case 可以用 where 字句来判断额外的条件。</p>
-<p>下面的例子在下面的图表中标示一个(x, y) 点:</p>
+<p><code>switch</code> 语句判断这个点是在红色的 x-轴, 橙色的 y-轴, 还是其他什么地方 (不在轴上)。</p>
+<p>这三个 <code>switch case</code>声明了占位符常量 <code>x</code> 和 <code>y</code>, 临时存放来自 <code>anotherPoint</code> 的一个或者两个元组值。第一个分支 <code>case (let x, 0)</code>, 匹配任何y值为0 然后把坐标点x的值赋给临时常量 x. 类似的, 第二个分支, <code>case (0, let y)</code>, 匹配任何x值为0,然后把坐标点y值赋给临时常量y.</p>
+<p>临时常量声明后, 它们就可以用在分支体中。在这里, 它们用来打印这个点的标示。</p>
+<p>这个 <code>switch</code> 语句没有默认的<code>default 分支</code>. 最后一个分支, <code>case let (x, y)</code>, 声明了带有两个占位符常量的元组,它可以匹配任何值。因为 <code>anotherPoint</code> 总是两个值的元组, 这个<code>case</code> 匹配所有可能的剩余值, 所以默认的<code>default case</code> 是不需要的。</p>
+<h1 id="Where"><a href="#Where" class="headerlink" title="Where"></a>Where</h1><p>一个 <code>switch 分支</code> 可以用 <code>where</code> 字句来判断额外的条件。</p>
+<p>下面的例子在下面的图表中标示一个<code>(x, y) </code>点:</p>
 <pre><code>
 let yetAnotherPoint = (1, -1)
 switch yetAnotherPoint {
@@ -1866,10 +1866,10 @@ case let (x, y):
 
 <div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/coordinateGraphComplex_2x.png"><br></div>
 
-<p>switch 语句确定这个点是否在x == y这个绿色对角线上, 或者是x == -y这个紫色对角线上,或者两者都不在。</p>
-<p>三个 switch case 都声明了占位符常量 x 和 y, 临时接受来自 yetAnotherPoint 两个元组值。这些常量用作where字句的一部分, 去创建一个动态的过滤器。case 匹配坐标点的当前值,如果where字句条件为真的话。</p>
-<p>和前面一个例子一样, 最后的case 匹配所有剩余值, 不再需要 default case</p>
-<h1 id="复合-Cases"><a href="#复合-Cases" class="headerlink" title="复合 Cases"></a>复合 Cases</h1><p>共享相同代码块的多个switch case 分支可以合并, 写在case后用逗号分开。如果任何模式匹配, 这个case 就被认为匹配。如果列表很长可以写作多行。如下：</p>
+<p><code>switch</code> 语句确定这个点是否在<code>x == y</code>这个绿色对角线上, 或者是<code>x == -y</code>这个紫色对角线上,或者两者都不在。</p>
+<p>三个 <code>switch 分支</code> 都声明了占位符常量 x 和 y, 临时接受来自 <code>yetAnotherPoint</code> 两个元组值。这些常量用作<code>where</code>字句的一部分, 去创建一个动态的过滤器。分支匹配坐标点的当前值,如果<code>where</code>字句条件为真的话。</p>
+<p>和前面一个例子一样, 最后的分支匹配所有剩余值, 不再需要<code> default 分支</code></p>
+<h1 id="复合-Cases"><a href="#复合-Cases" class="headerlink" title="复合 Cases"></a>复合 Cases</h1><p>共享相同代码块的多个<code>switch 分支 </code>分支可以合并, 写在分支后用逗号分开。如果任何模式匹配, 这个分支就被认为匹配。如果列表很长可以写作多行。如下：</p>
 <pre><code>
 let someCharacter: Character = "e"
 switch someCharacter {
@@ -1883,9 +1883,9 @@ default:
 }
 // 打印 "e is a vowel"
 </code></pre>
-第一个case 匹配英文中五个小写元音字母。 类似的, 第二个case匹配所有小写辅音字母。最后, default case 匹配其余的字母。
 
-符合 case 可以包含值绑定。 符合case所有形式必须包括相同的值绑定集合, 每个绑定必须获取一个相同类型的值。这个确保, 无论复合case哪个部分匹配, case 代码总是访问一个绑定值,而且这个值总有相同类型。
+<p>第一个分支匹配英文中五个小写元音字母。 类似的, 第二个分支匹配所有小写辅音字母。最后, <code>default 分支</code> 匹配其余的字母。</p>
+<p>符合分支可以包含值绑定。 符合分支所有形式必须包括相同的值绑定集合, 每个绑定必须获取一个相同类型的值。这个确保, 无论复合分支哪个部分匹配, 分支代码总是访问一个绑定值,而且这个值总有相同类型。</p>
 <pre><code>
 let stillAnotherPoint = (9, 0)
 switch stillAnotherPoint {
@@ -1897,10 +1897,11 @@ default:
 // 打印 "On an axis, 9 from the origin"
 </code></pre>
 
-<p>上面的case有两种形式: (let distance, 0) 匹配x轴上的点, (0, let distance) 匹配y轴上点。两个形式都绑定了一个距离值,两种形式下距离都是整形,这就意味着case代码总是可以访问距离的值。</p>
-<h1 id="控制转移语句"><a href="#控制转移语句" class="headerlink" title="控制转移语句"></a>控制转移语句</h1><p>控制转移语句改变代码执行的顺序, 通过转移控制从一块代码到另外一块代码。Swift 有五个控制转移语句:</p>
-<p>continue<br>break<br>fallthrough<br>return<br>throw<br>continue, break, 和 fallthrough 下面描述。return 语句在函数部分描述, throw 语句在 Propagating Errors Using Throwing Functions 部分描述。</p>
-<h1 id="Continue"><a href="#Continue" class="headerlink" title="Continue"></a>Continue</h1><p>continue 语句告诉当前循环停止,然后开始下一次循环。它说 “我在当前循环迭代” 没有离开当前的循环。</p>
+<p>上面的分支有两种形式: <code>(let distance, 0)</code> 匹配x轴上的点, <code>(0, let distance)</code> 匹配y轴上点。两个形式都绑定了一个距离值,两种形式下距离都是整形,这就意味着分支代码总是可以访问距离的值。</p>
+<h1 id="控制转移语句"><a href="#控制转移语句" class="headerlink" title="控制转移语句"></a>控制转移语句</h1><p>控制转移语句改变代码执行的顺序, 通过转移控制从一块代码到另外一块代码。<code>Swift</code> 有五个控制转移语句:</p>
+<ol><br><li> continue </li><br><li> break </li><br><li> fallthrough </li><br><li> return </li><br><li> throw </li><br></ol>
+
+<h1 id="Continue"><a href="#Continue" class="headerlink" title="Continue"></a>Continue</h1><p><code>continue</code> 语句告诉当前循环停止,然后开始下一次循环。它说 “我在当前循环迭代” 没有离开当前的循环。</p>
 <p>下面的例子从一个小写字符串移除所有的元音字母和空格,来创建一个谜语:</p>
 <pre><code>
 let puzzleInput = "great minds think alike"
@@ -1917,12 +1918,12 @@ print(puzzleOutput)
 // 打印 "grtmndsthnklk"
 </code></pre>
 
-<p>上面的代码遇见元音或者空格就会调用 continue 关键字, 当前迭代立即结束然后进入下一次迭代。</p>
-<h1 id="Break"><a href="#Break" class="headerlink" title="Break"></a>Break</h1><p>break 立即结束整个控制流语句的执行。break 语句可以用在一个 switch 语句或者循环语句,如果你想早点结束执行的话。</p>
-<h1 id="Break-在循环语句"><a href="#Break-在循环语句" class="headerlink" title="Break 在循环语句"></a>Break 在循环语句</h1><p>用在循环语句时, break 立即结束循环,然后跳出循环所在的大括号。</p>
-<h1 id="Break-在Switch-语句"><a href="#Break-在Switch-语句" class="headerlink" title="Break 在Switch 语句"></a>Break 在Switch 语句</h1><p>用在switch 语句时, break 终止 switch 语句的执行,然后跳出switch语句所在的大括号。</p>
-<p>这种行为可以在switch语句中用来匹配或者忽略一个或者多个case. 因为 Swift 的 switch 语句是详尽的而且不允许有空 case, 有时候需要故意匹配和忽略一个case,为了让你的意图明显。整个case写一个break就可以忽略。当case 匹配时, case 里的break语句立即终止switch语句的执行。</p>
-<p>下面的例子转换一个字符值,然后判断它在四种语言之一是否表示一个数字, 单个switch case 覆盖了多个值。</p>
+<p>上面的代码遇见元音或者空格就会调用 <code>continue</code> 关键字, 当前迭代立即结束然后进入下一次迭代。</p>
+<h1 id="Break"><a href="#Break" class="headerlink" title="Break"></a>Break</h1><p><code>break </code>立即结束整个控制流语句的执行。<code>break</code> 语句可以用在一个 <code>switch </code>语句或者循环语句,如果你想早点结束执行的话。</p>
+<h1 id="Break-在循环语句"><a href="#Break-在循环语句" class="headerlink" title="Break 在循环语句"></a>Break 在循环语句</h1><p>用在循环语句时, <code>break</code> 立即结束循环,然后跳出循环所在的大括号。</p>
+<h1 id="Break-在Switch-语句"><a href="#Break-在Switch-语句" class="headerlink" title="Break 在Switch 语句"></a>Break 在Switch 语句</h1><p>用在<code>switch</code> 语句时, <code>break</code> 终止 <code>switch</code> 语句的执行,然后跳出<code>switch</code>语句所在的大括号。</p>
+<p>这种行为可以在<code>switch</code>语句中用来匹配或者忽略一个或者多个分支。 因为 <code>Swift</code> 的 <code>switch</code> 语句是详尽的而且不允许有空分支, 有时候需要故意匹配和忽略一个分支,为了让你的意图明显。整个分支写一个<code>break</code>就可以忽略。当分支匹配时, 分支里的<code>break</code>语句立即终止<code>switch</code>语句的执行。</p>
+<p>下面的例子转换一个字符值,然后判断它在四种语言之一是否表示一个数字, 单个<code>switch </code>分支覆盖了多个值。</p>
 <pre><code>
 let numberSymbol: Character = "三"  // Chinese symbol for the number 3
 var possibleIntegerValue: Int?
@@ -1946,11 +1947,11 @@ if let integerValue = possibleIntegerValue {
 // 打印 "The integer value of 三 is 3."
 </code></pre>
 
-<p>上面的例子判断 numberSymbol 是不是拉丁语, 阿拉伯语, 汉语, 或者泰语中的1到4。如果匹配到, switch中的一个case会赋值给可选类型变量 possibleIntegerValue 一个合适的整数值。</p>
-<p>在 switch 语句执行完成之后, 例子中使用可选绑定去判断一个值是否找到。possibleIntegerValue 变量是一个可选类型有一个初始值nil, 如果四个case之一给possibleIntegerValue 设置了一个实际值,这个可选绑定就成功了。</p>
-<p>因为不可能列出所有的可能字符, 一个默认的case 用来处理其他没匹配的字符。默认case不需要做任何事, 所以它只有一个break语句。当默认case被匹配后, break 语句就结束switch语句的执行n, 代码开始从 if let 语句处继续执行。</p>
-<h1 id="Fallthrough"><a href="#Fallthrough" class="headerlink" title="Fallthrough"></a>Fallthrough</h1><p>Swift 的 Switch 语句不会 fall through 到下一个case。 相反, 只有第一个匹配到的case语句执行完成,整个switch语句就完成了执行。不同的是, C 语言要求每个case后面都要加上break 语句,防止 fallthrough. 明显Swift 更加简洁和安全。</p>
-<p>如果你想要C语言那种效果的 fallthrough, 你可以选择在case后面加上 fallthrough 关键字。 下面的例子使用fallthrough 创建一个数字的文字描述。</p>
+<p>上面的例子判断 <code>numberSymbol</code> 是不是拉丁语, 阿拉伯语, 汉语, 或者泰语中的1到4。如果匹配到, <code>switch</code>中的一个分支会赋值给可选类型变量 <code>possibleIntegerValue</code> 一个合适的整数值。</p>
+<p>在 <code>switch</code> 语句执行完成之后, 例子中使用可选绑定去判断一个值是否找到。<code>possibleIntegerValue</code> 变量是一个可选类型有一个初始值<code>nil</code>, 如果四个分支之一给<code>possibleIntegerValue </code>设置了一个实际值,这个可选绑定就成功了。</p>
+<p>因为不可能列出所有的可能字符, 一个默认的分支用来处理其他没匹配的字符。默认分支不需要做任何事, 所以它只有一个<code>break</code>语句。当默认分支被匹配后, <code>break</code> 语句就结束<code>switch</code>语句的执行, 代码开始从 <code>if let </code>语句处继续执行。</p>
+<h1 id="Fallthrough"><a href="#Fallthrough" class="headerlink" title="Fallthrough"></a>Fallthrough</h1><p><code>Swift</code> 的 <code>Switch</code> 语句不会 <code>fall through</code> 到下一个分支。 相反, 只有第一个匹配到的分支语句执行完成,整个<code>switch</code>语句就完成了执行。不同的是, <code>C </code>语言要求每个分支后面都要加上<code>break</code> 语句,防止 <code>fallthrough</code>. 明显<code>Swift</code> 更加简洁和安全。</p>
+<p>如果你想要C语言那种效果的 <code>fallthrough</code>, 你可以选择在分支后面加上 <code>fallthrough</code> 关键字。 下面的例子使用<code>fallthrough</code> 创建一个数字的文字描述。</p>
 <pre><code>
 let integerToDescribe = 5
 var description = "The number \(integerToDescribe) is"
@@ -1965,9 +1966,9 @@ print(description)
 // 打印 "The number 5 is a prime number, and also an integer."
 </code></pre>
 
-<p>上例声明了一个字符串变量 description ,然后赋了一个初始值。后面的函数在switch语句中用了这个值 integerToDescribe. 如果 integerToDescribe 的是列表中的一个素数, 函数就把一段文本添加到 description 的后面, 去备注说这个数字是素数。然后用了fallthrough 关键字进入默认的case. 默认的case添加一段额外的文本到 description 之后, 然后switch语句就结束了。</p>
-<p>除非integerToDescribe 的值在已知素数列表里, 否则第一个case就不会匹配。 因为没有其他case, integerToDescribe 会被默认的case 匹配。</p>
-<p>switch 语句执行完后, 使用 print(_:separator:terminator:) 函数打印description。 这个例子里, 数字5就是一个素数。</p>
+<p>上例声明了一个字符串变量 <code>description</code> ,然后赋了一个初始值。后面的函数在switch语句中用了这个值 integerToDescribe. 如果 integerToDescribe 的是列表中的一个素数, 函数就把一段文本添加到 description 的后面, 去备注说这个数字是素数。然后用了fallthrough 关键字进入默认的分支. 默认的分支添加一段额外的文本到 description 之后, 然后switch语句就结束了。</p>
+<p>除非integerToDescribe 的值在已知素数列表里, 否则第一个分支就不会匹配。 因为没有其他分支, <code>integerToDescribe </code>会被默认的分支匹配。</p>
+<p>switch 语句执行完后, 使用 <code>print(_:separator:terminator:)</code> 函数打印description。 这个例子里, 数字5就是一个素数。</p>
 <h1 id="标签语句"><a href="#标签语句" class="headerlink" title="标签语句"></a>标签语句</h1><p>在 Swift 里, 你可以在循环和条件语句种内嵌循环和条件语句,来创建更复杂的控制流结构。不过, 循环和条件语句都可以使用break 语句来提前结束执行。因此, 有时候这很有用,当你决定哪个循环或者条件语句要用break来终止执行。类似的, 如果你有多个嵌套的循环, 它也是有用的,可以明确哪个循环语句继续有效。</p>
 <p>为了达到这些目的, 你可以用一个语句标签来标记一个循环或者条件语句。对于条件语句, 你可以使用带着break语句的语句标签来结束标签的语句。对于循环语句, 你可以用带着break或者continue的语句标签来结束或者继续标签语句的执行。</p>
 <p>一个标签语句通过放置一个标签来指示,标签放在相同行作为语句的关键字。跟着是一个冒号。 这里有一个while循环语法的例子, 对于所有的循环和switch语句都是相当的规则:</p>
@@ -2048,7 +2049,7 @@ greet(person: ["name": "Jane", "location": "Cupertino"])
 // 打印 "I hope the weather is nice in Cupertino."
 </code></pre>
 
-<p>如果 guard 语句的条件满足, 代码继续在guard 语句的大括号后执行。所有变量或者常量使用一个可选绑定赋值,它们作为条件的一部分。<br>如果条件没有满足, else 分支会执行。这个分支转移控制跳出guard 语句所在的代码块。可以使用控制转移语句 return, break, continue, 或者 throw, 或者也可以调用不返回的函数或者方法, 比如 fatalError(_:file:line:).</p>
+<p>如果 guard 语句的条件满足, 代码继续在guard 语句的大括号后执行。所有变量或者常量使用一个可选绑定赋值,它们作为条件的一部分。<br>如果条件没有满足, else 分支会执行。这个分支转移控制跳出guard 语句所在的代码块。可以使用控制转移语句 return, break, continue, 或者 throw, 或者也可以调用不返回的函数或者方法, 比如 <code>fatalError(_:file:line:)</code>.</p>
 <p>跟 if 语句做同样的判断比较,使用 guard 语句为了提高代码的可读性。它让你可以写通常不在else 快执行的代码, 同时让你保持代码,来处理违法要求的要求。</p>
 <h1 id="判断-API-可用性"><a href="#判断-API-可用性" class="headerlink" title="判断 API 可用性"></a>判断 API 可用性</h1><p>Swift 支持判断 API 的有效性, 这样可以保证你不会在给定设备上使用不可用的API。</p>
 <p>编译器使用SDK中的有效性信息来判断你代码中的所有API。 如果你使用不可用的API,Swift 会报一个编译错误。</p>
@@ -2749,7 +2750,7 @@ for customerProvider in customerProviders {
 <p>上面的代码, 不是调用作为 customerProvider 参数的闭包, collectCustomerProviders(_:) 函数添加闭包到 customerProviders 数组。 数组在函数外部声明, 意味着函数返回后数组中的闭包会执行。 结果就是, customerProvider 参数值必须被允许逃离函数范围。</p>
 <h1 id="枚举"><a href="#枚举" class="headerlink" title="枚举"></a>枚举</h1><p>一个枚举定义一组相关的常见类型的值, 让你在代码中用一个类型安全的方式工作。</p>
 <p>如果你熟悉 C, 你就会知道 C 枚举会给相关的名字赋值一组整型值。 Swift 中的 枚举更加灵活, 不需要给每个枚举分支赋值。 如果提供一个值 ( “原始” 值), 这个值可以是字符串,字符,或者任意一个整型或者浮点型的值。</p>
-<p>另外, 枚举的不同分支可以指定任何类型对应值。很像其他语言的 unions 或者 variants. 你可以定义一个常见的相关的case集合来作为枚举的一部分。每部分都有相应的值对应它们。</p>
+<p>另外, 枚举的不同分支可以指定任何类型对应值。很像其他语言的 unions 或者 variants. 你可以定义一个常见的相关的分支集合来作为枚举的一部分。每部分都有相应的值对应它们。</p>
 <p>Swift 的枚举是第一等类型。它们采用传统上只有类才支持的多种特性, 例如计算属性来提供关于枚举当前值的额外信息, 实例方法来提供有关枚举表示值的功能。枚举还可以用初始化来定义初始化值; 可以扩大它们原有实现的功能; 并且可以遵守协议去提供标准功能。</p>
 <h1 id="枚举语法"><a href="#枚举语法" class="headerlink" title="枚举语法"></a>枚举语法</h1><p>用enum关键字引入枚举,在大括号中定义整个枚举:</p>
 <pre><code>
@@ -2765,10 +2766,10 @@ enum CompassPoint {
     case west
 }</code></pre>
 
-<p>定义在枚举中的值就是枚举case (比如 north, south, east, and west) 你可以用case 关键之来引入新的枚举case.</p>
+<p>定义在枚举中的值就是枚举分支 (比如 north, south, east, and west) 你可以用关键字来引入新的枚举分支.</p>
 <p>备注</p>
-<p>不像 C 和 Objective-C, Swift 枚举case创建时不设一个默认的整数值。上面的 CompassPoint 例子, north, south, east 和 west 不会隐式等于 0, 1, 2 和 3. 相反, 不同的枚举case 在右方都有值t, 有一个显式定义的 CompassPoint 类型。</p>
-<p>多个case可以出现在一行,用逗号分开:</p>
+<p>不像 C 和 Objective-C, Swift 枚举分支创建时不设一个默认的整数值。上面的 CompassPoint 例子, north, south, east 和 west 不会隐式等于 0, 1, 2 和 3. 相反, 不同的枚举分支在右方都有值t, 有一个显式定义的 CompassPoint 类型。</p>
+<p>多个分支可以出现在一行,用逗号分开:</p>
 <pre><code>
 enum Planet {
     case mercury, venus, earth, mars, jupiter, saturn, uranus, neptune
@@ -2800,8 +2801,8 @@ case .west:
 <p>你可以这样解读代码:</p>
 <p>“考察 directionToHead 的值。等于 .north, 打印 “Lots of planets have a north”. 等于 .south, 打印 “Watch out for penguins”.”</p>
 <p>…等等。</p>
-<p>控制流里描述过, switch 语句考察枚举case 时一定要详尽。 如果 .west case 忽略掉, 代码会编译不过, 因为它没有完整考察 CompassPoint 所有case. 要求详尽保证枚举case不会被疏忽掉。</p>
-<p>如果提供所有的case 不合适, 你可以提供一个默认case来覆盖没有显式指明的case:</p>
+<p>控制流里描述过, switch 语句考察枚举分支时一定要详尽。 如果 .west 分支忽略掉, 代码会编译不过, 因为它没有完整考察 CompassPoint 所有分支。 要求详尽保证枚举分支不会被疏忽掉。</p>
+<p>如果提供所有的分支不合适, 你可以提供一个默认分支来覆盖没有显式指明的分支:</p>
 <pre><code>
 let somePlanet = Planet.earth
 switch somePlanet {
@@ -2813,8 +2814,8 @@ default:
 // 打印 "Mostly harmless"
 </code></pre>
 
-<h1 id="关联值"><a href="#关联值" class="headerlink" title="关联值"></a>关联值</h1><p>上部分实例展示枚举case是一个定义值（类型值）。 你可以把一个常量或者变量设置成 Planet.earth, 然后稍晚再判断这个值。 不过, 有时候存储其他类型的对应值是很有用的。这让你可以随着case存储其他自定义信息。</p>
-<p>你可以定义 Swift 枚举来存储给定类型的对应值, 如果需要每个case的值类型可以不同。枚举和其他语言的可辨识联合，标签联合或者变体很类似。</p>
+<h1 id="关联值"><a href="#关联值" class="headerlink" title="关联值"></a>关联值</h1><p>上部分实例展示枚举分支是一个定义值（类型值）。 你可以把一个常量或者变量设置成 Planet.earth, 然后稍晚再判断这个值。 不过, 有时候存储其他类型的对应值是很有用的。这让你可以随着分支存储其他自定义信息。</p>
+<p>你可以定义 Swift 枚举来存储给定类型的对应值, 如果需要每个分支的值类型可以不同。枚举和其他语言的可辨识联合，标签联合或者变体很类似。</p>
 <p>例如, 假设库存跟踪系统需要用两种不同类型的条形码来追踪产品。一些产品用UPC格式标记为 1D 条形码, 这些使用数字 0 到 9. 每个条形码有一个“数字系统” 位, 后面是5个 “制造商码” 位然后是5个“产品码”位。 最后是“校验” 位来校验扫码正确性:</p>
 <div style="text-align:center"><br><img src="https://developer.apple.com/library/content/documentation/Swift/Conceptual/Swift_Programming_Language/Art/barcode_UPC_2x.png"><br></div>
 
@@ -2844,7 +2845,7 @@ productBarcode = .qrCode("ABCDEFGHIJKLMNOP")
 </code></pre>
 
 <p>这时候, 原先的 Barcode.upc 和它的整数值被新的 Barcode.qrCode 和它的字符串值取代。类型的常量或者变量可以存储 .upc 或者 .qrCode (带着对应的值), 不过在给定时间它们只能存储其中之一。</p>
-<p>可以用一个switch语句判断不同的条形码类型。 这次, 无论如何, 对应的值被提取作为switch语句的部分。提取的值作为常量或者变量在switch语句的case中使用:</p>
+<p>可以用一个switch语句判断不同的条形码类型。 这次, 无论如何, 对应的值被提取作为switch语句的部分。提取的值作为常量或者变量在switch语句的分支中使用:</p>
 <pre><code>
 switch productBarcode {
 case .upc(let numberSystem, let manufacturer, let product, let check):
@@ -2855,7 +2856,7 @@ case .qrCode(let productCode):
 // 打印 "QR code: ABCDEFGHIJKLMNOP."
 </code></pre>
 
-<p>如果一个case的所有对应值都提取成常量或者变量, 或者都提取成变量, 你可以在这个case 名字前单独放一个let 或者 var, 为简洁性考虑:</p>
+<p>如果一个分支的所有对应值都提取成常量或者变量, 或者都提取成变量, 你可以在这个分支 名字前单独放一个let 或者 var, 为简洁性考虑:</p>
 <pre><code>
 switch productBarcode {
 case let .upc(numberSystem, manufacturer, product, check):
@@ -2866,8 +2867,8 @@ case let .qrCode(productCode):
 // 打印 "QR code: ABCDEFGHIJKLMNOP."
 </code></pre>
 
-<h1 id="原始值"><a href="#原始值" class="headerlink" title="原始值"></a>原始值</h1><p>Associated Values 中的条形码例子展示枚举case如何声明它们存储的不同类型的对应值。作为关联值的替代方式, 枚举case 可以填充默认值 (raw values), 它们都是相同的类型。</p>
-<p>这里有个例子,在指定的枚举case 旁存储原始 ASCII 值:</p>
+<h1 id="原始值"><a href="#原始值" class="headerlink" title="原始值"></a>原始值</h1><p>Associated Values 中的条形码例子展示枚举分支如何声明它们存储的不同类型的对应值。作为关联值的替代方式, 枚举分支 可以填充默认值 (raw values), 它们都是相同的类型。</p>
+<p>这里有个例子,在指定的枚举分支旁存储原始 ASCII 值:</p>
 <pre><code>
 enum ASCIIControlCharacter: Character {
     case tab = "\t"
@@ -2879,9 +2880,9 @@ enum ASCIIControlCharacter: Character {
 <p>这里, 枚举 ASCIIControlCharacter 的原始值定义为字符类型, 设成成一些比较常见的 ASCII 控制字符。</p>
 <p>原始值可以是字符串, 字符, 或者任意整型或者浮点型数字类型。 每个原始值在枚举声明里必须是唯一的。</p>
 <p>备注</p>
-<p>原始值作为对应值是不相同的。原始值用来在首次声明枚举时填充值, 就像上面三个 ASCII 码。特定case 的原始值总是相同的。基于枚举case之一创建一个新的常量或者变量时设置关联值, 每次设置都可以不同。</p>
-<h1 id="隐式赋原始值"><a href="#隐式赋原始值" class="headerlink" title="隐式赋原始值"></a>隐式赋原始值</h1><p>使用存储整型或者字符串类型的原始值时, 你不需要显式为每个case指定一个原始值。如果你不设置, Swift 会为你自动指定值。</p>
-<p>例如, 当整型用作原始值时, 每个case 的隐式值比前一个case多一。如果第一个case没有设置值, 它的值是0.</p>
+<p>原始值作为对应值是不相同的。原始值用来在首次声明枚举时填充值, 就像上面三个 ASCII 码。特定分支的原始值总是相同的。基于枚举分支之一创建一个新的常量或者变量时设置关联值, 每次设置都可以不同。</p>
+<h1 id="隐式赋原始值"><a href="#隐式赋原始值" class="headerlink" title="隐式赋原始值"></a>隐式赋原始值</h1><p>使用存储整型或者字符串类型的原始值时, 你不需要显式为每个分支指定一个原始值。如果你不设置, Swift 会为你自动指定值。</p>
+<p>例如, 当整型用作原始值时, 每个分支的隐式值比前一个分支多一。如果第一个分支没有设置值, 它的值是0.</p>
 <p>下面的枚举是早期 Planet 枚举的细化版本, 带有整数原始值来代表距离每个星球距离太阳的顺序:</p>
 <pre><code>
 enum Planet: Int {
@@ -2889,7 +2890,7 @@ enum Planet: Int {
 }</code></pre>
 上面的例子, Planet.mercury有个显式的原始值1, Planet.venus 有个显式的值 2, 以此类推。
 
-字符串用作原始值时, 每个case的隐式值是case 名字的文本字符串。
+字符串用作原始值时, 每个分支的隐式值是分支名字的文本字符串。
 
 下面的枚举是早期 CompassPoint 枚举的细化版本, 使用字符串原始值表示每个方向的名字:
 <pre><code>
@@ -2898,7 +2899,7 @@ enum CompassPoint: String {
 }</code></pre>
 上面的例子, CompassPoint.south 有个隐式的原始值 "south", 以此类推。
 
-使用 rawValue 属性来访问枚举case的原始值:
+使用 rawValue 属性来访问枚举分支的原始值:
 <pre><code>
 let earthsOrder = Planet.earth.rawValue
 // earthsOrder is 3
@@ -2907,16 +2908,16 @@ let sunsetDirection = CompassPoint.west.rawValue
 // sunsetDirection is "west"
 </code></pre>
 
-<h1 id="用原始值初始化"><a href="#用原始值初始化" class="headerlink" title="用原始值初始化"></a>用原始值初始化</h1><p>如果你用原始值类型定义一个枚举, 枚举自动得到一个初始化方法, 这个初始化方法有一个原始值类型 (参数 rawValue) 并且返回一个枚举case或者nil. 你可以用这个初始化方法试着创建新的枚举实例。</p>
+<h1 id="用原始值初始化"><a href="#用原始值初始化" class="headerlink" title="用原始值初始化"></a>用原始值初始化</h1><p>如果你用原始值类型定义一个枚举, 枚举自动得到一个初始化方法, 这个初始化方法有一个原始值类型 (参数 rawValue) 并且返回一个枚举分支或者nil. 你可以用这个初始化方法试着创建新的枚举实例。</p>
 <p>这个例子用原始值7标识 Uranus :</p>
 <pre><code>
 let possiblePlanet = Planet(rawValue: 7)
 // possiblePlanet 是 Planet?类型并且等于Planet.uranus
 </code></pre>
 
-<p>不是所有的整数值都能找到一个对应的星球, 不过。 因为如此, 原始值初始化方法总是返回一个可选的枚举case. 上面的例子, possiblePlanet 是Planet?类型, 或者 “可选的 Planet.”</p>
+<p>不是所有的整数值都能找到一个对应的星球, 不过。 因为如此, 原始值初始化方法总是返回一个可选的枚举分支. 上面的例子, possiblePlanet 是Planet?类型, 或者 “可选的 Planet.”</p>
 <p>备注</p>
-<p>原始值初始化方法是灵活的, 因为不是每个原始值都会返回一个枚举case.</p>
+<p>原始值初始化方法是灵活的, 因为不是每个原始值都会返回一个枚举分支.</p>
 <p>如果尝试查找位置是11的星球, 原始值初始化方法返回的 Planet 值为nil:</p>
 <pre><code>
 let positionToFind = 11
@@ -2934,7 +2935,7 @@ if let somePlanet = Planet(rawValue: positionToFind) {
 </code></pre>
 
 <p>这个例子使用可选绑定访问原始值是11的星球。 语句 if let somePlanet = Planet(rawValue: 11) 创建了一个可选的 Planet, 然后设置 somePlanet 值为这个可选绑定的 Planet. 这种情况, 不可能获取到位置是11的星球, 所有else分支被执行了。</p>
-<h1 id="递归枚举"><a href="#递归枚举" class="headerlink" title="递归枚举"></a>递归枚举</h1><p>递归枚举是这样一种枚举,它有另外一个枚举的实例,这个实例作为一个或者多个case的关联值。通过在枚举case 前书写indirect 来标明枚举是递归的。告诉编译器插入必要的间接层。</p>
+<h1 id="递归枚举"><a href="#递归枚举" class="headerlink" title="递归枚举"></a>递归枚举</h1><p>递归枚举是这样一种枚举,它有另外一个枚举的实例,这个实例作为一个或者多个分支的关联值。通过在枚举分支前书写indirect 来标明枚举是递归的。告诉编译器插入必要的间接层。</p>
 <p>例如, 这里有一个枚举存储了简单的算术表达式:</p>
 <pre><code>
 enum ArithmeticExpression {
@@ -2944,7 +2945,7 @@ enum ArithmeticExpression {
 }
 </code></pre>
 
-<p>你也可以在枚举开始写 indirect, 来保证所有需要的枚举case 是间接的:</p>
+<p>你也可以在枚举开始写 indirect, 来保证所有需要的枚举分支是间接的:</p>
 <pre><code>
 indirect enum ArithmeticExpression {
     case number(Int)
@@ -3528,7 +3529,7 @@ struct Point {
 }</code></pre>
 
 <p>这个版本的变异 moveBy(x:y:) 方法创建了一个全新的结构体,它的x和y的值被设置为目标位置。调用这个版本的结果和早前版本是完全一样的。</p>
-<p>枚举的变异方法可以把隐式self属性设置为一个不同的case:</p>
+<p>枚举的变异方法可以把隐式self属性设置为一个不同的分支:</p>
 <pre><code>
 enum TriStateSwitch {
     case off, low, high
@@ -4329,8 +4330,8 @@ if anonymousCreature == nil {
 
 <p>备注</p>
 <p>判断空字符串和判断可选值为nil是不同的。在上面的例子中, 一个空字符串 (“”) 是一个有效,非可选的字符串。不过, 对于动物来说species属性值为空不太合适。 为了模拟这种限制, 如果这个字符串为空,就触发构造失败。</p>
-<h1 id="枚举的可失败构造器"><a href="#枚举的可失败构造器" class="headerlink" title="枚举的可失败构造器"></a>枚举的可失败构造器</h1><p>你可以基于一个或多个参数使用构造器去选择一个合适的枚举case. 如果提供的参数没有匹配合适的case,构造就会失败。</p>
-<p>下面的例子定义了一个枚举 TemperatureUnit, 有三种可能的状态 (kelvin, celsius, 和 fahrenheit). 可失败构造器根据代表温度符号的字符值来寻找一个合适的枚举case:</p>
+<h1 id="枚举的可失败构造器"><a href="#枚举的可失败构造器" class="headerlink" title="枚举的可失败构造器"></a>枚举的可失败构造器</h1><p>你可以基于一个或多个参数使用构造器去选择一个合适的枚举分支. 如果提供的参数没有匹配合适的分支,构造就会失败。</p>
+<p>下面的例子定义了一个枚举 TemperatureUnit, 有三种可能的状态 (kelvin, celsius, 和 fahrenheit). 可失败构造器根据代表温度符号的字符值来寻找一个合适的枚举分支:</p>
 <pre><code>
 enum TemperatureUnit {
     case kelvin, celsius, fahrenheit
@@ -4348,7 +4349,7 @@ enum TemperatureUnit {
     }
 }</code></pre>
 
-<p>你使用可失败构造器为三种可能的状态选择一个合适的枚举case, 如果参数不匹配三种状态之一就会引发构造失败:</p>
+<p>你使用可失败构造器为三种可能的状态选择一个合适的枚举分支, 如果参数不匹配三种状态之一就会引发构造失败:</p>
 <pre><code>
 let fahrenheitUnit = TemperatureUnit(symbol: "F")
 if fahrenheitUnit != nil {
@@ -4363,7 +4364,7 @@ if unknownUnit == nil {
 // 打印 "This is not a defined temperature unit, so initialization failed."
 </code></pre>
 
-<h1 id="带原始值枚举的可失败构造器"><a href="#带原始值枚举的可失败构造器" class="headerlink" title="带原始值枚举的可失败构造器"></a>带原始值枚举的可失败构造器</h1><p>带有原始值的枚举会自动接收一个可失败构造器, init?(rawValue:), 有一个参数 rawValue, 如果找到就匹配一个枚举case, 否则触发构造失败。</p>
+<h1 id="带原始值枚举的可失败构造器"><a href="#带原始值枚举的可失败构造器" class="headerlink" title="带原始值枚举的可失败构造器"></a>带原始值枚举的可失败构造器</h1><p>带有原始值的枚举会自动接收一个可失败构造器, init?(rawValue:), 有一个参数 rawValue, 如果找到就匹配一个枚举分支, 否则触发构造失败。</p>
 <p>你用原始值重写上面的 TemperatureUnit 例子,然后使用 init?(rawValue:) 构造器:</p>
 <pre><code>
 enum TemperatureUnit: Character {
@@ -6919,8 +6920,8 @@ private func someFunction() -> (SomeInternalClass, SomePrivateClass) {
 </code></pre>
 
 <p>用public或者internal 修饰符标记 someFunction() 是无效的, 使用默认的internal也没有用, 因为函数的 public 或者 internal 用户可能没有权限访问用在函数返回类型的私有类。</p>
-<h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><p>枚举的每个case 都会自动获得和枚举一样的访问级别。你不能给单独的case指定访问级别</p>
-<p>在下面的例子里, CompassPoint 枚举有一个显式的访问级别 “public”. 枚举的 cases north, south, east, 和 west 的访问级别因此也是 “public”:</p>
+<h1 id="枚举类型"><a href="#枚举类型" class="headerlink" title="枚举类型"></a>枚举类型</h1><p>枚举的每个分支都会自动获得和枚举一样的访问级别。你不能给单独的分支指定访问级别</p>
+<p>在下面的例子里, CompassPoint 枚举有一个显式的访问级别 “public”. 枚举的分支 north, south, east, 和 west 的访问级别因此也是 “public”:</p>
 <pre><code>
 public enum CompassPoint {
     case north
