@@ -5,7 +5,7 @@
   <link href="/atom.xml" rel="self"/>
   
   <link href="http://yoursite.com/"/>
-  <updated>2017-02-08T05:01:45.000Z</updated>
+  <updated>2017-02-23T00:35:41.000Z</updated>
   <id>http://yoursite.com/</id>
   
   <author>
@@ -14,6 +14,50 @@
   </author>
   
   <generator uri="http://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>OmniPlan 教程</title>
+    <link href="http://yoursite.com/2017/02/23/OmniPlan-%E6%95%99%E7%A8%8B/"/>
+    <id>http://yoursite.com/2017/02/23/OmniPlan-教程/</id>
+    <published>2017-02-23T00:21:51.000Z</published>
+    <updated>2017-02-23T00:35:41.000Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="Getting-to-Know-OmniPlan"><a href="#Getting-to-Know-OmniPlan" class="headerlink" title="Getting to Know OmniPlan"></a>Getting to Know OmniPlan</h1><p>When you first launch OmniPlan you’re presented with a fresh new OmniPlan document, ready for cultivating to match the precise needs of the project at hand. What follows is an introduction to the various pieces of the app that you’ll be interacting with to craft a project to your specifications. To jump right in and get to work, see the Tutorial.</p>
+<h1 id="The-Toolbar"><a href="#The-Toolbar" class="headerlink" title="The Toolbar"></a>The Toolbar</h1><p>Like most applications, the toolbar has buttons for commands you use frequently. We’ve included a default set of controls that many OmniPlan users find convenient, but you can use View ▸ Customize Toolbar to add and remove whichever ones you like.</p>
+<div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_01_toolbar.png"><br></div>
+
+<h1 id="The-Overview"><a href="#The-Overview" class="headerlink" title="The Overview"></a>The Overview</h1><p>The toolbar has an optional companion in the Overview, a horizontal bar with a condensed view of the Gantt chart that appears when you choose View ▸ Show Overview. The overview is a great way to get a quick survey of your entire project no matter which view you’re in.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_09_overview.png"><br></div><br>In Task and Resource Views, the Overview also offers an alternate control for browsing through your project — just click and drag the selection box to scroll through the main view’s Gantt chart or resource timeline.</p>
+<h1 id="Task-View"><a href="#Task-View" class="headerlink" title="Task View"></a>Task View</h1><p>Click the first button in the view control to see the Task View.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_02_taskview.png"><br></div><br>Task View consists of two parts: the task outline on the left, and the Gantt chart on the right. You’ll use the task outline to quickly create, edit, and group related tasks, while the Gantt chart is a powerful visual representation of tasks’ durations and relationships.</p>
+<p>#Resource View<br>Click the second button in the view control to see the Resource View.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_03_resourceview.png"><br></div><br>Use Resource View to add and manage staff, equipment, and materials. As with Task View, Resource View is split into two parts: an outline for adding, grouping, and managing resources, and a timeline that shows shows the same tasks as Task View — split up here by resource assignment instead of chronology or dependency structure, with drag-and-drop control to quickly assign resources to tasks (and vice versa).</p>
+<h1 id="Calendar-View"><a href="#Calendar-View" class="headerlink" title="Calendar View"></a>Calendar View</h1><p>Click the third button in the view control to see the Calendar View.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_04_calendarview.png"><br></div><br>Calendar View also has two main areas: a list of project resources similar to the outline in Resource View, and a calendar for editing working hours. Calendar View is further broken down into two modes: editing for Normal Hours, and Extra &amp; Off Hours.<br>In Normal Hours mode you’ll edit the working calendar for the whole project (when no resources are selected), as well as the regular working hours for individual staff members (by selecting them in the outline). Normal working hours are represented by green blocks in the calendar. Use the Extra &amp; Off Hours mode to add isolated changes to the schedule that deviate from the norm, represented by blue (for extra time) and red (for time off) respectively.</p>
+<h1 id="Network-View"><a href="#Network-View" class="headerlink" title="Network View"></a>Network View</h1><p>Click the fourth button in the view control to see the Network View.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_05_networkview.png"><br></div><br>New in OmniPlan 3, Network View provides a canvas that displays your project as a diagram of nodes (tasks) with lines (dependencies) connecting them. Evocative of charts generated with the PERT technique, Network View not only offers a new perspective on your current projects but also allows rapid development of new ones. Press Enter with a task selected and a new one is created that’s dependent on the first; drag a line between existing tasks and watch them rearrange to obey the new relationship you’ve created.</p>
+<h1 id="Styles-View"><a href="#Styles-View" class="headerlink" title="Styles View"></a>Styles View</h1><p>Click the fifth button in the view control to see the Styles View.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_06_stylesview.png"><br></div><br>Styles View is new in OmniPlan 3, but will look familiar to users of earlier versions — this is the new home of style controls that govern your entire project. Changing the default options here will update the look of elements throughout your document, from the font and colors to the appearance of bars in the Gantt chart. You’ll create and manage custom Named Styles for ad-hoc styling of individual items here, too.</p>
+<h1 id="Inspectors"><a href="#Inspectors" class="headerlink" title="Inspectors"></a>Inspectors</h1><p>Check the right side of the OmniPlan window for the Inspectors sidebar. If it’s hidden, choose Inspectors ▸ Show/Hide Inspectors (Shift-Command-I) or click and drag in from the right side of the window to reveal it.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_07_inspectors.png"><br></div><br>The inspectors are panes with information and controls related to what’s selected in the main window. Whether a given inspector will be relevant to your current selection depends on what it is; at any time you can browse all seven of the inspector groups (Project Info, Milestones, Tasks, Resources, Styles, Custom Data, and Attachments) to see what can be modified.</p>
+<h1 id="The-Touch-Bar"><a href="#The-Touch-Bar" class="headerlink" title="The Touch Bar"></a>The Touch Bar</h1><p>If your Mac supports it, OmniPlan uses the Touch Bar to bring the most useful tools and controls to your fingertips.<br>In the Task and Resource Views when no task is selected, the Touch Bar displays an overview of the Gantt chart or resource timeline (the same offered with View ▸ Show Overview), along with controls to Level, Catch Up, or Reschedule tasks based on the current project status.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_10_touchbarnoselection.png"><br></div><br>With a task selected, the Touch Bar adapts to offer contextual control for reviewing and assigning resources to the task.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_11_touchbartaskselection.png"><br></div><br>The task’s duration is denoted by the white tick marks centered beneath the resource. A green bar between the tick marks indicates that the resource is assigned to the selected task, while a blue bar indicates that the resource is assigned to another task at that time. A blue bar to the right or left of the tick marks indicates that the resource is assigned to an adjacent task, and a red bar indicates that the resource is overloaded.<br>While in this view, tap the resource in the Touch Bar to assign it to (or unassign it from) the selected task.<br>Similarly to the Toolbar, a wide range of OmniPlan-specific buttons can be displayed in the Touch Bar. Configure them to suit your needs by choosing View ▸ Customize Touch Bar.</p>
+<h1 id="The-Report-Window-Pro"><a href="#The-Report-Window-Pro" class="headerlink" title="The Report Window (Pro)"></a>The Report Window (Pro)</h1><p>While not a persistent part of the main OmniPlan window, the Reports interface in OmniPlan Pro is important enough to mention here. Use File ▸ Report… (Option-Command-R) to bring it up.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch02_08_reports.png"></div></p>
+<p>Once you have a project up and running, this is where you’ll go to visualize and summarize its progress. The tabs across the top of the window provide an array of options for presenting data on your project’s status, from an overview of the entire project to focused reports on tasks and resources, and with OmniPlan Pro, EVA budget estimations and simulated projections for milestone completion.<br>Even better, you can print the chosen report with a great looking preset or custom-styled HTML template straight from this window.</p>
+<h1 id="Dashboards-Pro"><a href="#Dashboards-Pro" class="headerlink" title="Dashboards (Pro)"></a>Dashboards (Pro)</h1><p>Multi-Project Dashboards are a feature that comes with the Pro upgrade to OmniPlan 3, and provide a new way to view an array of projects simultaneously. To create a new one, choose File ▸ New Dashboard (Shift-Command-N) and then drag OmniPlan project files onto it.</p>
+<p><div style="text-align:center"><br><img src="https://support.omnigroup.com/doc-assets/OmniPlan-Mac/OmniPlan-Mac-v3.7.0.0/en/EPUB/art/op3mac_ch05_03_dashboardviewmenu.png"><br>You can save that dashboard for future reference in its own .opld file format, and create as many other unique combinations of projects as you want with additional dashboard files. Any updates you make to a project that is shared in a dashboard are immediately reflected there, but projects themselves can’t be directly edited from the dashboard interface.</div></p>
+]]></content>
+    
+    <summary type="html">
+    
+      &lt;h1 id=&quot;Getting-to-Know-OmniPlan&quot;&gt;&lt;a href=&quot;#Getting-to-Know-OmniPlan&quot; class=&quot;headerlink&quot; title=&quot;Getting to Know OmniPlan&quot;&gt;&lt;/a&gt;Getting to Kno
+    
+    </summary>
+    
+    
+  </entry>
   
   <entry>
     <title>Pushing to Git returning Error Code 403 fatal: HTTP request failed 解决方案</title>
@@ -7535,47 +7579,6 @@ let plusMinusVector = firstVector +- secondVector
     <summary type="html">
     
       &lt;div align=&quot;center&quot;&gt;&lt;img src=&quot;http://www.raywenderlich.com/wp-content/uploads/2015/09/UISearchController-Square.png&quot; width=&quot;250&quot; height=&quot;250
-    
-    </summary>
-    
-    
-  </entry>
-  
-  <entry>
-    <title>项目结束后的一些思考</title>
-    <link href="http://yoursite.com/2016/09/08/%E9%A1%B9%E7%9B%AE%E7%BB%93%E6%9D%9F%E5%90%8E%E7%9A%84%E4%B8%80%E4%BA%9B%E6%80%9D%E8%80%83/"/>
-    <id>http://yoursite.com/2016/09/08/项目结束后的一些思考/</id>
-    <published>2016-09-08T08:42:51.000Z</published>
-    <updated>2016-09-12T08:47:32.000Z</updated>
-    
-    <content type="html"><![CDATA[<blockquote>
-<p>为什么项目又延期了？ ——–来自市场的愤怒 </p>
-</blockquote>
-<p>为什么项目又延期了呢？</p>
-<div style="text-align:center"><br><img src="http://img306.ph.126.net/Xk7NwVjqPUtaYlY6u2m2GQ==/3852829481215481010.jpg"><br></div>
-
-<p>从项目立项到发布，一般项目的生命周期都是如上图所示，任何一个环节出现问题，都会增加工时的消耗</p>
-<p>开源中国社区 <a href="http://www.oschina.net/question/565065_86309" title="百度" target="_blank" rel="external">软件开发流程</a> 说的很详细了，我只说说自己的一些看法和见解。</p>
-<h1 id="关于知识的储备"><a href="#关于知识的储备" class="headerlink" title="关于知识的储备"></a>关于知识的储备</h1><div><br><p>笔者曾经参与多个iOS项目的开发，大大小小的项目都经历，实话说，极少有项目可以按时交付，即使连最基本的问题清零都做不到，基本都需要加班加点，到最后还是会遗留一些解决不了的问题。<br></p><br><p>新人越多的项目越容易出问题，当新人逐渐变成老司机的时候，无论是代码质量还是项目进度都变的靠谱多了。现代开发虽然引入了很多提高工作效率的工具和方法，但是人的能力还是占主导地位，人的知识储备在此就显得尤为重要了。<br></p><br><p>对新人的培养必须区别于学校，培养其主动学习能力才是进步之石，作为领导或者开发组长，应该根据员工的特点为其引路，创造学习的环境和条件，而不是将任务分配完了就不管了。在我经历的项目中，发现大多数的新人做了很多重复性的工作，在很长的时期里机械的做事，根本没有机会成长，他们现在或者变成老油条或者继续做着简单的工作，在新的毕业生涌入的潮流中，彻底的沉下去了。<br><br></p></div>
-
-<div style="text-align:center"><br><img src="http://photocdn.sohu.com/20150811/mp26839099_1439275236239_1_th.jpeg" width="280" height="300"><br></div>
-
-<h1 id="关于责任心"><a href="#关于责任心" class="headerlink" title="关于责任心"></a>关于责任心</h1><div><br><p>责任心这个东西应该是个后天的东西，因此在新人面试的时候，怎么在短短几十分钟内辨别面试者的责任心，是需要经验和一些运气的。如果等到新人进组和接手开发任务的时候，再去辨别就有点晚了。<br></p><br><p>有责任心的员工自主性相对较强，对自己的工作进度和质量都有着高度的要求，轻易不会表现沮丧和得过且过，接手的功能和任务都会认真对待，即使能力一时不足，也会通过不断的学习和填坑来完成，并不断总结，最终他开发的功能一般都会有个比较好的结果。<br></p><br></div>
-
-<h1 id="关于工作方式"><a href="#关于工作方式" class="headerlink" title="关于工作方式"></a>关于工作方式</h1><div><br><p>成功者都有一套自己的工作方式，普通人也有自己的工作方式，不同之处是高效和低效的区别。软件开发是体力和脑力劳动的结合，其中脑力劳动占据了主导地位，善于用脑的工程师是一般都掌握一套可以提高工作效率的工具和工作方式。<br></p><br><p>我个人认为提高工作效率的方式就是总结归纳改进，但是至于如何总结归纳改进则看情况而定。在我经历过的大大小小数十个项目中，多数的工程师变的平庸了，走向卓越的工程师非常稀少。这些人现在遍布在不同的公司，担任着重要的职务，甚至有些人已经创业成功，晋级到了富人阶层。<br></p><br></div>
-
-<div style="text-align:center"><br><img src="http://img5.imgtn.bdimg.com/it/u=2981119672,2990184737&fm=21&gp=0.jpg" width="400" height="300"><br></div>
-
-<h1 id="关于总结"><a href="#关于总结" class="headerlink" title="关于总结"></a>关于总结</h1><div><br><p>项目总结很重要也很必要，至少我是这么认为的。很多重复发生的错误和事故都是因为没及时总结造成的，这简直是犯罪。作为项目管理者，不能指望所有的工程师都会及时总结经验，汲取教训，更不会主动去帮别人总结。<br><br>人的惰性是天性，勤奋的人都是养成习惯才勤奋的，作为管理者要让工程师养成总结的习惯，而不是让他们自己去发挥主观能动性。参与总结的人越多，工程师越是放松，越能说出真实的想法，并付诸行动。<br><br>我开总结会，一般从三个方面来进行，一是自身的不足和改进，二是项目的不足和改进，三是公司提供的资源是否到位。一般来说，前面两点大部分的工程师都能讲出几条不足和改进意见，唯独第三条不知为什么要考虑这个因素。我的观点是，项目不是独立的，研发和测试只是产品生命周期的一个阶段，公司的很多部门都会对研发工作产生影响，很多工程师看不到这点。学会与各个部门打交道，不止是领导层的工作，也是工程师需要具备的能力。<br></p><br></div>
-]]></content>
-    
-    <summary type="html">
-    
-      &lt;blockquote&gt;
-&lt;p&gt;为什么项目又延期了？ ——–来自市场的愤怒 &lt;/p&gt;
-&lt;/blockquote&gt;
-&lt;p&gt;为什么项目又延期了呢？&lt;/p&gt;
-&lt;div style=&quot;text-align:center&quot;&gt;&lt;br&gt;&lt;img src=&quot;http://img306.ph.12
     
     </summary>
     
